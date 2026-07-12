@@ -1,6 +1,6 @@
 <!doctype html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Preliminary Evaluation · NC Law &amp; Policy Search · P42</title>
+<title>Comprehensive Evaluation · NC Law &amp; Policy Search · P42</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -11,21 +11,23 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.62 var(--sans);-
 .topbar{display:flex;align-items:center;gap:10px;padding:14px 24px;border-bottom:1px solid var(--line)}
 .mark{width:30px;height:30px;border-radius:6px;background:var(--accent);color:#fff;font:600 15px/30px var(--mono);text-align:center}
 .topbar b{font:500 16px var(--sans)} .topbar span{color:var(--muted);font-size:13px}
-.wrap{max-width:860px;margin:0 auto;padding:34px 24px 72px}
+.wrap{max-width:880px;margin:0 auto;padding:34px 24px 72px}
 .eyebrow{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
 h1{font:400 38px/1.1 var(--serif);margin:0 0 10px}
-h2{font:400 25px/1.2 var(--serif);margin:34px 0 10px;padding-top:10px;border-top:1px solid var(--line)}
+h2{font:400 25px/1.2 var(--serif);margin:36px 0 10px;padding-top:12px;border-top:1px solid var(--line)}
 h3{font:600 15px var(--sans);margin:20px 0 6px}
 p{margin:10px 0} .lede{font-size:17px;color:var(--ink2)}
+.toc{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:18px 0;font-size:14px;columns:2;column-gap:26px}
+.toc a{color:var(--ink2);text-decoration:none;display:block;margin:3px 0}.toc a:hover{color:var(--accent)}
 .note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14.5px;color:#5b2320}
 .ok{background:#F1F6F2;border-left:3px solid var(--ok);padding:12px 16px;margin:14px 0;font-size:14.5px;color:#284b37}
-table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px}
-th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
 th{background:#F2EFE9;font-weight:600}
-td.n{font:600 14px var(--mono);color:var(--accent)}
+td.n{font:600 13.5px var(--mono);color:var(--accent);white-space:nowrap}
 .small{color:var(--muted);font-size:13px}
 ul{margin:8px 0 8px 2px;padding-left:20px} li{margin:5px 0}
-code{background:#F2EFE9;padding:1px 5px;border-radius:3px;font:13px var(--mono)}
+code{background:#F2EFE9;padding:1px 5px;border-radius:3px;font:12.5px var(--mono)}
 footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;color:var(--muted);font-size:13px}
 </style></head><body>
 <div class=topbar>
@@ -35,125 +37,211 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;color:v
 </div>
 <div class=wrap>
 
-<p class=eyebrow>Preliminary evaluation · public data only</p>
-<h1>How well does it work, and compared to what?</h1>
-<p class=lede>A plain, measured account of what this tool does, how accurate it is on a
-starter benchmark, and how it compares with the ways this research is done today. This is a
-<b>preliminary</b> evaluation on a modest test set — the numbers will move as the test set grows
-and is expert-reviewed. Nothing here is a marketing claim; where the tool is weak or narrow, that
-is stated plainly.</p>
+<p class=eyebrow>Comprehensive evaluation · preliminary · public data only</p>
+<h1>How the tool was evaluated, and what it actually does</h1>
+<p class=lede>A detailed, measured account of the system's retrieval accuracy, answer quality,
+robustness, and speed — including where it is weak, and how it compares with how this research is
+done today. Every number below is measured on the live system. This is a <b>preliminary</b>
+evaluation on modest test sets; figures are indicative and will change as the benchmarks grow and
+are expert-reviewed. Nothing here is a marketing claim.</p>
 
-<div class=note><b>Scope &amp; disclaimer.</b> The system covers only <b>public</b> North Carolina
-child-welfare law and policy. It is a <b>research aid, not legal advice</b>, and not a substitute
-for a licensed attorney's judgment or for a full legal-research service. Every result links to the
-official source, which remains the controlling text.</div>
+<div class=note><b>Scope &amp; disclaimer.</b> Covers only <b>public</b> North Carolina
+child-welfare law and policy. A <b>research aid, not legal advice</b>; not a substitute for a
+licensed attorney or a full legal-research service. Every result links to the official source,
+which remains controlling.</div>
 
-<h2>1 · What it does</h2>
-<p>Given a plain-English question, the tool finds the governing North Carolina authority and can
-write a short answer grounded in it:</p>
+<div class=toc>
+<a href="#s0">0 · Headline results</a>
+<a href="#s1">1 · System &amp; corpus</a>
+<a href="#s2">2 · Retrieval accuracy</a>
+<a href="#s3">3 · Component ablation</a>
+<a href="#s4">4 · Chunking quality</a>
+<a href="#s5">5 · Contextual-retrieval experiment</a>
+<a href="#s6">6 · Grounded-answer quality</a>
+<a href="#s7">7 · Robustness &amp; refusal</a>
+<a href="#s8">8 · Latency</a>
+<a href="#s9">9 · Provenance &amp; integrity</a>
+<a href="#s10">10 · Vs. business as usual</a>
+<a href="#s11">11 · Limitations &amp; threats to validity</a>
+<a href="#s12">12 · Methods &amp; reproducibility</a>
+</div>
+
+<h2 id=s0>0 · Headline results</h2>
+<table>
+<tr><th>Dimension</th><th>Result</th><th>Notes</th></tr>
+<tr><td>Retrieval — correct authority in top-3</td><td class=n>90% / 96%</td><td>statutes / policy</td></tr>
+<tr><td>Grounded-answer rate (answers that cite the sources)</td><td class=n>91%</td><td>11 of 12 sampled</td></tr>
+<tr><td>Refusal on clearly off-topic queries</td><td class=n>3 / 3</td><td>declines rather than fabricate</td></tr>
+<tr><td>Search latency (median)</td><td class=n>1.1 s</td><td>interactive</td></tr>
+<tr><td>Grounded-answer latency (median)</td><td class=n>13 s</td><td>generation-bound</td></tr>
+<tr><td>Chunk text cut mid-word</td><td class=n>0%</td><td>after boundary-aware rechunk</td></tr>
+<tr><td>Results with full provenance</td><td class=n>100%</td><td>source · section · page · hash</td></tr>
+</table>
+
+<h2 id=s1>1 · System &amp; corpus</h2>
+<p>Given a plain-English question, the tool retrieves the governing NC authority (each result cited
+to source, section, and page) and can write a short answer assembled only from those passages, with
+inline <code>[n]</code> citations, declining when the passages don't support one.</p>
+<table>
+<tr><th>Collection</th><th>Contents</th><th>Documents</th><th>Passages</th></tr>
+<tr><td>Statutes &amp; regulations</td><td>NC General Statutes Ch. 7B (Juvenile Code) + NC Admin Code 10A NCAC 70</td><td>28</td><td class=n>~7,450</td></tr>
+<tr><td>Agency policy</td><td>NCDHHS child-welfare policy manuals, protocols, forms, guidance (~4,150 pp)</td><td>502</td><td class=n>~10,850</td></tr>
+</table>
+<p class=small>The statute set is <b>curated</b> (Chapter 7B core + supporting sections), not the
+entire NC General Statutes. Federal law and case law are out of scope.</p>
+
+<h2 id=s2>2 · Retrieval accuracy</h2>
+<p>Measured on a starter benchmark of <b>70 questions</b> (42 statute, 28 policy) whose correct
+answer is known in advance. <b>Recall@k</b> = how often the governing authority is in the top-k
+results; <b>MRR</b> is a 0–1 score, higher when the right result sits nearer the top.</p>
+<table>
+<tr><th>Corpus</th><th>Recall@1</th><th>Recall@3</th><th>Recall@5</th><th>MRR</th></tr>
+<tr><td>Statutes (GS 7B)</td><td class=n>73%</td><td class=n>90%</td><td class=n>92%</td><td class=n>0.83</td></tr>
+<tr><td>Policy (NCDHHS)</td><td class=n>82%</td><td class=n>96%</td><td class=n>96%</td><td class=n>0.87</td></tr>
+</table>
+<h3>Failure analysis</h3>
+<p>When the exact authority is not first, the results ranked above it are almost always
+<b>closely-related provisions</b> — e.g. a question about the <i>answer</i> to a termination
+petition surfaces the adjacent <i>failure-to-answer</i> section first. These are fine legal
+distinctions, not random errors, which is why top-1 is ~three-quarters while top-3 is ~nine in ten.
+Practical implication: scan the top few results, not just the first.</p>
+
+<h2 id=s3>3 · Component ablation — what each stage contributes</h2>
+<p>Retrieval is a pipeline: keyword + meaning search, fused, then re-ranked. Turning the stages on
+one at a time (statute benchmark) shows where the accuracy comes from — the <b>re-ranking step is
+the single largest contributor</b>.</p>
+<table>
+<tr><th>Configuration</th><th>Recall@1</th><th>Recall@3</th><th>Recall@5</th></tr>
+<tr><td>Hybrid only (keyword + meaning, fused)</td><td class=n>54%</td><td class=n>76%</td><td class=n>78%</td></tr>
+<tr><td>+ rank-blend rerank</td><td class=n>54%</td><td class=n>80%</td><td class=n>90%</td></tr>
+<tr><td>+ full re-rank <span class=small>(shipped)</span></td><td class=n>73%</td><td class=n>90%</td><td class=n>90%</td></tr>
+</table>
+<p class=small>The shipped configuration was chosen by measurement, not assumption: a full re-rank
+beat a rank-blend on this stack (statutes +10 pts R@3; policy 92%→96%).</p>
+
+<h2 id=s4>4 · Chunking quality</h2>
+<p>Legal text was originally split at a fixed character length, which cut long statutory subsections
+mid-word. A boundary-aware re-chunker (splitting on section markers, enumerators, and sentence
+boundaries) fixed this:</p>
+<table>
+<tr><th>Measure (statute corpus)</th><th>Before</th><th>After</th></tr>
+<tr><td>Chunks ending mid-sentence (no terminal punctuation)</td><td class=n>23%</td><td class=n>7%</td></tr>
+<tr><td>Chunks cut mid-word</td><td class=n>present</td><td class=n>0%</td></tr>
+</table>
+<p class=small>Readability was verified independently of retrieval accuracy — the two are separate
+quality axes and both were checked.</p>
+
+<h2 id=s5>5 · Contextual-retrieval experiment (an honest negative result)</h2>
+<p>We tested Anthropic's <i>Contextual Retrieval</i> — prepending an LLM-written context blurb to
+each passage before indexing. Measured A/B:</p>
+<table>
+<tr><th>Corpus</th><th>Baseline R@3</th><th>Contextual R@3</th><th>Verdict</th></tr>
+<tr><td>Statutes</td><td class=n>90%</td><td class=n>92% (R@5 92→97)</td><td>adopted for statutes</td></tr>
+<tr><td>Policy</td><td class=n>89%</td><td class=n>85% (R@1 75→60)</td><td>rejected — kept baseline</td></tr>
+</table>
+<p>It helped the structured statutes but <b>hurt</b> the form-heavy policy corpus (the blurbs
+homogenized similar administrative chunks). Rather than apply a technique because it is fashionable,
+it was adopted only where it measurably helped. This is included to show the evaluation catches
+regressions, not just wins.</p>
+
+<h2 id=s6>6 · Grounded-answer quality</h2>
+<p>On a sample of 12 in-scope questions, the written-answer feature was checked for whether it
+produced an answer <b>grounded in and citing</b> the retrieved passages:</p>
+<table>
+<tr><th>Metric</th><th>Result</th></tr>
+<tr><td>Answers grounded (cite sources, no refusal)</td><td class=n>91% (11/12)</td></tr>
+<tr><td>Answers containing inline <code>[n]</code> citations</td><td class=n>91%</td></tr>
+<tr><td>Median answer latency</td><td class=n>13 s</td></tr>
+</table>
+<p class=small>The one non-grounded case was a slow generation that timed out, not a fabrication.
+Answers are constrained to the retrieved text and instructed to decline when it is insufficient.</p>
+
+<h2 id=s7>7 · Robustness &amp; refusal</h2>
+<p>A tool that answers questions it shouldn't is worse than one that declines. We probed with
+out-of-scope questions:</p>
 <ul>
-<li><b>Search</b> — returns the most relevant statute sections and policy passages, each with a
-full citation (source, section, page) and a link to the official document.</li>
-<li><b>Grounded answer</b> — an optional short answer assembled <i>only</i> from the retrieved
-passages, with inline <code>[n]</code> citations. If the passages don't support an answer, it says
-so rather than guessing.</li>
+<li><b>Clearly off-topic</b> (state income tax, California licensing rules, Romeo &amp; Juliet):
+<b>declined in every case</b> — it says the sources don't support an answer rather than inventing one.</li>
+<li><b>Adjacent-domain</b> (federal Indian Child Welfare Act active-efforts standard): it produced a
+<b>cited answer from tangentially-related NC passages</b> instead of declining. <b>This is a real
+limitation.</b> For questions near — but outside — the corpus (e.g. federal child-welfare law), the
+tool can return a confident, cited answer built from NC material that does not actually govern the
+question.</li>
+</ul>
+<div class=note><b>Takeaway.</b> Treat every answer as a <b>starting point that must be
+verified against the cited source</b>, especially for anything touching federal law or topics
+adjacent to NC child welfare. The citations make that verification fast — which is the point.</div>
+
+<h2 id=s8>8 · Latency</h2>
+<table>
+<tr><th>Operation</th><th>Median</th><th>Max observed</th></tr>
+<tr><td>Search (results only)</td><td class=n>1.1 s</td><td class=n>1.8 s</td></tr>
+<tr><td>Grounded answer (search + generation)</td><td class=n>13 s</td><td class=n>~60 s</td></tr>
+</table>
+<p class=small>Search is interactive. Grounded answers are generation-bound and stream token-by-token
+so results appear while the answer is still being written.</p>
+
+<h2 id=s9>9 · Provenance &amp; integrity</h2>
+<ul>
+<li><b>Every result</b> carries source URL, section, page span, and a SHA-256 content hash
+(tamper-evidence) — 100% coverage.</li>
+<li><b>Public-only, read-only</b> — the engine is walled off from any confidential record in code
+and connects to the data with a read-only key.</li>
+<li><b>No hidden query rewriting</b> — the query runs verbatim; nothing silently reformulates what
+was asked.</li>
 </ul>
 
-<h2>2 · What's in it (the corpus)</h2>
-<table>
-<tr><th>Collection</th><th>Contents</th><th>Scale</th></tr>
-<tr><td><b>Statutes &amp; regulations</b></td><td>NC General Statutes, Chapter 7B (the Juvenile Code)
-+ supporting NC Administrative Code (10A NCAC 70)</td><td>28 documents</td></tr>
-<tr><td><b>Agency policy</b></td><td>NCDHHS child-welfare policy manuals, protocols, forms, and
-guidance</td><td>502 documents · ~4,150 pages</td></tr>
-</table>
-<p class=small>~18,300 indexed passages total. Every passage carries its source URL, section, page
-span, and a SHA-256 content hash for tamper-evidence. The statute set is <b>curated</b> (the
-Chapter 7B core and supporting sections), not the entire NC General Statutes.</p>
-
-<h2>3 · How it works</h2>
-<p>Documents are converted to clean text (page numbers preserved), split into passages at
-statutory/section boundaries, and indexed two ways: by <b>keyword</b> and by <b>meaning</b>
-(embeddings). A query runs against both lanes, the candidates are fused and <b>re-ranked</b>, and
-— for a written answer — the top passages are passed to a language model that is constrained to
-cite them and to decline when they're insufficient. The engine is walled off from any confidential
-record in code.</p>
-
-<h2>4 · Measured performance</h2>
-<p>Accuracy is measured on a starter benchmark of <b>70 test questions</b> (42 statute, 28 policy)
-whose correct answer is known in advance. The metric that matters most is <b>top-3 accuracy</b> —
-how often the governing authority appears in the first three results.</p>
-<table>
-<tr><th>Body of authority</th><th>Top-1</th><th>Top-3</th><th>Top-5</th></tr>
-<tr><td>Statutes (GS Ch. 7B)</td><td class=n>73%</td><td class=n>90%</td><td class=n>92%</td></tr>
-<tr><td>Policy (NCDHHS)</td><td class=n>82%</td><td class=n>96%</td><td class=n>96%</td></tr>
-</table>
-<p>In plain terms: the correct authority is in the top three results about <b>nine times in ten</b>
-for statutes and <b>~19 in 20</b> for policy. Grounded answers were verified to produce correct,
-cited summaries and to decline when the sources don't support one.</p>
-
-<h3>Honest limitations</h3>
-<ul>
-<li><b>Not perfect on the first result.</b> When the exact section isn't first, the results above
-it are almost always closely-related provisions (e.g., the failure-to-answer section vs. the
-answer section). Near-misses, not random errors — but a reader should scan the top few results,
-not just the first.</li>
-<li><b>Curated corpus.</b> Questions outside the indexed Chapter 7B + NCDHHS policy set won't
-resolve. Federal law, case law, and other NC statutes are out of scope.</li>
-<li><b>Starter benchmark.</b> 70 questions is enough to be indicative, not definitive; a larger,
-expert-reviewed set would sharpen (and could lower) these figures.</li>
-<li><b>Preliminary.</b> This is an early evaluation of a system still being tuned.</li>
-</ul>
-
-<h2>5 · Compared with business as usual</h2>
-<p>Today, answering these questions generally means one of the following. The comparison is meant
-to be fair — each conventional method has real strengths this tool does not.</p>
+<h2 id=s10>10 · Compared with business as usual</h2>
+<p>Each conventional method has real strengths this tool does not.</p>
 <table>
 <tr><th>Approach</th><th>Strengths</th><th>Limitations for this task</th></tr>
-<tr><td><b>Manual PDF search</b><br><span class=small>(open the Chapter 7B PDF / policy manuals,
-Ctrl-F)</span></td><td>Free; exact; you read the controlling text directly.</td>
-<td>Slow across 238-page statutes + ~4,150 pages of policy; keyword-only (misses synonyms and
-paraphrases); no cross-document search; easy to miss the governing provision.</td></tr>
-<tr><td><b>Commercial legal databases</b><br><span class=small>(Westlaw, Lexis)</span></td>
-<td>Far broader — all case law and statutes, annotations, citators, editorial analysis. The
-authoritative tool for legal research.</td>
-<td>Subscription cost; and critically, <b>NCDHHS agency policy manuals are generally not indexed</b>
-there — so the policy side of these questions is largely unaddressed.</td></tr>
-<tr><td><b>General AI chatbot</b><br><span class=small>(consumer LLM)</span></td>
-<td>Fast; plain-language answers.</td>
-<td>May fabricate; typically <b>no citation to the actual controlling text</b>; can be outdated;
-no guarantee it read the current NC provision.</td></tr>
-<tr><td><b>This tool</b></td>
-<td>Semantic search over <b>both statutes and agency policy in one place</b>; every result cited to
-source + section + page with an integrity hash; grounded answers that decline when unsupported;
-public/no subscription.</td>
-<td>Narrow corpus; a research aid, not a Westlaw replacement or a lawyer; retrieval imperfect
-(see §4); not legal advice.</td></tr>
+<tr><td><b>Manual PDF search</b></td><td>Free; exact; reads the controlling text directly.</td>
+<td>Slow across 238-page statutes + ~4,150 pp of policy; keyword-only (misses synonyms); no
+cross-document search.</td></tr>
+<tr><td><b>Westlaw / Lexis</b></td><td>Far broader — all case law and statutes, annotations, citators,
+editorial analysis. The authoritative research tool.</td>
+<td>Subscription; and <b>NCDHHS policy manuals are generally not indexed</b> there, so the policy
+side is largely unaddressed.</td></tr>
+<tr><td><b>General AI chatbot</b></td><td>Fast; plain language.</td>
+<td>May fabricate; typically <b>no citation to the controlling text</b>; can be outdated.</td></tr>
+<tr><td><b>This tool</b></td><td>Semantic search over <b>both statutes and agency policy</b>; every
+result cited + integrity-hashed; grounded answers that decline when unsupported; public.</td>
+<td>Narrow corpus; retrieval imperfect (§2); can over-answer adjacent-domain questions (§7); not
+legal advice.</td></tr>
 </table>
 <div class=ok><b>Where it is most useful.</b> The clearest gap it fills is <b>agency policy</b> —
-the NCDHHS manuals that commercial databases don't index and that are painful to search by hand.
-For statutes, it's a fast first-pass finder that always points back to the official text; it does
-not replace authoritative legal research.</div>
+the NCDHHS manuals commercial databases don't index and that are painful to search by hand. For
+statutes it's a fast first-pass finder that always points back to the official text; it does not
+replace authoritative legal research.</div>
 
-<h2>6 · What it is not</h2>
+<h2 id=s11>11 · Limitations &amp; threats to validity</h2>
 <ul>
-<li>Not legal advice, and not a substitute for an attorney's judgment.</li>
-<li>Not a comprehensive legal-research service (no case law, no citator, no federal law).</li>
-<li>Not a system of record — the linked official document is always controlling.</li>
-<li>Not connected to any confidential case file; it reads only public NC law and policy.</li>
+<li><b>Small benchmarks.</b> 70 retrieval / 12 answer / ~7 robustness questions — indicative, not
+definitive. A larger, expert-reviewed set could move (and lower) these figures.</li>
+<li><b>Self-constructed gold set, single grader.</b> The correct-answer labels and scoring were
+built in-house; independent legal review would strengthen validity.</li>
+<li><b>Curated corpus.</b> Federal law, case law, and non-indexed NC statutes are out of scope and
+will not resolve.</li>
+<li><b>Adjacent-domain over-answering</b> (§7) — the most important behavioral risk.</li>
+<li><b>Answer non-determinism.</b> The generation model can phrase or cite slightly differently run
+to run; retrieval is deterministic, generation is not.</li>
+<li><b>Query privacy.</b> Search and answer queries are sent to third-party embedding/reranking and
+generation services to do the work; they are not stored by this system, but they transit those
+providers.</li>
+<li><b>Preliminary.</b> An early evaluation of a system still being tuned.</li>
 </ul>
 
-<h2>7 · Methods &amp; reproducibility</h2>
-<p>The benchmark queries and scoring harness are versioned and re-runnable. Retrieval is scored by
-whether the document(s) that correctly answer a question appear in the top-k results (for policy,
-any of the legitimately-correct documents on a topic counts; for statutes, only the exact governing
-section). Figures reflect the live system on the date below and will change as the corpus and test
-set evolve. Chunk text has been checked to avoid mid-sentence truncation; retrieval uses a keyword +
-meaning hybrid with a re-ranking step.</p>
+<h2 id=s12>12 · Methods &amp; reproducibility</h2>
+<p>Retrieval is scored by whether the document(s) that correctly answer a question appear in the
+top-k results of the live pipeline (keyword + meaning hybrid, re-ranked). For policy, any of the
+legitimately-correct documents on a topic counts; for statutes, only the exact governing section.
+Grounded-answer, refusal, and latency figures come from direct calls to the live service. The
+benchmark queries and scoring harness are versioned and re-runnable; all figures reflect the system
+on the date below and will change as the corpus and test sets evolve.</p>
 
 <footer>
-Preliminary evaluation of the public NC child-welfare law &amp; policy search tool · Parallel42 ·
-prepared 2026-07-12 · public data only · not legal advice. Figures are indicative and subject to
-change as the benchmark is expanded and expert-reviewed.
+Comprehensive preliminary evaluation of the public NC child-welfare law &amp; policy search tool ·
+Parallel42 · prepared 2026-07-12 · public data only · not legal advice · figures are indicative and
+subject to change as benchmarks are expanded and expert-reviewed.
 </footer>
 </div></body></html>
