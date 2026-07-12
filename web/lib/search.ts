@@ -1,6 +1,7 @@
 // Server-side search orchestration: embed query -> Supabase hybrid_search RPC ->
 // Jina rerank blended with the RRF rank (alpha=0.5, the measured-best config).
 import { embedQuery, rerankScores } from "./jina";
+import { clean } from "./clean";
 
 export type Hit = {
   chunk_id: string; doc_id: string; collection: string; title: string;
@@ -35,5 +36,5 @@ export async function search(query: string, k = 10, collection: string | null = 
   const jmax = Math.max(...scores) || 1;
   const blended = fused.map((h, i) => ({ h, s: BLEND * (scores[i] / jmax) + (1 - BLEND) * (1 / (i + 1)) }));
   blended.sort((a, b) => b.s - a.s);
-  return blended.slice(0, k).map((x) => x.h);
+  return blended.slice(0, k).map((x) => ({ ...x.h, content: clean(x.h.content), section: clean(x.h.section), title: clean(x.h.title) }));
 }
