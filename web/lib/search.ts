@@ -33,8 +33,11 @@ export async function search(query: string, k = 10, collection: string | null = 
   if (fused.length === 0) return [];
   const scores = await rerankScores(query, fused.map((h) => h.content?.slice(0, 1200) || ""));
   if (!scores) return fused.slice(0, k);
-  const jmax = Math.max(...scores) || 1;
-  const blended = fused.map((h, i) => ({ h, s: BLEND * (scores[i] / jmax) + (1 - BLEND) * (1 / (i + 1)) }));
-  blended.sort((a, b) => b.s - a.s);
-  return blended.slice(0, k).map((x) => ({ ...x.h, content: clean(x.h.content), section: clean(x.h.section), title: clean(x.h.title) }));
+  // Full Jina rerank order. Measured on the Supabase/Jina-v3 stack: pure rerank
+  // beats the old RRF-blend (statutes R@3 80->90%, policy 92->96%) because the
+  // hybrid prior is weak here and blending it dragged Jina down.
+  const ranked = fused
+    .map((h, i) => ({ h, s: scores[i] }))
+    .sort((a, b) => b.s - a.s);
+  return ranked.slice(0, k).map((x) => ({ ...x.h, content: clean(x.h.content), section: clean(x.h.section), title: clean(x.h.title) }));
 }
