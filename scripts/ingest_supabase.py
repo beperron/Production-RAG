@@ -19,6 +19,12 @@ ROOT = Path(__file__).resolve().parents[1]
 COLLECTIONS = ["legal-authorities", "nc-child-welfare"]
 JINA_URL = "https://api.jina.ai/v1/embeddings"
 SEC_RE = re.compile(r"§?\s?\d+[A-Z]?-\d+(?:\.\d+)?")
+# strip NUL + non-printable control chars Postgres text can't store (keep \n \t)
+CTRL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+
+
+def clean(s):
+    return CTRL.sub("", s or "")
 
 
 def jina_embed(texts, key, task, batch=64):
@@ -70,9 +76,9 @@ def load_rows(limit=None):
             span = (f"pp. {ps}–{pe}" if ps and pe and ps != pe else f"p. {ps}" if ps else "")
             chunks.append({
                 "chunk_id": c["chunk_id"], "doc_id": c["doc_id"], "collection": coll,
-                "ordinal": c.get("ordinal"), "title": dtitle.get(c["doc_id"], ""),
-                "section": section_of(hp, dtitle.get(c["doc_id"], "")),
-                "heading_path": " > ".join(hp), "content": c.get("text", ""),
+                "ordinal": c.get("ordinal"), "title": clean(dtitle.get(c["doc_id"], "")),
+                "section": clean(section_of(hp, dtitle.get(c["doc_id"], ""))),
+                "heading_path": clean(" > ".join(hp)), "content": clean(c.get("text", "")),
                 "page_span": span, "source_url": durl.get(c["doc_id"], ""),
                 "sha256": c.get("content_sha256") or c.get("source_sha256") or "",
             })
@@ -111,15 +117,29 @@ def main():
     if not (jk and url and key):
         sys.exit("set JINA_API_KEY, SUPABASE_URL, SUPABASE_SERVICE_KEY")
     docs, chunks = load_rows(a.limit)
-    print(f"{len(docs)} documents, {len(chunks)} chunks")
-    print("embedding chunks with jina-embeddings-v3 (retrieval.passage)…")
-    vecs = jina_embed([c["content"][:8000] for c in chunks], jk, "retrieval.passage")
-    for c, v in zip(chunks, vecs):
-        c["embedding"] = "[" + ",".join(f"{x:.6f}" for x in v) + "]"
+    # resumable: skip chunks already loaded so re-runs only fill the gap
+    have = set()
+    hdr = {"apikey": key, "Authorization": f"Bearer {key}"}
+    off = 0
+    while True:
+        r = requests.get(f"{url}/rest/v1/chunks?select=chunk_id&limit=1000&offset={off}", headers=hdr, timeout=60)
+        r.raise_for_status()
+        batch = r.json()
+        if not batch:
+            break
+        have.update(x["chunk_id"] for x in batch); off += 1000
+    missing = [c for c in chunks if c["chunk_id"] not in have]
+    print(f"{len(docs)} documents, {len(chunks)} chunks ({len(have)} already loaded, {len(missing)} to add)")
+    if missing:
+        print("embedding missing chunks with jina-embeddings-v3 (retrieval.passage)…")
+        vecs = jina_embed([c["content"][:8000] for c in missing], jk, "retrieval.passage")
+        for c, v in zip(missing, vecs):
+            c["embedding"] = "[" + ",".join(f"{x:.6f}" for x in v) + "]"
     print("upserting to Supabase…")
     upsert(url, key, "documents", docs)
-    upsert(url, key, "chunks", chunks)
-    print(f"DONE — {len(docs)} docs + {len(chunks)} chunks in Supabase.")
+    if missing:
+        upsert(url, key, "chunks", missing)
+    print(f"DONE — {len(docs)} docs + {len(have) + len(missing)} chunks in Supabase.")
 
 
 if __name__ == "__main__":
