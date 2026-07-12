@@ -1,0 +1,22 @@
+{
+  "doc_id": "18fdaf4e1d3486d8",
+  "source_path": "knowledge-base/legal-authorities/sources/Chapter_48.pdf",
+  "source_sha256": "c3c0a183687b8212273007c89205b306153e13d6ff86ddfbf02c88a9b6a9cbb9",
+  "content_sha256": "29b02ba989877d63bc00810c490defb571871978e1f4fad7638ff53e8620a0f4",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 59,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:05:34-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

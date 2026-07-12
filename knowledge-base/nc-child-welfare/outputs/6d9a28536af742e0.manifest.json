@@ -1,0 +1,22 @@
+{
+  "doc_id": "6d9a28536af742e0",
+  "source_path": "knowledge-base/nc-child-welfare/sources/fhlm_cn_3-13.pdf",
+  "source_sha256": "8c1938f553e9ab8f5aaba78f9e59ad6cf56aa486ae142a7204435a8ea5b6865a",
+  "content_sha256": "758af0317120170c4a5370438e2c46188cc8bba7070a81b9ad68fe1e8eb51ed5",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 3,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:11:46-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

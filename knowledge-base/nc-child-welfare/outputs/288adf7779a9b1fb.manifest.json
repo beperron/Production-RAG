@@ -1,0 +1,22 @@
+{
+  "doc_id": "288adf7779a9b1fb",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DSS-5240-Permanency-Planning-Family-Case-Plan-PATH-NC.pdf",
+  "source_sha256": "47e536fb10211dea4bd1f349b87beacb2b0faabdb42b40d1efa898521d9e575c",
+  "content_sha256": "ddfd452c4b3f41c38e78e599093e031cda80319a53d4e1badb338db93f632aff",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 10,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:46-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

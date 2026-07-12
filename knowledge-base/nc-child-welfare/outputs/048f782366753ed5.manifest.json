@@ -1,0 +1,22 @@
+{
+  "doc_id": "048f782366753ed5",
+  "source_path": "knowledge-base/nc-child-welfare/sources/appendix-3-1-child-welfare-funding-overview-1.pdf",
+  "source_sha256": "33675891bcacf4c6a06baa52878415b66160be8bc91cd088ae203523631e22d5",
+  "content_sha256": "d96e7dcd21e36b6535bf27d87a204497add5f82c59e6efd6aa85a75bcbe3603f",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 4,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:52-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

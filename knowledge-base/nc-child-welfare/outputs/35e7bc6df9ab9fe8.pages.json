@@ -1,0 +1,93 @@
+[
+  {
+    "page_number": 1,
+    "route": "native",
+    "chars": 3485,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 2,
+    "route": "native",
+    "chars": 3535,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 3,
+    "route": "native",
+    "chars": 2207,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 4,
+    "route": "native",
+    "chars": 2570,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 5,
+    "route": "native",
+    "chars": 2314,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 6,
+    "route": "native",
+    "chars": 2580,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 7,
+    "route": "native",
+    "chars": 1835,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  }
+]

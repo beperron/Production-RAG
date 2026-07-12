@@ -1,0 +1,22 @@
+{
+  "doc_id": "7dfe2b504e3ef62c",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0007_DiligentEfforts_HW.03.2024.docx",
+  "source_sha256": "36235d5d03e3da018456a9d6e05db9c1ef0e7241821b38db20fe83f7b52b6f7b",
+  "content_sha256": "fdba7ee96d8d9ddb2a1ee6e43804b7672f6331d0c60dce941ca5ae4e21c0f0a5",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:30-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

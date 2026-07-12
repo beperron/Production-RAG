@@ -1,0 +1,22 @@
+{
+  "doc_id": "b83fea9a58fce7a4",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0016_ConsentforReleaseofInformation_handwritten.3.2024.docx",
+  "source_sha256": "9ef3a45fee9d165553cdbf0fa5eb0131ad6c7c7a0fd98c8bad36d1ae8e6ce5d1",
+  "content_sha256": "b27613f8a914808f3ad2c41e7394ff486fb97d4be7f1208520cce4b85075c61b",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:31-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

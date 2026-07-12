@@ -1,0 +1,22 @@
+{
+  "doc_id": "f2752bc7e1ebd4ea",
+  "source_path": "knowledge-base/legal-authorities/sources/Chapter_14.pdf",
+  "source_sha256": "da57fcbe466b8120cea4edc76f013d2f4b530b6c94c9b060c9884f2869c508a1",
+  "content_sha256": "de9ac9d09bf20d8c41ae275713459e622933d9e4e909cb83f5aee4b83cfb3a16",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 412,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:05:00-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,22 @@
+{
+  "doc_id": "6915bc258ef91b37",
+  "source_path": "knowledge-base/nc-child-welfare/sources/fscw_al08-07-addendum-1-2.pdf",
+  "source_sha256": "c54e520f205a5b19d08a9eefbd3915d30aa209a44d31f4be616348ebc2bd7d20",
+  "content_sha256": "b0c1044d7e4011801834a832d16b998c6f6329df6dffc9f2ee86757d3e753d8a",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 2,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:12:26-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

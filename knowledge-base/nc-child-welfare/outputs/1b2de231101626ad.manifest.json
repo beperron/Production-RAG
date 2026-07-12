@@ -1,0 +1,22 @@
+{
+  "doc_id": "1b2de231101626ad",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0004_NoticetoReporterCompletionofevaluation.3.2024.docx",
+  "source_sha256": "82879954ef74be69cdff931de7c673ba7ce245a8860a62294b1ecf11fee178fb",
+  "content_sha256": "664094f49a82027f3d88292f8d5982808a76eb14e58722f93122083cbd4a0c76",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:29-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

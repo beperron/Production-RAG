@@ -1,0 +1,17 @@
+[
+  {
+    "page_number": 1,
+    "route": "native",
+    "chars": 1788,
+    "garbled": true,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": true,
+    "flag_reasons": [
+      "garbled_text"
+    ],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  }
+]

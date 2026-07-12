@@ -1,0 +1,23 @@
+{
+  "doc_id": "ddec952344399c64",
+  "source_path": "knowledge-base/legal-authorities/sources/Chapter_122C.pdf",
+  "source_sha256": "ba261efca1eb8f85f1730c88077e017e95a3c2be64dbe2e57a4182fc3517cf93",
+  "content_sha256": "bbfead577d7a60e7068277ded72f904bc6abc5026e2bd525d5a9b11210ff1170",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 207,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:32-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "page_number": 1,
+    "route": "tesseract",
+    "chars": 1534,
+    "garbled": false,
+    "ocr_mean_confidence": 93.4074074074074,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 2,
+    "route": "tesseract",
+    "chars": 295,
+    "garbled": false,
+    "ocr_mean_confidence": 95.54545454545455,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  }
+]

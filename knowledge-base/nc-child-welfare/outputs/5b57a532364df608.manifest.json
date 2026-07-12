@@ -1,0 +1,22 @@
+{
+  "doc_id": "5b57a532364df608",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0014-noticeofrequestforrecordsforAPSevaluation_Elec_2024.docx",
+  "source_sha256": "96fc4faa27908441ab61680ca1f3f494e97d06b37fff00a9356c39c267f98dea",
+  "content_sha256": "b3108cc108176a4efa2de3c864859cfe3d0e63e578f3e3a44eed5a131b63d49a",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:31-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

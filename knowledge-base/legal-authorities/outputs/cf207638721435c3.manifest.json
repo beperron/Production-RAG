@@ -1,0 +1,22 @@
+{
+  "doc_id": "cf207638721435c3",
+  "source_path": "knowledge-base/legal-authorities/sources/Chapter_130A.pdf",
+  "source_sha256": "8a97707ccf8ff7ae43c92a2f07a5b09da9a2924cfea86d7a40de0bf5cfa615bf",
+  "content_sha256": "44ee928cfde6657f89eb2802c12c29b85e4880587b564f9e7361247d65074d27",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 476,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:04:14-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "carolina-policy-search"
+version = "0.1.0"
+description = "Public North Carolina child-welfare law & policy semantic search (RAG). Public data only."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31",          # Jina rerank / OpenRouter generation (optional, env-gated)
+    "sentence-transformers>=2.6",  # GTE-base dense embeddings
+    "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+# Needed only to (re)build a knowledge base from source PDFs:
+build = ["pymupdf", "pytesseract>=0.3.10", "pillow>=10.0", "pdf2image>=1.17"]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

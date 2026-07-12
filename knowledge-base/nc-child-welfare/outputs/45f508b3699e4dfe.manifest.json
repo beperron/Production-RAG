@@ -1,0 +1,22 @@
+{
+  "doc_id": "45f508b3699e4dfe",
+  "source_path": "knowledge-base/nc-child-welfare/sources/cws_al_40_10.pdf",
+  "source_sha256": "0d37912147c71453ce229d1f7be38496b9f53424fd3c4499b55919d06c0b7c43",
+  "content_sha256": "db9d9aca7c6d0ea844defb8814b02807dd06c3d910182679b68a3c59373b61f9",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 3,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:09:13-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

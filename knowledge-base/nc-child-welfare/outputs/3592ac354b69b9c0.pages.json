@@ -1,0 +1,67 @@
+[
+  {
+    "page_number": 1,
+    "route": "native",
+    "chars": 10686,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 2,
+    "route": "native",
+    "chars": 4365,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 3,
+    "route": "native",
+    "chars": 51639,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 4,
+    "route": "native",
+    "chars": 10688,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 5,
+    "route": "native",
+    "chars": 740,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  }
+]

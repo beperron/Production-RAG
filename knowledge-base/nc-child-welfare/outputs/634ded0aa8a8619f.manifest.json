@@ -1,0 +1,22 @@
+{
+  "doc_id": "634ded0aa8a8619f",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-6219-Adult-Services-Face-Sheet-Elec-3.2024.docx",
+  "source_sha256": "f25ac41e40d4ba7b7a4d56924c15aa755ecb954a215d844b3c493af82a79deb2",
+  "content_sha256": "92c43b8519aee41a0c0c962c8188877552da6af70b31545419dd87092367646b",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:31-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

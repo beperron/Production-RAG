@@ -1,0 +1,97 @@
+[
+  {
+    "page_number": 1,
+    "route": "native",
+    "chars": 1531,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 2,
+    "route": "native",
+    "chars": 1234,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 3,
+    "route": "native",
+    "chars": 526,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 4,
+    "route": "native",
+    "chars": 898,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 5,
+    "route": "native",
+    "chars": 674,
+    "garbled": false,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 6,
+    "route": "tesseract",
+    "chars": 962,
+    "garbled": false,
+    "ocr_mean_confidence": 62.71098265895954,
+    "vlm_agreement": null,
+    "flagged": true,
+    "flag_reasons": [
+      "low_ocr_confidence(63<65)"
+    ],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  },
+  {
+    "page_number": 7,
+    "route": "native",
+    "chars": 2426,
+    "garbled": true,
+    "ocr_mean_confidence": null,
+    "vlm_agreement": null,
+    "flagged": true,
+    "flag_reasons": [
+      "garbled_text"
+    ],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  }
+]

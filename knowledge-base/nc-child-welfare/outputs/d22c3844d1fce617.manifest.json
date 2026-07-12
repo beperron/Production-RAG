@@ -1,0 +1,22 @@
+{
+  "doc_id": "d22c3844d1fce617",
+  "source_path": "knowledge-base/nc-child-welfare/sources/appendix-6-best-practice-for-social-worker-well-being.pdf",
+  "source_sha256": "623a047064635e258bce0cf16ac966e514dc140ee1db6752f5dac59749ac3be1",
+  "content_sha256": "c9ba054596cd1a8e1d4f1babce15dd560803939778569b5601c939776e7eabd2",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 9,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:58-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

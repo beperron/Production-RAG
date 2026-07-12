@@ -1,0 +1,22 @@
+{
+  "doc_id": "56f8a99565c8a0bd",
+  "source_path": "knowledge-base/nc-child-welfare/sources/executive-summary.pdf",
+  "source_sha256": "eeeea6c986f7fe88281e6fa33f6ff9499cadb3d3174d6ec5a063f0e5b4eb211d",
+  "content_sha256": "5bff0049d6f4efd0fe7ce456f7f57f7e5126d8a0678833fbfdca0a488c37afcc",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 3,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:11:35-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

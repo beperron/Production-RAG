@@ -1,0 +1,23 @@
+{
+  "doc_id": "de366c1f35fe9fc6",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Cross-Functions-Nov-2025.pdf",
+  "source_sha256": "cc52d0c80cf004aee8ec1b7b3e20de21d11e8d49b907569488617cce6251a4dd",
+  "content_sha256": "ccd01ed8d6bf2cf0543c73eb1562c321fecd6473d6053f5b6a9f838ad03836f4",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 330,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:22-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

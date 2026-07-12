@@ -1,0 +1,22 @@
+{
+  "doc_id": "49eeab88d773cbbe",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0002-Notice-to-Reporter-Elec-3.2024.docx",
+  "source_sha256": "9d35eb761b8eee9b50c7d9ed9e3f4f16eed96a35b057a68f8e80648fdd25a7ed",
+  "content_sha256": "07ea280f53446dcc498f815e532ebb817459d49916a119db51b0a60a74bca2a9",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:27-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

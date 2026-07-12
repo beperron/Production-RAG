@@ -1,0 +1,23 @@
+{
+  "doc_id": "eedc6146c05c6d83",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Appendix-2-CPPS-June-2025.pdf",
+  "source_sha256": "0ba552e0791f508dbe9eb6fea4e0bd9e6d426f206fbf64cfaba7be74e037d3da",
+  "content_sha256": "ed6d3c74ae2a8fa0bb99a6cc69e407c220940c24e1142526c5cf60bc849bb3fd",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 65,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:01:57-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

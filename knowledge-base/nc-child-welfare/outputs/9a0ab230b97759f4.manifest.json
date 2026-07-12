@@ -1,0 +1,22 @@
+{
+  "doc_id": "9a0ab230b97759f4",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0015-ConsentforFinancialRecords.Handwritten3.2024.docx",
+  "source_sha256": "97488116c2763bff635a9187faa9286d6ce30ab11032cdb403c1c3c85d16f392",
+  "content_sha256": "f01ed1fde8044196eac4bbb71c8a8dfed1f3859a464b1e2c27a6c76221b9c3da",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:31-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,22 @@
+{
+  "doc_id": "e598a371d2a51a1a",
+  "source_path": "knowledge-base/nc-child-welfare/sources/fscw_al0905a-1.pdf",
+  "source_sha256": "6b6f925ea90a5a6eaa35c2fd98397b8de4723beac068640bf7c04443ee3525b9",
+  "content_sha256": "8cb9ad4d9f39f9b3f641733fd6ae7574fe8c0b95d7b745fb151bba56521afbb3",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:12:29-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

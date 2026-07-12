@@ -1,0 +1,22 @@
+{
+  "doc_id": "f696c96414c8f23e",
+  "source_path": "knowledge-base/nc-child-welfare/sources/cws-al-03-2015.pdf",
+  "source_sha256": "376cd87610197084b21a78091ecfd79bc0881125c2fac544df05eeed6966bcc4",
+  "content_sha256": "b2036e546e898aca8253038f65ffad2309cb03bf0ccb6f59a38972d2cb82adca",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 2,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:08:00-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

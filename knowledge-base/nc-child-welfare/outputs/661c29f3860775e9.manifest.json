@@ -1,0 +1,23 @@
+{
+  "doc_id": "661c29f3860775e9",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DSS-5240ins-PATH-NC.pdf",
+  "source_sha256": "c0027e7fc3fb9bd1ebcfa2415476667f63736999a15ce3468a5f39cfe13337cf",
+  "content_sha256": "362b8a862a171296144a73b858248d757fd36cf2e18e6b61d52df5177519e955",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 8,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:48-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

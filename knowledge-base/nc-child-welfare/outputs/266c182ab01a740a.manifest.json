@@ -1,0 +1,22 @@
+{
+  "doc_id": "266c182ab01a740a",
+  "source_path": "knowledge-base/nc-child-welfare/sources/pp_cn_2-05.pdf",
+  "source_sha256": "1958d42e7762184cc933ca533152f24906db32b36569ed9e5a90954556de6173",
+  "content_sha256": "94bc860c0e50f225b94ec9145ef302f0da93ab0ec134f836122a6c68c019e13b",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:14:09-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

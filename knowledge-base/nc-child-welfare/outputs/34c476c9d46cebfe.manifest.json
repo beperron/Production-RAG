@@ -1,0 +1,22 @@
+{
+  "doc_id": "34c476c9d46cebfe",
+  "source_path": "knowledge-base/nc-child-welfare/sources/cs1418_cn_3-2005.pdf",
+  "source_sha256": "7433ed1ffe43beb385abc916afd37dda1bc0e948fadccf39bca2753a428ddbf8",
+  "content_sha256": "c2455f0f4995a2eed361c6c13233eac4e554e846923a03f8dbb8c1b4be116ee6",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 2,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:07:15-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,22 @@
+{
+  "doc_id": "73c35f49c72cce45",
+  "source_path": "knowledge-base/nc-child-welfare/sources/cs_al202a11.pdf",
+  "source_sha256": "bb73dbacd546989530b807b371762cb6f1178a7ac7faa68bed87966c2f459b51",
+  "content_sha256": "bd0c1d0a2066dac7eea46f64b18c4486476933cd445fa86b5e6643f19fa16a01",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:07:32-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

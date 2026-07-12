@@ -1,0 +1,22 @@
+{
+  "doc_id": "fafabd6257d04982",
+  "source_path": "knowledge-base/legal-authorities/sources/10a_ncac_ch70_subchapter_n_rules.pdf",
+  "source_sha256": "6afdbd9961559dd242e89a6cd71ca92d197cd800c33c734508c6c967a3b46927",
+  "content_sha256": "720234539b1b22506b5d2caf381da20393f1049bd81b249aa711c6eb4bd6f3e8",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:02:49-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

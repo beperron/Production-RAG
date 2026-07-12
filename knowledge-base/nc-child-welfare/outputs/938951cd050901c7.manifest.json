@@ -1,0 +1,22 @@
+{
+  "doc_id": "938951cd050901c7",
+  "source_path": "knowledge-base/nc-child-welfare/sources/wf_al_02_07.pdf",
+  "source_sha256": "6b32c763be7507fe5ccdea744dcb26f9c8d882d2f53cf0f5183e9a0979d37cf7",
+  "content_sha256": "eaa7c9ec1eb2d30afb97563efd8af97f13ab42ae111a7f29bd31aad12fc372ad",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 2,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:14:16-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

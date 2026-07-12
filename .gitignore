@@ -1,0 +1,27 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.DS_Store
+
+# --- Secrets (never commit) ---
+*.env
+.env
+lawsearch.env
+
+# --- Large / derived retrieval artifacts (rebuilt locally) ---
+# Dense vectors are model-tagged and regenerated on first run from the
+# committed docindex.json (a one-time re-embed). They exceed GitHub limits.
+knowledge-base/**/*.vectors.json
+knowledge-base/**/*.integrity
+knowledge-base/**/audit.log
+knowledge-base/**/build-report-*
+knowledge-base/**/*.bak
+
+# Source PDFs are NOT shipped here (public, re-fetchable). The converted
+# markdown under outputs/ + docindex.json are the shipped, searchable form.
+knowledge-base/**/sources/

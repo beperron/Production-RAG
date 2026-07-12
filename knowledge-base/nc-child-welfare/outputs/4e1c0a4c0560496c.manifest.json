@@ -1,0 +1,22 @@
+{
+  "doc_id": "4e1c0a4c0560496c",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Purpose-1.pdf",
+  "source_sha256": "08c707dc6f55fc8edb6a2870f24658384288dad9c3ef02a13a99104944305aae",
+  "content_sha256": "3d1f6db4b4b34217475bab70ea37c5f6eb3a9c3412f40de2ee60fa4f3901997f",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 32,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:41-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

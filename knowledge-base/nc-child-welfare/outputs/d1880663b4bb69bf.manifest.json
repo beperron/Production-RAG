@@ -1,0 +1,22 @@
+{
+  "doc_id": "d1880663b4bb69bf",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Appendix-3.5-Child-Welfare-Funding-_-Foster-Care-PATH-NC-April-2026-1.pdf",
+  "source_sha256": "9b2990b5c39572fb860d33cc09c6f64ae402813e7af88a519841928f21914289",
+  "content_sha256": "a28402704b5299ee53ea3991bb72a9f765e4eab7f46e0f1e7623591507e618c3",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 67,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:02:15-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

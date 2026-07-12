@@ -1,0 +1,15 @@
+[
+  {
+    "page_number": 1,
+    "route": "tesseract",
+    "chars": 626,
+    "garbled": false,
+    "ocr_mean_confidence": 88.11111111111111,
+    "vlm_agreement": null,
+    "flagged": false,
+    "flag_reasons": [],
+    "verification_status": "unreviewed",
+    "reviewer": "",
+    "reviewed_at": ""
+  }
+]

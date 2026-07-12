@@ -1,0 +1,22 @@
+{
+  "doc_id": "e946b7e8ea6c0001",
+  "source_path": "knowledge-base/nc-child-welfare/sources/In-Home-Manual_PATH-NC-Updates-May-2026-v2.pdf",
+  "source_sha256": "914c3be993b5171f5fe4d4d6194fabd11484ee007ad047b922dcb6910bd84638",
+  "content_sha256": "486d7656ee42bca2d3132e715cf925ea70729ea131300c067305ccb7f5389149",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 58,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:04:14-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

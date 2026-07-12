@@ -1,0 +1,22 @@
+{
+  "doc_id": "c02d9e65452214fb",
+  "source_path": "knowledge-base/nc-child-welfare/sources/NC-SDM-Tool-Desk-Guide_SP.pdf",
+  "source_sha256": "e1f7a4f00ac5dc29a892f53e20e962bee6a3d5fe1bd12793a7daefb8f28c247f",
+  "content_sha256": "0c3bb843af6f4e867317c42fcaf25c661a8091a811c5e33f8e35eeb0f7783fec",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 3,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:05:04-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,22 @@
+{
+  "doc_id": "e5a0834c064c0eff",
+  "source_path": "knowledge-base/nc-child-welfare/sources/NC-Child-Welfare-Disaster-Plan_2025-2029.pdf",
+  "source_sha256": "5bdd115f43264378a0898399bcc3d57c137d80ec3b340642304c0c2355ead573",
+  "content_sha256": "fcf65f485a6d1baf2b9ee04c1ed5ee53e244c7af2a338cedd39c928ec9909c5c",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 21,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:04:25-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

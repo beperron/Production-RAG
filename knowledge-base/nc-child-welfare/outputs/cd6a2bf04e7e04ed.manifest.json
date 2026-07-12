@@ -1,0 +1,22 @@
+{
+  "doc_id": "cd6a2bf04e7e04ed",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-6222-Electronic-Adult-Services-Contact-Activity-Log-3.2024.docx",
+  "source_sha256": "7a09fad007cd9978a6c639943c127567456f5c658b30e2c5c6469e63de139c3c",
+  "content_sha256": "2d946a539a8d9fa7c0f9e2ce87eddb3a91a57aa8d267390d3b3bed075c6b0f67",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:32-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,22 @@
+{
+  "doc_id": "c505cfb83c0035eb",
+  "source_path": "knowledge-base/nc-child-welfare/sources/COI-Escalation-to-NC-DHHS-Flow-Chart.pdf",
+  "source_sha256": "6fda50e6768bd33146c29a07794f0262bba7e8a28cccd015d709aad40f88b804",
+  "content_sha256": "1fa3b4b2cd3ae6edc304ba763e4ac9f91fa97102ecfcd878737697683bab1815",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:02:22-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

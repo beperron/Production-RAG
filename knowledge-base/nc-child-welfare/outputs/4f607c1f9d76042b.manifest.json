@@ -1,0 +1,23 @@
+{
+  "doc_id": "4f607c1f9d76042b",
+  "source_path": "knowledge-base/nc-child-welfare/sources/NC-Progress-to-Case-Closure-Guide_SP.pdf",
+  "source_sha256": "ca6cf1500aa4952a2cb38c37fa031366b37fff10ac37b9f447660a8fdd383f23",
+  "content_sha256": "b0a3ad0d7b0ace5754e2df0bd8d598264f52eea1c04d5a330e51eb6f6572db0e",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 35,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:04:34-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

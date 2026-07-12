@@ -1,0 +1,22 @@
+{
+  "doc_id": "358701c835c219fa",
+  "source_path": "knowledge-base/nc-child-welfare/sources/dss-5023-ia.pdf",
+  "source_sha256": "7d9ab3e802a0bfdd96c9efa6c4dbc6ac0ba773f6e777a77b64e1275f2252441c",
+  "content_sha256": "8a41215174889997794f2abda5359fd58e5dbf753faddb0da22a9f5f5b241a4a",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:09:45-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

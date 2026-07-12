@@ -1,0 +1,22 @@
+{
+  "doc_id": "a7f8f28257ecc7bb",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Child-Welfare-Resource-on-Perinatal-Substance-Use-Project_April2025.pdf",
+  "source_sha256": "68250ed80ecce4e8bc2502d7c235956b906203d2d2a441dcf9f79102c9f9fb65",
+  "content_sha256": "adc33d30443931277ffdbe2044b1ac7a59e984731c76d1210d2a859ee7434dbd",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:02:49-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

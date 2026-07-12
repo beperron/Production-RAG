@@ -1,0 +1,22 @@
+{
+  "doc_id": "ddfc17268c7799e2",
+  "source_path": "knowledge-base/nc-child-welfare/sources/20201-2nd-Party-Review-Form-APPLICATIONS-Rev-3.2023.docx",
+  "source_sha256": "d1cc875cdf422295ddf6bdb736b71630ee53e8600c6564d74c79a663c26a0fe8",
+  "content_sha256": "f31b64d17257e76450031afd383ad3554a5f7052419993975213d0f6effa943a",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:01:46-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

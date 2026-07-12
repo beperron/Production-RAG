@@ -1,0 +1,23 @@
+{
+  "doc_id": "83765c68474ecb99",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Request-for-Review-by-Prosecutor-or-DHHS.pdf",
+  "source_sha256": "2aec8325b8211018aa04e652ff5823ed7b43f8d41c44323e8426b4943a112b6f",
+  "content_sha256": "0c364435d5b5ce0afd587b8c29beb7685a3962a327065f2a7a5b611a1d3d4420",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 2,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:46-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,23 @@
+{
+  "doc_id": "113d5437ecb189e4",
+  "source_path": "knowledge-base/nc-child-welfare/sources/county-attestation_9-15-21.pdf",
+  "source_sha256": "54080211d92651b062a6ade3837a0f2f2061e16c2bdeff487a2b8bc06f0765c1",
+  "content_sha256": "79bcca7223a0f37c098d79e9ca60e9918b2d7f2582e0cf92a72fb652f0bfd23f",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 2,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:07:06-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

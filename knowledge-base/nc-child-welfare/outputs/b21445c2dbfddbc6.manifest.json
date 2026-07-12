@@ -1,0 +1,22 @@
+{
+  "doc_id": "b21445c2dbfddbc6",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DSS-6193.pdf",
+  "source_sha256": "ce4e05104908411d10bcfa556ae6f67529cecd1ef5afe74574a6c59a4a57d35d",
+  "content_sha256": "648008e935313d3c61840f5ad95b079001f13464082a48442cfe50250a090fff",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 9,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:54-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,217 @@
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Understanding the NC Law &amp; Policy Search System — Plain-Language Brief</title>
+<style>
+:root{--ink:#191A1C;--muted:#5f5b52;--line:#E6E2D6;--bg:#FBF9F4;--seal:#9C2420;--ok:#3F7A57;--blue:#2C46B8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.62 'IBM Plex Sans',system-ui,-apple-system,sans-serif}
+.wrap{max-width:880px;margin:0 auto;padding:34px 24px 72px}
+h1{font:600 26px/1.25 Georgia,serif;margin:0 0 4px}
+h2{font:600 19px/1.3 Georgia,serif;margin:30px 0 8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 4px}
+.small{color:var(--muted);font-size:13px}
+p{margin:10px 0}
+ul{margin:8px 0 8px 2px;padding-left:20px}
+li{margin:5px 0}
+.lead{background:#F7FAF8;border-left:4px solid var(--ok);padding:12px 16px;margin:14px 0;font-size:15.5px}
+.fig{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 16px 12px;margin:20px 0}
+.cap{color:var(--muted);font-size:13px;margin:12px 6px 0;line-height:1.5}
+.cap b{color:var(--ink)}
+.term{background:#EDF1FF;border-left:4px solid #648FFF;padding:12px 16px;margin:14px 0}
+.term b{color:var(--blue)}
+.note{background:#FCEEEE;border-left:4px solid var(--seal);padding:12px 16px;margin:16px 0;font-size:14.5px;color:#5b2320}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px}
+.card h3{margin:0 0 4px;font:600 14.5px 'IBM Plex Sans',sans-serif;color:var(--blue)}
+.card p{margin:0;font-size:14px}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+</style></head><body><div class=wrap>
+
+<h1>Understanding the Search System</h1>
+<p class=sub>A plain-language brief on the North Carolina child-welfare law &amp; policy search tool — what it is, what it reads, how it was built, and how it is used.</p>
+
+<p class=lead>In one sentence: this is a research tool that <b>looks up the actual North
+Carolina statutes and agency policies</b> that apply to a question, then writes a
+short answer <b>grounded in those exact sources and showing where each point came
+from</b> — and it declines to answer when the sources don't support one.</p>
+
+<h2>1. What "RAG" means, without the jargon</h2>
+<p>The technology is called <b>Retrieval-Augmented Generation</b> (RAG). It sounds
+technical, but the idea is simple and can be pictured as two people working
+together:</p>
+<div class=term>
+<p><b>A librarian</b> (the <i>retrieval</i> part) — given a question, it finds the
+handful of passages from the real law and policy documents that most likely
+answer it.</p>
+<p style="margin-top:8px"><b>A careful writer</b> (the <i>generation</i> part) —
+it reads only those retrieved passages and writes a short, plain answer,
+<b>quoting and citing them</b>. It is instructed not to rely on memory, and to say
+"the sources don't support this" rather than guess.</p>
+</div>
+<p>The reason this matters: an ordinary chatbot answers from a blur of everything
+it once read and can state wrong things confidently. This system is deliberately
+constrained — it must <b>show its work</b> by pointing back to the specific source
+document, section, and page.</p>
+
+<h2>2. The corpus — what the system reads</h2>
+<p>The system's knowledge is limited to a defined library of <b>public North
+Carolina child-welfare authority</b>. It is not connected to the open internet and
+contains no confidential records. Two bodies of material:</p>
+<div class=grid>
+<div class=card><h3>The law</h3><p>North Carolina General Statutes, Chapter 7B —
+the Juvenile Code covering abuse, neglect, dependency, custody, permanency, and
+termination of parental rights — plus supporting sections of the NC Administrative
+Code.</p></div>
+<div class=card><h3>The policy</h3><p>The North Carolina DHHS child-welfare policy
+manuals, protocols, forms, and guidance that county agencies are expected to
+follow — intake, safety and risk assessment, in-home services, permanency
+planning, and related standards.</p></div>
+</div>
+<p class=small>Scale of the policy library: <b>4,157 pages across 475 documents</b> of
+NCDHHS child-welfare policy, plus the curated Chapter 7B statutes.</p>
+<p class=small>The statute set is <b>curated</b> (the Chapter 7B core and its
+supporting sections), not the entire General Statutes. Everything in the library is
+public, official material.</p>
+
+<h2>3. How the library was prepared</h2>
+<p>Raw government PDFs are not directly searchable in a reliable way, so each
+document went through a one-time preparation, shown in the figure below:</p>
+<ol>
+<li><b>Converted</b> to clean text while keeping the original <b>page numbers</b>, so
+any result can be traced back to the exact page.</li>
+<li><b>Split into passages</b> (a section or a few paragraphs at a time), and each
+passage was given a <b>SHA-256 fingerprint</b> — a tamper-evident code that changes
+if even one character of the source is altered, so the text can be shown to be
+unchanged.</li>
+<li><b>Indexed two ways</b>: by <b>keyword</b> (exact words, like a statute number)
+and by <b>meaning</b> (so a plain-English question finds the right provision even
+when it uses different words than the statute).</li>
+</ol>
+
+<div class=fig>
+<svg style="width:100%;height:auto;max-width:960px;display:block;margin:0 auto" xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430" font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8A857A"/></marker></defs>
+<rect x="0" y="0" width="1000" height="430" fill="#FFFFFF"/>
+<rect x="30" y="22" width="940" height="40" rx="8" fill="#FCEEEE" stroke="#C5302C" stroke-width="1.4"/>
+<text x="500" y="40" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12" fill="#9C2420" text-anchor="middle" font-weight="bold" letter-spacing="1.5">GUARDRAIL</text>
+<text x="500" y="55" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12.5" fill="#9C2420" text-anchor="middle" font-weight="normal">Public North Carolina law &amp; policy only — the system cannot reach confidential case records.</text>
+<text x="30" y="92" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12.5" fill="#2C46B8" text-anchor="start" font-weight="bold" letter-spacing="0.5">PREPARING THE KNOWLEDGE BASE  ·  done once</text>
+<rect x="30" y="104" width="205" height="76" rx="10" fill="#EDF1FF" stroke="#648FFF" stroke-width="1.6"/>
+<text x="132.5" y="128" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14.5" fill="#2C46B8" text-anchor="middle" font-weight="bold">Public NC sources</text>
+<text x="132.5" y="149" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">GS Chapter 7B statutes</text>
+<text x="132.5" y="165" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">+ NCDHHS policy manuals</text>
+<line x1="239" y1="142.0" x2="271" y2="142.0" stroke="#8A857A" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="275" y="104" width="205" height="76" rx="10" fill="#EDF1FF" stroke="#648FFF" stroke-width="1.6"/>
+<circle cx="293" cy="122" r="12" fill="#648FFF"/>
+<text x="293" y="126" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">1</text>
+<text x="385.5" y="128" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14.5" fill="#2C46B8" text-anchor="middle" font-weight="bold">Convert</text>
+<text x="377.5" y="149" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">to clean text with</text>
+<text x="377.5" y="165" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">page numbers kept</text>
+<line x1="484" y1="142.0" x2="516" y2="142.0" stroke="#8A857A" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="520" y="104" width="205" height="76" rx="10" fill="#EDF1FF" stroke="#648FFF" stroke-width="1.6"/>
+<circle cx="538" cy="122" r="12" fill="#648FFF"/>
+<text x="538" y="126" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">2</text>
+<text x="630.5" y="128" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14.5" fill="#2C46B8" text-anchor="middle" font-weight="bold">Split + fingerprint</text>
+<text x="622.5" y="149" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">into passages, each with a</text>
+<text x="622.5" y="165" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">SHA-256 source hash</text>
+<line x1="729" y1="142.0" x2="761" y2="142.0" stroke="#8A857A" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="765" y="104" width="205" height="76" rx="10" fill="#EDF1FF" stroke="#648FFF" stroke-width="1.6"/>
+<circle cx="783" cy="122" r="12" fill="#648FFF"/>
+<text x="783" y="126" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">3</text>
+<text x="875.5" y="128" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14.5" fill="#2C46B8" text-anchor="middle" font-weight="bold">Index</text>
+<text x="867.5" y="149" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">by keyword and</text>
+<text x="867.5" y="165" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">by meaning</text>
+<line x1="867.5" y1="182" x2="867.5" y2="196" stroke="#8A857A" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="120" y="198" width="760" height="60" rx="30" fill="#F0ECFF" stroke="#785EF0" stroke-width="1.8"/>
+<text x="500" y="222" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="15" fill="#4B37B8" text-anchor="middle" font-weight="bold" letter-spacing="0.5">SEARCHABLE KNOWLEDGE BASE</text>
+<text x="500" y="242" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">text passages  ·  source citations  ·  tamper-evident fingerprints  ·  keyword + meaning index</text>
+<line x1="377.5" y1="260" x2="377.5" y2="300" stroke="#8A857A" stroke-width="2.2" marker-end="url(#ah)"/>
+<text x="30" y="292" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12.5" fill="#B84300" text-anchor="start" font-weight="bold" letter-spacing="0.5">USING IT  ·  every question</text>
+<rect x="30" y="304" width="205" height="76" rx="10" fill="#FFF0E6" stroke="#FE6100" stroke-width="1.6"/>
+<text x="132.5" y="328" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14.5" fill="#B84300" text-anchor="middle" font-weight="bold">User query</text>
+<text x="132.5" y="349" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">asked in</text>
+<text x="132.5" y="365" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">plain English</text>
+<line x1="239" y1="342.0" x2="271" y2="342.0" stroke="#8A857A" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="275" y="304" width="205" height="76" rx="10" fill="#FFF0E6" stroke="#FE6100" stroke-width="1.6"/>
+<circle cx="293" cy="322" r="12" fill="#FE6100"/>
+<text x="293" y="326" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">4</text>
+<text x="385.5" y="328" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14.5" fill="#B84300" text-anchor="middle" font-weight="bold">Retrieve</text>
+<text x="377.5" y="349" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">best-matching passages,</text>
+<text x="377.5" y="365" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">then re-rank the top ones</text>
+<line x1="484" y1="342.0" x2="516" y2="342.0" stroke="#8A857A" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="520" y="304" width="205" height="76" rx="10" fill="#FFF0E6" stroke="#FE6100" stroke-width="1.6"/>
+<circle cx="538" cy="322" r="12" fill="#FE6100"/>
+<text x="538" y="326" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">5</text>
+<text x="630.5" y="328" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14.5" fill="#B84300" text-anchor="middle" font-weight="bold">Draft answer</text>
+<text x="622.5" y="349" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">written only from the</text>
+<text x="622.5" y="365" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">retrieved passages</text>
+<line x1="729" y1="342.0" x2="761" y2="342.0" stroke="#8A857A" stroke-width="2.2" marker-end="url(#ah)"/>
+<rect x="765" y="304" width="205" height="76" rx="10" fill="#FCE8F0" stroke="#DC267F" stroke-width="1.8"/>
+<circle cx="783" cy="322" r="12" fill="#DC267F"/>
+<text x="783" y="326" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="13" fill="#FFFFFF" text-anchor="middle" font-weight="bold">6</text>
+<text x="875.5" y="328" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14.5" fill="#A01858" text-anchor="middle" font-weight="bold">Answer + citations</text>
+<text x="867.5" y="349" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">if unsupported: declines,</text>
+<text x="867.5" y="365" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11.5" fill="#1A1A1A" text-anchor="middle" font-weight="normal">but still shows the results</text>
+<text x="30" y="414" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11" fill="#6E6A60" text-anchor="start" font-weight="normal">Retrieval-Augmented Generation (RAG): retrieve the real sources first, then write a grounded, cited answer.</text>
+</svg>
+<p class=cap><b>Figure 1.</b> How the North Carolina law &amp; policy search system
+is prepared and used. The top row (done once) converts official public sources into
+a searchable knowledge base; the bottom row (run for every question) retrieves the
+best-matching passages and drafts an answer built only from them, with citations.
+The system is limited to public law and policy and declines to answer when the
+retrieved passages do not support one.</p>
+</div>
+
+<h2>4. How it is used</h2>
+<p>For any given question the system offers two things:</p>
+<ul>
+<li><b>Search</b> — returns the most relevant statute sections and policy passages,
+each with a full citation (source, section, page) and a link to the official text.</li>
+<li><b>Grounded answer</b> — an optional short written answer that pulls together the
+retrieved passages, with inline citations to each. If the passages don't contain
+enough to answer, it says so instead of inventing an answer.</li>
+</ul>
+<p>Under the hood, the "librarian" step combines the keyword and meaning searches
+and re-ranks the top passages so the best ones rise to the top. Independent testing
+of this step found the governing statute in the top three results about
+<b>nine times in ten</b>, and the correct policy document in the top three about
+<b>96% of the time</b>. (Details are in the companion quality report.)</p>
+
+<h2>5. Why it is designed to be trustworthy</h2>
+<div class=grid>
+<div class=card><h3>Shows its sources</h3><p>Every result and every sentence of an
+answer points to a specific public document, section, and page.</p></div>
+<div class=card><h3>Tamper-evident</h3><p>The SHA-256 fingerprint on each passage
+lets anyone confirm the quoted text matches the official source, unchanged.</p></div>
+<div class=card><h3>Declines when unsure</h3><p>If the retrieved passages don't
+support an answer, it says so rather than guessing — but still shows the retrieved
+results, so the reader can judge the sources directly.</p></div>
+<div class=card><h3>Public-only, walled off</h3><p>The system can only reach the
+public law-and-policy library. It cannot access confidential case records; that
+boundary is enforced in the software itself.</p></div>
+</div>
+
+<h2>6. What it is not</h2>
+<ul>
+<li>It is <b>not legal advice</b> and not a substitute for a lawyer's judgment. The
+official source it links to remains the controlling text.</li>
+<li>It does <b>not</b> contain or interpret any specific case file — it describes only
+what North Carolina law and policy require in general.</li>
+<li>Its library is <b>curated</b>; a question about material outside the indexed NC
+statutes and policy will not resolve.</li>
+<li>Retrieval is strong but not perfect — occasionally the exact provision sits at
+result two or three behind a closely related section, so results are worth a quick
+scan rather than reading only the first hit.</li>
+</ul>
+
+<p class=note><b>Bottom line for the reader.</b> Think of this as a fast, well-organized
+research assistant for the public North Carolina child-welfare rulebook: it finds the
+governing law or policy, quotes it with a verifiable citation, and is built to say
+"I'm not sure" rather than fabricate. A qualified reviewer still confirms currency
+and how any provision applies.</p>
+
+<p class=small style="margin-top:22px">Prepared as a general explainer of the North
+Carolina public-law search system. Contains no case-specific or confidential
+information.</p>
+
+</div></body></html>

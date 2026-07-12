@@ -1,0 +1,22 @@
+{
+  "doc_id": "34a8fa4a28215485",
+  "source_path": "knowledge-base/nc-child-welfare/sources/cps_01_2004.pdf",
+  "source_sha256": "a3b5a0dd490cdbe8caf568e8694095bded97bee19aaedf8f356b105ce42e6ee6",
+  "content_sha256": "73043f9e997e3537df2a2d0def16571b4a45f48349817b9a9272fe649202b4c8",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 2,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:07:10-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

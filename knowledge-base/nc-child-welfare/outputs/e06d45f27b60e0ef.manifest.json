@@ -1,0 +1,22 @@
+{
+  "doc_id": "e06d45f27b60e0ef",
+  "source_path": "knowledge-base/nc-child-welfare/sources/cps_cn_03-2008.pdf",
+  "source_sha256": "803b321aa9423f51f6e2e7209318ad300f95e7877bb07af8d2c0541d98a8293a",
+  "content_sha256": "56b8993c2b240de7396bfedfec4b1814b999fbcbb934ccbd50c0c436acf203a9",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:07:11-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

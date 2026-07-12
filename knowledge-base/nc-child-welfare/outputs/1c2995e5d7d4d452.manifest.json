@@ -1,0 +1,22 @@
+{
+  "doc_id": "1c2995e5d7d4d452",
+  "source_path": "knowledge-base/nc-child-welfare/sources/PATH-NC-Intake-Manual-January-2026-1.pdf",
+  "source_sha256": "916a37c1a0a1a3e05944c48fd5121fd5cef5e79db9632ab32eeca2bc7d598b60",
+  "content_sha256": "38385cd89dbac653af552ecc70f141dca0b08ccc77d4fe874fc0a28b1d8bca64",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 76,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:05:31-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

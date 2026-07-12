@@ -1,0 +1,22 @@
+{
+  "doc_id": "98afdb5710fb60ea",
+  "source_path": "knowledge-base/legal-authorities/sources/Chapter_7B.pdf",
+  "source_sha256": "dd21f3e205738a0059a2b6f03fc65e6f872aa3e858ecede32d04c97da96d2988",
+  "content_sha256": "11f4f0cead1b2a6e7f70849fd4f875c7bf695a2e4149fafa69b9c115e04ac763",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 238,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:37-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

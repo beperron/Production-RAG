@@ -1,0 +1,22 @@
+{
+  "doc_id": "68b70a1175467ad1",
+  "source_path": "knowledge-base/nc-child-welfare/sources/North-Carolina-SDM-Risk-Assessment_FINAL-2025-1.pdf",
+  "source_sha256": "75d294575c360adf8eba57cc9a41da4b2e9ef70a4d4109189a2ab5f2665f8446",
+  "content_sha256": "c9bf887fcece938e3976c38fde616e6578448021bf53963c3b067016d324e892",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 21,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:05:10-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

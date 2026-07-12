@@ -1,0 +1,22 @@
+{
+  "doc_id": "674ae3de68f957c9",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Reasonable_Prudent_Parenting_Activities_Guide-June-2025.pdf",
+  "source_sha256": "7f6028857996a75d7db0c2ea9352a089d6df351003e8fd8ac0cc213b48844d66",
+  "content_sha256": "3b39502910a7837f5ab4743290f928c783d91daa51bde191e4c3988f5baf3240",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 7,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:45-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

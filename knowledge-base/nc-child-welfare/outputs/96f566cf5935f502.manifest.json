@@ -1,0 +1,22 @@
+{
+  "doc_id": "96f566cf5935f502",
+  "source_path": "knowledge-base/nc-child-welfare/sources/SDM-Screening-and-Response-Instructions-Manual-January-2026-1.pdf",
+  "source_sha256": "59f305e5fca4d5ccb746e4b244cbc78ebf390fdc67ec7b042fe67b0cfd6addb7",
+  "content_sha256": "26e4a10f5288d220f045c4e43c082ec92d2c5a9714085167415a2bb9d112501c",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 24,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:49-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

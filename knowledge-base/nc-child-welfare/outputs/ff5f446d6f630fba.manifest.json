@@ -1,0 +1,22 @@
+{
+  "doc_id": "ff5f446d6f630fba",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0020-Guardianship-Status-Report.HW-8.2024.docx",
+  "source_sha256": "eda0f0df3ee5577b06c4dc02158be7fe80440ff5e9370fdd3037c557e70ad242",
+  "content_sha256": "3a67451e41ef967bf264e3da596ab108006ddeb2534fd1e1011ea0c5701d0a62",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:31-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

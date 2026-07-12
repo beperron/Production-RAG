@@ -1,0 +1,22 @@
+{
+  "doc_id": "c6dd52d874167a27",
+  "source_path": "knowledge-base/nc-child-welfare/sources/cscxii_cn_06-07.pdf",
+  "source_sha256": "e5fa53ae5828a8c0868827584cf7da8255e2ccaca5aff1d5473e4060ab525d5f",
+  "content_sha256": "7274bac1bf83c63af3c4e6b0857247aaa459549da28aabbd17aa15b2092c62c3",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:07:50-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

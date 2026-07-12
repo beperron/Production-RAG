@@ -1,0 +1,23 @@
+{
+  "doc_id": "46bb8ff80d84c57b",
+  "source_path": "knowledge-base/nc-child-welfare/sources/disaster-toolkit_9-17-21c.pdf",
+  "source_sha256": "02307a1d8a4326e871386b8cfa9d34783928cc4bfdffdbe2c23cee3dd4be694b",
+  "content_sha256": "a39a8b78410dd1aee40f9019cadd2dad8f4a39239f41db54e8eb11c65b599fbf",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 110,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:09:36-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

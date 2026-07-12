@@ -1,0 +1,22 @@
+{
+  "doc_id": "5be169a3935432bc",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0001_APSIntake_Electronic.8.2024.docx",
+  "source_sha256": "070ba950e6fcd5f21fe3300d280fe9944ff0c2aeca13e62995b0afcb2e3b5397",
+  "content_sha256": "38e2ea3bed4c9900cc30f9932544eb530676b1db09c0bf9893395a654835d4ce",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:27-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

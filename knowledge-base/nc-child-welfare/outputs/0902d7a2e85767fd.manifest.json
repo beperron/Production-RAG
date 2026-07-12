@@ -1,0 +1,22 @@
+{
+  "doc_id": "0902d7a2e85767fd",
+  "source_path": "knowledge-base/nc-child-welfare/sources/icpc_cn_01-2013.pdf",
+  "source_sha256": "c3311568c0e56d06c66fcae9edd5a384e5f482684df864a2372c710d36135cff",
+  "content_sha256": "2f1537e231031cc08bb79bbf146af3d6a65350f1c72ea54df0e2dc1ea3378cd2",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 2,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:14:08-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

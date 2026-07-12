@@ -1,0 +1,22 @@
+{
+  "doc_id": "b803bde90d509b2d",
+  "source_path": "knowledge-base/legal-authorities/sources/Chapter_153A.pdf",
+  "source_sha256": "1434bab299749bf14dca08aa9acb726b7535b59e94434f7786f15bb0aae02d5b",
+  "content_sha256": "446e82e9921a1cb0f5ee96f57795ef5598fb69d294eab75ebd1013c7cd849821",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 169,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:05:25-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

@@ -1,0 +1,22 @@
+{
+  "doc_id": "723f7762b92d5f99",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Consumer-Credit-Reports-Resource-Guide-April-2026.pdf",
+  "source_sha256": "dc951cd680d9b7ad6ae54f1cb1e5a7e2a94706aa42df89ebed34991085346e72",
+  "content_sha256": "7e7b2535bf2706fb273a8628caadb0aa5a488a0b5e49938f251dba44f18f104f",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 4,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:02:49-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

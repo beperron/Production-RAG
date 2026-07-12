@@ -1,0 +1,23 @@
+{
+  "doc_id": "3e9d824a2abd64f8",
+  "source_path": "knowledge-base/nc-child-welfare/sources/NC-SDM-Reunification-Manual_SP.pdf",
+  "source_sha256": "283fdef3cb5a249b455ce5b8b8ccfdf254db5eda1c06367c742f9d9b171ba642",
+  "content_sha256": "2191d03baabbfd24b1957999c13a8883e07b420e9d8a08b4fdf982bd4fbd0098",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 66,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:05:00-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

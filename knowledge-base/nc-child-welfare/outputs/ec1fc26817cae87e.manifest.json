@@ -1,0 +1,22 @@
+{
+  "doc_id": "ec1fc26817cae87e",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0006_FacilityEvaluation_Electronic_03.2024.docx",
+  "source_sha256": "5a76047e79bc24bd8292a6d73bd00720a0d3abdf8cafd5691e44ba46905b31ed",
+  "content_sha256": "fa1e55fd2e7c5f34cfc9f15c256487943e3b65e30ec584c12e7f1b1e7577b591",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:29-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

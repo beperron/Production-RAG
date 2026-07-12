@@ -1,0 +1,22 @@
+{
+  "doc_id": "ca2ff5f072db3584",
+  "source_path": "knowledge-base/nc-child-welfare/sources/North-Carolina-SDM-Safety-Manual.pdf",
+  "source_sha256": "01eaed83eb1884e60c27f735ae3b83b7f5065800b5951b2f15a600519d5c3668",
+  "content_sha256": "5dcdf310b83b092c335ac02a202148a0387f33a2f2a6d839cae98de6446e6515",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 38,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:05:15-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

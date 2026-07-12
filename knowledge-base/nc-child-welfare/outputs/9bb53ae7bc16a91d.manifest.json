@@ -1,0 +1,22 @@
+{
+  "doc_id": "9bb53ae7bc16a91d",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DSS-5239-In-Home-Family-Case-Plan-PATH-NC.pdf",
+  "source_sha256": "6812d9b31a9dba47c194c34a335891c1686a948cfbf6c094d7cdfbd106e5e2f5",
+  "content_sha256": "87eba3022499dd5b9f959835c0db4be0c9504fd8d0d2ba44dc1a30d361ae71ff",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 9,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:39-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

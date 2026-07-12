@@ -1,0 +1,22 @@
+{
+  "doc_id": "9c787f36d90454cb",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DSS-5760-Verification-of-custody-letter-final-draft.pdf",
+  "source_sha256": "82c012f14416777b065d34b2df28a0545406334d5ec10b8e6209c19d2d8d2b44",
+  "content_sha256": "fd6bf65ddbafb66a285b9aa87283abb79088544366ae8cf367dba07fe17a3119",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:49-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

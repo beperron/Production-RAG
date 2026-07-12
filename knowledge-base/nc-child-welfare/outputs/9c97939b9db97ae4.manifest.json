@@ -1,0 +1,22 @@
+{
+  "doc_id": "9c97939b9db97ae4",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0009-Written-Report-of-APS-Evaluation-HW-3.2024.docx",
+  "source_sha256": "2e06753243cabbe956832e449801acb18775b8b41e0a7eb00ef641a3f3b9ec47",
+  "content_sha256": "09e105784d5c40d8f805dce351019bd6291162da01598b1f95ad2be589139507",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:30-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

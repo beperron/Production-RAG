@@ -1,0 +1,125 @@
+<!-- page: 1 -->
+NORTH CAROLINA FAMILY RISK REASSESSMENT OF ABUSE/NEGLECT Case Name:______________________________ Case #_______ Current Date:___________________________ County Name:____________________________ Date Report Received:____________________ Worker Name:____________________________________________Reassessment #: 1 2 3 4 5________ Children:__________________________________________ Primary Caregiver __________________________________ Secondary Caregiver: _____________________________________ Score RI. Number of Prior Assigned Maltreatment Reports
+
+a. None .............................................................................................................................................................. 0
+b. One ................................................................................................................................................................ 1
+c. Two or more ................................................................................................................................................... 2
+
+_______ R2. Number of Prior Assigned Reports for Abuse/Sexual Abuse
+
+a. None ................................................................ ............................................................................................ 0
+b. Physical abuse only ......................................... ............................................................................................ 1
+c. Sexual abuse .................................................... ............................................................................................ 2
+d. Both ................................................................. ............................................................................................ 3
+
+_______ R3. Number of Children in the Home
+
+a. Two or fewer .................................................... ............................................................................................ 0
+b. Three or more ................................................... ............................................ ................................................ 1
+
+_______ R4. Age of Primary Caregiver
+
+a. 30 or older ........................................................ ............................................................................................ 0
+b. 29 or younger ................................................... ............................................................................................ 1
+
+_______ R5. Caregiver(s) has a Current Substance Abuse Problem
+
+a. No .................................................................... ............................................................................................ 0
+b. Alcohol only .................................................... ............................................................................................ 1
+c. Other drug(s) (with or without alcohol) .......... ............................................................................................ 2
+d. Yes, and refuses treatment .............................. ............................................................................................ 4
+
+_______ R6. Household is Currently Experiencing Severe Economic Difficulty
+
+a. No .................................................................... ............................................................................................ 0
+b. Yes .................................................................. ............................................................................................ 1
+
+_______ R7. Primary or Secondary Caregiver Currently Employs Excessive Discipline and/or Inappropriate Discipline
+
+a. No .................................................................... ............................................................................................ 0
+b. Yes .................................................................. ............................................................................................ 2
+
+_______ R8. Primary Caregiver's Use of Treatment/Training Programs
+
+a. Successfully completed all programs recommended or actively participating in programs:
+
+pursuing objectives detailed in service agreement...................................................................0
+
+b. Minimal participation in pursuing objectives in service agreement...............................................1
+c. Refuses involvement in programs or failed to comply/participate as required ..................................2
+
+_______ R9. Secondary Caregiver's Use of Treatment/Training Programs
+
+a. Not applicable; only one caregiver in home .........................................................................0
+
+b Successfully completed all programs recommended or actively participating in programs; pursuing objectives in service agreement............................................................................. 0
+
+c. Minimal participation in pursuing objectives in service agreement...............................................1
+d. Refuses involvement in programs or failed to comply/participate as required .............................. 2
+
+_______ TOTAL SCORE ______
+
+<!-- page: 2 -->
+Risk Level - Assign the family's risk level based on the following chart:
+
+Score Risk Level _____0-3 _____Low _____4-7 _____Moderate _____8-11 _____High _____12-18 _____Intensive
+
+Overrides Policy: Override to intensive. Check appropriate reason. _____1.Sexual Abuse cases where the perpetrator is likely to have access to the child victim. _____2. Cases with non-accidental physical injury to an infant. _____3. Serious non-accidental physical injury requiring hospital or medical treatment, _____4. Death (previous or current) of a sibling as a result of abuse or neglect. _____Other
+
+Discretionary: Override one level. ____ 5.Reason:___________________________________________________________________________________________ Override Risk Level:_____ Low____ Moderate _____High ____ Intensive Social Worker:__________________________________________________________________Date:_______________ Supervisor's Review/Approval of Override:_________________________________________Date:________________
+
+<!-- page: 3 -->
+DEFINITIONS R1. Number of Prior Assigned Maltreatment Reports - Count all assigned maltreatment reports. Include reports for CPS assessment for any type of abuse, neglect or dependency prior to the report resulting in the current open CPS case. R2. Number of Prior Assigned Reports for Abuse/Sexual Abuse - Reports assigned for CPS assessment for physical or sexual abuse prior to the report resulting in the current open CPS case.
+
+a. None - No prior abuse reports investigated.
+b. Physical abuse only - There has been a prior investigated report of physical abuse, but not
+
+sexual abuse..
+
+c. Sexual abuse - There has been a prior investigated sexual abuse report.
+
+d. Both - There has been a prior investigated report of physical abuse and a prior investigated
+
+sexual abuse report.. R3. Number of Children in the Home - The number of individuals under 18 years of age residing in the home at the time of the most recent report. If a child has been removed as a result of the assessment or is on runaway status, count the child as residing in the home. R4. Age of Primary Caregiver - The current age of the primary caregiver. R5. Caregiver(s) has a Current Substance Abuse Problem - Caregiver(s) has a current problem of alcohol/drug abuse, evidenced by substance use causing conflict in home, problems in providing appropriate care for children, extreme behavior/attitudes, financial difficulties, frequent illness, job absenteeism, job changes or unemployment, or driving under the influence, traffic violations, criminal arrests, disappearance of usual household items (especially those easily sold), or life organized around substance use.
+
+a) No - No problems with substances or has successfully completed treatment and shows no evidence of a current problem. b) Alcohol only - Either or both caregivers abuse alcohol. This includes persons currently in alcohol abuse treatment programs. c) Other drug(s) (with or without alcohol) -Caregiver(s) is abusing drugs other than alcohol such as cocaine, marijuana, heroin, - barbiturate, prescription, etc. Caregiver(s) may be poly-addicted and may abuse alcohol as well as other drugs. This includes persons currently in a drug abuse treatment program. d) Yes, and refuses treatment - Caregiver(s) has a current alcohol/drug abuse problem; treatment has been offered or recommended for the caregiver(s) and has been refused by the caregiver(s). R6. Household Currently Experiencing Severe Economic Difficulty-Yes if caregiver(s) cannot consistently pay for one or more basic household necessities (rent, heat, light, food, clothing) and/or household is unable to live within its means due to the actions or inactions of the caregivers. "No" if caregiver(s) consistently pays for basic household necessities and is willing to accept services to correct the financial difficulty. R7. Primary or Secondary Caregiver Currently Employs Excessive and/or Inappropriate Discipline - Rate this item based on disciplinary practices, particularly methods employed to punish children in the home, employed by either or both caregivers since the last assessment. "Yes" if either caregiver employs excessive and/or inappropriate disciplinary practices. One standard is whether caregiver disciplinary practices caused or threatened harm to a child because they were excessively harsh physically or emotionally and/or inappropriate given the child's age or
+
+Rev.04/1/02
+
+
+NORTH CAROLINA FAMILY RISK REASSESSMENT OF ABUSE/NEGLECT
+
+RISK LEVEL AT MOST RECENT ASSESSMENT
+
+<!-- page: 4 -->
+development. "No" if neither caregiver employs excessive and/or inappropriate disciplinary practices. R8. Primary Caregiver's Use of Treatment/Training Programs - Rate this item based on whether the primary caregiver has mastered or is mastering skills learned from participation in program(s).
+
+a) Successfully completed all programs recommended or actively participating in programs; pursuing objectives detailed in service agreement - Observation demonstrates caregiver's application of learned skills in interaction(s) between child(ren)/caregiver, caregiver to caregiver, caregiver to other significant adult(s), self-care, home maintenance, financial management, or mastery of skills toward reaching the behavioral objectives agreed upon in the service agreement. b) Minimal participation in pursuing objectives in service agreement - The caregiver is minimally participating in services, has made progress but is not fully complying with the objectives in the service agreement. c) Refuses involvement in programs or failed to comply/participate as required - The caregiver refuses services, sporadically follows the service agreement or has not mastered the necessary skills due to a failure or inability to participate. R9. Secondary Caregiver's Use of Treatment/Training Programs - Rate this item based on whether the secondary caregiver has mastered or is mastering skills learned from participation in program(s).
+
+a. Not applicable - only one caregiver in the home. There is no secondary caregiver in the home
+
+(Check box next to a).
+
+b. Successfully completed all programs recommended or actively participating in programs;
+
+pursuing objectives detailed in service agreement - Observations demonstrate caregiver's application of learned skills in interaction(s) between child(ren)/caregiver, caregiver to caregiver, caregiver to other significant adult(s), self-care, home maintenance, financial management, or mastery of skills toward reaching the behavioral objectives agreed upon in the service agreement. (Check box next to b).
+
+c. Minimal participation in pursuing objectives in service agreement - The caregiver is minimally participating
+
+in services, has made progress but is not fully complying with the objectives in the service agreement.
+
+d. Refuses involvement in programs or failed to comply/participate as required - The caregiver
+
+refuses services, sporadically follows the service agreement or has not mastered the necessary skills due to a failure or inability to participate.
+
+<!-- page: 5 -->
+NORTH CAROLINA FAMILY RISK REASSESSMENT OF ABUSE/NEGLECT
+
+POLICY AND PROCEDURES The Family Risk Reassessment is a tool used to assist the Case Planning and Case Management worker in determining risk of future abuse and/or neglect. Together with the Family Strengths and Needs Assessment and the progress made in the service agreement, it assists the worker in determining the required service level intensity. Reassessments are performed at established intervals as long as the case is open. Case reassessment ensures that both risk of maltreatment and family service needs will be considered in later stages of the service delivery process and that-case decisions will be made accordingly. At each reassessment, case managers reevaluate the family, using instruments which help them systematically assess changes in risk levels. Case progress will determine if a case should remain open or if the case can be closed. While the initial risk assessment has separate scales for abuse and neglect, there is only one risk scale for reassessment. The focus at reassessment is the impact of services provided to the family during the period assessed or on whether certain events in the family have occurred since the last assessment. The first four items are those strongly related to the probability of subsequent abuse and/or neglect and generally do not change from the initial assessment. The next three items relate to the events that did or did not occur since the last assessment/reassessment. The final two assessment items specifically relate to the caregivers' use of treatment/training programs. Which cases: All Case Planning and Case Management cases, or the agency has legal custody and the children have not been removed from the home. Who completes: Social worker assigned case. When: Case Planning and Case Management: Risk Reassessments shall be completed at the time of the Service Agreement updates, whenever a significant change occurs in the family, and within 30 days prior to case closure. Child Placement: In cases where the agency has legal custody of the child(ren) and the child(ren) have not been removed from the home, the Family Risk Reassessment of Abuse and Neglect shall track with the required scheduled Permanency Planning Action Team meetings and within 30 days prior to any court hearing or review. (If reviews are held frequently, documentation on the Risk Re-Assessment form may state that there have been no changes since the last update and that the current information is correct) Trial Home Visit: The Family Risk Re-Assessment shall be completed when the agency has legal custody and the child has been placed back in the home for a trial home visit and a Permanency Planning Action Team meetings falls within that trial home visit period. Delinquency: For children coming into the agency's legal custody through delinquency, the Risk Re-Assessment shall serve as the baseline assessment documentation. Decision: The Risk Reassessment is used to guide decision making following the provision of services to clients. While the initial assessment projects a risk level prior to agency service provision, the reassessment takes into account the provision of services. The reassessment of each family provides an efficient mechanism to assess changes in family risk due to the provision of services. At reassessment, a family may be continued for services or the case may be closed.
+
+<!-- page: 6 -->
+Appropriate Complete all header information. Indicate which risk reassessment by completion: circling 1, 2, 3, 4, or 5. If the family has had more than five reassessments, indicate the reassessment number in the blank provided.
+
+As on the initial risk assessment, each reassessment item is scored by the worker. All scoring is completed based on the status of the case since the last assessment/reassessment, although, the first four items generally do not change from one reassessment period to the next. Following scoring of each item, total the item scores in the space provided. Based on the total score, determine the reassessment risk level by finding the appropriate range on the risk level chart. This level is used to set the appropriate family service level, or to determine whether the risk level is now low enough to close the case.
+
+Policy Override Policy overrides have been determined by the agency as applying to specific case situations that warrant the highest level of service from the agency regardless of the risk scale score at reassessments. If any policy override reasons exist, the risk level is increased to intensive. The worker then indicates if any of the policy override reasons exist. If more than one reason exists, indicate the primary override reason. Only one reason can be selected. Discretionary Override The worker indicates if there are any discretionary override reasons. At reassessment, a discretionary override can be used to increase or decrease the risk level by one increment in any case where the worker feels the risk level set by the scale is too low or too high. All overrides must be approved in writing by the supervisor. If an override was exercised, indicate the override risk level by placing a check next to the appropriate level.

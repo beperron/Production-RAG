@@ -1,0 +1,22 @@
+{
+  "doc_id": "a539052127a3ada8",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-6224-Adult-Services-Annual-Assessment-Elec-3-2024.docx",
+  "source_sha256": "a1173681a9a4f3a46e9c45f284940289dcedd460c0190921a566f6df7d1bcb8e",
+  "content_sha256": "f71403d7e7c472ac75878931df33c2d3419fbb8cf8c89789f8b27c5321041415",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:32-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

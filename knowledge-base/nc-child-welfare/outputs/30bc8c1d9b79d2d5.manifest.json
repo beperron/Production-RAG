@@ -1,0 +1,22 @@
+{
+  "doc_id": "30bc8c1d9b79d2d5",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Authentic-Youth-Engagement-Resource-Guide-April-2026.pdf",
+  "source_sha256": "abc3b4cda62d941d92a5603d15d5132c2dd981427d0cef594761096c24773584",
+  "content_sha256": "ddc6331046df935107f23da57d242858662ae56ef7643bce141e237b74343abd",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 3,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:02:21-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

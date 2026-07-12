@@ -1,0 +1,22 @@
+{
+  "doc_id": "94abd7468fe167d3",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-6223-HW-Interim-or-QuarterlyReview.3.2024.docx",
+  "source_sha256": "66f95a307454e4ce09d56acec76f429be7afc5008f739990b0c2d7641daa6ac7",
+  "content_sha256": "49371a85056ddcd1ca76eb2653c6a35753b634dfac7fe2bc42ac1d2a17e0c14e",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:32-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

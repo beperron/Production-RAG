@@ -1,0 +1,22 @@
+{
+  "doc_id": "fc51e525ced6be04",
+  "source_path": "knowledge-base/nc-child-welfare/sources/SafetyAssessment-Plan-Spanish.pdf",
+  "source_sha256": "b09b6005010b8c838ce8688c8b19dfc4c206d15489f97c8541277af4041c00e0",
+  "content_sha256": "8be340b3bc7f3802b9f2126f3e894486a56be4743e6156011a14dd535a7fe8a5",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 18,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:52-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

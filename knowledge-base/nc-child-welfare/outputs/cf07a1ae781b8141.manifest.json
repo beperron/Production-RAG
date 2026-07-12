@@ -1,0 +1,23 @@
+{
+  "doc_id": "cf07a1ae781b8141",
+  "source_path": "knowledge-base/nc-child-welfare/sources/Permanency-Planning-Manual_Non-PATH-NC-Updates-April-2026-2.pdf",
+  "source_sha256": "f52c325cd9bd76a783aaf9f0df69cedb9b39bb0e57271db6ea5b653dc33b43c9",
+  "content_sha256": "715a4f1b0fd446139c8fdb819299e59d2613fd4663af1b62814b0bbcd1f6a6bb",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 233,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:03-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

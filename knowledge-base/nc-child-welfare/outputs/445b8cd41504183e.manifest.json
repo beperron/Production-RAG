@@ -1,0 +1,22 @@
+{
+  "doc_id": "445b8cd41504183e",
+  "source_path": "knowledge-base/nc-child-welfare/sources/20202-2nd-Party-Review-Form-RECERTIFICATIONS-Rev-3.2023.docx",
+  "source_sha256": "99e003692e3bd2ffb75ea61604fdde252b1ada796415d5d94c7e1eb39144d46c",
+  "content_sha256": "c1ee01030147bc4288137db630c74d7e1d3612961685188323dac64788e4e717",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:01:46-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

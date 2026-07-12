@@ -1,0 +1,23 @@
+{
+  "doc_id": "34c92ef980803881",
+  "source_path": "knowledge-base/nc-child-welfare/sources/NC-SDM-FSNA-Manual.pdf",
+  "source_sha256": "d88557cd98fbb55ac2c1e86cbca28cf4cf66a08f66c40fc66119f0a750fdd666",
+  "content_sha256": "85ccc006bdb599f415931fbbf9f167d7b94bb54abebd283718375c724b1df000",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 57,
+  "page_routes": [
+    "native",
+    "tesseract"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:04:40-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

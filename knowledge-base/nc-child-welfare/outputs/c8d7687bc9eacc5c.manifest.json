@@ -1,0 +1,22 @@
+{
+  "doc_id": "c8d7687bc9eacc5c",
+  "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0011-Adult-and-Family-Service-Plan-Electronic-3.2024-6.docx",
+  "source_sha256": "d70decf29a523bea22a7b3436aaef4b04851b0921728a7507374803f77b369fa",
+  "content_sha256": "6f6ecdaa94aa6d4eae1e7cf7b7fecd59ab8ebf0e815ce79e116c5a564e05a99e",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "docx"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:03:30-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

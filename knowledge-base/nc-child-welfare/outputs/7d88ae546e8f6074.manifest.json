@@ -1,0 +1,22 @@
+{
+  "doc_id": "7d88ae546e8f6074",
+  "source_path": "knowledge-base/nc-child-welfare/sources/appendix-3-4-child-protective-services-funding.pdf",
+  "source_sha256": "b08c8e2840f87d3bd0c9900e1eb40df6e7089cf5c7b1331ff4695d9776616639",
+  "content_sha256": "b8f9298504d3727595cf8a1308da7bde430c9b112385564255e47ffab8048b91",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 15,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:55-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

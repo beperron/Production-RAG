@@ -1,0 +1,22 @@
+{
+  "doc_id": "d4ad17dd10d89d40",
+  "source_path": "knowledge-base/nc-child-welfare/sources/dss-5255-ia.pdf",
+  "source_sha256": "6f0b1ff5112d8cef771e7680a322e252273d329898bcbe80893ec4b905d03a2b",
+  "content_sha256": "7cfdf2af658fdd7a840978eb2fc7a8035afdfcad430dfd2736ee12a9aac52cd5",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 1,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:11:05-04:00",
+  "host": "0587669780.vpn.umich.net"
+}

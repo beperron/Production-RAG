@@ -1,0 +1,22 @@
+{
+  "doc_id": "a9b70401766cea67",
+  "source_path": "knowledge-base/nc-child-welfare/sources/appendix-3-3-prevention-services-funding.pdf",
+  "source_sha256": "414d1f07ddae9df49d00f50627ea597880fb48ea2f269accfa7e1cc0d6114e21",
+  "content_sha256": "b0f039c5f731562114c1de28e76ff6200a6140f57e32122b4b2a76c61b79557b",
+  "parsevault_version": "0.1.0",
+  "extractor": "local-cascade",
+  "parse_provider": "local-cascade",
+  "page_count": 8,
+  "page_routes": [
+    "native"
+  ],
+  "dpi": 200,
+  "tesseract_lang": "eng",
+  "vlm_models": null,
+  "normalization": [
+    "normalize_unicode",
+    "strip_running_headers"
+  ],
+  "created_at": "2026-06-25T07:06:54-04:00",
+  "host": "0587669780.vpn.umich.net"
+}
