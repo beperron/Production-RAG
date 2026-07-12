@@ -19,12 +19,25 @@ ROOT = Path(__file__).resolve().parents[1]
 COLLECTIONS = ["legal-authorities", "nc-child-welfare"]
 JINA_URL = "https://api.jina.ai/v1/embeddings"
 SEC_RE = re.compile(r"§?\s?\d+[A-Z]?-\d+(?:\.\d+)?")
-# strip NUL + non-printable control chars Postgres text can't store (keep \n \t)
+# Deterministic text cleanup for converted-document chunks.
 CTRL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+TAG = re.compile(r"</?[a-zA-Z][^>]*>")
 
 
 def clean(s):
-    return CTRL.sub("", s or "")
+    s = s or ""
+    s = CTRL.sub("", s)                       # NUL + control chars
+    s = re.sub(r"(?i)<br\s*/?>", "\n", s)     # <br> -> line break
+    s = TAG.sub("", s)                        # strip other HTML tags
+    s = s.replace(" ", " ")              # nbsp -> space
+    s = re.sub(r"\|+", " ", s)                # table-cell pipes -> space
+    s = re.sub(r"_+", " ", s)                 # stray emphasis underscores -> space
+    s = re.sub(r"[ \t]+", " ", s)             # collapse runs of spaces
+    s = re.sub(r"[ \t]+([.,;:)\]])", r"\1", s)  # kill space before punctuation
+    s = re.sub(r"([•·▪‣])[ \t]*\n+[ \t]*", r"\1 ", s)  # join orphaned bullets to their text
+    s = re.sub(r" *\n *", "\n", s)            # trim around line breaks
+    s = re.sub(r"\n{3,}", "\n\n", s)          # collapse blank-line runs
+    return s.strip()
 
 
 def jina_embed(texts, key, task, batch=64):
