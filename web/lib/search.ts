@@ -5,8 +5,8 @@ import { clean } from "./clean";
 
 export type Hit = {
   chunk_id: string; doc_id: string; collection: string; title: string;
-  section: string; heading_path: string; content: string; page_span: string;
-  source_url: string; score: number;
+  section: string; heading_path: string; content: string; context?: string;
+  page_span: string; source_url: string; score: number;
 };
 
 const BLEND = parseFloat(process.env.LAWSEARCH_RERANK_BLEND || "0.5");

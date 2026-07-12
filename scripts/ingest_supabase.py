@@ -79,6 +79,15 @@ def load_rows(limit=None):
         idx = json.loads((ROOT / "knowledge-base" / coll / "docindex.json").read_text())
         durl = {d["doc_id"]: source_url_of(d) for d in idx["documents"]}
         dtitle = {d["doc_id"]: d.get("title", "") for d in idx["documents"]}
+        # Contextual Retrieval: per-chunk context blurbs (if generated)
+        ctx = {}
+        cf = ROOT / "knowledge-base" / coll / "context.jsonl"
+        if cf.exists():
+            for line in cf.read_text().splitlines():
+                try:
+                    d = json.loads(line); ctx[d["chunk_id"]] = d.get("context", "")
+                except Exception:
+                    pass
         for d in idx["documents"]:
             docs[d["doc_id"]] = {"doc_id": d["doc_id"], "collection": coll,
                                  "title": d.get("title", ""), "source_url": durl[d["doc_id"]],
@@ -92,6 +101,7 @@ def load_rows(limit=None):
                 "ordinal": c.get("ordinal"), "title": clean(dtitle.get(c["doc_id"], "")),
                 "section": clean(section_of(hp, dtitle.get(c["doc_id"], ""))),
                 "heading_path": clean(" > ".join(hp)), "content": clean(c.get("text", "")),
+                "context": clean(ctx.get(c["chunk_id"], "")),
                 "page_span": span, "source_url": durl.get(c["doc_id"], ""),
                 "sha256": c.get("content_sha256") or c.get("source_sha256") or "",
             })
@@ -144,8 +154,11 @@ def main():
     missing = [c for c in chunks if c["chunk_id"] not in have]
     print(f"{len(docs)} documents, {len(chunks)} chunks ({len(have)} already loaded, {len(missing)} to add)")
     if missing:
-        print("embedding missing chunks with jina-embeddings-v3 (retrieval.passage)…")
-        vecs = jina_embed([c["content"][:8000] for c in missing], jk, "retrieval.passage")
+        n_ctx = sum(1 for c in missing if c.get("context"))
+        print(f"embedding missing chunks (contextual: {n_ctx}/{len(missing)} have blurbs)…")
+        vecs = jina_embed(
+            [((c["context"] + "\n\n" + c["content"]) if c.get("context") else c["content"])[:8000]
+             for c in missing], jk, "retrieval.passage")
         for c, v in zip(missing, vecs):
             c["embedding"] = "[" + ",".join(f"{x:.6f}" for x in v) + "]"
     print("upserting to Supabase…")

@@ -75,6 +75,7 @@ main{max-width:920px;margin:20px auto 70px;padding:0 24px}
 .num{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font:600 12px/22px var(--mono);text-align:center}
 .card .sec{font:500 17px/1.3 var(--serif)}
 .card .title{color:var(--muted);font-size:12.5px;margin:2px 0 8px}
+.card .ctx{font:italic 12.5px/1.45 var(--sans);color:var(--muted);margin:6px 0 2px;padding-left:9px;border-left:2px solid var(--line2)}
 .card .snip{font-size:14px;color:var(--ink2);margin:8px 0 6px;white-space:pre-wrap}
 .morebtn{margin:2px 0 10px;background:none;border:none;color:var(--accent);cursor:pointer;font:12px var(--mono);padding:0;text-decoration:underline}
 .badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px}

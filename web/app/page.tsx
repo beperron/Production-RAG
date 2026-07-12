@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown";
 
 type Hit = {
   chunk_id: string; collection: string; title: string; section: string;
-  content: string; page_span: string; source_url: string;
+  content: string; context?: string; page_span: string; source_url: string;
 };
 const COLL: Record<string, string> = {
   "legal-authorities": "Laws (GS 7B + NCAC)",
@@ -162,6 +162,7 @@ export default function Home() {
               <div className="cardhead"><span className="num">{i + 1}</span>
                 <div className="sec">{h.section || h.title || "(untitled)"}</div></div>
               {h.section && h.title && h.section !== h.title && <div className="title">{h.title}</div>}
+              {h.context && <div className="ctx">{h.context}</div>}
               <div className="snip">{open ? h.content : (h.content || "").slice(0, 420)}{!open && long ? "…" : ""}</div>
               {long && <button className="morebtn" onClick={() => setExpanded((s) => ({ ...s, [h.chunk_id]: !open }))}>
                 {open ? "Show less ▴" : "Show full passage ▾"}</button>}
