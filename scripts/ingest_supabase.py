@@ -79,15 +79,25 @@ def load_rows(limit=None):
     return list(docs.values()), chunks
 
 
-def upsert(url, key, table, rows, batch=500):
+def _post(url, hdr, table, rows):
+    """POST a batch; on statement-timeout (57014) split and recurse."""
+    r = requests.post(f"{url}/rest/v1/{table}", headers=hdr,
+                      data=json.dumps(rows), timeout=120)
+    if r.status_code in (200, 201, 204):
+        return len(rows)
+    if ("57014" in r.text or r.status_code in (500, 504)) and len(rows) > 1:
+        mid = len(rows) // 2
+        return _post(url, hdr, table, rows[:mid]) + _post(url, hdr, table, rows[mid:])
+    raise RuntimeError(f"upsert {table}: {r.status_code} {r.text[:300]}")
+
+
+def upsert(url, key, table, rows, batch=100):
     hdr = {"apikey": key, "Authorization": f"Bearer {key}",
            "Content-Type": "application/json", "Prefer": "resolution=merge-duplicates"}
+    done = 0
     for i in range(0, len(rows), batch):
-        r = requests.post(f"{url}/rest/v1/{table}", headers=hdr,
-                          data=json.dumps(rows[i:i + batch]), timeout=120)
-        if r.status_code not in (200, 201, 204):
-            raise RuntimeError(f"upsert {table} @ {i}: {r.status_code} {r.text[:300]}")
-        print(f"    upserted {min(i+batch, len(rows))}/{len(rows)} into {table}", end="\r", flush=True)
+        done += _post(url, hdr, table, rows[i:i + batch])
+        print(f"    upserted {done}/{len(rows)} into {table}", end="\r", flush=True)
     print()
 
 
