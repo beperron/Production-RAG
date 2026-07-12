@@ -1,0 +1,155 @@
+<!doctype html><html lang=en><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Preliminary Evaluation · NC Law &amp; Policy Search · P42</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F7F5F1;--paper:#fff;--ink:#1A1A18;--ink2:#33312C;--muted:#8A867E;--line:#E9E6E0;--line2:#D8D4CC;
+--accent:#6E1E24;--accent-soft:#F3E7E7;--ok:#3F7A57;--serif:'Instrument Serif',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:ui-monospace,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.62 var(--sans);-webkit-font-smoothing:antialiased}
+.topbar{display:flex;align-items:center;gap:10px;padding:14px 24px;border-bottom:1px solid var(--line)}
+.mark{width:30px;height:30px;border-radius:6px;background:var(--accent);color:#fff;font:600 15px/30px var(--mono);text-align:center}
+.topbar b{font:500 16px var(--sans)} .topbar span{color:var(--muted);font-size:13px}
+.wrap{max-width:860px;margin:0 auto;padding:34px 24px 72px}
+.eyebrow{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h1{font:400 38px/1.1 var(--serif);margin:0 0 10px}
+h2{font:400 25px/1.2 var(--serif);margin:34px 0 10px;padding-top:10px;border-top:1px solid var(--line)}
+h3{font:600 15px var(--sans);margin:20px 0 6px}
+p{margin:10px 0} .lede{font-size:17px;color:var(--ink2)}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:12px 16px;margin:16px 0;font-size:14.5px;color:#5b2320}
+.ok{background:#F1F6F2;border-left:3px solid var(--ok);padding:12px 16px;margin:14px 0;font-size:14.5px;color:#284b37}
+table{border-collapse:collapse;width:100%;margin:14px 0;font-size:14.5px}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:#F2EFE9;font-weight:600}
+td.n{font:600 14px var(--mono);color:var(--accent)}
+.small{color:var(--muted);font-size:13px}
+ul{margin:8px 0 8px 2px;padding-left:20px} li{margin:5px 0}
+code{background:#F2EFE9;padding:1px 5px;border-radius:3px;font:13px var(--mono)}
+footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;color:var(--muted);font-size:13px}
+</style></head><body>
+<div class=topbar><span class=mark>P42</span><b>Parallel42</b><span>· NC Law &amp; Policy Search</span></div>
+<div class=wrap>
+
+<p class=eyebrow>Preliminary evaluation · public data only</p>
+<h1>How well does it work, and compared to what?</h1>
+<p class=lede>A plain, measured account of what this tool does, how accurate it is on a
+starter benchmark, and how it compares with the ways this research is done today. This is a
+<b>preliminary</b> evaluation on a modest test set — the numbers will move as the test set grows
+and is expert-reviewed. Nothing here is a marketing claim; where the tool is weak or narrow, that
+is stated plainly.</p>
+
+<div class=note><b>Scope &amp; disclaimer.</b> The system covers only <b>public</b> North Carolina
+child-welfare law and policy. It is a <b>research aid, not legal advice</b>, and not a substitute
+for a licensed attorney's judgment or for a full legal-research service. Every result links to the
+official source, which remains the controlling text.</div>
+
+<h2>1 · What it does</h2>
+<p>Given a plain-English question, the tool finds the governing North Carolina authority and can
+write a short answer grounded in it:</p>
+<ul>
+<li><b>Search</b> — returns the most relevant statute sections and policy passages, each with a
+full citation (source, section, page) and a link to the official document.</li>
+<li><b>Grounded answer</b> — an optional short answer assembled <i>only</i> from the retrieved
+passages, with inline <code>[n]</code> citations. If the passages don't support an answer, it says
+so rather than guessing.</li>
+</ul>
+
+<h2>2 · What's in it (the corpus)</h2>
+<table>
+<tr><th>Collection</th><th>Contents</th><th>Scale</th></tr>
+<tr><td><b>Statutes &amp; regulations</b></td><td>NC General Statutes, Chapter 7B (the Juvenile Code)
++ supporting NC Administrative Code (10A NCAC 70)</td><td>28 documents</td></tr>
+<tr><td><b>Agency policy</b></td><td>NCDHHS child-welfare policy manuals, protocols, forms, and
+guidance</td><td>502 documents · ~4,150 pages</td></tr>
+</table>
+<p class=small>~18,300 indexed passages total. Every passage carries its source URL, section, page
+span, and a SHA-256 content hash for tamper-evidence. The statute set is <b>curated</b> (the
+Chapter 7B core and supporting sections), not the entire NC General Statutes.</p>
+
+<h2>3 · How it works</h2>
+<p>Documents are converted to clean text (page numbers preserved), split into passages at
+statutory/section boundaries, and indexed two ways: by <b>keyword</b> and by <b>meaning</b>
+(embeddings). A query runs against both lanes, the candidates are fused and <b>re-ranked</b>, and
+— for a written answer — the top passages are passed to a language model that is constrained to
+cite them and to decline when they're insufficient. The engine is walled off from any confidential
+record in code.</p>
+
+<h2>4 · Measured performance</h2>
+<p>Accuracy is measured on a starter benchmark of <b>70 test questions</b> (42 statute, 28 policy)
+whose correct answer is known in advance. The metric that matters most is <b>top-3 accuracy</b> —
+how often the governing authority appears in the first three results.</p>
+<table>
+<tr><th>Body of authority</th><th>Top-1</th><th>Top-3</th><th>Top-5</th></tr>
+<tr><td>Statutes (GS Ch. 7B)</td><td class=n>73%</td><td class=n>90%</td><td class=n>92%</td></tr>
+<tr><td>Policy (NCDHHS)</td><td class=n>82%</td><td class=n>96%</td><td class=n>96%</td></tr>
+</table>
+<p>In plain terms: the correct authority is in the top three results about <b>nine times in ten</b>
+for statutes and <b>~19 in 20</b> for policy. Grounded answers were verified to produce correct,
+cited summaries and to decline when the sources don't support one.</p>
+
+<h3>Honest limitations</h3>
+<ul>
+<li><b>Not perfect on the first result.</b> When the exact section isn't first, the results above
+it are almost always closely-related provisions (e.g., the failure-to-answer section vs. the
+answer section). Near-misses, not random errors — but a reader should scan the top few results,
+not just the first.</li>
+<li><b>Curated corpus.</b> Questions outside the indexed Chapter 7B + NCDHHS policy set won't
+resolve. Federal law, case law, and other NC statutes are out of scope.</li>
+<li><b>Starter benchmark.</b> 70 questions is enough to be indicative, not definitive; a larger,
+expert-reviewed set would sharpen (and could lower) these figures.</li>
+<li><b>Preliminary.</b> This is an early evaluation of a system still being tuned.</li>
+</ul>
+
+<h2>5 · Compared with business as usual</h2>
+<p>Today, answering these questions generally means one of the following. The comparison is meant
+to be fair — each conventional method has real strengths this tool does not.</p>
+<table>
+<tr><th>Approach</th><th>Strengths</th><th>Limitations for this task</th></tr>
+<tr><td><b>Manual PDF search</b><br><span class=small>(open the Chapter 7B PDF / policy manuals,
+Ctrl-F)</span></td><td>Free; exact; you read the controlling text directly.</td>
+<td>Slow across 238-page statutes + ~4,150 pages of policy; keyword-only (misses synonyms and
+paraphrases); no cross-document search; easy to miss the governing provision.</td></tr>
+<tr><td><b>Commercial legal databases</b><br><span class=small>(Westlaw, Lexis)</span></td>
+<td>Far broader — all case law and statutes, annotations, citators, editorial analysis. The
+authoritative tool for legal research.</td>
+<td>Subscription cost; and critically, <b>NCDHHS agency policy manuals are generally not indexed</b>
+there — so the policy side of these questions is largely unaddressed.</td></tr>
+<tr><td><b>General AI chatbot</b><br><span class=small>(consumer LLM)</span></td>
+<td>Fast; plain-language answers.</td>
+<td>May fabricate; typically <b>no citation to the actual controlling text</b>; can be outdated;
+no guarantee it read the current NC provision.</td></tr>
+<tr><td><b>This tool</b></td>
+<td>Semantic search over <b>both statutes and agency policy in one place</b>; every result cited to
+source + section + page with an integrity hash; grounded answers that decline when unsupported;
+public/no subscription.</td>
+<td>Narrow corpus; a research aid, not a Westlaw replacement or a lawyer; retrieval imperfect
+(see §4); not legal advice.</td></tr>
+</table>
+<div class=ok><b>Where it is most useful.</b> The clearest gap it fills is <b>agency policy</b> —
+the NCDHHS manuals that commercial databases don't index and that are painful to search by hand.
+For statutes, it's a fast first-pass finder that always points back to the official text; it does
+not replace authoritative legal research.</div>
+
+<h2>6 · What it is not</h2>
+<ul>
+<li>Not legal advice, and not a substitute for an attorney's judgment.</li>
+<li>Not a comprehensive legal-research service (no case law, no citator, no federal law).</li>
+<li>Not a system of record — the linked official document is always controlling.</li>
+<li>Not connected to any confidential case file; it reads only public NC law and policy.</li>
+</ul>
+
+<h2>7 · Methods &amp; reproducibility</h2>
+<p>The benchmark queries and scoring harness are versioned and re-runnable. Retrieval is scored by
+whether the document(s) that correctly answer a question appear in the top-k results (for policy,
+any of the legitimately-correct documents on a topic counts; for statutes, only the exact governing
+section). Figures reflect the live system on the date below and will change as the corpus and test
+set evolve. Chunk text has been checked to avoid mid-sentence truncation; retrieval uses a keyword +
+meaning hybrid with a re-ranking step.</p>
+
+<footer>
+Preliminary evaluation of the public NC child-welfare law &amp; policy search tool · Parallel42 ·
+prepared 2026-07-12 · public data only · not legal advice. Figures are indicative and subject to
+change as the benchmark is expanded and expert-reviewed.
+</footer>
+</div></body></html>

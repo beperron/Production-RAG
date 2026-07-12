@@ -178,8 +178,8 @@ export default function Home() {
 
       <footer>
         Built by <a href="https://parallel42.ai" target="_blank" rel="noopener">Parallel42</a> · public NC law &amp; policy ·
-        Supabase pgvector + Jina rerank · grounded answers cite their sources and decline when unsupported.
-        Not legal advice.
+        <a href="/evaluation.html">preliminary evaluation</a> · grounded answers cite their sources and decline when
+        unsupported. Not legal advice.
       </footer>
     </>
   );
