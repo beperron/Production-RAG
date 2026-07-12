@@ -41,9 +41,10 @@ footer{border-top:1px solid var(--line);margin-top:30px;padding-top:16px;color:v
 <h1>How the tool was evaluated, and what it actually does</h1>
 <p class=lede>A detailed, measured account of the system's retrieval accuracy, answer quality,
 robustness, and speed — including where it is weak, and how it compares with how this research is
-done today. Every number below is measured on the live system. This is a <b>preliminary</b>
-evaluation on modest test sets; figures are indicative and will change as the benchmarks grow and
-are expert-reviewed. Nothing here is a marketing claim.</p>
+done today. Every number below is measured on the live system, across a hand-curated benchmark and
+a 500-question machine-generated one. This is a <b>preliminary</b> evaluation; figures are
+indicative and will change as the benchmarks are expert-reviewed. Nothing here is a marketing
+claim — the most important finding is a <b>limitation</b> (§6).</p>
 
 <div class=note><b>Scope &amp; disclaimer.</b> Covers only <b>public</b> North Carolina
 child-welfare law and policy. A <b>research aid, not legal advice</b>; not a substitute for a
@@ -69,14 +70,17 @@ which remains controlling.</div>
 <h2 id=s0>0 · Headline results</h2>
 <table>
 <tr><th>Dimension</th><th>Result</th><th>Notes</th></tr>
-<tr><td>Retrieval — correct authority in top-3</td><td class=n>90% / 96%</td><td>statutes / policy</td></tr>
-<tr><td>Grounded-answer rate (answers that cite the sources)</td><td class=n>91%</td><td>11 of 12 sampled</td></tr>
+<tr><td>Retrieval — governing statute in top-3</td><td class=n>92%</td><td>large benchmark, n=250</td></tr>
+<tr><td>Retrieval — right policy doc in top-3</td><td class=n>74–96%</td><td>range across strict vs. lenient scoring (see §2)</td></tr>
+<tr><td>Benchmark size</td><td class=n>500</td><td>machine-generated questions (up from 70)</td></tr>
+<tr><td>Grounded-answer rate (answers that cite sources)</td><td class=n>90%</td><td>declines the rest</td></tr>
+<tr><td>Answer faithfulness (automated audit)</td><td class=n>~½</td><td><b>weakest link</b> — verify answers against the source (§6)</td></tr>
 <tr><td>Refusal on clearly off-topic queries</td><td class=n>3 / 3</td><td>declines rather than fabricate</td></tr>
-<tr><td>Search latency (median)</td><td class=n>1.1 s</td><td>interactive</td></tr>
-<tr><td>Grounded-answer latency (median)</td><td class=n>13 s</td><td>generation-bound</td></tr>
-<tr><td>Chunk text cut mid-word</td><td class=n>0%</td><td>after boundary-aware rechunk</td></tr>
+<tr><td>Search / answer latency (median)</td><td class=n>1.1 s / 13 s</td><td>search is interactive</td></tr>
 <tr><td>Results with full provenance</td><td class=n>100%</td><td>source · section · page · hash</td></tr>
 </table>
+<p class=small>The headline: <b>finding the right authority is strong and reliable; the generated
+answer is a convenience that must be checked against the cited source.</b></p>
 
 <h2 id=s1>1 · System &amp; corpus</h2>
 <p>Given a plain-English question, the tool retrieves the governing NC authority (each result cited
@@ -91,20 +95,32 @@ inline <code>[n]</code> citations, declining when the passages don't support one
 entire NC General Statutes. Federal law and case law are out of scope.</p>
 
 <h2 id=s2>2 · Retrieval accuracy</h2>
-<p>Measured on a starter benchmark of <b>70 questions</b> (42 statute, 28 policy) whose correct
-answer is known in advance. <b>Recall@k</b> = how often the governing authority is in the top-k
-results; <b>MRR</b> is a 0–1 score, higher when the right result sits nearer the top.</p>
+<p>Retrieval was measured two ways: a small <b>hand-curated</b> set (70 questions) and a large
+<b>machine-generated</b> set (500 questions — a language model wrote realistic practitioner
+questions from sampled passages, with the source passage as the known-correct label).
+<b>Recall@k</b> = how often the governing authority is in the top-k results.</p>
 <table>
-<tr><th>Corpus</th><th>Recall@1</th><th>Recall@3</th><th>Recall@5</th><th>MRR</th></tr>
-<tr><td>Statutes (GS 7B)</td><td class=n>73%</td><td class=n>90%</td><td class=n>92%</td><td class=n>0.83</td></tr>
-<tr><td>Policy (NCDHHS)</td><td class=n>82%</td><td class=n>96%</td><td class=n>96%</td><td class=n>0.87</td></tr>
+<tr><th>Corpus</th><th>Benchmark</th><th>n</th><th>R@1</th><th>R@3</th><th>R@5</th><th>MRR</th></tr>
+<tr><td>Statutes</td><td>hand-curated</td><td>42</td><td class=n>73%</td><td class=n>90%</td><td class=n>92%</td><td class=n>0.83</td></tr>
+<tr><td>Statutes</td><td>machine, n=250</td><td>250</td><td class=n>85%</td><td class=n>92%</td><td class=n>94%</td><td class=n>0.89</td></tr>
+<tr><td>Policy</td><td>hand-curated (lenient)</td><td>28</td><td class=n>82%</td><td class=n>96%</td><td class=n>96%</td><td class=n>0.87</td></tr>
+<tr><td>Policy</td><td>machine, n=250 (strict)</td><td>250</td><td class=n>52%</td><td class=n>74%</td><td class=n>82%</td><td class=n>0.65</td></tr>
 </table>
+<p><b>Statutes are strong and stable</b> — ~90–92% top-3 on both the small and large benchmarks.
+<b>Policy shows a wide range (74–96%)</b> that is mostly a <b>scoring artifact, not a retrieval
+failure</b>: the strict machine benchmark only credits retrieving the <i>exact same document</i>,
+but NCDHHS has many overlapping documents. On manual inspection of the strict "misses," about half
+were <b>sibling documents that legitimately answer the question</b> (e.g. the <i>SDM Intake</i>
+policy instead of the <i>CPS Intake</i> policy; the in-home case-plan form instead of the
+permanency case-plan form) or auto-generated questions too vague to have one right answer. The
+lenient score (which credits any correct document) is the fairer estimate; the truth sits between
+the two.</p>
 <h3>Failure analysis</h3>
 <p>When the exact authority is not first, the results ranked above it are almost always
-<b>closely-related provisions</b> — e.g. a question about the <i>answer</i> to a termination
-petition surfaces the adjacent <i>failure-to-answer</i> section first. These are fine legal
-distinctions, not random errors, which is why top-1 is ~three-quarters while top-3 is ~nine in ten.
-Practical implication: scan the top few results, not just the first.</p>
+<b>closely-related provisions</b> — for statutes, an adjacent section (the <i>answer</i> vs. the
+<i>failure-to-answer</i> section); for policy, a sibling document on the same topic. Fine
+distinctions, not random errors. Practical implication: scan the top few results, not just the
+first.</p>
 
 <h2 id=s3>3 · Component ablation — what each stage contributes</h2>
 <p>Retrieval is a pipeline: keyword + meaning search, fused, then re-ranked. Turning the stages on
@@ -144,17 +160,27 @@ homogenized similar administrative chunks). Rather than apply a technique becaus
 it was adopted only where it measurably helped. This is included to show the evaluation catches
 regressions, not just wins.</p>
 
-<h2 id=s6>6 · Grounded-answer quality</h2>
-<p>On a sample of 12 in-scope questions, the written-answer feature was checked for whether it
-produced an answer <b>grounded in and citing</b> the retrieved passages:</p>
+<h2 id=s6>6 · Grounded-answer quality — the weakest link</h2>
+<p>The optional written answer was audited on <b>40 questions</b>. Two things were measured:
+whether it produces a <b>grounded, cited</b> answer, and — harder — whether every claim in that
+answer is actually <b>supported by the cited sources</b> (judged by a separate language model, then
+spot-checked by hand).</p>
 <table>
-<tr><th>Metric</th><th>Result</th></tr>
-<tr><td>Answers grounded (cite sources, no refusal)</td><td class=n>91% (11/12)</td></tr>
-<tr><td>Answers containing inline <code>[n]</code> citations</td><td class=n>91%</td></tr>
-<tr><td>Median answer latency</td><td class=n>13 s</td></tr>
+<tr><th>Metric</th><th>Result (n=40)</th></tr>
+<tr><td>Produces a grounded answer with <code>[n]</code> citations</td><td class=n>90%</td></tr>
+<tr><td>Declines when it should (in-scope but unsupported)</td><td class=n>5%</td></tr>
+<tr><td>Every claim traceable to the cited sources (automated judge)</td><td class=n>~52%</td></tr>
 </table>
-<p class=small>The one non-grounded case was a slow generation that timed out, not a fabrication.
-Answers are constrained to the retrieved text and instructed to decline when it is insufficient.</p>
+<div class=note><b>This is the most important limitation in this report.</b> An automated
+faithfulness audit could fully verify only about half of the grounded answers. Hand-inspection of
+the failures shows a mix of: (a) <b>genuine over-reach</b> — a claim attributed to a source that
+doesn't quite say it; (b) <b>citation-number mismatches</b> — the right facts, but the
+<code>[n]</code> points to the wrong passage; and (c) <b>judge strictness</b> — the auditor saw
+fewer passages than the answer generator did, so some correct claims were marked unverifiable.
+Even discounting (c), the answer feature over-reaches often enough that it should be treated as a
+<b>draft to verify, not a citation of record.</b> Retrieval — finding the right law — is the
+strong, dependable part; the generated summary is a convenience, and the citations exist precisely
+so a reader can confirm it in seconds. Median answer latency: 13 s.</div>
 
 <h2 id=s7>7 · Robustness &amp; refusal</h2>
 <p>A tool that answers questions it shouldn't is worse than one that declines. We probed with
@@ -216,10 +242,15 @@ replace authoritative legal research.</div>
 
 <h2 id=s11>11 · Limitations &amp; threats to validity</h2>
 <ul>
-<li><b>Small benchmarks.</b> 70 retrieval / 12 answer / ~7 robustness questions — indicative, not
-definitive. A larger, expert-reviewed set could move (and lower) these figures.</li>
-<li><b>Self-constructed gold set, single grader.</b> The correct-answer labels and scoring were
-built in-house; independent legal review would strengthen validity.</li>
+<li><b>Answer faithfulness (§6) is the headline limitation</b> — only ~half of grounded answers were
+fully verifiable against their cited sources. Answers must be checked, not relied on.</li>
+<li><b>Synthetic benchmark caveat.</b> The 500-question set was machine-generated from the corpus.
+This can flatter retrieval (questions derived from a passage may be easier than a real user's
+phrasing) <i>and</i> penalize it unfairly (the strict single-document label misses correct sibling
+documents, as in the policy scores). Both effects are present; the machine numbers are a useful
+stress test, not ground truth. The hand-curated set is smaller but human-verified.</li>
+<li><b>Single automated grader.</b> Faithfulness and much of the scoring used a language model as
+judge, spot-checked by hand; independent legal review would strengthen validity.</li>
 <li><b>Curated corpus.</b> Federal law, case law, and non-indexed NC statutes are out of scope and
 will not resolve.</li>
 <li><b>Adjacent-domain over-answering</b> (§7) — the most important behavioral risk.</li>
@@ -232,12 +263,16 @@ providers.</li>
 </ul>
 
 <h2 id=s12>12 · Methods &amp; reproducibility</h2>
-<p>Retrieval is scored by whether the document(s) that correctly answer a question appear in the
-top-k results of the live pipeline (keyword + meaning hybrid, re-ranked). For policy, any of the
-legitimately-correct documents on a topic counts; for statutes, only the exact governing section.
-Grounded-answer, refusal, and latency figures come from direct calls to the live service. The
-benchmark queries and scoring harness are versioned and re-runnable; all figures reflect the system
-on the date below and will change as the corpus and test sets evolve.</p>
+<p>Two benchmarks were used: a small <b>hand-curated</b> set (70 questions, human-verified labels)
+and a large <b>machine-generated</b> set (500 questions — a language model wrote practitioner-style
+questions from sampled passages, the source passage serving as the label). Retrieval is scored by
+whether the correct authority appears in the top-k results of the live pipeline (hybrid keyword +
+meaning, re-ranked); statutes are matched at the section level, policy at the document level.
+<b>Answer faithfulness</b> was audited by having a separate language model judge whether each claim
+in a grounded answer follows from its cited sources, with a hand spot-check of the failures.
+Refusal and latency come from direct calls to the live service. All harnesses and question sets are
+versioned and re-runnable; figures reflect the system on the date below and will change as the
+corpus and test sets evolve.</p>
 
 <footer>
 Comprehensive preliminary evaluation of the public NC child-welfare law &amp; policy search tool ·
