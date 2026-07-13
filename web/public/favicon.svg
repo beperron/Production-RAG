@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#F7F5F1"/>
+  <text x="32" y="38" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="#1A1A18">P42</text>
+  <rect x="8" y="47" width="48" height="3" fill="#6E1E24"/>
+  <rect x="8" y="54" width="48" height="3" fill="#6E1E24"/>
+</svg>
