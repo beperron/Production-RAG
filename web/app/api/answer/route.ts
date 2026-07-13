@@ -5,8 +5,10 @@ import { buildContext, SYSTEM, REFUSAL } from "@/lib/answer";
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
-const OR_URL = "https://openrouter.ai/api/v1/chat/completions";
-const MODEL = process.env.OPENROUTER_GEN_MODEL || "deepseek/deepseek-v4-flash";
+// Grounded answers via Ollama Cloud (deepseek-v4-flash). Same model/prompt as
+// before; consolidated onto Ollama and faster than the OpenRouter path.
+const OLLAMA_URL = "https://ollama.com/api/chat";
+const MODEL = process.env.OLLAMA_GEN_MODEL || "deepseek-v4-flash:cloud";
 
 // Streams: first line is a JSON control message {"hits":[...]} (for the source
 // cards), then the grounded answer streams token-by-token as plain text.
@@ -20,18 +22,18 @@ export async function GET(req: NextRequest) {
       try {
         const hits = q ? await search(q, 10, collection) : [];
         controller.enqueue(enc.encode(JSON.stringify({ hits }) + "\n"));
-        const key = process.env.OPENROUTER_API_KEY?.trim();
+        const key = process.env.OLLAMA_KEY?.trim();
         if (!q || hits.length === 0 || !key) {
           controller.enqueue(enc.encode(REFUSAL));
           controller.close();
           return;
         }
         const ctx = await buildContext(hits);
-        const r = await fetch(OR_URL, {
+        const r = await fetch(OLLAMA_URL, {
           method: "POST",
           headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
           body: JSON.stringify({
-            model: MODEL, temperature: 0, max_tokens: 1100, stream: true,
+            model: MODEL, stream: true, options: { temperature: 0, num_predict: 1100 },
             messages: [{ role: "system", content: SYSTEM }, { role: "user", content: `Question: ${q}\n\nSources:\n${ctx}` }],
           }),
         });
@@ -40,6 +42,7 @@ export async function GET(req: NextRequest) {
           controller.close();
           return;
         }
+        // Ollama streams newline-delimited JSON: {"message":{"content":"…"},"done":bool}
         const reader = r.body.getReader();
         const dec = new TextDecoder();
         let buf = "";
@@ -51,11 +54,9 @@ export async function GET(req: NextRequest) {
           buf = lines.pop() || "";
           for (const line of lines) {
             const t = line.trim();
-            if (!t.startsWith("data:")) continue;
-            const d = t.slice(5).trim();
-            if (d === "[DONE]") continue;
+            if (!t) continue;
             try {
-              const tok = JSON.parse(d)?.choices?.[0]?.delta?.content;
+              const tok = JSON.parse(t)?.message?.content;
               if (tok) controller.enqueue(enc.encode(tok));
             } catch {}
           }
