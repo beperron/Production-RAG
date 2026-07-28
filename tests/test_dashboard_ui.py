@@ -60,3 +60,56 @@ def test_clicking_a_pill_switches_the_build_picker(pg_test_dsn, dashboard_server
         )
     finally:
         page.close()
+
+
+def _write_build_with_pages(dsn, build_id, pages):
+    logger = BuildEventLogger(build_id, dsn=dsn)
+    logger.event("build_start", total_todo=1, provider="local")
+    logger.event(
+        "extract_done", doc_id="d1", path="d1.pdf", extractor="local-cascade",
+        page_count=len(pages), pages=pages, degradations=[],
+    )
+    logger.close()
+
+
+def test_time_chart_renders_a_labeled_bar_per_route(pg_test_dsn, dashboard_server, chromium_browser):
+    _write_build_with_pages(pg_test_dsn, "ui-timechart", pages=[
+        {"page_number": 1, "route": "native", "chars": 500, "elapsed_seconds": 1.0,
+         "flagged": False, "flag_reasons": [], "preview": ""},
+        {"page_number": 2, "route": "vlm", "chars": 900, "elapsed_seconds": 4.0,
+         "flagged": False, "flag_reasons": [], "preview": ""},
+    ])
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-timechart")
+        page.wait_for_selector("#timechart .timechart-row")
+        rows = page.eval_on_selector_all(
+            "#timechart .timechart-row",
+            "els => els.map(e => ({"
+            "label: e.querySelector('.timechart-label').textContent,"
+            "val: e.querySelector('.timechart-val').textContent,"
+            "width: e.querySelector('.timechart-fill').style.width"
+            "}))",
+        )
+        by_label = {r["label"]: r for r in rows}
+        assert "native text layer" in by_label
+        assert "vision-language model" in by_label
+        # vlm (4.0s) is the max, so it fills 100%; native (1.0s) is a quarter of that.
+        assert by_label["vision-language model"]["width"] == "100%"
+        assert by_label["native text layer"]["width"] == "25%"
+        assert "4.0s" in by_label["vision-language model"]["val"]
+        assert "1.0s" in by_label["native text layer"]["val"]
+    finally:
+        page.close()
+
+
+def test_time_chart_shows_empty_state_before_any_pages(pg_test_dsn, dashboard_server, chromium_browser):
+    _write_build(pg_test_dsn, "ui-timechart-empty")
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-timechart-empty")
+        page.wait_for_selector("#timechart .timechart-empty")
+    finally:
+        page.close()

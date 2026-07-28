@@ -770,6 +770,7 @@ def build_document_metadata(
                     "page_number": p.page_number,
                     "route": p.route,
                     "chars": len(p.markdown),
+                    "elapsed_seconds": round(p.elapsed_seconds, 3),
                     "flagged": bool(p.quality.get("flagged")) if p.quality else False,
                     "flag_reasons": p.quality.get("flag_reasons", []) if p.quality else [],
                     "preview": _preview(p.markdown),

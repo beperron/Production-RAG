@@ -115,6 +115,33 @@ def test_api_builds_and_events_roundtrip(pg_test_dsn, dashboard_server):
     assert [e["stage"] for e in events] == ["build_start", "build_done"]
 
 
+def test_page_elapsed_seconds_persists_through_postgres_roundtrip(pg_test_dsn, dashboard_server):
+    """extract_done's per-page elapsed_seconds must survive the JSONB
+    round-trip through build_log — that's what the dashboard's "Time by
+    extraction route" chart reads from /api/events."""
+    logger = BuildEventLogger("timing-roundtrip-test", dsn=pg_test_dsn)
+    logger.event(
+        "extract_done", doc_id="d1", path="d1.pdf", extractor="local-cascade", page_count=2,
+        pages=[
+            {"page_number": 1, "route": "native", "chars": 500, "elapsed_seconds": 0.012,
+             "flagged": False, "flag_reasons": [], "preview": "hi"},
+            {"page_number": 2, "route": "vlm", "chars": 900, "elapsed_seconds": 4.5,
+             "flagged": False, "flag_reasons": [], "preview": "hi"},
+        ],
+        degradations=[],
+    )
+    logger.close()
+
+    with urllib.request.urlopen(
+        f"{dashboard_server}/api/events?build=timing-roundtrip-test"
+    ) as resp:
+        events = json.loads(resp.read())["events"]
+
+    pages = events[0]["pages"]
+    assert pages[0]["elapsed_seconds"] == 0.012
+    assert pages[1]["elapsed_seconds"] == 4.5
+
+
 def test_api_events_missing_build_param_is_empty(dashboard_server):
     with urllib.request.urlopen(f"{dashboard_server}/api/events") as resp:
         assert json.loads(resp.read())["events"] == []
