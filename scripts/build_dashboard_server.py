@@ -45,7 +45,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 'IBM Plex San
 a{color:var(--link)}
 .banner{background:#FCEEEE;border-bottom:1px solid var(--seal);color:var(--seal-deep);
   font:12px/1.4 var(--mono);padding:6px 20px;text-align:center;letter-spacing:.02em}
-header{padding:22px 20px 14px;max-width:1040px;margin:0 auto}
+header{padding:22px 20px 14px;max-width:1320px;margin:0 auto}
 h1{font:600 24px/1.2 var(--display);margin:0}
 .header-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px}
 .build-picker-wrap{display:flex;align-items:center;gap:8px;margin:0 0 12px}
@@ -78,12 +78,12 @@ h1{font:600 24px/1.2 var(--display);margin:0}
 .stat-val{font:600 16px var(--display);margin-top:2px}
 .degrade-badge{background:var(--soft);color:var(--ok);font:600 15px var(--mono);border:1px solid var(--line)}
 .degrade-badge.hot{background:#FCEEEE;color:var(--seal-deep);border-color:var(--seal)}
-main{max-width:1040px;margin:14px auto 60px;padding:0 20px}
+main{max-width:1320px;margin:14px auto 60px;padding:0 20px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 10px;padding:0}
 .card summary{cursor:pointer;list-style:none;padding:12px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .card summary::-webkit-details-marker{display:none}
 .card .idx{font:12px var(--mono);color:var(--muted);min-width:44px}
-.card .name{font:600 14px var(--display);flex:1;min-width:180px}
+.card .name{font:600 14px var(--display);flex:1;min-width:180px;overflow-wrap:anywhere}
 .card .status{font:11px var(--mono);border-radius:999px;padding:2px 9px;border:1px solid var(--line)}
 .status.extracting{background:#FBF6E7;border-color:#C9BE9E;color:#7A5300}
 .status.chunking{background:#EDF0F2;border-color:#DCE3E6;color:#44505A}
@@ -113,10 +113,19 @@ main{max-width:1040px;margin:14px auto 60px;padding:0 20px}
 .timechart-fill{height:100%;border-radius:0 4px 4px 0;transition:width .3s ease}
 .timechart-val{font:12px var(--mono);color:var(--muted);width:64px;flex:none}
 .timechart-empty{font:12px var(--mono);color:var(--muted);font-style:italic}
+.chunktbl-wrap{overflow-x:auto}
 table.chunktbl{width:100%;border-collapse:collapse;font:12.5px var(--mono)}
 table.chunktbl th{text-align:left;color:var(--muted);font-weight:600;padding:4px 8px;border-bottom:1px solid var(--line)}
-table.chunktbl td{padding:4px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top}
-table.chunktbl td.preview{font:12.5px/1.4 var(--display);color:var(--ink);white-space:normal;min-width:260px}
+table.chunktbl td{padding:4px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top;overflow-wrap:anywhere}
+table.chunktbl td.heading{max-width:180px}
+table.chunktbl td.size,table.chunktbl td.pages,table.chunktbl td.routes{color:var(--muted);white-space:nowrap}
+table.chunktbl td.preview{font:12.5px/1.4 var(--display);color:var(--ink);white-space:normal;overflow-wrap:anywhere;min-width:260px}
+.chunk-more-row td{text-align:center;padding:8px}
+.chunk-more-btn{font:12px var(--mono);background:var(--soft);color:var(--link);border:1px solid var(--line);
+  border-radius:6px;padding:5px 12px;cursor:pointer}
+.chunk-more-btn:hover{background:var(--line-soft)}
+.hash-chip{font:11px var(--mono);color:var(--muted);background:var(--soft);border:1px solid var(--line);
+  border-radius:6px;padding:1px 7px;cursor:default;text-transform:none;letter-spacing:0}
 .pagequotes{display:flex;flex-direction:column;gap:6px;margin-top:8px}
 .pagequote{background:var(--soft);border:1px solid var(--line-soft);border-left:3px solid var(--line);border-radius:0 6px 6px 0;
   padding:6px 10px;font:italic 13px/1.5 var(--display);color:var(--ink)}
@@ -125,7 +134,7 @@ table.chunktbl td.preview{font:12.5px/1.4 var(--display);color:var(--ink);white-
 .dense-warn{color:var(--seal-deep);font:600 13px var(--mono);background:#FCEEEE;border-radius:6px;padding:2px 8px;display:inline-block}
 .err{color:var(--seal-deep);font:13px var(--mono);white-space:pre-wrap}
 .empty{color:var(--muted);text-align:center;padding:40px 0;font-style:italic}
-footer{max-width:1040px;margin:0 auto;padding:20px;color:var(--muted);font:11px var(--mono);border-top:1px solid var(--line-soft)}
+footer{max-width:1320px;margin:0 auto;padding:20px;color:var(--muted);font:11px var(--mono);border-top:1px solid var(--line-soft)}
 footer.complete{color:var(--ok)}
 """
 
@@ -225,6 +234,7 @@ function buildCards(events){
       case 'extract_done': {
         const card = byPath.get(e.path) || {path: e.path, status: 'extracting'};
         card.doc_id = e.doc_id;
+        card.source_sha256 = e.source_sha256;
         card.extractor = e.extractor;
         card.page_count = e.page_count;
         card.pages = e.pages || [];
@@ -299,14 +309,45 @@ function pageQuotes(pages){
   return `<div class=pagequotes>${items}</div>`;
 }
 
-function chunkTable(chunks){
-  const rows = chunks.map(c => `<tr>
-    <td>${esc((c.heading_path || []).join(' › '))}</td>
+// Paths whose full chunk table has been expanded past the row cap. Kept
+// outside cardHtml() because the whole timeline re-renders every tick — a
+// plain DOM-open check (like <details open>) would forget the choice a
+// second later.
+const EXPANDED_CHUNK_TABLES = new Set();
+const CHUNK_TABLE_ROW_CAP = 40;
+
+function fmtChunkSize(c){
+  const chars = c.char_len;
+  if (chars == null) return '–';
+  const tokens = c.token_estimate;
+  return tokens != null ? `${chars} ch / ~${tokens} tok` : `${chars} ch`;
+}
+
+function chunkRowHtml(c){
+  return `<tr>
+    <td class=heading>${esc((c.heading_path || []).join(' › '))}</td>
     <td class=preview>&ldquo;${esc(c.preview || '')}&rdquo;</td>
-    <td>p${c.page_start}-${c.page_end}</td>
-    <td>${esc((c.extraction_routes || []).join(','))}</td>
-  </tr>`).join('');
-  return `<table class=chunktbl><thead><tr><th>Heading</th><th>What's in this piece</th><th>Pages</th><th>Routes</th></tr></thead><tbody>${rows}</tbody></table>`;
+    <td class=size>${fmtChunkSize(c)}</td>
+    <td class=pages>p${c.page_start}-${c.page_end}</td>
+    <td class=routes>${esc((c.extraction_routes || []).join(','))}</td>
+  </tr>`;
+}
+
+function chunkTable(chunks, path){
+  const expanded = EXPANDED_CHUNK_TABLES.has(path);
+  const shown = expanded ? chunks : chunks.slice(0, CHUNK_TABLE_ROW_CAP);
+  const hidden = chunks.length - shown.length;
+  const rows = shown.map(chunkRowHtml).join('');
+  let more = '';
+  if (hidden > 0 || (expanded && chunks.length > CHUNK_TABLE_ROW_CAP)){
+    const label = expanded ? 'Show fewer chunks' : `Show ${hidden} more chunks`;
+    more = `<tr class=chunk-more-row><td colspan=5>
+      <button type=button class=chunk-more-btn data-path="${esc(path)}">${label}</button>
+    </td></tr>`;
+  }
+  return `<div class=chunktbl-wrap><table class=chunktbl><thead><tr>
+    <th>Heading</th><th>What's in this piece</th><th>Size</th><th>Pages</th><th>Routes</th>
+  </tr></thead><tbody>${rows}${more}</tbody></table></div>`;
 }
 
 // Cumulative wall-clock time spent per extraction lane, across every page
@@ -340,12 +381,18 @@ function renderTimeChart(routeTime){
   }).join('');
 }
 
+function hashChip(sha256){
+  if (!sha256) return '';
+  const short = sha256.slice(0, 12);
+  return ` &middot; <span class=hash-chip title="sha256:${esc(sha256)}">sha256:${esc(short)}&hellip;</span>`;
+}
+
 function cardHtml(c){
   const name = esc(c.path.split('/').pop());
   const idx = (c.index != null && c.total != null) ? `${c.index}/${c.total}` : '';
   let body = '';
   if (c.page_count != null){
-    body += `<div class=sect><h4>Extraction &middot; ${esc(c.extractor || '?')} &middot; ${c.page_count} pages &middot; ${esc(fmtTs(c.extracted_at))}</h4>
+    body += `<div class=sect><h4>Extraction &middot; ${esc(c.extractor || '?')} &middot; ${c.page_count} pages &middot; ${esc(fmtTs(c.extracted_at))}${hashChip(c.source_sha256)}</h4>
       <p class=explain>Reading the words off each page &mdash; picking a different method per page (plain text, a vision model, or OCR) depending on how the page is laid out.</p>
       <div class=pagestrip>${pageStrip(c.pages || [])}</div>
       ${pageQuotes(c.pages || [])}</div>`;
@@ -353,7 +400,7 @@ function cardHtml(c){
   if (c.chunk_count != null){
     body += `<div class=sect><h4>Chunking &middot; ${c.chunk_count} chunks</h4>
       <p class=explain>Splitting the document into smaller, self-contained pieces small enough to search precisely, each still tagged with the section heading it came from.</p>
-      ${chunkTable(c.chunks || [])}</div>`;
+      ${chunkTable(c.chunks || [], c.path)}</div>`;
   }
   if (c.dense_embedded != null){
     const warn = c.dense_missing > 0;
@@ -485,6 +532,14 @@ async function tick(){
     timeline.innerHTML = cards.slice().reverse().map(cardHtml).join('');
     for (const d of timeline.querySelectorAll('details')){
       if (openPaths.has(d.dataset.path)) d.open = true;
+    }
+    for (const btn of timeline.querySelectorAll('.chunk-more-btn')){
+      btn.addEventListener('click', () => {
+        const path = btn.dataset.path;
+        if (EXPANDED_CHUNK_TABLES.has(path)) EXPANDED_CHUNK_TABLES.delete(path);
+        else EXPANDED_CHUNK_TABLES.add(path);
+        tick();
+      });
     }
   }
 

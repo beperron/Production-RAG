@@ -763,6 +763,7 @@ def build_document_metadata(
             "extract_done",
             doc_id=doc_id,
             path=str(path),
+            source_sha256=source_sha256,
             extractor=result.extractor,
             page_count=result.page_count,
             pages=[

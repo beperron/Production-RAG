@@ -113,3 +113,76 @@ def test_time_chart_shows_empty_state_before_any_pages(pg_test_dsn, dashboard_se
         page.wait_for_selector("#timechart .timechart-empty")
     finally:
         page.close()
+
+
+def _write_build_with_chunks(dsn, build_id, chunks, *, source_sha256="ab" * 32):
+    logger = BuildEventLogger(build_id, dsn=dsn)
+    logger.event("build_start", total_todo=1, provider="local")
+    logger.event(
+        "doc_start", index=1, total=1, path="d1.pdf",
+    )
+    logger.event(
+        "extract_done", doc_id="d1", path="d1.pdf", source_sha256=source_sha256,
+        extractor="local-cascade", page_count=1, pages=[], degradations=[],
+    )
+    logger.event("chunk_done", doc_id="d1", chunk_count=len(chunks), chunks=chunks)
+    logger.close()
+
+
+def _chunk(i, **overrides):
+    base = {
+        "chunk_id": f"d1:{i}", "heading_path": [f"Section {i}"],
+        "char_len": 100 + i, "token_estimate": 25 + i,
+        "page_start": 1, "page_end": 1, "extraction_routes": ["native"],
+        "preview": f"chunk {i} text",
+    }
+    base.update(overrides)
+    return base
+
+
+def test_chunk_table_shows_size_and_source_hash(pg_test_dsn, dashboard_server, chromium_browser):
+    full_hash = "0123456789abcdef" * 4  # 64 hex chars
+    _write_build_with_chunks(
+        pg_test_dsn, "ui-chunk-size", [_chunk(1, char_len=1500, token_estimate=375)],
+        source_sha256=full_hash,
+    )
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-chunk-size")
+        page.click("details summary")
+        page.wait_for_selector("table.chunktbl td.size")
+        assert page.inner_text("table.chunktbl td.size") == "1500 ch / ~375 tok"
+
+        chip = page.locator(".hash-chip")
+        assert chip.get_attribute("title") == f"sha256:{full_hash}"
+        assert full_hash[:12] in chip.inner_text()
+    finally:
+        page.close()
+
+
+def test_chunk_table_caps_rows_and_expands_on_click(pg_test_dsn, dashboard_server, chromium_browser):
+    chunks = [_chunk(i) for i in range(45)]
+    _write_build_with_chunks(pg_test_dsn, "ui-chunk-cap", chunks)
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-chunk-cap")
+        page.click("details summary")
+        page.wait_for_selector("table.chunktbl tbody tr")
+        # 40 shown + the "show more" row itself.
+        assert page.locator("table.chunktbl tbody tr").count() == 41
+        assert "Show 5 more chunks" in page.inner_text(".chunk-more-btn")
+
+        page.click(".chunk-more-btn")
+        page.wait_for_function(
+            "document.querySelectorAll('table.chunktbl tbody tr').length === 46"
+        )
+        assert "Show fewer chunks" in page.inner_text(".chunk-more-btn")
+
+        page.click(".chunk-more-btn")
+        page.wait_for_function(
+            "document.querySelectorAll('table.chunktbl tbody tr').length === 41"
+        )
+    finally:
+        page.close()
