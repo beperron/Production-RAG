@@ -718,6 +718,17 @@ def load_provenance_manifest(path: str | Path, *, retrieved_at: str = "") -> dic
 # unbounded with document size.
 _EVENT_ARRAY_CAP = 500
 
+_PREVIEW_CHARS = 220
+
+
+def _preview(text: str, limit: int = _PREVIEW_CHARS) -> str:
+    """Short, whitespace-collapsed snippet for the build dashboard — lets a
+    viewer see the actual words a phase produced, not just counts about them."""
+    collapsed = " ".join(text.split())
+    if len(collapsed) <= limit:
+        return collapsed
+    return collapsed[:limit].rsplit(" ", 1)[0] + "…"
+
 
 def build_document_metadata(
     source_path: str | Path, *, config=None, max_chunk_chars: int = 1500,
@@ -761,6 +772,7 @@ def build_document_metadata(
                     "chars": len(p.markdown),
                     "flagged": bool(p.quality.get("flagged")) if p.quality else False,
                     "flag_reasons": p.quality.get("flag_reasons", []) if p.quality else [],
+                    "preview": _preview(p.markdown),
                 }
                 for p in result.pages[:_EVENT_ARRAY_CAP]
             ],
@@ -791,6 +803,7 @@ def build_document_metadata(
                     "page_start": c.page_start,
                     "page_end": c.page_end,
                     "extraction_routes": c.extraction_routes,
+                    "preview": _preview(c.text),
                 }
                 for c in chunks[:_EVENT_ARRAY_CAP]
             ],
