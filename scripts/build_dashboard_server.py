@@ -61,6 +61,7 @@ main{max-width:1040px;margin:14px auto 60px;padding:0 20px}
 .card .body{padding:0 16px 14px;border-top:1px solid var(--line-soft)}
 .sect{margin-top:12px}
 .sect h4{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:0 0 6px}
+.sect .explain{font:italic 12.5px/1.5 var(--display);color:var(--muted);margin:0 0 8px;max-width:640px}
 .pagestrip{display:flex;gap:3px;flex-wrap:wrap}
 .pg{width:22px;height:22px;border-radius:4px;font:10px var(--mono);display:flex;align-items:center;
   justify-content:center;color:#fff;cursor:default}
@@ -68,10 +69,16 @@ main{max-width:1040px;margin:14px auto 60px;padding:0 20px}
 .pg.tesseract{background:#B8860B}
 .pg.vlm{background:#2A5560}
 .pg.llamaparse{background:#7A4FA3}
+.pg.text{background:#5B6B73}
 .pg.flagged{outline:2px solid var(--seal-deep);outline-offset:1px}
 table.chunktbl{width:100%;border-collapse:collapse;font:12.5px var(--mono)}
 table.chunktbl th{text-align:left;color:var(--muted);font-weight:600;padding:4px 8px;border-bottom:1px solid var(--line)}
 table.chunktbl td{padding:4px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+table.chunktbl td.preview{font:12.5px/1.4 var(--display);color:var(--ink);white-space:normal;min-width:260px}
+.pagequotes{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.pagequote{background:var(--soft);border:1px solid var(--line-soft);border-left:3px solid var(--line);border-radius:0 6px 6px 0;
+  padding:6px 10px;font:italic 13px/1.5 var(--display);color:var(--ink)}
+.pagequote .pg-label{display:block;font:600 10.5px var(--mono);font-style:normal;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px}
 .dense-ok{color:var(--ok);font:600 13px var(--mono)}
 .dense-warn{color:var(--seal-deep);font:600 13px var(--mono);background:#FCEEEE;border-radius:6px;padding:2px 8px;display:inline-block}
 .err{color:var(--seal-deep);font:13px var(--mono);white-space:pre-wrap}
@@ -99,7 +106,8 @@ _PAGE = """<!doctype html><html lang=en><head><meta charset=utf-8>
 <main id=timeline><div class=empty>No events yet.</div></main>
 <footer id=footer></footer>
 <script>
-const ROUTE_LABEL = {native:'N', tesseract:'T', vlm:'V', llamaparse:'L'};
+const ROUTE_LABEL = {native:'N', tesseract:'T', vlm:'V', llamaparse:'L', text:'P'};
+const ROUTE_NAME = {native:'native text layer', tesseract:'Tesseract OCR', vlm:'vision-language model', llamaparse:'LlamaParse (cloud)', text:'plain text'};
 
 function esc(s){
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -175,19 +183,34 @@ function pageStrip(pages){
   return pages.map(p => {
     const route = p.route || '?';
     const flagged = p.flagged ? ' flagged' : '';
-    const title = p.flagged ? esc((p.flag_reasons || []).join('; ')) : `page ${p.page_number} (${route}, ${p.chars} chars)`;
+    const routeName = ROUTE_NAME[route] || route;
+    const title = p.flagged
+      ? esc((p.flag_reasons || []).join('; '))
+      : `page ${p.page_number} — read via ${routeName} (${p.chars} chars)`;
     return `<div class="pg ${esc(route)}${flagged}" title="${title}">${ROUTE_LABEL[route] || '?'}</div>`;
   }).join('');
+}
+
+// A couple of actual page snippets, quoted verbatim, so the extraction step
+// reads as "here are the words we read" rather than just badges and counts.
+function pageQuotes(pages){
+  const shown = pages.filter(p => p.preview).slice(0, 3);
+  if (!shown.length) return '';
+  const items = shown.map(p => `<div class=pagequote>
+    <span class=pg-label>page ${p.page_number} &middot; ${esc(ROUTE_NAME[p.route] || p.route || '?')}</span>
+    &ldquo;${esc(p.preview)}&rdquo;
+  </div>`).join('');
+  return `<div class=pagequotes>${items}</div>`;
 }
 
 function chunkTable(chunks){
   const rows = chunks.map(c => `<tr>
     <td>${esc((c.heading_path || []).join(' › '))}</td>
-    <td>${c.char_len}</td>
+    <td class=preview>&ldquo;${esc(c.preview || '')}&rdquo;</td>
     <td>p${c.page_start}-${c.page_end}</td>
     <td>${esc((c.extraction_routes || []).join(','))}</td>
   </tr>`).join('');
-  return `<table class=chunktbl><thead><tr><th>Heading</th><th>Chars</th><th>Pages</th><th>Routes</th></tr></thead><tbody>${rows}</tbody></table>`;
+  return `<table class=chunktbl><thead><tr><th>Heading</th><th>What's in this piece</th><th>Pages</th><th>Routes</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
 function cardHtml(c){
@@ -196,15 +219,21 @@ function cardHtml(c){
   let body = '';
   if (c.page_count != null){
     body += `<div class=sect><h4>Extraction &middot; ${esc(c.extractor || '?')} &middot; ${c.page_count} pages</h4>
-      <div class=pagestrip>${pageStrip(c.pages || [])}</div></div>`;
+      <p class=explain>Reading the words off each page &mdash; picking a different method per page (plain text, a vision model, or OCR) depending on how the page is laid out.</p>
+      <div class=pagestrip>${pageStrip(c.pages || [])}</div>
+      ${pageQuotes(c.pages || [])}</div>`;
   }
   if (c.chunk_count != null){
-    body += `<div class=sect><h4>Chunking &middot; ${c.chunk_count} chunks</h4>${chunkTable(c.chunks || [])}</div>`;
+    body += `<div class=sect><h4>Chunking &middot; ${c.chunk_count} chunks</h4>
+      <p class=explain>Splitting the document into smaller, self-contained pieces small enough to search precisely, each still tagged with the section heading it came from.</p>
+      ${chunkTable(c.chunks || [])}</div>`;
   }
   if (c.dense_embedded != null){
     const warn = c.dense_missing > 0;
-    body += `<div class=sect><h4>Indexing</h4><span class="${warn ? 'dense-warn' : 'dense-ok'}">
-      ${c.dense_embedded}/${c.chunk_count} dense-embedded${warn ? ` &mdash; ${c.dense_missing} missing` : ''}</span></div>`;
+    body += `<div class=sect><h4>Indexing</h4>
+      <p class=explain>Converting each piece above into a form the search engine can match by meaning, not just by matching words &mdash; so a question phrased differently than the document can still find it.</p>
+      <span class="${warn ? 'dense-warn' : 'dense-ok'}">
+      ${c.dense_embedded}/${c.chunk_count} pieces indexed for meaning-based search${warn ? ` &mdash; ${c.dense_missing} missing` : ''}</span></div>`;
   }
   if (c.error){
     body += `<div class=sect><h4>Error</h4><div class=err>${esc(c.error)}</div></div>`;
