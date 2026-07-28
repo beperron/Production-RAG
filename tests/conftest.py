@@ -11,6 +11,8 @@ there forever.
 from __future__ import annotations
 
 import os
+import threading
+from http.server import ThreadingHTTPServer
 from pathlib import Path
 
 import pytest
@@ -60,3 +62,39 @@ def pg_conn(pg_test_dsn):
     conn = psycopg.connect(pg_test_dsn, autocommit=True)
     yield conn
     conn.close()
+
+
+@pytest.fixture
+def dashboard_server(pg_test_dsn, monkeypatch):
+    """Real dashboard HTTP server, real socket, pointed at the throwaway test DB."""
+    import build_dashboard_server as dash
+
+    monkeypatch.setattr(dash, "_DSN", pg_test_dsn)
+    httpd = ThreadingHTTPServer(("127.0.0.1", 0), dash.Handler)
+    thread = threading.Thread(target=httpd.serve_forever, daemon=True)
+    thread.start()
+    port = httpd.server_address[1]
+    yield f"http://127.0.0.1:{port}"
+    httpd.shutdown()
+    thread.join(timeout=5)
+    httpd.server_close()
+
+
+@pytest.fixture(scope="session")
+def chromium_browser():
+    """Headless Chromium via Playwright; skips cleanly if either isn't installed."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        pytest.skip("playwright not installed (pip install -e '.[dev]')")
+
+    pw = sync_playwright().start()
+    try:
+        browser = pw.chromium.launch()
+    except Exception as e:  # noqa: BLE001
+        pw.stop()
+        pytest.skip(f"chromium not available ({e}); run `playwright install chromium`")
+
+    yield browser
+    browser.close()
+    pw.stop()

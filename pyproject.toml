@@ -18,7 +18,7 @@ dependencies = [
 # Needed only to (re)build a knowledge base from source PDFs:
 build = ["pymupdf", "pytesseract>=0.3.10", "pillow>=10.0", "pdf2image>=1.17",
          "psycopg[binary]>=3.1"]  # build_log provenance writes + dashboard reads
-dev = ["pytest>=8.0", "ruff>=0.5"]
+dev = ["pytest>=8.0", "ruff>=0.5", "playwright>=1.45"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
