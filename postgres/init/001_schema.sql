@@ -103,3 +103,11 @@ drop trigger if exists build_log_no_delete on build_log;
 create trigger build_log_no_delete
   before delete on build_log
   for each row execute function build_log_no_mutation();
+
+-- TRUNCATE doesn't fire row-level triggers (BEFORE/AFTER UPDATE|DELETE ...
+-- FOR EACH ROW never runs for it), so the two triggers above don't actually
+-- stop `truncate build_log` — it needs its own statement-level trigger.
+drop trigger if exists build_log_no_truncate on build_log;
+create trigger build_log_no_truncate
+  before truncate on build_log
+  for each statement execute function build_log_no_mutation();

@@ -1,9 +1,21 @@
 # Build-time dashboard — design spec
 
-**Status:** design only, not yet implemented. This doc is written to be handed
+**Status:** implemented, then revised. This doc is written to be handed
 to an implementer as a self-contained spec — it names exact files, functions,
 and line numbers as of the commit this was written against, plus the event
 schema and UI layout. Re-verify line numbers before editing; the repo moves.
+
+**2026-07-28 update:** the JSONL event log described below (§ Architecture,
+§2, §4) has been replaced. `BuildEventLogger` now writes each event straight
+into the hash-chained `build_log` table in the local Postgres store
+(`postgres/init/001_schema.sql`) instead of `build_events.jsonl` — no
+intermediate file, and the dashboard reads from Postgres instead of
+scanning for JSONL files. The event *schema* (§1: `stage` + fields per
+event) and the two-process decoupled architecture (build vs. dashboard,
+now decoupled by Postgres rather than a file) are unchanged; the "No new
+pip dependencies" non-goal in §Goal no longer holds — `psycopg[binary]` is
+now a `build`-extra dependency. See `src/parsevault/pipeline/build_events.py`
+and `scripts/build_dashboard_server.py` for the current implementation.
 
 ## Goal
 

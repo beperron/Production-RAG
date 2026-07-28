@@ -65,7 +65,8 @@ todo = [p for p in sorted(SRC.iterdir()) if p.suffix.lower() in SUFFIXES and str
 print(f"KB build: {len(done)} done, {len(todo)} to do, provider={cfg.parse_provider}, "
       f"dense={'on' if emb else 'off'}, provenance={'on' if pmap else 'off'}", flush=True)
 
-logger = BuildEventLogger(KB / "build_events.jsonl")
+build_id = f"{KB.name}-{datetime.datetime.now().strftime('%Y%m%dT%H%M%S')}"
+logger = BuildEventLogger(build_id)
 logger.event("build_start", total_todo=len(todo), already_done=len(done),
              provider=cfg.parse_provider, dense_enabled=emb is not None)
 

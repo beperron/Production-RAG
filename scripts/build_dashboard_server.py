@@ -1,33 +1,37 @@
 #!/usr/bin/env python3
 """Build-time pedantic dashboard — live view of a running scripts/build_kb.py.
 
-Reads the JSONL event log(s) a build writes (see
-src/parsevault/pipeline/build_events.py) and serves a browser panel that
-polls and re-renders it. Two independent processes, decoupled by the file(s)
-on disk: the dashboard can point at a build running on another machine, and
-can reopen a finished build's log later for review.
+Reads the build_log table a build writes straight into Postgres (see
+src/parsevault/pipeline/build_events.py and postgres/init/001_schema.sql)
+and serves a browser panel that polls and re-renders it. Two independent
+processes, decoupled by Postgres rather than a file: the dashboard can point
+at a build running on another machine on the same network (the local stack
+binds 0.0.0.0:5433), and can reopen a finished build's log later for review.
 
-Multiple builds: pass one or more --root directories (scanned recursively for
-build_events.jsonl files) and/or explicit --events files. The dashboard lists
-every build it finds under /api/builds and a picker in the UI switches which
-one /api/events streams — no restart needed when a new build starts.
+Multiple builds share one build_log table, distinguished by build_id. The
+dashboard lists every build_id it finds under /api/builds and a picker in
+the UI switches which one /api/events streams — no restart needed when a
+new build starts.
 
-Stdlib-only (http.server + ThreadingHTTPServer), matching
-scripts/law_search_server.py's structure. No auth — localhost-only, same
-posture as that server.
+http.server + ThreadingHTTPServer, matching scripts/law_search_server.py's
+structure, plus psycopg for the Postgres reads. No auth — localhost-only,
+same posture as that server.
 
-Run:  python scripts/build_dashboard_server.py --root knowledge-base [--root /tmp/scratch] [--port 8901]
+Run:  python scripts/build_dashboard_server.py [--dsn postgresql://...] [--port 8901]
 """
 from __future__ import annotations
 
 import argparse
 import json
+from contextlib import contextmanager
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
-_ROOTS: list[Path] = []
-_EXPLICIT: list[Path] = []
+import psycopg
+
+from parsevault.pipeline.build_events import default_dsn
+
+_DSN = default_dsn()
 
 # Palette lifted from scripts/law_search_server.py's "paper / seal-red" theme
 # for visual consistency across the two tools.
@@ -375,28 +379,35 @@ setInterval(tick, 1000);
 </body></html>"""
 
 
-def _read_events(path: Path) -> list[dict]:
+@contextmanager
+def _connect():
+    conn = psycopg.connect(_DSN)
+    try:
+        yield conn
+    finally:
+        conn.close()
+
+
+def _read_events(conn, build_id: str) -> list[dict]:
+    rows = conn.execute(
+        "select ts, stage, fields from build_log where build_id = %s order by seq",
+        (build_id,),
+    ).fetchall()
     events = []
-    if not path.is_file():
-        return events
-    with open(path, "r", encoding="utf-8") as fh:
-        for line in fh:
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                events.append(json.loads(line))
-            except json.JSONDecodeError:
-                continue
+    for ts, stage, fields in rows:
+        e = dict(fields or {})
+        e["ts"] = ts.isoformat(timespec="seconds")
+        e["stage"] = stage
+        events.append(e)
     return events
 
 
-def _discover_builds() -> list[Path]:
-    found: set[Path] = {p.resolve() for p in _EXPLICIT if p.is_file()}
-    for root in _ROOTS:
-        if root.is_dir():
-            found.update(p.resolve() for p in root.glob("**/build_events.jsonl"))
-    return sorted(found)
+def _discover_builds(conn) -> list[dict]:
+    rows = conn.execute(
+        "select build_id, max(ts) as last_seen "
+        "from build_log group by build_id order by last_seen desc"
+    ).fetchall()
+    return [{"build_id": build_id, "last_seen": last_seen} for build_id, last_seen in rows]
 
 
 def _summarize(events: list[dict]) -> dict:
@@ -453,25 +464,34 @@ class Handler(BaseHTTPRequestHandler):
         if u.path == "/health":
             return self._send("ok", ctype="text/plain")
         if u.path == "/api/builds":
-            builds = _discover_builds()
-            out = []
-            for p in builds:
-                events = _read_events(p)
-                summary = _summarize(events)
-                out.append({
-                    "id": str(p),
-                    "path": str(p),
-                    "label": p.parent.name,
-                    "mtime": p.stat().st_mtime if p.is_file() else 0,
-                    **summary,
-                })
+            try:
+                with _connect() as conn:
+                    builds = _discover_builds(conn)
+                    out = []
+                    for b in builds:
+                        events = _read_events(conn, b["build_id"])
+                        summary = _summarize(events)
+                        out.append({
+                            "id": b["build_id"],
+                            "path": b["build_id"],
+                            "label": b["build_id"],
+                            "mtime": b["last_seen"].timestamp() if b["last_seen"] else 0,
+                            **summary,
+                        })
+            except psycopg.Error as e:
+                return self._send(json.dumps({"builds": [], "error": str(e)}), ctype="application/json")
             out.sort(key=lambda b: b["mtime"], reverse=True)
             return self._send(json.dumps({"builds": out}), ctype="application/json")
         if u.path == "/api/events":
             qs = parse_qs(u.query)
             build_id = (qs.get("build") or [""])[0]
-            valid = {str(p) for p in _discover_builds()}
-            events = _read_events(Path(build_id)) if build_id in valid else []
+            events = []
+            if build_id:
+                try:
+                    with _connect() as conn:
+                        events = _read_events(conn, build_id)
+                except psycopg.Error:
+                    events = []
             return self._send(json.dumps({"events": events}), ctype="application/json")
         if u.path == "/":
             page = _PAGE.replace("__CSS__", _CSS)
@@ -480,23 +500,19 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
-    global _ROOTS, _EXPLICIT
+    global _DSN
     ap = argparse.ArgumentParser()
-    ap.add_argument("--events", action="append", default=[],
-                     help="explicit build_events.jsonl path (repeatable)")
-    ap.add_argument("--root", action="append", default=[], dest="roots",
-                     help="directory tree to scan for build_events.jsonl files, "
-                          "recursively (repeatable)")
+    ap.add_argument("--dsn", default=None,
+                     help="Postgres DSN for the build_log table "
+                          "(default: $BUILD_LOG_DSN, or the local carolina-policy "
+                          "stack on port 5433)")
     ap.add_argument("--port", type=int, default=8901)
     ap.add_argument("--host", default="127.0.0.1")
     args = ap.parse_args()
-    if not args.events and not args.roots:
-        ap.error("at least one --events or --root is required")
-    _EXPLICIT = [Path(p) for p in args.events]
-    _ROOTS = [Path(p) for p in args.roots]
+    if args.dsn:
+        _DSN = args.dsn
     httpd = ThreadingHTTPServer((args.host, args.port), Handler)
-    where = ", ".join(str(p) for p in (_ROOTS + _EXPLICIT)) or "(none)"
-    print(f"build dashboard -> http://{args.host}:{args.port}  (scanning {where})", flush=True)
+    print(f"build dashboard -> http://{args.host}:{args.port}  (postgres build_log)", flush=True)
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
