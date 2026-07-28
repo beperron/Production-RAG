@@ -680,15 +680,26 @@ def apply_provenance(meta: DocMetadata, prov: dict | None) -> DocMetadata:
 
 
 def load_provenance_manifest(path: str | Path, *, retrieved_at: str = "") -> dict[str, dict]:
-    """Load a SOURCE_INDEX-style manifest into a ``{filename: provenance}`` map.
+    """Load a SOURCE_INDEX- or MANIFEST.csv-style manifest into a
+    ``{filename: provenance}`` map.
 
-    Accepts a JSON list of entries with ``filename`` (or ``path``) and any of
-    ``source_url``/``source_domain``/``section``. ``retrieved_at`` is applied to
-    every entry that doesn't carry its own.
+    Accepts either a JSON list of entries or a CSV (e.g. a KB's own
+    ``MANIFEST.csv``, written by ``catalog_kb.py`` from a previous build) —
+    dispatched on the path's suffix. Either way, entries need a
+    ``filename``/``path`` plus any of ``source_url``/``source_domain``/
+    ``section``. ``retrieved_at`` is applied to every entry that doesn't carry
+    its own — a CSV row's own ``retrieved_at`` column always wins.
     """
-    import json
+    path = Path(path)
+    if path.suffix.lower() == ".csv":
+        import csv
 
-    entries = json.loads(Path(path).read_text(encoding="utf-8"))
+        with path.open(newline="", encoding="utf-8") as f:
+            entries = list(csv.DictReader(f))
+    else:
+        import json
+
+        entries = json.loads(path.read_text(encoding="utf-8"))
     out: dict[str, dict] = {}
     skipped = 0
     for e in entries:
