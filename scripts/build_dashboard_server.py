@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
 """Build-time pedantic dashboard — live view of a running scripts/build_kb.py.
 
-Reads the JSONL event log a build writes (see
+Reads the JSONL event log(s) a build writes (see
 src/parsevault/pipeline/build_events.py) and serves a browser panel that
-polls and re-renders it. Two independent processes, decoupled by the file on
-disk: the dashboard can point at a build running on another machine, and can
-reopen a finished build's log later for review.
+polls and re-renders it. Two independent processes, decoupled by the file(s)
+on disk: the dashboard can point at a build running on another machine, and
+can reopen a finished build's log later for review.
+
+Multiple builds: pass one or more --root directories (scanned recursively for
+build_events.jsonl files) and/or explicit --events files. The dashboard lists
+every build it finds under /api/builds and a picker in the UI switches which
+one /api/events streams — no restart needed when a new build starts.
 
 Stdlib-only (http.server + ThreadingHTTPServer), matching
 scripts/law_search_server.py's structure. No auth — localhost-only, same
 posture as that server.
 
-Run:  python scripts/build_dashboard_server.py --events knowledge-base/nc-child-welfare/build_events.jsonl [--port 8901]
+Run:  python scripts/build_dashboard_server.py --root knowledge-base [--root /tmp/scratch] [--port 8901]
 """
 from __future__ import annotations
 
@@ -19,9 +24,10 @@ import argparse
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
-_EVENTS_PATH: Path | None = None
+_ROOTS: list[Path] = []
+_EXPLICIT: list[Path] = []
 
 # Palette lifted from scripts/law_search_server.py's "paper / seal-red" theme
 # for visual consistency across the two tools.
@@ -36,6 +42,11 @@ a{color:var(--link)}
   font:12px/1.4 var(--mono);padding:6px 20px;text-align:center;letter-spacing:.02em}
 header{padding:22px 20px 14px;max-width:1040px;margin:0 auto}
 h1{font:600 24px/1.2 var(--display);margin:0 0 10px}
+.build-picker-wrap{display:flex;align-items:center;gap:8px;margin:0 0 12px}
+.build-picker-wrap label{font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+#build-picker{font:13px var(--mono);background:var(--card);color:var(--ink);border:1px solid var(--line);
+  border-radius:6px;padding:5px 8px;flex:1;max-width:520px}
+.build-path{font:11px var(--mono);color:var(--muted);margin:2px 0 0;word-break:break-all}
 .progress-wrap{margin:10px 0}
 .progress-bar{height:10px;border-radius:6px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
 .progress-fill{height:100%;background:var(--seal);transition:width .3s ease}
@@ -90,9 +101,14 @@ footer.complete{color:var(--ok)}
 _PAGE = """<!doctype html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
 <title>Build Dashboard</title><style>__CSS__</style></head><body>
-<div class=banner>BUILD DASHBOARD &middot; reads __EVENTS_PATH__ &middot; localhost, read-only</div>
+<div class=banner>BUILD DASHBOARD &middot; localhost, read-only</div>
 <header>
   <h1>Build Dashboard</h1>
+  <div class=build-picker-wrap>
+    <label for=build-picker>Build</label>
+    <select id=build-picker><option value="">loading builds&hellip;</option></select>
+  </div>
+  <div class=build-path id=build-path></div>
   <div class=progress-wrap>
     <div class=progress-bar><div class=progress-fill id=progress-fill style="width:0%"></div></div>
     <div class=progress-label id=progress-label>waiting for events&hellip;</div>
@@ -108,6 +124,9 @@ _PAGE = """<!doctype html><html lang=en><head><meta charset=utf-8>
 <script>
 const ROUTE_LABEL = {native:'N', tesseract:'T', vlm:'V', llamaparse:'L', text:'P'};
 const ROUTE_NAME = {native:'native text layer', tesseract:'Tesseract OCR', vlm:'vision-language model', llamaparse:'LlamaParse (cloud)', text:'plain text'};
+
+let CURRENT_BUILD = new URLSearchParams(location.search).get('build') || '';
+let BUILDS = [];
 
 function esc(s){
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -250,10 +269,45 @@ function fmtElapsed(seconds){
   return `${m}m ${r}s`;
 }
 
-async function tick(){
+function fmtBuildOption(b){
+  const count = b.total_todo ? `${b.done}/${b.total_todo}` : `${b.docs_indexed}`;
+  return `${b.label} — ${count} docs (${b.status})`;
+}
+
+async function refreshBuilds(){
   let data;
   try {
-    const resp = await fetch('/api/events');
+    const resp = await fetch('/api/builds');
+    data = await resp.json();
+  } catch (e) {
+    return;
+  }
+  BUILDS = data.builds || [];
+  const picker = document.getElementById('build-picker');
+  if (BUILDS.length === 0){
+    picker.innerHTML = '<option value="">no builds found</option>';
+    CURRENT_BUILD = '';
+    document.getElementById('build-path').textContent = '';
+    return;
+  }
+  const stillValid = BUILDS.some(b => b.id === CURRENT_BUILD);
+  if (!CURRENT_BUILD || !stillValid) CURRENT_BUILD = BUILDS[0].id;
+  picker.innerHTML = BUILDS.map(b =>
+    `<option value="${esc(b.id)}"${b.id === CURRENT_BUILD ? ' selected' : ''}>${esc(fmtBuildOption(b))}</option>`
+  ).join('');
+  const active = BUILDS.find(b => b.id === CURRENT_BUILD);
+  document.getElementById('build-path').textContent = active ? active.path : '';
+}
+
+async function tick(){
+  await refreshBuilds();
+  if (!CURRENT_BUILD){
+    document.getElementById('timeline').innerHTML = '<div class=empty>No builds found under the configured roots yet.</div>';
+    return;
+  }
+  let data;
+  try {
+    const resp = await fetch('/api/events?build=' + encodeURIComponent(CURRENT_BUILD));
     data = await resp.json();
   } catch (e) {
     return;
@@ -300,8 +354,20 @@ async function tick(){
     footer.className = 'complete';
     footer.innerHTML = `build complete &middot; ${buildDone.docs} docs &middot; ${buildDone.chunks} chunks &middot; ` +
       `report: ${esc(buildDone.report_path)}`;
+  } else {
+    footer.className = '';
+    footer.innerHTML = '';
   }
 }
+
+document.getElementById('build-picker').addEventListener('change', (ev) => {
+  CURRENT_BUILD = ev.target.value;
+  const url = new URL(location);
+  if (CURRENT_BUILD) url.searchParams.set('build', CURRENT_BUILD);
+  else url.searchParams.delete('build');
+  history.replaceState(null, '', url);
+  tick();
+});
 
 tick();
 setInterval(tick, 1000);
@@ -325,6 +391,51 @@ def _read_events(path: Path) -> list[dict]:
     return events
 
 
+def _discover_builds() -> list[Path]:
+    found: set[Path] = {p.resolve() for p in _EXPLICIT if p.is_file()}
+    for root in _ROOTS:
+        if root.is_dir():
+            found.update(p.resolve() for p in root.glob("**/build_events.jsonl"))
+    return sorted(found)
+
+
+def _summarize(events: list[dict]) -> dict:
+    total_todo = 0
+    done_idx = 0
+    build_done = None
+    degradations = 0
+    doc_errors = 0
+    docs_indexed = 0
+    for e in events:
+        stage = e.get("stage")
+        if stage == "build_start":
+            total_todo = e.get("total_todo", 0)
+        elif stage == "doc_start":
+            done_idx = e.get("index", done_idx)
+        elif stage == "extract_done":
+            degradations += len(e.get("degradations") or [])
+        elif stage == "index_done":
+            docs_indexed += 1
+            if (e.get("dense_missing") or 0) > 0:
+                degradations += 1
+        elif stage == "doc_error":
+            doc_errors += 1
+            degradations += 1
+        elif stage == "build_done":
+            build_done = e
+    status = "done" if build_done else ("running" if events else "idle")
+    return {
+        "status": status,
+        "total_todo": total_todo,
+        "done": done_idx,
+        "docs_indexed": docs_indexed,
+        "doc_errors": doc_errors,
+        "degradations": degradations,
+        "elapsed_s": build_done.get("elapsed_s") if build_done else None,
+        "chunks": build_done.get("chunks") if build_done else None,
+    }
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *a):  # quiet
         pass
@@ -341,25 +452,51 @@ class Handler(BaseHTTPRequestHandler):
         u = urlparse(self.path)
         if u.path == "/health":
             return self._send("ok", ctype="text/plain")
+        if u.path == "/api/builds":
+            builds = _discover_builds()
+            out = []
+            for p in builds:
+                events = _read_events(p)
+                summary = _summarize(events)
+                out.append({
+                    "id": str(p),
+                    "path": str(p),
+                    "label": p.parent.name,
+                    "mtime": p.stat().st_mtime if p.is_file() else 0,
+                    **summary,
+                })
+            out.sort(key=lambda b: b["mtime"], reverse=True)
+            return self._send(json.dumps({"builds": out}), ctype="application/json")
         if u.path == "/api/events":
-            events = _read_events(_EVENTS_PATH)
+            qs = parse_qs(u.query)
+            build_id = (qs.get("build") or [""])[0]
+            valid = {str(p) for p in _discover_builds()}
+            events = _read_events(Path(build_id)) if build_id in valid else []
             return self._send(json.dumps({"events": events}), ctype="application/json")
         if u.path == "/":
-            page = _PAGE.replace("__CSS__", _CSS).replace("__EVENTS_PATH__", str(_EVENTS_PATH))
+            page = _PAGE.replace("__CSS__", _CSS)
             return self._send(page)
         self._send("not found", status=404, ctype="text/plain")
 
 
 def main():
-    global _EVENTS_PATH
+    global _ROOTS, _EXPLICIT
     ap = argparse.ArgumentParser()
-    ap.add_argument("--events", required=True, help="path to build_events.jsonl")
+    ap.add_argument("--events", action="append", default=[],
+                     help="explicit build_events.jsonl path (repeatable)")
+    ap.add_argument("--root", action="append", default=[], dest="roots",
+                     help="directory tree to scan for build_events.jsonl files, "
+                          "recursively (repeatable)")
     ap.add_argument("--port", type=int, default=8901)
     ap.add_argument("--host", default="127.0.0.1")
     args = ap.parse_args()
-    _EVENTS_PATH = Path(args.events)
+    if not args.events and not args.roots:
+        ap.error("at least one --events or --root is required")
+    _EXPLICIT = [Path(p) for p in args.events]
+    _ROOTS = [Path(p) for p in args.roots]
     httpd = ThreadingHTTPServer((args.host, args.port), Handler)
-    print(f"build dashboard -> http://{args.host}:{args.port}  (watching {_EVENTS_PATH})", flush=True)
+    where = ", ".join(str(p) for p in (_ROOTS + _EXPLICIT)) or "(none)"
+    print(f"build dashboard -> http://{args.host}:{args.port}  (scanning {where})", flush=True)
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
