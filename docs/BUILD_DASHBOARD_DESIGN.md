@@ -206,6 +206,17 @@ Apply the same instrumentation shape to `scripts/build_legal_kb.py` once the
 pattern is proven in `build_kb.py` — don't do both at once; get one working
 and reviewed first.
 
+**2026-07-28 update (shared runner):** superseded. `build_legal_kb.py` had
+drifted from this instrumentation for months (no `event_sink`, no raster
+config — invisible to the dashboard, fixed on `bugfix/legal-kb-build-parity`).
+The per-doc loop, event emission, checkpointing, and finalize sequence
+described in this section now live in one place —
+`src/parsevault/pipeline/build_runner.py`'s `run_corpus_build()` — which both
+`build_kb.py` and `build_legal_kb.py` call. The event *contract* (§1) is
+unchanged; it's just no longer possible for one script to silently miss it.
+Only the genuinely corpus-specific pieces (provenance derivation, category/
+topic vs. section labeling, suffix set) stay in the individual scripts.
+
 ## 4. New script: `scripts/build_dashboard_server.py`
 
 Model directly on `scripts/law_search_server.py`'s structure: stdlib
