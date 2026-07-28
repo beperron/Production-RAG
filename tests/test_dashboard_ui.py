@@ -277,3 +277,223 @@ def test_clicking_page_badge_opens_source_pdf_in_new_tab(
         popup.close()
     finally:
         page.close()
+
+
+# --------------------------------------------------------------------- #
+# "Low confidence only" filter
+# --------------------------------------------------------------------- #
+
+def _write_build_with_two_docs(dsn, build_id, clean_pages, flagged_pages):
+    logger = BuildEventLogger(build_id, dsn=dsn)
+    logger.event("build_start", total_todo=2, provider="local")
+    logger.event("doc_start", index=1, total=2, path="clean.pdf")
+    logger.event(
+        "extract_done", doc_id="clean", path="clean.pdf", extractor="local-cascade",
+        page_count=len(clean_pages), pages=clean_pages, degradations=[],
+    )
+    logger.event("doc_start", index=2, total=2, path="flagged.pdf")
+    logger.event(
+        "extract_done", doc_id="flagged", path="flagged.pdf", extractor="local-cascade",
+        page_count=len(flagged_pages), pages=flagged_pages, degradations=[],
+    )
+    logger.close()
+
+
+def test_low_confidence_filter_takes_clean_documents_off_the_board(
+    pg_test_dsn, dashboard_server, chromium_browser
+):
+    clean_pages = [
+        {"page_number": 1, "route": "tesseract", "chars": 500, "elapsed_seconds": 1.0,
+         "flagged": False, "flag_reasons": [], "garbled": False,
+         "ocr_mean_confidence": 92.0, "vlm_agreement": None, "preview": ""},
+    ]
+    flagged_pages = [
+        {"page_number": 1, "route": "tesseract", "chars": 500, "elapsed_seconds": 1.0,
+         "flagged": True, "flag_reasons": ["low_ocr_confidence(40<65)"], "garbled": False,
+         "ocr_mean_confidence": 40.0, "vlm_agreement": None, "preview": ""},
+    ]
+    _write_build_with_two_docs(pg_test_dsn, "ui-conf-filter", clean_pages, flagged_pages)
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-conf-filter")
+        page.wait_for_selector('details.card[data-path="clean.pdf"]')
+        page.wait_for_selector('details.card[data-path="flagged.pdf"]')
+
+        page.click("#conf-flagged")
+        page.wait_for_function(
+            'document.querySelector(\'details.card[data-path="clean.pdf"]\') === null'
+        )
+        assert page.locator('details.card[data-path="flagged.pdf"]').count() == 1
+
+        # Switching back to "All pages" brings the clean doc back.
+        page.click("#conf-all")
+        page.wait_for_selector('details.card[data-path="clean.pdf"]')
+    finally:
+        page.close()
+
+
+def test_confidence_threshold_slider_reclassifies_a_borderline_page(
+    pg_test_dsn, dashboard_server, chromium_browser
+):
+    # 70 sits between the two thresholds we'll try: not low-confidence at the
+    # default 65 cutoff, but low-confidence once the slider is raised to 80.
+    pages = [
+        {"page_number": 1, "route": "tesseract", "chars": 500, "elapsed_seconds": 1.0,
+         "flagged": False, "flag_reasons": [], "garbled": False,
+         "ocr_mean_confidence": 70.0, "vlm_agreement": None, "preview": ""},
+    ]
+    _write_build_with_pages(pg_test_dsn, "ui-conf-threshold", pages=pages)
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-conf-threshold")
+        page.wait_for_selector('details.card[data-path="d1.pdf"]')
+
+        page.click("#conf-flagged")
+        page.wait_for_function(
+            'document.querySelector(\'details.card[data-path="d1.pdf"]\') === null'
+        )
+
+        page.evaluate(
+            "() => { const el = document.getElementById('conf-threshold-range');"
+            " el.value = 80; el.dispatchEvent(new Event('input')); }"
+        )
+        page.wait_for_selector('details.card[data-path="d1.pdf"]')
+    finally:
+        page.close()
+
+
+def test_chunk_table_filters_to_chunks_touching_a_low_confidence_page(
+    pg_test_dsn, dashboard_server, chromium_browser
+):
+    logger = BuildEventLogger("ui-conf-chunks", dsn=pg_test_dsn)
+    logger.event("build_start", total_todo=1, provider="local")
+    logger.event("doc_start", index=1, total=1, path="d1.pdf")
+    logger.event(
+        "extract_done", doc_id="d1", path="d1.pdf", extractor="local-cascade",
+        page_count=2,
+        pages=[
+            {"page_number": 1, "route": "tesseract", "chars": 500, "elapsed_seconds": 1.0,
+             "flagged": False, "flag_reasons": [], "garbled": False,
+             "ocr_mean_confidence": 92.0, "vlm_agreement": None, "preview": ""},
+            {"page_number": 2, "route": "tesseract", "chars": 500, "elapsed_seconds": 1.0,
+             "flagged": True, "flag_reasons": ["low_ocr_confidence(40<65)"], "garbled": False,
+             "ocr_mean_confidence": 40.0, "vlm_agreement": None, "preview": ""},
+        ],
+        degradations=[],
+    )
+    logger.event(
+        "chunk_done", doc_id="d1", chunk_count=2,
+        chunks=[
+            _chunk(1, page_start=1, page_end=1),
+            _chunk(2, page_start=2, page_end=2),
+        ],
+    )
+    logger.close()
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-conf-chunks")
+        page.click("details summary")
+        page.wait_for_selector("table.chunktbl tbody tr")
+        assert page.locator("table.chunktbl tbody tr").count() == 2
+
+        page.click("#conf-flagged")
+        page.wait_for_function(
+            "document.querySelectorAll('table.chunktbl tbody tr').length === 1"
+        )
+        assert "p2-2" in page.inner_text("table.chunktbl")
+        assert "p1-1" not in page.inner_text("table.chunktbl")
+    finally:
+        page.close()
+
+
+# --------------------------------------------------------------------- #
+# Extraction-route filter
+# --------------------------------------------------------------------- #
+
+def test_route_filter_checkbox_hides_pages_of_that_route(
+    pg_test_dsn, dashboard_server, chromium_browser
+):
+    _write_build_with_pages(pg_test_dsn, "ui-route-filter", pages=[
+        {"page_number": 1, "route": "native", "chars": 500, "elapsed_seconds": 0.1,
+         "flagged": False, "flag_reasons": [], "preview": ""},
+        {"page_number": 2, "route": "tesseract", "chars": 500, "elapsed_seconds": 0.1,
+         "flagged": False, "flag_reasons": [], "preview": ""},
+    ])
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-route-filter")
+        page.click("details summary")
+        page.wait_for_selector(".pg")
+        assert page.locator(".pg").count() == 2
+
+        page.click('.route-check[data-route="tesseract"]')
+        page.wait_for_function("document.querySelectorAll('.pg').length === 1")
+        assert page.locator(".pg.native").count() == 1
+        assert page.locator(".pg.tesseract").count() == 0
+
+        # Toggling it back on restores the page.
+        page.click('.route-check[data-route="tesseract"]')
+        page.wait_for_function("document.querySelectorAll('.pg').length === 2")
+    finally:
+        page.close()
+
+
+def test_route_filter_takes_a_single_route_document_off_the_board(
+    pg_test_dsn, dashboard_server, chromium_browser
+):
+    clean_pages = [
+        {"page_number": 1, "route": "native", "chars": 500, "elapsed_seconds": 0.1,
+         "flagged": False, "flag_reasons": [], "preview": ""},
+    ]
+    flagged_pages = [
+        {"page_number": 1, "route": "tesseract", "chars": 500, "elapsed_seconds": 0.1,
+         "flagged": False, "flag_reasons": [], "preview": ""},
+    ]
+    _write_build_with_two_docs(pg_test_dsn, "ui-route-board", clean_pages, flagged_pages)
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-route-board")
+        page.wait_for_selector('details.card[data-path="clean.pdf"]')
+        page.wait_for_selector('details.card[data-path="flagged.pdf"]')
+
+        page.click('.route-check[data-route="native"]')
+        page.wait_for_function(
+            'document.querySelector(\'details.card[data-path="clean.pdf"]\') === null'
+        )
+        assert page.locator('details.card[data-path="flagged.pdf"]').count() == 1
+    finally:
+        page.close()
+
+
+def test_route_filter_combines_with_confidence_filter(
+    pg_test_dsn, dashboard_server, chromium_browser
+):
+    _write_build_with_pages(pg_test_dsn, "ui-route-conf-combo", pages=[
+        {"page_number": 1, "route": "native", "chars": 500, "elapsed_seconds": 0.1,
+         "flagged": True, "flag_reasons": ["garbled_text"], "garbled": True, "preview": ""},
+        {"page_number": 2, "route": "tesseract", "chars": 500, "elapsed_seconds": 0.1,
+         "flagged": True, "flag_reasons": ["low_ocr_confidence(40<65)"], "garbled": False,
+         "ocr_mean_confidence": 40.0, "vlm_agreement": None, "preview": ""},
+    ])
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-route-conf-combo")
+        page.click("details summary")
+        page.wait_for_selector(".pg")
+
+        page.click("#conf-flagged")
+        page.wait_for_function("document.querySelectorAll('.pg').length === 2")
+
+        # Both pages are flagged, so both survive the confidence filter alone;
+        # excluding the native route on top should leave just the tesseract one.
+        page.click('.route-check[data-route="native"]')
+        page.wait_for_function("document.querySelectorAll('.pg').length === 1")
+        assert page.locator(".pg.tesseract").count() == 1
+    finally:
+        page.close()

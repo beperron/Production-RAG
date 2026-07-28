@@ -774,6 +774,10 @@ def build_document_metadata(
                     "elapsed_seconds": round(p.elapsed_seconds, 3),
                     "flagged": bool(p.quality.get("flagged")) if p.quality else False,
                     "flag_reasons": p.quality.get("flag_reasons", []) if p.quality else [],
+                    "garbled": bool(p.quality.get("garbled")) if p.quality else False,
+                    "ocr_mean_confidence": p.quality.get("ocr_mean_confidence") if p.quality else None,
+                    "vlm_agreement": p.quality.get("vlm_agreement") if p.quality else None,
+                    "verification_status": p.quality.get("verification_status", "unreviewed") if p.quality else "unreviewed",
                     "preview": _preview(p.markdown),
                     "raster_path": p.raster_path or None,
                 }

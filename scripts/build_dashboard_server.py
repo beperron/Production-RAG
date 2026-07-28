@@ -78,14 +78,20 @@ a{color:var(--link)}
 header{padding:22px 20px 14px;max-width:1320px;margin:0 auto}
 h1{font:600 24px/1.2 var(--display);margin:0}
 .header-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px}
+.header-toggles{display:flex;align-items:flex-start;gap:10px;flex:none}
+.conf-toggle-col{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .build-picker-wrap{display:flex;align-items:center;gap:8px;margin:0 0 12px}
 .build-picker-wrap label{font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 #build-picker{font:13px var(--mono);background:var(--card);color:var(--ink);border:1px solid var(--line);
   border-radius:6px;padding:5px 8px;flex:1;max-width:520px}
 .tz-toggle{display:flex;font:11px var(--mono);border:1px solid var(--line);border-radius:6px;overflow:hidden;flex:none}
 .tz-btn{background:var(--card);color:var(--muted);border:none;padding:5px 10px;cursor:pointer}
-.tz-btn.active{background:var(--seal);color:#fff}
+.tz-btn.active{background:var(--ok);color:#fff}
 .tz-btn:not(.active):hover{background:var(--soft)}
+.conf-toggle .tz-btn.active{background:var(--link)}
+.conf-threshold{display:none;align-items:center;gap:6px;font:11px var(--mono);color:var(--muted)}
+.conf-threshold input[type=range]{width:120px}
+.conf-threshold-val{color:var(--ink);min-width:2ch;display:inline-block}
 .run-pills{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
 .run-pill{display:flex;align-items:center;gap:6px;font:11px var(--mono);color:var(--seal-deep);
   background:#FCEEEE;border:1px solid var(--seal);border-radius:999px;padding:3px 10px 3px 8px;
@@ -142,7 +148,10 @@ main{max-width:1320px;margin:14px auto 60px;padding:0 20px}
 .timechart-wrap h2{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:0 0 8px}
 .timechart{display:flex;flex-direction:column;gap:2px}
 .timechart-row{display:flex;align-items:center;gap:8px}
+.timechart-row input[type=checkbox]{flex:none;width:14px;height:14px;cursor:pointer}
 .timechart-label{font:12px var(--mono);color:var(--ink);width:110px;flex:none;text-align:right}
+.timechart-row:has(input:not(:checked)) .timechart-label,
+.timechart-row:has(input:not(:checked)) .timechart-val{opacity:.5}
 .timechart-track{flex:1;background:var(--soft);border-radius:4px;height:18px;overflow:hidden}
 .timechart-fill{height:100%;border-radius:0 4px 4px 0;transition:width .3s ease}
 .timechart-val{font:12px var(--mono);color:var(--muted);width:64px;flex:none}
@@ -167,6 +176,7 @@ table.chunktbl td.preview{font:12.5px/1.4 var(--display);color:var(--ink);white-
 .dense-ok{color:var(--ok);font:600 13px var(--mono)}
 .dense-warn{color:var(--seal-deep);font:600 13px var(--mono);background:#FCEEEE;border-radius:6px;padding:2px 8px;display:inline-block}
 .err{color:var(--seal-deep);font:13px var(--mono);white-space:pre-wrap}
+.empty-inline{color:var(--muted);font-style:italic;font-size:12.5px}
 .empty{color:var(--muted);text-align:center;padding:40px 0;font-style:italic}
 footer{max-width:1320px;margin:0 auto;padding:20px;color:var(--muted);font:11px var(--mono);border-top:1px solid var(--line-soft)}
 footer.complete{color:var(--ok)}
@@ -179,9 +189,22 @@ _PAGE = """<!doctype html><html lang=en><head><meta charset=utf-8>
 <header>
   <div class=header-top>
     <h1>Corpus Build Dashboard</h1>
-    <div class=tz-toggle role=group aria-label="Timestamp timezone — applies to displayed clock times, not build IDs">
-      <button type=button id=tz-local class=tz-btn>Local</button>
-      <button type=button id=tz-utc class=tz-btn>UTC</button>
+    <div class=header-toggles>
+      <div class=tz-toggle role=group aria-label="Timestamp timezone — applies to displayed clock times, not build IDs">
+        <button type=button id=tz-local class=tz-btn>Local</button>
+        <button type=button id=tz-utc class=tz-btn>UTC</button>
+      </div>
+      <div class=conf-toggle-col>
+        <div class="tz-toggle conf-toggle" role=group aria-label="Filter pages and documents shown below by extraction confidence">
+          <button type=button id=conf-all class=tz-btn>All pages</button>
+          <button type=button id=conf-flagged class=tz-btn>Low confidence only</button>
+        </div>
+        <div class=conf-threshold id=conf-threshold-wrap>
+          <label for=conf-threshold-range>Threshold</label>
+          <input type=range id=conf-threshold-range min=0 max=100 value=65>
+          <span class=conf-threshold-val id=conf-threshold-val>65</span>
+        </div>
+      </div>
     </div>
   </div>
   <div class=run-pills id=run-pills></div>
@@ -218,6 +241,13 @@ const ROUTE_ORDER = ['native', 'vlm', 'tesseract', 'llamaparse', 'text', 'docx']
 let CURRENT_BUILD = new URLSearchParams(location.search).get('build') || '';
 let BUILDS = [];
 let TZ_MODE = localStorage.getItem('buildDashboardTz') || 'local';  // 'local' | 'utc'
+let CONF_MODE = localStorage.getItem('buildDashboardConfMode') || 'all';  // 'all' | 'flagged'
+let CONF_THRESHOLD = Number(localStorage.getItem('buildDashboardConfThreshold') || 65);
+// Routes unchecked out of the page/chunk/card view. Empty by default (show
+// everything). Populated from ROUTE_ORDER, so adding a new extraction route
+// to the ROUTE_LABEL/ROUTE_NAME/ROUTE_COLOR/ROUTE_ORDER maps above is the only
+// step needed to add its filter chip too — no other code changes.
+let EXCLUDED_ROUTES = new Set(JSON.parse(localStorage.getItem('buildDashboardExcludedRoutes') || '[]'));
 
 // Build/run IDs are opaque identifiers, not times — shown verbatim everywhere,
 // never reformatted. The toggle only touches genuine wall-clock displays, e.g.
@@ -239,6 +269,25 @@ function setTzMode(mode){
   document.getElementById('tz-local').classList.toggle('active', mode === 'local');
   document.getElementById('tz-utc').classList.toggle('active', mode === 'utc');
   tick();  // re-render immediately with the new mode rather than waiting for the next poll
+}
+
+function setConfMode(mode){
+  CONF_MODE = mode;
+  localStorage.setItem('buildDashboardConfMode', mode);
+  document.getElementById('conf-all').classList.toggle('active', mode === 'all');
+  document.getElementById('conf-flagged').classList.toggle('active', mode === 'flagged');
+  document.getElementById('conf-threshold-wrap').style.display = mode === 'flagged' ? 'flex' : 'none';
+  tick();
+}
+
+// Checkbox state lives on the "Time by extraction route" rows themselves
+// (see renderTimeChart) rather than a separate control — toggling one just
+// flips membership in EXCLUDED_ROUTES and re-renders via the next tick().
+function toggleRoute(route){
+  if (EXCLUDED_ROUTES.has(route)) EXCLUDED_ROUTES.delete(route);
+  else EXCLUDED_ROUTES.add(route);
+  localStorage.setItem('buildDashboardExcludedRoutes', JSON.stringify([...EXCLUDED_ROUTES]));
+  tick();
 }
 
 function esc(s){
@@ -318,6 +367,26 @@ function buildCards(events){
   return {cards, buildStart, buildDone, lastDocStart, degradations, routeTime};
 }
 
+// Whether a page counts as "low confidence" at the given threshold (0-100).
+// OCR and VLM pages carry a real numeric signal (Tesseract mean confidence,
+// VLM↔OCR Jaccard agreement scaled to 0-100) so the slider applies directly;
+// other routes (native/llamaparse/text/docx) have no such number, so they
+// fall back to the boolean `flagged` the pipeline already computed for them
+// (garbled text / empty page are the only ways those routes get flagged).
+function isLowConfidence(p, threshold){
+  if (p.garbled || !p.chars) return true;
+  if (p.ocr_mean_confidence != null) return p.ocr_mean_confidence < threshold;
+  if (p.vlm_agreement != null) return (p.vlm_agreement * 100) < threshold;
+  return !!p.flagged;
+}
+
+// The single predicate every page/chunk/card view filters through: excluded
+// by route, or (in "low confidence only" mode) not actually low-confidence.
+function pageVisible(p, mode, threshold, excludedRoutes){
+  if (excludedRoutes && excludedRoutes.has(p.route || '?')) return false;
+  return mode === 'flagged' ? isLowConfidence(p, threshold) : true;
+}
+
 function pageStrip(pages, docPath){
   return pages.map(p => {
     const route = p.route || '?';
@@ -325,9 +394,13 @@ function pageStrip(pages, docPath){
     const hasPreview = p.raster_path ? ' has-preview' : '';
     const routeName = ROUTE_NAME[route] || route;
     const timing = p.elapsed_seconds != null ? `, ${p.elapsed_seconds.toFixed(2)}s` : '';
+    const confBits = [];
+    if (p.ocr_mean_confidence != null) confBits.push(`OCR conf ${p.ocr_mean_confidence.toFixed(0)}`);
+    if (p.vlm_agreement != null) confBits.push(`VLM agreement ${p.vlm_agreement.toFixed(2)}`);
+    const confStr = confBits.length ? ` [${confBits.join(', ')}]` : '';
     const title = p.flagged
-      ? esc((p.flag_reasons || []).join('; '))
-      : `page ${p.page_number} — read via ${routeName} (${p.chars} chars${timing})`;
+      ? esc((p.flag_reasons || []).join('; ')) + esc(confStr)
+      : `page ${p.page_number} — read via ${routeName} (${p.chars} chars${timing})${esc(confStr)}`;
     const rasterAttr = p.raster_path ? ` data-raster="${esc(p.raster_path)}"` : '';
     return `<div class="pg ${esc(route)}${flagged}${hasPreview}" title="${title}" data-page="${p.page_number}" data-doc="${esc(docPath)}"${rasterAttr}>${ROUTE_LABEL[route] || '?'}</div>`;
   }).join('');
@@ -369,17 +442,36 @@ function chunkRowHtml(c){
   </tr>`;
 }
 
-function chunkTable(chunks, path){
+// A chunk is visible if any page it spans is — chunks don't carry their own
+// route/confidence signal, only the page range they were cut from.
+function chunkTouchesVisiblePage(c, pagesByNumber, mode, threshold, excludedRoutes){
+  for (let pn = c.page_start; pn <= c.page_end; pn++){
+    const p = pagesByNumber.get(pn);
+    if (p && pageVisible(p, mode, threshold, excludedRoutes)) return true;
+  }
+  return false;
+}
+
+function chunkTable(chunks, path, mode, threshold, excludedRoutes, pagesByNumber){
+  const filtersActive = mode === 'flagged' || (excludedRoutes && excludedRoutes.size > 0);
+  const filtered = filtersActive
+    ? chunks.filter(c => chunkTouchesVisiblePage(c, pagesByNumber, mode, threshold, excludedRoutes))
+    : chunks;
   const expanded = EXPANDED_CHUNK_TABLES.has(path);
-  const shown = expanded ? chunks : chunks.slice(0, CHUNK_TABLE_ROW_CAP);
-  const hidden = chunks.length - shown.length;
+  const shown = expanded ? filtered : filtered.slice(0, CHUNK_TABLE_ROW_CAP);
+  const hidden = filtered.length - shown.length;
   const rows = shown.map(chunkRowHtml).join('');
   let more = '';
-  if (hidden > 0 || (expanded && chunks.length > CHUNK_TABLE_ROW_CAP)){
+  if (hidden > 0 || (expanded && filtered.length > CHUNK_TABLE_ROW_CAP)){
     const label = expanded ? 'Show fewer chunks' : `Show ${hidden} more chunks`;
     more = `<tr class=chunk-more-row><td colspan=5>
       <button type=button class=chunk-more-btn data-path="${esc(path)}">${label}</button>
     </td></tr>`;
+  }
+  if (filtered.length === 0){
+    return `<div class=chunktbl-wrap><table class=chunktbl><thead><tr>
+      <th>Heading</th><th>What's in this piece</th><th>Size</th><th>Pages</th><th>Routes</th>
+    </tr></thead><tbody><tr><td colspan=5 class=empty-inline>no matching chunks</td></tr></tbody></table></div>`;
   }
   return `<div class=chunktbl-wrap><table class=chunktbl><thead><tr>
     <th>Heading</th><th>What's in this piece</th><th>Size</th><th>Pages</th><th>Routes</th>
@@ -409,12 +501,18 @@ function renderTimeChart(routeTime){
     const pct = max > 0 ? Math.max(2, Math.round(100 * seconds / max)) : 0;
     const color = ROUTE_COLOR[route] || '#8A8577';
     const label = ROUTE_NAME[route] || route;
+    const checked = EXCLUDED_ROUTES.has(route) ? '' : ' checked';
     return `<div class=timechart-row>
+      <input type=checkbox class=route-check data-route="${esc(route)}"${checked}
+        style="accent-color:${color}" title="Show/hide ${esc(label)} pages below">
       <span class=timechart-label>${esc(label)}</span>
       <div class=timechart-track><div class=timechart-fill style="width:${pct}%;background:${color}"></div></div>
       <span class=timechart-val>${fmtRouteSeconds(seconds)}</span>
     </div>`;
   }).join('');
+  for (const cb of el.querySelectorAll('.route-check')){
+    cb.addEventListener('change', () => toggleRoute(cb.dataset.route));
+  }
 }
 
 function hashChip(sha256){
@@ -423,20 +521,22 @@ function hashChip(sha256){
   return ` &middot; <span class=hash-chip title="sha256:${esc(sha256)}">sha256:${esc(short)}&hellip;</span>`;
 }
 
-function cardHtml(c){
+function cardHtml(c, mode, threshold, excludedRoutes){
   const name = esc(c.path.split('/').pop());
   const idx = (c.index != null && c.total != null) ? `${c.index}/${c.total}` : '';
+  const pagesByNumber = new Map((c.pages || []).map(p => [p.page_number, p]));
   let body = '';
   if (c.page_count != null){
+    const pagesForView = (c.pages || []).filter(p => pageVisible(p, mode, threshold, excludedRoutes));
     body += `<div class=sect><h4>Extraction &middot; ${esc(c.extractor || '?')} &middot; ${c.page_count} pages &middot; ${esc(fmtTs(c.extracted_at))}${hashChip(c.source_sha256)}</h4>
       <p class=explain>Reading the words off each page &mdash; picking a different method per page (plain text, a vision model, or OCR) depending on how the page is laid out.</p>
-      <div class=pagestrip>${pageStrip(c.pages || [], c.path)}</div>
-      ${pageQuotes(c.pages || [])}</div>`;
+      <div class=pagestrip>${pageStrip(pagesForView, c.path) || '<span class=empty-inline>no matching pages</span>'}</div>
+      ${pageQuotes(pagesForView)}</div>`;
   }
   if (c.chunk_count != null){
     body += `<div class=sect><h4>Chunking &middot; ${c.chunk_count} chunks</h4>
       <p class=explain>Splitting the document into smaller, self-contained pieces small enough to search precisely, each still tagged with the section heading it came from.</p>
-      ${chunkTable(c.chunks || [], c.path)}</div>`;
+      ${chunkTable(c.chunks || [], c.path, mode, threshold, excludedRoutes, pagesByNumber)}</div>`;
   }
   if (c.dense_embedded != null){
     const warn = c.dense_missing > 0;
@@ -560,14 +660,25 @@ async function tick(){
   degradeEl.classList.toggle('hot', degradations > 0);
 
   const timeline = document.getElementById('timeline');
-  if (cards.length === 0){
-    timeline.innerHTML = '<div class=empty>No events yet.</div>';
+  // A document that has finished extraction with zero pages matching the
+  // active filters (confidence and/or route) passed all the way through
+  // clean relative to what's being looked for — take it off the board
+  // entirely rather than showing an empty card. Docs still mid-extraction (no
+  // c.pages yet) haven't been checked yet, so keep showing those regardless.
+  const filtersActive = CONF_MODE === 'flagged' || EXCLUDED_ROUTES.size > 0;
+  const visibleCards = filtersActive
+    ? cards.filter(c => !c.pages || c.pages.some(p => pageVisible(p, CONF_MODE, CONF_THRESHOLD, EXCLUDED_ROUTES)))
+    : cards;
+  if (visibleCards.length === 0){
+    timeline.innerHTML = cards.length === 0
+      ? '<div class=empty>No events yet.</div>'
+      : '<div class=empty>No documents match the current filters.</div>';
   } else {
     // Preserve which cards are expanded across re-renders.
     const openPaths = new Set(
       [...timeline.querySelectorAll('details[open]')].map(d => d.dataset.path)
     );
-    timeline.innerHTML = cards.slice().reverse().map(cardHtml).join('');
+    timeline.innerHTML = visibleCards.slice().reverse().map(c => cardHtml(c, CONF_MODE, CONF_THRESHOLD, EXCLUDED_ROUTES)).join('');
     for (const d of timeline.querySelectorAll('details')){
       if (openPaths.has(d.dataset.path)) d.open = true;
     }
@@ -598,6 +709,19 @@ document.getElementById('build-picker').addEventListener('change', (ev) => {
 document.getElementById('tz-local').addEventListener('click', () => setTzMode('local'));
 document.getElementById('tz-utc').addEventListener('click', () => setTzMode('utc'));
 setTzMode(TZ_MODE);
+
+document.getElementById('conf-all').addEventListener('click', () => setConfMode('all'));
+document.getElementById('conf-flagged').addEventListener('click', () => setConfMode('flagged'));
+const confRange = document.getElementById('conf-threshold-range');
+confRange.value = CONF_THRESHOLD;
+document.getElementById('conf-threshold-val').textContent = CONF_THRESHOLD;
+confRange.addEventListener('input', (ev) => {
+  CONF_THRESHOLD = Number(ev.target.value);
+  document.getElementById('conf-threshold-val').textContent = CONF_THRESHOLD;
+  localStorage.setItem('buildDashboardConfThreshold', CONF_THRESHOLD);
+  tick();
+});
+setConfMode(CONF_MODE);
 
 // Page-badge hover preview + click-through to the source file. Delegated on
 // #timeline (a stable container) rather than bound per-.pg element, since the
