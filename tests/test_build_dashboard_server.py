@@ -10,6 +10,7 @@ pyproject.toml.
 """
 from __future__ import annotations
 
+import datetime
 import json
 import urllib.request
 
@@ -58,6 +59,42 @@ def test_summarize_done_build():
     assert s["chunks"] == 10
 
 
+def test_summarize_aborted_build():
+    # A build_aborted closing event (appended after a killed run — see
+    # project_provenance_no_blockchain memory) is terminal, same as build_done,
+    # and takes priority over staleness so it doesn't also get relabeled "stalled".
+    events = [
+        {"stage": "build_start", "total_todo": 5},
+        {"stage": "doc_start", "index": 1},
+        {"stage": "build_aborted", "reason": "killed manually"},
+    ]
+    ancient = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(hours=1)
+    s = dash._summarize(events, ancient)
+    assert s["status"] == "aborted"
+
+
+def test_summarize_stalled_build():
+    # No terminal event and no activity within _STALE_AFTER — a killed build
+    # that never got a closing event shouldn't throb as "running" forever.
+    events = [
+        {"stage": "build_start", "total_todo": 5},
+        {"stage": "doc_start", "index": 1},
+    ]
+    stale_last_seen = datetime.datetime.now(datetime.timezone.utc) - dash._STALE_AFTER - datetime.timedelta(seconds=1)
+    s = dash._summarize(events, stale_last_seen)
+    assert s["status"] == "stalled"
+
+
+def test_summarize_recent_activity_is_running_not_stalled():
+    events = [
+        {"stage": "build_start", "total_todo": 5},
+        {"stage": "doc_start", "index": 1},
+    ]
+    recent_last_seen = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(seconds=5)
+    s = dash._summarize(events, recent_last_seen)
+    assert s["status"] == "running"
+
+
 # --------------------------------------------------------------------- #
 # DB-backed reads
 # --------------------------------------------------------------------- #
@@ -96,7 +133,7 @@ def test_index_page_serves_html(dashboard_server):
     with urllib.request.urlopen(f"{dashboard_server}/") as resp:
         assert resp.status == 200
         body = resp.read().decode()
-        assert "<title>Build Dashboard</title>" in body
+        assert "<title>Corpus Build Dashboard</title>" in body
         assert 'id=run-pills' in body  # throbbing-pill container for in-progress builds
 
 

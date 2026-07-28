@@ -22,6 +22,7 @@ Run:  python scripts/build_dashboard_server.py [--dsn postgresql://...] [--port 
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 from contextlib import contextmanager
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -45,11 +46,16 @@ a{color:var(--link)}
 .banner{background:#FCEEEE;border-bottom:1px solid var(--seal);color:var(--seal-deep);
   font:12px/1.4 var(--mono);padding:6px 20px;text-align:center;letter-spacing:.02em}
 header{padding:22px 20px 14px;max-width:1040px;margin:0 auto}
-h1{font:600 24px/1.2 var(--display);margin:0 0 10px}
+h1{font:600 24px/1.2 var(--display);margin:0}
+.header-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px}
 .build-picker-wrap{display:flex;align-items:center;gap:8px;margin:0 0 12px}
 .build-picker-wrap label{font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 #build-picker{font:13px var(--mono);background:var(--card);color:var(--ink);border:1px solid var(--line);
   border-radius:6px;padding:5px 8px;flex:1;max-width:520px}
+.tz-toggle{display:flex;font:11px var(--mono);border:1px solid var(--line);border-radius:6px;overflow:hidden;flex:none}
+.tz-btn{background:var(--card);color:var(--muted);border:none;padding:5px 10px;cursor:pointer}
+.tz-btn.active{background:var(--seal);color:#fff}
+.tz-btn:not(.active):hover{background:var(--soft)}
 .run-pills{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
 .run-pill{display:flex;align-items:center;gap:6px;font:11px var(--mono);color:var(--seal-deep);
   background:#FCEEEE;border:1px solid var(--seal);border-radius:999px;padding:3px 10px 3px 8px;
@@ -66,6 +72,8 @@ h1{font:600 24px/1.2 var(--display);margin:0 0 10px}
 .progress-label{font:12px var(--mono);color:var(--muted);margin-top:4px}
 .stat-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;min-width:140px}
+.stat-fill{flex:1 1 240px;min-width:0}
+.stat-fill .stat-val{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stat-label{font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 .stat-val{font:600 16px var(--display);margin-top:2px}
 .degrade-badge{background:var(--soft);color:var(--ok);font:600 15px var(--mono);border:1px solid var(--line)}
@@ -123,10 +131,16 @@ footer.complete{color:var(--ok)}
 
 _PAGE = """<!doctype html><html lang=en><head><meta charset=utf-8>
 <meta name=viewport content="width=device-width,initial-scale=1">
-<title>Build Dashboard</title><style>__CSS__</style></head><body>
-<div class=banner>BUILD DASHBOARD &middot; localhost, read-only</div>
+<title>Corpus Build Dashboard</title><style>__CSS__</style></head><body>
+<div class=banner>CORPUS BUILD DASHBOARD &middot; localhost, read-only</div>
 <header>
-  <h1>Build Dashboard</h1>
+  <div class=header-top>
+    <h1>Corpus Build Dashboard</h1>
+    <div class=tz-toggle role=group aria-label="Timestamp timezone — applies to displayed clock times, not build IDs">
+      <button type=button id=tz-local class=tz-btn>Local</button>
+      <button type=button id=tz-utc class=tz-btn>UTC</button>
+    </div>
+  </div>
   <div class=run-pills id=run-pills></div>
   <div class=build-picker-wrap>
     <label for=build-picker>Build</label>
@@ -138,8 +152,9 @@ _PAGE = """<!doctype html><html lang=en><head><meta charset=utf-8>
     <div class=progress-label id=progress-label>waiting for events&hellip;</div>
   </div>
   <div class=stat-row>
+    <div class=stat><div class=stat-label>Started</div><div class=stat-val id=stat-started>&ndash;</div></div>
     <div class=stat><div class=stat-label>Elapsed</div><div class=stat-val id=stat-elapsed>&ndash;</div></div>
-    <div class=stat><div class=stat-label>Current doc</div><div class=stat-val id=stat-current>&ndash;</div></div>
+    <div class="stat stat-fill"><div class=stat-label>Current doc</div><div class=stat-val id=stat-current title="">&ndash;</div></div>
     <div class="stat degrade-badge" id=stat-degrade>0 degradations</div>
   </div>
   <div class=timechart-wrap>
@@ -159,6 +174,29 @@ const ROUTE_ORDER = ['native', 'vlm', 'tesseract', 'llamaparse', 'text', 'docx']
 
 let CURRENT_BUILD = new URLSearchParams(location.search).get('build') || '';
 let BUILDS = [];
+let TZ_MODE = localStorage.getItem('buildDashboardTz') || 'local';  // 'local' | 'utc'
+
+// Build/run IDs are opaque identifiers, not times — shown verbatim everywhere,
+// never reformatted. The toggle only touches genuine wall-clock displays, e.g.
+// event timestamps pulled from build_log's `ts` (real Postgres timestamptz).
+function fmtTs(isoString){
+  if (!isoString) return '–';
+  const date = new Date(isoString);
+  if (isNaN(date.getTime())) return isoString;
+  const opts = {year: 'numeric', month: 'short', day: '2-digit',
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false};
+  return TZ_MODE === 'utc'
+    ? date.toLocaleString('en-US', {...opts, timeZone: 'UTC'}) + ' UTC'
+    : date.toLocaleString('en-US', opts);
+}
+
+function setTzMode(mode){
+  TZ_MODE = mode;
+  localStorage.setItem('buildDashboardTz', mode);
+  document.getElementById('tz-local').classList.toggle('active', mode === 'local');
+  document.getElementById('tz-utc').classList.toggle('active', mode === 'utc');
+  tick();  // re-render immediately with the new mode rather than waiting for the next poll
+}
 
 function esc(s){
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -191,6 +229,7 @@ function buildCards(events){
         card.page_count = e.page_count;
         card.pages = e.pages || [];
         card.degradations = e.degradations || [];
+        card.extracted_at = e.ts;
         card.status = 'chunking';
         degradations += card.degradations.length;
         byDocId.set(e.doc_id, card);
@@ -306,7 +345,7 @@ function cardHtml(c){
   const idx = (c.index != null && c.total != null) ? `${c.index}/${c.total}` : '';
   let body = '';
   if (c.page_count != null){
-    body += `<div class=sect><h4>Extraction &middot; ${esc(c.extractor || '?')} &middot; ${c.page_count} pages</h4>
+    body += `<div class=sect><h4>Extraction &middot; ${esc(c.extractor || '?')} &middot; ${c.page_count} pages &middot; ${esc(fmtTs(c.extracted_at))}</h4>
       <p class=explain>Reading the words off each page &mdash; picking a different method per page (plain text, a vision model, or OCR) depending on how the page is laid out.</p>
       <div class=pagestrip>${pageStrip(c.pages || [])}</div>
       ${pageQuotes(c.pages || [])}</div>`;
@@ -425,7 +464,11 @@ async function tick(){
     elapsedSec = (Date.now() - new Date(buildStart.ts).getTime()) / 1000;
   }
   document.getElementById('stat-elapsed').textContent = fmtElapsed(elapsedSec);
-  document.getElementById('stat-current').textContent = buildDone ? 'done' : (lastDocStart ? lastDocStart.path.split('/').pop() : '–');
+  document.getElementById('stat-started').textContent = buildStart ? fmtTs(buildStart.ts) : '–';
+  const currentName = buildDone ? 'done' : (lastDocStart ? lastDocStart.path.split('/').pop() : '–');
+  const statCurrent = document.getElementById('stat-current');
+  statCurrent.textContent = currentName;
+  statCurrent.title = currentName;
 
   const degradeEl = document.getElementById('stat-degrade');
   degradeEl.textContent = `${degradations} degradation${degradations === 1 ? '' : 's'}`;
@@ -449,7 +492,7 @@ async function tick(){
   if (buildDone){
     footer.className = 'complete';
     footer.innerHTML = `build complete &middot; ${buildDone.docs} docs &middot; ${buildDone.chunks} chunks &middot; ` +
-      `report: ${esc(buildDone.report_path)}`;
+      `finished ${esc(fmtTs(buildDone.ts))} &middot; report: ${esc(buildDone.report_path)}`;
   } else {
     footer.className = '';
     footer.innerHTML = '';
@@ -459,6 +502,9 @@ async function tick(){
 document.getElementById('build-picker').addEventListener('change', (ev) => {
   selectBuild(ev.target.value);
 });
+document.getElementById('tz-local').addEventListener('click', () => setTzMode('local'));
+document.getElementById('tz-utc').addEventListener('click', () => setTzMode('utc'));
+setTzMode(TZ_MODE);
 
 tick();
 setInterval(tick, 1000);
@@ -497,10 +543,20 @@ def _discover_builds(conn) -> list[dict]:
     return [{"build_id": build_id, "last_seen": last_seen} for build_id, last_seen in rows]
 
 
-def _summarize(events: list[dict]) -> dict:
+# A killed/crashed build never writes build_done, so without this it would
+# show as "running" (and throb in the pills) forever — there's no event that
+# says "the process died". Once build_log stays quiet for this long with no
+# terminal event, treat it as stalled rather than live. Generous on purpose:
+# a single large scanned doc can spend minutes in Tesseract/VLM between
+# events, and that's still a real running build, not a dead one.
+_STALE_AFTER = datetime.timedelta(seconds=300)
+
+
+def _summarize(events: list[dict], last_seen: datetime.datetime | None = None) -> dict:
     total_todo = 0
     done_idx = 0
     build_done = None
+    build_aborted = None
     degradations = 0
     doc_errors = 0
     docs_indexed = 0
@@ -521,7 +577,19 @@ def _summarize(events: list[dict]) -> dict:
             degradations += 1
         elif stage == "build_done":
             build_done = e
-    status = "done" if build_done else ("running" if events else "idle")
+        elif stage == "build_aborted":
+            build_aborted = e
+    if build_done:
+        status = "done"
+    elif build_aborted:
+        status = "aborted"
+    elif events:
+        stale = last_seen is not None and (
+            datetime.datetime.now(datetime.timezone.utc) - last_seen > _STALE_AFTER
+        )
+        status = "stalled" if stale else "running"
+    else:
+        status = "idle"
     return {
         "status": status,
         "total_todo": total_todo,
@@ -557,7 +625,7 @@ class Handler(BaseHTTPRequestHandler):
                     out = []
                     for b in builds:
                         events = _read_events(conn, b["build_id"])
-                        summary = _summarize(events)
+                        summary = _summarize(events, b["last_seen"])
                         out.append({
                             "id": b["build_id"],
                             "path": b["build_id"],
