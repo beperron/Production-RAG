@@ -12,7 +12,10 @@ from __future__ import annotations
 
 import datetime
 import json
+import urllib.error
 import urllib.request
+
+import pytest
 
 import build_dashboard_server as dash
 
@@ -215,3 +218,88 @@ def test_api_builds_reports_multiple_concurrent_running_builds(pg_test_dsn, dash
     assert builds["concurrent-a"]["status"] == "running"
     assert builds["concurrent-b"]["status"] == "running"
     assert builds["concurrent-done"]["status"] == "done"
+
+
+# --------------------------------------------------------------------- #
+# /api/raster and /api/source — page-preview hover/click-through
+# --------------------------------------------------------------------- #
+
+def test_raster_route_serves_png_bytes(dashboard_server, tmp_path, monkeypatch):
+    monkeypatch.setattr(dash, "_SERVE_ROOTS", [tmp_path.resolve()])
+    png = tmp_path / "doc-p1.png"
+    png.write_bytes(b"\x89PNG\r\n\x1a\nfake-png-bytes")
+
+    with urllib.request.urlopen(
+        f"{dashboard_server}/api/raster?path={png}"
+    ) as resp:
+        assert resp.status == 200
+        assert resp.headers["Content-Type"] == "image/png"
+        assert resp.read() == png.read_bytes()
+
+
+def test_raster_route_rejects_path_outside_allowlist(dashboard_server, tmp_path, monkeypatch):
+    allowed = tmp_path / "allowed"
+    allowed.mkdir()
+    monkeypatch.setattr(dash, "_SERVE_ROOTS", [allowed.resolve()])
+    outside = tmp_path / "outside.png"
+    outside.write_bytes(b"not allowed")
+
+    with pytest.raises(urllib.error.HTTPError) as exc:
+        urllib.request.urlopen(f"{dashboard_server}/api/raster?path={outside}")
+    assert exc.value.code == 404
+
+
+def test_raster_route_rejects_non_png_suffix(dashboard_server, tmp_path, monkeypatch):
+    monkeypatch.setattr(dash, "_SERVE_ROOTS", [tmp_path.resolve()])
+    txt = tmp_path / "not-an-image.txt"
+    txt.write_text("hello")
+
+    with pytest.raises(urllib.error.HTTPError) as exc:
+        urllib.request.urlopen(f"{dashboard_server}/api/raster?path={txt}")
+    assert exc.value.code == 404
+
+
+def test_source_route_serves_pdf_inline(dashboard_server, tmp_path, monkeypatch):
+    # Must render inline (no Content-Disposition: attachment) — that's what lets
+    # a #page=N fragment work in the browser's built-in PDF viewer instead of
+    # triggering a download.
+    monkeypatch.setattr(dash, "_SERVE_ROOTS", [tmp_path.resolve()])
+    pdf = tmp_path / "source.pdf"
+    pdf.write_bytes(b"%PDF-1.4 fake pdf bytes")
+
+    with urllib.request.urlopen(
+        f"{dashboard_server}/api/source?path={pdf}"
+    ) as resp:
+        assert resp.status == 200
+        assert resp.headers["Content-Type"] == "application/pdf"
+        assert resp.headers.get("Content-Disposition") is None
+        assert resp.read() == pdf.read_bytes()
+
+
+def test_extract_done_raster_path_persists_through_postgres_roundtrip(pg_test_dsn, dashboard_server):
+    """extract_done's per-page raster_path (including the null case for a page
+    with no archived raster) must survive the JSONB round-trip through
+    build_log — that's what the dashboard reads to decide which page badges
+    get a hover preview."""
+    logger = BuildEventLogger("raster-roundtrip-test", dsn=pg_test_dsn)
+    logger.event(
+        "extract_done", doc_id="d1", path="d1.pdf", extractor="local-cascade", page_count=2,
+        pages=[
+            {"page_number": 1, "route": "native", "chars": 500, "elapsed_seconds": 0.012,
+             "flagged": False, "flag_reasons": [], "preview": "hi", "raster_path": None},
+            {"page_number": 2, "route": "tesseract", "chars": 900, "elapsed_seconds": 4.5,
+             "flagged": True, "flag_reasons": ["low confidence"], "preview": "hi",
+             "raster_path": "/kb/rasters/d1-p2.png"},
+        ],
+        degradations=[],
+    )
+    logger.close()
+
+    with urllib.request.urlopen(
+        f"{dashboard_server}/api/events?build=raster-roundtrip-test"
+    ) as resp:
+        events = json.loads(resp.read())["events"]
+
+    pages = events[0]["pages"]
+    assert pages[0]["raster_path"] is None
+    assert pages[1]["raster_path"] == "/kb/rasters/d1-p2.png"

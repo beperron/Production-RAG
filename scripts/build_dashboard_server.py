@@ -24,8 +24,10 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import os
 from contextlib import contextmanager
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 import psycopg
@@ -33,6 +35,34 @@ import psycopg
 from parsevault.pipeline.build_events import default_dsn
 
 _DSN = default_dsn()
+
+# Directories the dashboard is allowed to read raw files from (page rasters,
+# source PDFs) for the hover-preview/click-through feature. Colon-separated;
+# resolved once at import time. Configurable rather than hardcoded to
+# knowledge-base/ because build_kb.py's own default KB_SRC is
+# tests/Test-Docs/NC-Forms.
+def _default_serve_roots() -> list[Path]:
+    raw = os.environ.get("BUILD_DASHBOARD_SERVE_ROOTS", "knowledge-base:tests/Test-Docs")
+    return [Path(p).resolve() for p in raw.split(":") if p]
+
+
+_SERVE_ROOTS = _default_serve_roots()
+
+
+def _safe_resolve(raw_path: str, *, suffix: str) -> Path | None:
+    """Resolve a query-string path and confirm it's a real file, of the expected
+    type, inside one of the configured serve roots. Returns None (-> 404) on any
+    violation — this is the only thing standing between a localhost-only server
+    and an arbitrary-file-read via ?path=../../etc/passwd."""
+    try:
+        p = Path(raw_path).resolve()
+    except (OSError, ValueError):
+        return None
+    if p.suffix.lower() != suffix or not p.is_file():
+        return None
+    if not any(p == root or root in p.parents for root in _SERVE_ROOTS):
+        return None
+    return p
 
 # Palette lifted from scripts/law_search_server.py's "paper / seal-red" theme
 # for visual consistency across the two tools.
@@ -96,7 +126,7 @@ main{max-width:1320px;margin:14px auto 60px;padding:0 20px}
 .sect .explain{font:italic 12.5px/1.5 var(--display);color:var(--muted);margin:0 0 8px;max-width:640px}
 .pagestrip{display:flex;gap:3px;flex-wrap:wrap}
 .pg{width:22px;height:22px;border-radius:4px;font:10px var(--mono);display:flex;align-items:center;
-  justify-content:center;color:#fff;cursor:default}
+  justify-content:center;color:#fff;cursor:pointer}
 .pg.native{background:#3F7A57}
 .pg.tesseract{background:#B8860B}
 .pg.vlm{background:#2A5560}
@@ -104,6 +134,10 @@ main{max-width:1320px;margin:14px auto 60px;padding:0 20px}
 .pg.text{background:#5B6B73}
 .pg.docx{background:#8B5E34}
 .pg.flagged{outline:2px solid var(--seal-deep);outline-offset:1px}
+.pg.has-preview{box-shadow:inset 0 0 0 1px rgba(255,255,255,.5)}
+#page-preview-popup{display:none;position:absolute;z-index:50;background:var(--card);
+  border:1px solid var(--line);border-radius:8px;padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+#page-preview-popup img{display:block;max-width:320px;max-height:420px;border-radius:4px}
 .timechart-wrap{margin-top:12px}
 .timechart-wrap h2{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:0 0 8px}
 .timechart{display:flex;flex-direction:column;gap:2px}
@@ -284,16 +318,18 @@ function buildCards(events){
   return {cards, buildStart, buildDone, lastDocStart, degradations, routeTime};
 }
 
-function pageStrip(pages){
+function pageStrip(pages, docPath){
   return pages.map(p => {
     const route = p.route || '?';
     const flagged = p.flagged ? ' flagged' : '';
+    const hasPreview = p.raster_path ? ' has-preview' : '';
     const routeName = ROUTE_NAME[route] || route;
     const timing = p.elapsed_seconds != null ? `, ${p.elapsed_seconds.toFixed(2)}s` : '';
     const title = p.flagged
       ? esc((p.flag_reasons || []).join('; '))
       : `page ${p.page_number} — read via ${routeName} (${p.chars} chars${timing})`;
-    return `<div class="pg ${esc(route)}${flagged}" title="${title}">${ROUTE_LABEL[route] || '?'}</div>`;
+    const rasterAttr = p.raster_path ? ` data-raster="${esc(p.raster_path)}"` : '';
+    return `<div class="pg ${esc(route)}${flagged}${hasPreview}" title="${title}" data-page="${p.page_number}" data-doc="${esc(docPath)}"${rasterAttr}>${ROUTE_LABEL[route] || '?'}</div>`;
   }).join('');
 }
 
@@ -394,7 +430,7 @@ function cardHtml(c){
   if (c.page_count != null){
     body += `<div class=sect><h4>Extraction &middot; ${esc(c.extractor || '?')} &middot; ${c.page_count} pages &middot; ${esc(fmtTs(c.extracted_at))}${hashChip(c.source_sha256)}</h4>
       <p class=explain>Reading the words off each page &mdash; picking a different method per page (plain text, a vision model, or OCR) depending on how the page is laid out.</p>
-      <div class=pagestrip>${pageStrip(c.pages || [])}</div>
+      <div class=pagestrip>${pageStrip(c.pages || [], c.path)}</div>
       ${pageQuotes(c.pages || [])}</div>`;
   }
   if (c.chunk_count != null){
@@ -563,6 +599,46 @@ document.getElementById('tz-local').addEventListener('click', () => setTzMode('l
 document.getElementById('tz-utc').addEventListener('click', () => setTzMode('utc'));
 setTzMode(TZ_MODE);
 
+// Page-badge hover preview + click-through to the source file. Delegated on
+// #timeline (a stable container) rather than bound per-.pg element, since the
+// whole timeline is replaced via innerHTML every tick.
+document.getElementById('timeline').addEventListener('click', (ev) => {
+  const pg = ev.target.closest('.pg');
+  if (!pg || !pg.dataset.doc) return;
+  const url = '/api/source?path=' + encodeURIComponent(pg.dataset.doc) + '#page=' + pg.dataset.page;
+  window.open(url, '_blank');
+});
+
+let previewPopup = null;
+function ensurePreviewEl(){
+  if (previewPopup) return previewPopup;
+  const wrap = document.createElement('div');
+  wrap.id = 'page-preview-popup';
+  wrap.innerHTML = '<img id="page-preview-img">';
+  document.body.appendChild(wrap);
+  previewPopup = wrap;
+  return wrap;
+}
+document.getElementById('timeline').addEventListener('mouseover', (ev) => {
+  const pg = ev.target.closest('.pg.has-preview');
+  if (!pg) return;
+  const popup = ensurePreviewEl();
+  const img = popup.querySelector('img');
+  if (img.dataset.loadedFor !== pg.dataset.raster){
+    img.src = '/api/raster?path=' + encodeURIComponent(pg.dataset.raster);
+    img.dataset.loadedFor = pg.dataset.raster;
+  }
+  const rect = pg.getBoundingClientRect();
+  popup.style.left = (rect.left + window.scrollX) + 'px';
+  popup.style.top = (rect.bottom + window.scrollY + 6) + 'px';
+  popup.style.display = 'block';
+});
+document.getElementById('timeline').addEventListener('mouseout', (ev) => {
+  if (!ev.target.closest('.pg.has-preview')) return;
+  const popup = document.getElementById('page-preview-popup');
+  if (popup) popup.style.display = 'none';
+});
+
 tick();
 setInterval(tick, 1000);
 </script>
@@ -706,6 +782,20 @@ class Handler(BaseHTTPRequestHandler):
                 except psycopg.Error:
                     events = []
             return self._send(json.dumps({"events": events}), ctype="application/json")
+        if u.path == "/api/raster":
+            qs = parse_qs(u.query)
+            p = _safe_resolve((qs.get("path") or [""])[0], suffix=".png")
+            if p is None:
+                return self._send("not found or not allowed", status=404, ctype="text/plain")
+            return self._send(p.read_bytes(), ctype="image/png")
+        if u.path == "/api/source":
+            qs = parse_qs(u.query)
+            p = _safe_resolve((qs.get("path") or [""])[0], suffix=".pdf")
+            if p is None:
+                return self._send("not found or not allowed", status=404, ctype="text/plain")
+            # No Content-Disposition: attachment — must render inline so the
+            # browser's built-in PDF viewer honors a #page=N fragment.
+            return self._send(p.read_bytes(), ctype="application/pdf")
         if u.path == "/":
             page = _PAGE.replace("__CSS__", _CSS)
             return self._send(page)

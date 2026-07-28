@@ -7,7 +7,11 @@ Chromium binary isn't installed (see conftest.py's chromium_browser fixture).
 """
 from __future__ import annotations
 
+import urllib.parse
+
 from parsevault.pipeline.build_events import BuildEventLogger
+
+import build_dashboard_server as dash
 
 
 def _write_build(dsn, build_id, *, done=False):
@@ -65,6 +69,10 @@ def test_clicking_a_pill_switches_the_build_picker(pg_test_dsn, dashboard_server
 def _write_build_with_pages(dsn, build_id, pages):
     logger = BuildEventLogger(build_id, dsn=dsn)
     logger.event("build_start", total_todo=1, provider="local")
+    # doc_start must precede extract_done — buildCards() only pushes a card
+    # into the render list from doc_start; without it, extract_done still
+    # aggregates routeTime but the doc never gets a <details> card in the DOM.
+    logger.event("doc_start", index=1, total=1, path="d1.pdf")
     logger.event(
         "extract_done", doc_id="d1", path="d1.pdf", extractor="local-cascade",
         page_count=len(pages), pages=pages, degradations=[],
@@ -184,5 +192,88 @@ def test_chunk_table_caps_rows_and_expands_on_click(pg_test_dsn, dashboard_serve
         page.wait_for_function(
             "document.querySelectorAll('table.chunktbl tbody tr').length === 41"
         )
+    finally:
+        page.close()
+
+
+# --------------------------------------------------------------------- #
+# Page-badge hover preview + click-through
+# --------------------------------------------------------------------- #
+
+def test_page_badge_with_raster_shows_hover_preview_image(
+    pg_test_dsn, dashboard_server, chromium_browser, tmp_path, monkeypatch
+):
+    monkeypatch.setattr(dash, "_SERVE_ROOTS", [tmp_path.resolve()])
+    raster = tmp_path / "d1-p2.png"
+    raster.write_bytes(b"\x89PNG\r\n\x1a\nfake-png-bytes")
+
+    _write_build_with_pages(pg_test_dsn, "ui-hover-preview", pages=[
+        {"page_number": 1, "route": "native", "chars": 500, "elapsed_seconds": 0.1,
+         "flagged": False, "flag_reasons": [], "preview": "", "raster_path": None},
+        {"page_number": 2, "route": "tesseract", "chars": 900, "elapsed_seconds": 2.0,
+         "flagged": True, "flag_reasons": ["low confidence"], "preview": "",
+         "raster_path": str(raster)},
+    ])
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-hover-preview")
+        page.click("details summary")
+        page.wait_for_selector(".pg.has-preview")
+        assert page.locator(".pg.has-preview").count() == 1
+
+        page.hover(".pg.has-preview")
+        page.wait_for_selector("#page-preview-popup img")
+        page.wait_for_function(
+            "getComputedStyle(document.getElementById('page-preview-popup')).display !== 'none'"
+        )
+        src = page.get_attribute("#page-preview-popup img", "src")
+        assert urllib.parse.quote(str(raster), safe="") in src
+    finally:
+        page.close()
+
+
+def test_page_badge_without_raster_has_no_preview_affordance(
+    pg_test_dsn, dashboard_server, chromium_browser
+):
+    _write_build_with_pages(pg_test_dsn, "ui-no-preview", pages=[
+        {"page_number": 1, "route": "native", "chars": 500, "elapsed_seconds": 0.1,
+         "flagged": False, "flag_reasons": [], "preview": "", "raster_path": None},
+    ])
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-no-preview")
+        page.click("details summary")
+        page.wait_for_selector(".pg")
+        assert page.locator(".pg.has-preview").count() == 0
+
+        page.hover(".pg")
+        popup_display = page.eval_on_selector(
+            "#page-preview-popup", "el => getComputedStyle(el).display"
+        ) if page.locator("#page-preview-popup").count() else "none"
+        assert popup_display == "none"
+    finally:
+        page.close()
+
+
+def test_clicking_page_badge_opens_source_pdf_in_new_tab(
+    pg_test_dsn, dashboard_server, chromium_browser
+):
+    _write_build_with_pages(pg_test_dsn, "ui-click-through", pages=[
+        {"page_number": 3, "route": "native", "chars": 500, "elapsed_seconds": 0.1,
+         "flagged": False, "flag_reasons": [], "preview": "", "raster_path": None},
+    ])
+
+    page = chromium_browser.new_page()
+    try:
+        page.goto(f"{dashboard_server}/?build=ui-click-through")
+        page.click("details summary")
+        page.wait_for_selector(".pg")
+        with page.expect_popup() as popup_info:
+            page.click(".pg")
+        popup = popup_info.value
+        assert popup.url == f"{dashboard_server}/api/source?path=d1.pdf#page=3"
+        popup.close()
     finally:
         page.close()

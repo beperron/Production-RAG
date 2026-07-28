@@ -32,6 +32,13 @@ MANIFEST = Path("knowledge-base/SOURCE_INDEX.json")
 SUFFIXES = {".pdf", ".docx"}
 
 cfg = cascade_config_from_env()
+# Page-raster archival, on by default for this build: lets the dashboard show a
+# hover-preview of the exact image an OCR/VLM lane saw, for every OCR/VLM page
+# (not just flagged ones) — a reviewer's "does this look garbled?" check, not
+# just the dispute-audit use case raster_archive_dir was originally built for.
+# Still overridable via the existing env vars for that original purpose.
+cfg.raster_archive_dir = _os.environ.get("OCR_RASTER_ARCHIVE_DIR") or str(KB / "rasters")
+cfg.raster_archive_mode = _os.environ.get("OCR_RASTER_ARCHIVE_MODE") or "all"
 emb = embedder_from_env()
 pmap = load_provenance_manifest(MANIFEST, retrieved_at="") if MANIFEST.exists() else {}
 

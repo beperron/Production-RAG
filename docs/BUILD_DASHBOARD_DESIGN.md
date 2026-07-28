@@ -17,6 +17,27 @@ pip dependencies" non-goal in §Goal no longer holds — `psycopg[binary]` is
 now a `build`-extra dependency. See `src/parsevault/pipeline/build_events.py`
 and `scripts/build_dashboard_server.py` for the current implementation.
 
+**2026-07-28 update (page-preview):** each page badge in the per-page strip
+(§4 Panel layout) now supports hover-to-preview and click-to-open-source.
+`PageResult.raster_path` (`extractors/base.py`) carries the archived-raster
+PNG path for OCR/VLM-lane pages (set by `_archive_rasters` in
+`extractors/router.py`); `build_kb.py` turns raster archival on by default
+(`raster_archive_mode="all"`, into `<corpus>/rasters/`, sibling to
+`outputs/`/`sources/`) instead of it being an opt-in dispute-review-only
+setting. The `extract_done` event's per-page dict carries `raster_path`
+(`null` for pages with none — native-text pages never get one, by design:
+only pages that were already rasterized during extraction get a preview).
+Two new dashboard routes serve these: `GET /api/raster?path=<png>` and
+`GET /api/source?path=<pdf>` (inline, for a `#page=N` fragment to work),
+both checked against a configurable allowlist (`BUILD_DASHBOARD_SERVE_ROOTS`,
+default `knowledge-base:tests/Test-Docs`) since the dashboard otherwise has
+no static-file serving at all. This makes hover/click-through
+filesystem-local — it only works when the dashboard process can see the
+same disk the build wrote to, which narrows the "point the dashboard at a
+build on another machine over Postgres" architecture above, but that's
+inherent to "open the actual file on disk" and matches the reviewer
+workflow this was built for.
+
 ## Goal
 
 `scripts/build_kb.py` / `scripts/build_legal_kb.py` already print one line per

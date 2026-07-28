@@ -31,6 +31,10 @@ class PageResult:
     # Per-page quality record (pipeline.quality.PageQuality.to_dict()); populated
     # by the cascade. Empty for lanes that don't measure quality. (R3)
     quality: dict = field(default_factory=dict)
+    # Path to the archived page-raster PNG, if one was saved (OCR/VLM-lane pages
+    # only, per CascadeConfig.raster_archive_*) — the dashboard's sole signal for
+    # "does this page have a hover-preview image".
+    raster_path: str = ""
 
 
 @dataclass

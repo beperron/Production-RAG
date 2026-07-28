@@ -775,6 +775,7 @@ def build_document_metadata(
                     "flagged": bool(p.quality.get("flagged")) if p.quality else False,
                     "flag_reasons": p.quality.get("flag_reasons", []) if p.quality else [],
                     "preview": _preview(p.markdown),
+                    "raster_path": p.raster_path or None,
                 }
                 for p in result.pages[:_EVENT_ARRAY_CAP]
             ],
