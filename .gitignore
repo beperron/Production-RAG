@@ -25,3 +25,8 @@ knowledge-base/**/*.bak
 # Source PDFs are NOT shipped here (public, re-fetchable). The converted
 # markdown under outputs/ + docindex.json are the shipped, searchable form.
 knowledge-base/**/sources/
+
+# Page-raster PNGs archived for the build dashboard's hover-preview feature
+# (see scripts/backfill_page_rasters.py) — regeneratable from sources/ at any
+# time, and large; not meant to ship in the repo, only served locally.
+knowledge-base/**/rasters/
