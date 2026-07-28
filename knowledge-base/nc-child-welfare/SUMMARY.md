@@ -5,8 +5,8 @@
 ## At a glance
 
 - **Documents:** 504
-- **Chunks (retrievable passages):** 11233
-- **Total pages / words:** 4,161 / 1,962,518
+- **Chunks (retrievable passages):** 11262
+- **Total pages / words:** 4,161 / 1,968,076
 - **Provenance coverage:** 504/504 (100%) carry a source URL + retrieval date
 - **Retrieved between:** 2026-06-25 → 2026-06-25
 
@@ -51,7 +51,6 @@
 
 | Converter route | Documents | Share |
 | --- | ---: | ---: |
-| local-cascade | 502 | 99% |
-| llamaparse | 2 | 0% |
+| local-cascade | 504 | 100% |
 
 See `MANIFEST.csv` for the full per-document list with doc IDs, titles, source URLs, and SHA-256 content hashes.

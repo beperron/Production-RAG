@@ -2,21 +2,42 @@
   "doc_id": "3ba8dc7a5db043a3",
   "source_path": "knowledge-base/nc-child-welfare/sources/Appendix-2-PATH-NC-Child-Placement-and-Payment-Information-CPPI-Manual-April-2026.pdf",
   "source_sha256": "64cbd0dd82dce7c587f89954b6498d428f5af589d37a42db0904e292b17b4c03",
-  "content_sha256": "e454289ee787e0ed15411b34cc78678f355d69bc200f8fc7c9d465ecc2e88b80",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "c3b68556416c29590fde63f49a2f42029f1d245ac51e4db8832bad7bdecc2b44",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 16,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:02:00-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:15:41-04:00",
+  "host": "vega"
 }

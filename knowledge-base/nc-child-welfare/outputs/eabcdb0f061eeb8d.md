@@ -9,7 +9,9 @@
 
 ## DE SDM®
 
-Departamento de Salud y Servicios Humanos de North Carolina
+Departamento de Salud y Servicios
+
+Humanos de North Carolina
 
 División de Servicios Sociales
 
@@ -267,7 +269,9 @@ Seleccione todas las opciones que correspondan a cualquier niño del hogar. Cada
 
  Desarrollo atípico
 
- Problemas emocionales o de comportamiento
+ Problemas emocionales o de
+
+comportamiento
 
  Salud física o discapacidad
 
@@ -305,7 +309,9 @@ DSS-5229 Servicios de Bienestar Infantil © 2026 Evident Change 8
 
  Problemas de salud mental
 
- Sospecha o presencia de explotación sexual comercial
+ Sospecha o presencia de explotación
+
+sexual comercial
 
 <!-- page: 12 -->
 FORTALEZAS Y NECESIDADES
@@ -423,7 +429,9 @@ CSN7. Consumo de sustancias
 
 CSN8. Habilidades para la vida
 
- N/A. El niño es demasiado pequeño para evaluarlo, o las habilidades para la vida se evaluarán mediante otra evaluación.
+ N/A. El niño es demasiado pequeño para evaluarlo, o las habilidades para la vida se evaluarán mediante
+
+otra evaluación.
 
 |OPCIÓN|RESPUESTAS|
 |---|---|

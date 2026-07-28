@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/information-for-child-welfare-on-clinical-assessment-of-protective-parenting-capp-1.pdf",
   "source_sha256": "0fd6260d239eb30aa74a548bb3424e442995e9e63b3758563da220372337d05a",
   "content_sha256": "2ac5d4268dac2ed938f02b5623df3f1e997409dbb11f6d9c1d997034f7673d3b",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:14:09-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:30:25-04:00",
+  "host": "vega"
 }

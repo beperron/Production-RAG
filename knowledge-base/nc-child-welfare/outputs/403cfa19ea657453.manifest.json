@@ -2,21 +2,30 @@
   "doc_id": "403cfa19ea657453",
   "source_path": "knowledge-base/nc-child-welfare/sources/0603adminletter.pdf",
   "source_sha256": "16a115b5b20443036eebbc45cdce0c91d3de42ef92d52bc742cd8842c2d3a0a3",
-  "content_sha256": "3c3257c9123c1ff0061984893fbad847bb9b7861382bf17eadf2cdd2dc0480de",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "7d189268b24525b5a415b950cc0edf76765c44d4babd82613a05286e1e416ded",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 4,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:01:45-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:15:26-04:00",
+  "host": "vega"
 }

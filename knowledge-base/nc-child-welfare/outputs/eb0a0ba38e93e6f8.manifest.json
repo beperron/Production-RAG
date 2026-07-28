@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/dss-5288-ia.pdf",
   "source_sha256": "f52d67fbf72f173e142e4544e84294130a6cf34cda2cac21d3dfcf262d76f2a3",
   "content_sha256": "5a8f7164ff299c048d5fd07dcbd70c9e2a1e047d14af741518b3ccdd0dea2b77",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:11:15-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:26:55-04:00",
+  "host": "vega"
 }

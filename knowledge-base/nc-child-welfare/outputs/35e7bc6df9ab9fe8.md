@@ -47,7 +47,7 @@ Policy Overrides: (Override to High. check appropriate reason.) ______ 1 . Prior
 
 | | 1 . Prior se<br>2. Cases<br>treatme<br>3. Serious |
 |---|---|
-|<br> ______|<br> ______|
+|______|______|
 |<br>|<br>|
 
 parent(s) have not successfully completed treatment. _____ 4. Death of a sibling as a result of abuse or neglect.
@@ -137,7 +137,9 @@ ________________________________________________________________________________
 
 ____________________________________________________________________________________
 
-(d) SAFETY DECISION Identify your safety decision by checking the appropriate line below. Check one line only. This decision should be based on the assessment of all safety factors, protecting interventions, and any other information known about this case.
+(d) SAFETY DECISION Identify your safety decision by checking the appropriate line below. Check one line only. This decision
+
+should be based on the assessment of all safety factors, protecting interventions, and any other information known about this case.
 
 1. Safe to Return Home: ______ No further interventions.
 2. Safe with Services/Intervention: ______ Protecting safety interventions allow child to
@@ -152,8 +154,6 @@ ______ Placement remains the only protecting intervention possible for the child
 B = Custody/ Guardianship with a non-removal parent/relative
 
 - If the Case remains open and all child(ren) are reunified but DSS retains custody, future risk reassessments and family strengths and needs assessments are required.
-
-(Further reunification assessments are no longer required.)
 
 C = Custody or Guardianship with a court approved caretaker
 
@@ -180,18 +180,6 @@ SECTION D.
 
 ### RECOMMENDATION SUMMARY
 
-Continue with Reunification Efforts and
-
-Concurrent Planning
-
-Return Home
-
-Recommend
-
-### Names
-
-Children's
-
 1.
 
 2.
@@ -202,9 +190,23 @@ Children's
 
 5.
 
-- If the Case remains open, child continues in out-of-home placement and the court ordered agency to cease reasonable efforts to reunify, no future reunification
+Continue with Reunification
 
-assessments, risk reassessments or strengths and needs assessments are required.
+Concurrent Planning
+
+Efforts and
+
+Return Home
+
+Recommend
+
+### Names
+
+(Further reunification assessments are no longer required.)
+
+Children's
+
+- If the Case remains open, child continues in out-of-home placement and the court ordered agency to cease reasonable efforts to reunify, no future reunification
 
 Supervisor: ______________________________________________ Date: _____________________
 
@@ -212,7 +214,11 @@ Supervisor: ______________________________________________ Date: _______________
 
 ### Date: _____________________
 
-DSS-5227 Revised 08-09 Family Support and Child Welfare Services
+assessments, risk reassessments or strengths and needs assessments are required.
+
+Family Support and Child Welfare Services
+
+DSS-5227 Revised 08-09
 
 <!-- page: 6 -->
 NORTH CAROLINA FAMILY REUNIFICATION ASSESSMENT

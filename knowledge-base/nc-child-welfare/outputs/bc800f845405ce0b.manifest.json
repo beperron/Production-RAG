@@ -2,21 +2,29 @@
   "doc_id": "bc800f845405ce0b",
   "source_path": "knowledge-base/nc-child-welfare/sources/cps_cn0103.pdf",
   "source_sha256": "d6ff6e39a06a5ea94977998676c0fab8662d7326101e7ba15126f33184a7ddf9",
-  "content_sha256": "32dcae1d6cfc1a3923ec3b67ed248e56e2286bdf70b548d88ca24a0944937571",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "9419d668d5dc33da101cd7f43cfa86a7e9489dc7c18f66bfc29067eafe0d978b",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 3,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:10-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:22:01-04:00",
+  "host": "vega"
 }

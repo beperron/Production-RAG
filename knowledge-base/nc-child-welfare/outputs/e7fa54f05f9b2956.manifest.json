@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0013-Determination-of-Ability-to-Consent-HW-3.2024.docx",
   "source_sha256": "23e853ca2f55b1822c3d94372cf8fa8a14731b25e248a9e355c594d79843e0c4",
   "content_sha256": "79c6e96e1a63d4149a4727f548696f2d221dcac1a58c50c97e7416b5a92bfa75",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "docx"
   ],
+  "per_page_routes": [
+    "docx"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:31-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:31-04:00",
+  "host": "vega"
 }

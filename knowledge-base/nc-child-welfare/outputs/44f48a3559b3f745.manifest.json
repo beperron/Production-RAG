@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/dss-5325-ia.pdf",
   "source_sha256": "86d93286a3f2186e5550b264b87b69db4025a3f5a909b72d8438f54fdab38dd1",
   "content_sha256": "2bfb9adef140a5b1ec3dfd55f132a100f2cfb91194cad68df3f5b74022df9bc2",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:11:31-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:27:12-04:00",
+  "host": "vega"
 }

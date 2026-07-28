@@ -2,21 +2,28 @@
   "doc_id": "f8c597beb58b30f1",
   "source_path": "knowledge-base/nc-child-welfare/sources/cs_cn_09_2008.pdf",
   "source_sha256": "aa9d977553f6a888a68085bab976752dabdf6fd1835a5c3636b394f82823949e",
-  "content_sha256": "529743afe9e7352abd4244167e203794d5450af941c2ba8f2e5e47ff54b1d44e",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "b27406b83a920e02ec44cc9fdadee56503f58556801bfe5298c8e358cedc87d3",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 2,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:48-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:22:47-04:00",
+  "host": "vega"
 }

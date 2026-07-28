@@ -80,7 +80,7 @@
   {
     "page_number": 7,
     "route": "native",
-    "chars": 1878,
+    "chars": 1879,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -106,7 +106,7 @@
   {
     "page_number": 9,
     "route": "native",
-    "chars": 2221,
+    "chars": 2244,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -301,7 +301,7 @@
   {
     "page_number": 24,
     "route": "native",
-    "chars": 2805,
+    "chars": 2807,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -433,7 +433,7 @@
     "route": "tesseract",
     "chars": 2515,
     "garbled": false,
-    "ocr_mean_confidence": 92.68544600938966,
+    "ocr_mean_confidence": 92.66666666666667,
     "vlm_agreement": null,
     "flagged": false,
     "flag_reasons": [],

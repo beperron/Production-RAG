@@ -2,7 +2,7 @@
   {
     "page_number": 1,
     "route": "native",
-    "chars": 2206,
+    "chars": 2209,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -15,7 +15,7 @@
   {
     "page_number": 2,
     "route": "native",
-    "chars": 1549,
+    "chars": 1550,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,

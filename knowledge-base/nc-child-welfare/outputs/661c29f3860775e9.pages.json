@@ -2,14 +2,12 @@
   {
     "page_number": 1,
     "route": "tesseract",
-    "chars": 5029,
-    "garbled": true,
+    "chars": 2078,
+    "garbled": false,
     "ocr_mean_confidence": 75.05882352941177,
     "vlm_agreement": null,
-    "flagged": true,
-    "flag_reasons": [
-      "garbled_text"
-    ],
+    "flagged": false,
+    "flag_reasons": [],
     "verification_status": "unreviewed",
     "reviewer": "",
     "reviewed_at": ""
@@ -17,7 +15,7 @@
   {
     "page_number": 2,
     "route": "native",
-    "chars": 3113,
+    "chars": 3008,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -30,7 +28,7 @@
   {
     "page_number": 3,
     "route": "native",
-    "chars": 4018,
+    "chars": 3917,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -43,7 +41,7 @@
   {
     "page_number": 4,
     "route": "native",
-    "chars": 3360,
+    "chars": 3256,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -56,7 +54,7 @@
   {
     "page_number": 5,
     "route": "native",
-    "chars": 3502,
+    "chars": 2795,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -69,7 +67,7 @@
   {
     "page_number": 6,
     "route": "native",
-    "chars": 3403,
+    "chars": 1993,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -82,7 +80,7 @@
   {
     "page_number": 7,
     "route": "native",
-    "chars": 3031,
+    "chars": 2915,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -95,7 +93,7 @@
   {
     "page_number": 8,
     "route": "native",
-    "chars": 492,
+    "chars": 422,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,

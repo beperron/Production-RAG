@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/wf_al_15_08.pdf",
   "source_sha256": "36fd6e54720ccb9c344d62db99f508352e997bc537a94d6340a0410d7ddea575",
   "content_sha256": "2a436627010807112f7194bb76ba78bee1fc39aaca6832ba9dd2e19acc1355c4",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:14:19-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:30:38-04:00",
+  "host": "vega"
 }

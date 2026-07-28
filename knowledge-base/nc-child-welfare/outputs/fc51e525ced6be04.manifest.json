@@ -2,21 +2,44 @@
   "doc_id": "fc51e525ced6be04",
   "source_path": "knowledge-base/nc-child-welfare/sources/SafetyAssessment-Plan-Spanish.pdf",
   "source_sha256": "b09b6005010b8c838ce8688c8b19dfc4c206d15489f97c8541277af4041c00e0",
-  "content_sha256": "8be340b3bc7f3802b9f2126f3e894486a56be4743e6156011a14dd535a7fe8a5",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "71b89b1dccc5d7872c84e824c2f98f457167b35bbb3411621776d9270d2402a9",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 18,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:06:52-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:21:37-04:00",
+  "host": "vega"
 }

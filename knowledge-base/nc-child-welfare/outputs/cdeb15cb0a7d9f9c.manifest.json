@@ -3,20 +3,40 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/Near-Fatality-and-Fatality-Policy_1.14.2026.pdf",
   "source_sha256": "68a99bde79fa40ba08a04f2566951675f6e373204ad15bf3b4af34f33a5827b9",
   "content_sha256": "6078c858d66e0bd8eb7e1ace7f1e12752d314a45e412d6cc63304d59ff380521",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 15,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:05:08-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:19:21-04:00",
+  "host": "vega"
 }

@@ -3,20 +3,27 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/North-Carolina-SDM-Tool-Desk-Guide-2.pdf",
   "source_sha256": "d0e7b85607246483e3556662766a608e99e46020640654aeae0634506a6de14d",
   "content_sha256": "216089b04436af23417221f6ca292c7af45f70b332d268e78f88c6f66dbca0d5",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 2,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:05:22-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:19:36-04:00",
+  "host": "vega"
 }

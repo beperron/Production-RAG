@@ -2,12 +2,14 @@
   {
     "page_number": 1,
     "route": "native",
-    "chars": 939,
-    "garbled": false,
+    "chars": 924,
+    "garbled": true,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
-    "flagged": false,
-    "flag_reasons": [],
+    "flagged": true,
+    "flag_reasons": [
+      "garbled_text"
+    ],
     "verification_status": "unreviewed",
     "reviewer": "",
     "reviewed_at": ""
@@ -15,7 +17,7 @@
   {
     "page_number": 2,
     "route": "native",
-    "chars": 1158,
+    "chars": 1176,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,

@@ -3,20 +3,29 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/cs1426_cn_1_2006.pdf",
   "source_sha256": "0ed0b64da9a02c75ea0151c2199146c8cd7d1651ca163d0611a4a5383e9d02d6",
   "content_sha256": "c02f76c652d0f2655b0e5e422b2c6a4533d46b26ac3fdc49edc5283252fab37a",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 4,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:16-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:22:07-04:00",
+  "host": "vega"
 }

@@ -2,21 +2,43 @@
   "doc_id": "3e9359699f0940c9",
   "source_path": "knowledge-base/nc-child-welfare/sources/dss-5010ins.pdf",
   "source_sha256": "49589bc89500fbe6ef2a1cbb1dea61fdf4df5a81c03685b5433fc648bfd5769d",
-  "content_sha256": "cdbdb18d9b4ba8d3f56370e23f7be11a22cb3a2199eef2cf2930c304de212cac",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "b69cea183f27584c3a1e47704873b4eb287c27ab39c34c4b906c58a6c5918f03",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 17,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:09:41-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:25:10-04:00",
+  "host": "vega"
 }

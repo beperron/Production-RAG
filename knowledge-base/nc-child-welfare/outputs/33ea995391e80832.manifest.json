@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/Child-Welfare-Resource-for-Unsafe-Discipline-Vs.-Physical-Abuse_02.21.25_FINAL.pdf",
   "source_sha256": "455308fa78dae66c8784cad8a6b90dce2b7702c5c38ef41c6833049ce0d03183",
   "content_sha256": "a3059f040ee6df0fd12d8576039ad3c88bc15516d365fe310155eaabbcb6a750",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:02:48-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:16:40-04:00",
+  "host": "vega"
 }

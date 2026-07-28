@@ -3,20 +3,50 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/cs_al202a1.pdf",
   "source_sha256": "560f0c9d8ade1e00e5b3197b147f540f02b9f8b3f470f4b70bdc3a8810d8cd4d",
   "content_sha256": "367b0c8f2f048956ac424249200d08e46cd5d7cf07ee157f5f3feb2470c9c7d5",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 25,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:29-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:22:22-04:00",
+  "host": "vega"
 }

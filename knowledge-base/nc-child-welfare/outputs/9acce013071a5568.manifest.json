@@ -2,21 +2,29 @@
   "doc_id": "9acce013071a5568",
   "source_path": "knowledge-base/nc-child-welfare/sources/cs_al302a1-1.pdf",
   "source_sha256": "77d34ff82099f8ab3757a4deb090e922c69fb51c12539c3d439e45f7a8186492",
-  "content_sha256": "b4368471887eeb8914321db4e36636c0dca1a8778bdddbe37f7006d0eb211fc2",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "08c20c445fc127396045d5785ba1fdfbbc95e9bf6b482363102c8d50542edab0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 3,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:44-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:22:41-04:00",
+  "host": "vega"
 }

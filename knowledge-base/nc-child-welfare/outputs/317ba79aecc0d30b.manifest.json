@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/FSNA-Crosswalk.pdf",
   "source_sha256": "4c852c2d613d2f69ea25bab05848446a28662d7ea75bef619f40d7a8f2a67b71",
   "content_sha256": "3689d6d9afc2874b56a057f3b7b607ef4e0387594d1424537839b4c61f48e85f",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:56-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:57-04:00",
+  "host": "vega"
 }

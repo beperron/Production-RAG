@@ -3,20 +3,27 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/fscw_al0205-1.pdf",
   "source_sha256": "7e21923333562663779a5feeeddf16ee99c58c642a9ff7177d4fce9ae4e5c0bb",
   "content_sha256": "767e858490b709e96c014a270a57313a6c476e4640a36f6bec8591a1e90a22e6",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 2,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:11:53-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:27:40-04:00",
+  "host": "vega"
 }

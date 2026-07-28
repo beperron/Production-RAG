@@ -2,7 +2,7 @@
   {
     "page_number": 1,
     "route": "native",
-    "chars": 1963,
+    "chars": 1967,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -15,7 +15,7 @@
   {
     "page_number": 2,
     "route": "native",
-    "chars": 2780,
+    "chars": 2784,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -28,7 +28,7 @@
   {
     "page_number": 3,
     "route": "native",
-    "chars": 2538,
+    "chars": 2543,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -41,7 +41,7 @@
   {
     "page_number": 4,
     "route": "native",
-    "chars": 2611,
+    "chars": 2614,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -54,7 +54,7 @@
   {
     "page_number": 5,
     "route": "native",
-    "chars": 2749,
+    "chars": 2750,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -67,7 +67,7 @@
   {
     "page_number": 6,
     "route": "native",
-    "chars": 3082,
+    "chars": 3085,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -80,7 +80,7 @@
   {
     "page_number": 7,
     "route": "native",
-    "chars": 2843,
+    "chars": 2847,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -93,7 +93,7 @@
   {
     "page_number": 8,
     "route": "native",
-    "chars": 3254,
+    "chars": 3260,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -106,7 +106,7 @@
   {
     "page_number": 9,
     "route": "native",
-    "chars": 3749,
+    "chars": 3756,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -132,7 +132,7 @@
   {
     "page_number": 11,
     "route": "native",
-    "chars": 3308,
+    "chars": 3313,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -145,7 +145,7 @@
   {
     "page_number": 12,
     "route": "native",
-    "chars": 3019,
+    "chars": 3020,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -184,7 +184,7 @@
   {
     "page_number": 15,
     "route": "native",
-    "chars": 2637,
+    "chars": 2641,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -197,7 +197,7 @@
   {
     "page_number": 16,
     "route": "native",
-    "chars": 1911,
+    "chars": 1912,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -210,7 +210,7 @@
   {
     "page_number": 17,
     "route": "native",
-    "chars": 2751,
+    "chars": 2756,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -223,7 +223,7 @@
   {
     "page_number": 18,
     "route": "native",
-    "chars": 2895,
+    "chars": 2900,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -236,7 +236,7 @@
   {
     "page_number": 19,
     "route": "native",
-    "chars": 2529,
+    "chars": 2534,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -249,7 +249,7 @@
   {
     "page_number": 20,
     "route": "native",
-    "chars": 2344,
+    "chars": 2346,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -262,7 +262,7 @@
   {
     "page_number": 21,
     "route": "native",
-    "chars": 2935,
+    "chars": 2938,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -275,7 +275,7 @@
   {
     "page_number": 22,
     "route": "native",
-    "chars": 2599,
+    "chars": 2604,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -288,7 +288,7 @@
   {
     "page_number": 23,
     "route": "native",
-    "chars": 3142,
+    "chars": 3144,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -301,7 +301,7 @@
   {
     "page_number": 24,
     "route": "native",
-    "chars": 3018,
+    "chars": 3020,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -314,7 +314,7 @@
   {
     "page_number": 25,
     "route": "native",
-    "chars": 3127,
+    "chars": 3129,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -366,7 +366,7 @@
   {
     "page_number": 29,
     "route": "native",
-    "chars": 2984,
+    "chars": 2986,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -379,7 +379,7 @@
   {
     "page_number": 30,
     "route": "native",
-    "chars": 2736,
+    "chars": 2738,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -392,7 +392,7 @@
   {
     "page_number": 31,
     "route": "native",
-    "chars": 2769,
+    "chars": 2773,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -405,7 +405,7 @@
   {
     "page_number": 32,
     "route": "native",
-    "chars": 3097,
+    "chars": 3103,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -418,7 +418,7 @@
   {
     "page_number": 33,
     "route": "native",
-    "chars": 2779,
+    "chars": 2781,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -431,7 +431,7 @@
   {
     "page_number": 34,
     "route": "native",
-    "chars": 1964,
+    "chars": 1968,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -457,7 +457,7 @@
   {
     "page_number": 36,
     "route": "native",
-    "chars": 2748,
+    "chars": 2754,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -470,7 +470,7 @@
   {
     "page_number": 37,
     "route": "native",
-    "chars": 2095,
+    "chars": 2098,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -483,7 +483,7 @@
   {
     "page_number": 38,
     "route": "native",
-    "chars": 2871,
+    "chars": 2877,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -535,7 +535,7 @@
   {
     "page_number": 42,
     "route": "native",
-    "chars": 2936,
+    "chars": 2940,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -548,7 +548,7 @@
   {
     "page_number": 43,
     "route": "native",
-    "chars": 2702,
+    "chars": 2707,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -561,7 +561,7 @@
   {
     "page_number": 44,
     "route": "native",
-    "chars": 2494,
+    "chars": 2498,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -574,7 +574,7 @@
   {
     "page_number": 45,
     "route": "native",
-    "chars": 3064,
+    "chars": 3068,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -587,7 +587,7 @@
   {
     "page_number": 46,
     "route": "native",
-    "chars": 2398,
+    "chars": 2399,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -613,7 +613,7 @@
   {
     "page_number": 48,
     "route": "native",
-    "chars": 2672,
+    "chars": 2675,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -626,7 +626,7 @@
   {
     "page_number": 49,
     "route": "native",
-    "chars": 2286,
+    "chars": 2287,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -639,7 +639,7 @@
   {
     "page_number": 50,
     "route": "native",
-    "chars": 2736,
+    "chars": 2743,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -652,7 +652,7 @@
   {
     "page_number": 51,
     "route": "native",
-    "chars": 2723,
+    "chars": 2727,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -665,7 +665,7 @@
   {
     "page_number": 52,
     "route": "native",
-    "chars": 2280,
+    "chars": 2282,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -678,7 +678,7 @@
   {
     "page_number": 53,
     "route": "native",
-    "chars": 2753,
+    "chars": 2756,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -691,7 +691,7 @@
   {
     "page_number": 54,
     "route": "native",
-    "chars": 2997,
+    "chars": 3001,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -704,7 +704,7 @@
   {
     "page_number": 55,
     "route": "native",
-    "chars": 3694,
+    "chars": 3701,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -717,7 +717,7 @@
   {
     "page_number": 56,
     "route": "native",
-    "chars": 3230,
+    "chars": 3238,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -730,7 +730,7 @@
   {
     "page_number": 57,
     "route": "native",
-    "chars": 3184,
+    "chars": 3191,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -743,7 +743,7 @@
   {
     "page_number": 58,
     "route": "native",
-    "chars": 2700,
+    "chars": 2706,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -756,7 +756,7 @@
   {
     "page_number": 59,
     "route": "native",
-    "chars": 3020,
+    "chars": 3026,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -769,7 +769,7 @@
   {
     "page_number": 60,
     "route": "native",
-    "chars": 2616,
+    "chars": 2621,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -782,7 +782,7 @@
   {
     "page_number": 61,
     "route": "native",
-    "chars": 3247,
+    "chars": 3254,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -795,7 +795,7 @@
   {
     "page_number": 62,
     "route": "native",
-    "chars": 2775,
+    "chars": 2780,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -808,7 +808,7 @@
   {
     "page_number": 63,
     "route": "native",
-    "chars": 3573,
+    "chars": 3581,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -821,7 +821,7 @@
   {
     "page_number": 64,
     "route": "native",
-    "chars": 3253,
+    "chars": 3257,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -834,7 +834,7 @@
   {
     "page_number": 65,
     "route": "native",
-    "chars": 2760,
+    "chars": 2766,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -847,7 +847,7 @@
   {
     "page_number": 66,
     "route": "native",
-    "chars": 1599,
+    "chars": 1602,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,

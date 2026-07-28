@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/capp-referral-process.pdf",
   "source_sha256": "51623581588dfcc6a4f962ace23773c2925ae3a503c390b9c7ea9c2e1e55fb49",
   "content_sha256": "258abee3a7db44494d3682b728b3cc1c31bb2f02680f5046f7b86b21e76ac55c",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "tesseract"
   ],
+  "per_page_routes": [
+    "tesseract"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:06:59-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:21:48-04:00",
+  "host": "vega"
 }

@@ -3,20 +3,39 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/Intake-and-Assessment-Frequently-Asked-Questions-May-2025.pdf",
   "source_sha256": "fc8592589c055c125b494c9a8bdb53e2bbb88e468f0dc21650605db8ee361e0f",
   "content_sha256": "b8c87bc49794e774222c26fdc74774041c348975eaed1f02810814aeae786f8e",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 14,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:04:22-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:18:28-04:00",
+  "host": "vega"
 }

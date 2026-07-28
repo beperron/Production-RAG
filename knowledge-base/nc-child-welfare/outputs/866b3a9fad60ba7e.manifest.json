@@ -3,20 +3,31 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/DSS-6193-Initial-Provider-Assessment-Instructions_TSP.pdf",
   "source_sha256": "95969f43b799935080a5c57d66e8dcc35c75d3f3e1c41a8aa0700c76c349e4a0",
   "content_sha256": "27644fe16ea28990d3e3999c5aff6a36831f09ace4938fedea81cce9ef029c5b",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 6,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:50-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:51-04:00",
+  "host": "vega"
 }

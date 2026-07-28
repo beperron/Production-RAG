@@ -3,20 +3,27 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/cs_al0702-1.pdf",
   "source_sha256": "69358bc1abe1a0c6f980be692335bb84a14d69bc95b53deff977234ca6afedb2",
   "content_sha256": "cce8e8413cd3a3341a8008d4c72d549260a73ad1d4260c5142c2c589f4abb384",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 2,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:26-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:22:20-04:00",
+  "host": "vega"
 }

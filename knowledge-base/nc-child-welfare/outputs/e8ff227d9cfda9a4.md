@@ -3,9 +3,7 @@
 
 # Division of Social Services
 
-2407 Mail Service Center • Raleigh, North Carolina 27699-2407
-
-Michael F. Easley, Governor Sherry S. Bradsher, Director
+2407 Mail Service Center • Raleigh, North Carolina 27699-2407 Michael F. Easley, Governor Sherry S. Bradsher, Director
 
 ### Dempsey Benton, Secretary (919) 733-3055
 

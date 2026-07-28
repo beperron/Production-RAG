@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/cmep-portal-instructions-for-social-workers-2.pdf",
   "source_sha256": "1fb773101082313c2ab7f19e7aec83ab709ac7ef3729cf1b78dfd491edcd5252",
   "content_sha256": "4fe040826f44d23362927d67267a82f6052b92179afef241fae7e67eb0c0c160",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:03-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:21:50-04:00",
+  "host": "vega"
 }

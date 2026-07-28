@@ -3,20 +3,36 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/cs_al201_att.pdf",
   "source_sha256": "a8c3ed67a0f3c5463cf635b601969dedf6c6a269b43324b1daad8b1e7a4d8d72",
   "content_sha256": "3498974006a2e6044f826cb2909ec35c019c4bcde36dfabc9e2359110d88717c",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 11,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:28-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:22:21-04:00",
+  "host": "vega"
 }

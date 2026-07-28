@@ -2,21 +2,33 @@
   "doc_id": "a14cfaff4227c330",
   "source_path": "knowledge-base/nc-child-welfare/sources/dss-6190.pdf",
   "source_sha256": "9a91eabef25e7034b5f908cd7f3d7bcd2f75a0f46eda57c1ac3cfdf4d9ef7181",
-  "content_sha256": "9b383bd2776e2990cde7c5aba34c060535d8eb151e84d3ffe0b23301d940e9a6",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "b8557c1da73a62e80d310fd62d96a10234ff445b7ac6ab7954cf76feaa0d2885",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 7,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:11:32-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:27:13-04:00",
+  "host": "vega"
 }

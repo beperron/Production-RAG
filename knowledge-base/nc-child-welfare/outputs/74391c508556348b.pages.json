@@ -4,7 +4,7 @@
     "route": "tesseract",
     "chars": 1378,
     "garbled": false,
-    "ocr_mean_confidence": 94.23857868020305,
+    "ocr_mean_confidence": 94.24365482233503,
     "vlm_agreement": null,
     "flagged": false,
     "flag_reasons": [],

@@ -20,7 +20,7 @@ Source of information, if not completed by parent
 |---|---|---|---|---|---|---|
 |Were you given anesthesia?||Yes|Yes||No|No|
 |IV.<br>CONDITIONSDURING THISPREGNANCY|IV.<br>CONDITIONSDURING THISPREGNANCY|IV.<br>CONDITIONSDURING THISPREGNANCY|IV.<br>CONDITIONSDURING THISPREGNANCY|IV.<br>CONDITIONSDURING THISPREGNANCY|IV.<br>CONDITIONSDURING THISPREGNANCY|IV.<br>CONDITIONSDURING THISPREGNANCY|
-|German Measles Yes No<br>Venereal DiseaseYesNo<br>VirusYesNo<br>ToxemiaYesNo|German Measles Yes No<br>Venereal DiseaseYesNo<br>VirusYesNo<br>ToxemiaYesNo|German Measles Yes No<br>Venereal DiseaseYesNo<br>VirusYesNo<br>ToxemiaYesNo|Infections YesNo<br>AccidentsYesNo<br>If ''Yes'' specify <br>|Infections YesNo<br>AccidentsYesNo<br>If ''Yes'' specify <br>|Infections YesNo<br>AccidentsYesNo<br>If ''Yes'' specify <br>|<br> <br>AnemicYesNo<br>DiabeticYesNo<br>Pre-DiabeticYesNo|
+|German Measles Yes No<br>Venereal Disease Yes No<br>Virus Yes No<br>Toxemia Yes No|German Measles Yes No<br>Venereal Disease Yes No<br>Virus Yes No<br>Toxemia Yes No|German Measles Yes No<br>Venereal Disease Yes No<br>Virus Yes No<br>Toxemia Yes No|Infections Yes No<br>Accidents Yes No<br>If ''Yes'' specify <br>|Infections Yes No<br>Accidents Yes No<br>If ''Yes'' specify <br>|Infections Yes No<br>Accidents Yes No<br>If ''Yes'' specify <br>|<br> <br>Anemic Yes No<br>Diabetic Yes No<br>Pre-Diabetic Yes No|
 
 COMMENTS:
 

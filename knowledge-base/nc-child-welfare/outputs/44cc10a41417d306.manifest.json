@@ -2,21 +2,27 @@
   "doc_id": "44cc10a41417d306",
   "source_path": "knowledge-base/nc-child-welfare/sources/Applying_the_Reasonable_and_Prudent_Parent_Standard_Tool.pdf",
   "source_sha256": "b179589529d80a44db33e34469a7bb62741a95dcc554b642f84b6f66622becb7",
-  "content_sha256": "5129715e6e2307e46808142ba8a74b88b0eac347d37fc780f2a46b3e56e699e0",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "83a9948f5cd7bd383766d1615705a4bdaece681a480c996e356e8b8cf7a1e941",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:02:21-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:16:06-04:00",
+  "host": "vega"
 }

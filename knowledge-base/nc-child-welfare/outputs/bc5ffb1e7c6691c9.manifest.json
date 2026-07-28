@@ -2,21 +2,35 @@
   "doc_id": "bc5ffb1e7c6691c9",
   "source_path": "knowledge-base/nc-child-welfare/sources/DSS-5239ins_In-Home-Family-Case-Plan_Instructions-DSS-5239ins-PATH-NC.pdf",
   "source_sha256": "faccfbf9632afccc258e118e3a7c052ca24bc64a38cc3b8185e5d99aa38e063b",
-  "content_sha256": "2de9873979d81bf129a832105b2c8f80c1b3b74062aa6346b494a3adada6c976",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "cb9d4c4e0db1e3e8186f7807d164cbeab7a4b74ad71023970743b5ffadd5f1b6",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 9,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:40-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:41-04:00",
+  "host": "vega"
 }

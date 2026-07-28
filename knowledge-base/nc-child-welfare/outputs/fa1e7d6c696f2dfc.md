@@ -1581,7 +1581,7 @@ safe play space for children? ☐ yes ☐ no; If the answer to this question is 
 
 may pose a risk? ☐ yes ☐ no; if yes, describe the potential water hazard. Please provide information that describes the proximity of the potential hazard to the home. _______________________________________________________________________________________ _______________________________________________________________________________________ _______________________________________________________________________________________
 
-DSS-5018 (09/2018) Child Welfare Services Page 1 of 2
+DSS-5018 (09/2018) Child Welfare Services
 
 <!-- page: 75 -->
 ### FOSTER HOME LICENSING
@@ -1613,7 +1613,7 @@ Instructions: If any water safety hazard was identified during the Water Hazard 
 |**Social Worker's Phone Number:**||
 |**Social Worker's E-mail Address**||
 
-DSS-5018 (09/2018) Child Welfare Services Page 2 of 2
+DSS-5018 (09/2018) Child Welfare Services
 
 <!-- page: 76 -->
 ### FOSTER HOME LICENSING
@@ -1652,7 +1652,7 @@ II. Safety Plan
 
 for the child to use when around bodies of water. _____________________________________________________________________ _____________________________________________________________________ _____________________________________________________________________
 
-DSS-5018a (09/2018) Child Welfare Services Page 1 of 2
+DSS-5018a (09/2018) Child Welfare Services
 
 <!-- page: 77 -->
 ### FOSTER HOME LICENSING
@@ -1679,4 +1679,4 @@ perform in the event of an emergency? Please list any certifications or training
 |||
 |**Foster Parent's Signature/Date**|**Foster Parent's Signature/Date**|
 
-DSS-5018a (09/2018) Child Welfare Services Page 2 of 2
+DSS-5018a (09/2018) Child Welfare Services

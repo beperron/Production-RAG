@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/Intake-Decision-Flowchart.pdf",
   "source_sha256": "59a45d5104c01c4538ce6166e935ad4357819688bdb0dfe90b9696e2224dcf6e",
   "content_sha256": "4aac36263e6e23ee6973718a97a599839bce020380ef1df2dcd916c0d8690b64",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:04:19-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:18:25-04:00",
+  "host": "vega"
 }

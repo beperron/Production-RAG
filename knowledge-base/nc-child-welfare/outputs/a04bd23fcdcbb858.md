@@ -26,12 +26,26 @@ If you have questions around this issue, please contact your Work First Represen
 'Sincerely,
 
 <!-- page: 2 -->
-| | Esther T. High, Acting Chief<br>Family Support and Child Welfare Services Section |
-|---|---|
-|cc:|Sherry Bradsher|
-||Jo Ann Lamm|
-||Sarah Barham|
-||Family Support and Child Welfare Team<br>Leaders|
-||Children's Programs Representatives|
-||Work First Program Representatives|
-||Local Business Liaisons|
+bith dD Mgh?
+
+Esther T. High, Acting Chief
+
+Family Support and Child Welfare Services Section
+
+cc:
+
+Sherry Bradsher
+
+Jo Ann Lamm
+
+Sarah Barham
+
+Family Support and Child Welfare Team
+
+Leaders
+
+Children's Programs Representatives
+
+|Work First Program Representatives
+
+Local Business Liaisons

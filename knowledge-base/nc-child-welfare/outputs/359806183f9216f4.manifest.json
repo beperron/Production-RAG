@@ -3,20 +3,27 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/CW-PATH-NC-Technology-Usage-Manual-May-2025.pdf",
   "source_sha256": "47f10f141f90cce17dea9fbbcb76f7573612b839a562b7a57766b2782a1542af",
   "content_sha256": "0642489eb309941dc5b79dd7096e4c7a1ed0e4f559af19fc2271927db85e69ed",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 2,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:02:48-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:16:40-04:00",
+  "host": "vega"
 }

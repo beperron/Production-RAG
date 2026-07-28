@@ -3,7 +3,7 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/cws_cn_04-2013.pdf",
   "source_sha256": "03f0324596bb11a865d5fe0d851bf084b9cb282f1332aafaca2026311b6c5ac3",
   "content_sha256": "52b270118f351b4183286023d4705e423daba73fc6e2e18cc3cc2c2962b0139f",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 3,
@@ -11,13 +11,21 @@
     "native",
     "tesseract"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "tesseract"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:09:17-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:24:39-04:00",
+  "host": "vega"
 }

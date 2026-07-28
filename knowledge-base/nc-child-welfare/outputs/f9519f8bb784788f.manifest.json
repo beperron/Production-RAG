@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0011_Service-Plan_Electronic-03.2024.docx",
   "source_sha256": "1d1f9ff2dab205535949714378de85798b18fa42046185145675824efbfe7f04",
   "content_sha256": "6f6ecdaa94aa6d4eae1e7cf7b7fecd59ab8ebf0e815ce79e116c5a564e05a99e",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "docx"
   ],
+  "per_page_routes": [
+    "docx"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:30-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:31-04:00",
+  "host": "vega"
 }

@@ -16,10 +16,10 @@
   },
   {
     "page_number": 2,
-    "route": "tesseract",
-    "chars": 1020,
+    "route": "native",
+    "chars": 1265,
     "garbled": false,
-    "ocr_mean_confidence": 93.5909090909091,
+    "ocr_mean_confidence": null,
     "vlm_agreement": null,
     "flagged": false,
     "flag_reasons": [],

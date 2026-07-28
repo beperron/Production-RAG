@@ -2,7 +2,7 @@
   {
     "page_number": 1,
     "route": "native",
-    "chars": 3584,
+    "chars": 3617,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -17,7 +17,7 @@
     "route": "tesseract",
     "chars": 916,
     "garbled": false,
-    "ocr_mean_confidence": 95.375,
+    "ocr_mean_confidence": 95.34821428571429,
     "vlm_agreement": null,
     "flagged": false,
     "flag_reasons": [],

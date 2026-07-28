@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/fscw-012004atta.pdf",
   "source_sha256": "d879b8218e7e20fe543cecbe8dcc29209435d550a844aac6542ad1ad3cf9c75d",
   "content_sha256": "a86240b8c33912bbd701ab5a3c6d706d029a7c92de2cbc07ccfbc1c1250659aa",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:11:48-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:27:33-04:00",
+  "host": "vega"
 }

@@ -3,20 +3,43 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/appendix-3-2-child-welfare-funding-2.pdf",
   "source_sha256": "044e6db29bbb9ebae33a0dfc424924da424f43abd88b3d926c7685af0a14b6e9",
   "content_sha256": "1d3f6c7a9ce5a64d0808225d8e4c3cd55226ad49d28fc42e9c23b8e9c8bd8cd5",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 18,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:06:53-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:21:40-04:00",
+  "host": "vega"
 }

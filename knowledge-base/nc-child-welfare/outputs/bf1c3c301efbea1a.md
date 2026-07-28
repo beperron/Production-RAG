@@ -19,7 +19,9 @@ Appendix 3.7 - Guardianship Assistance Payments
 
 I. PURPOSE AND LEGAL BASIS
 
-The Guardianship Assistance (GAP) and Kinship Guardian Assistance Programs (KinGAP) are intended to make funds available for the financial support of youth who are determined to be:
+The Guardianship Assistance (GAP) and Kinship Guardian Assistance Programs
+
+(KinGAP) are intended to make funds available for the financial support of youth who are determined to be:
 
 (i) in a permanent family setting,
 
@@ -27,9 +29,13 @@ The Guardianship Assistance (GAP) and Kinship Guardian Assistance Programs (KinG
 
 (iii) otherwise unlikely to obtain permanency.
 
-Both Guardianship Assistance Programs (GAP and KinGAP) will reimburse for room and board and be set at the same rate as the foster care room and board rates.
+Both Guardianship Assistance Programs (GAP and KinGAP) will reimburse for room and
 
-The legislation which provides the legal basis for the Guardianship Assistance Programs (GAP and KinGAP) includes the following:
+board and be set at the same rate as the foster care room and board rates.
+
+The legislation which provides the legal basis for the Guardianship Assistance Programs
+
+(GAP and KinGAP) includes the following:
 
 • Fostering Connections to Success and Increasing Adoptions Act of 2008 (Public Law 110-351), which provided that, at the option of states, kinship guardianship assistance payments may be provided on behalf of children to relatives who have assumed legal guardianship of children. This Act also requires states who have implemented a guardianship assistance program to exercise due diligence in identifying and providing notice to adult relatives and all parents having custody of siblings of their options for participating in the care and placement of the child and the process and requirements for subsequently entering into a KinGAP & GAP Agreement (DSS-1810).
 
@@ -40,13 +46,19 @@ Program (GAP) in such a manner that no additional expenses are incurred beyond t
 
 • The Fostering Care in NC Act (H612) was signed into law on June 26,2025. Section 2.3 codifies a guardianship assistance program (KinGAP) in Article 2 of G.S. Chapter 108A as Part 4A: Guardianship Assistance. See "Eligibility" section below for more information.
 
-There will be a periodic and independently conducted audit of the program no less frequently than once every three years as outlined in the state's Sub-Recipient Monitoring Plan.
+There will be a periodic and independently conducted audit of the program no less
+
+frequently than once every three years as outlined in the state's Sub-Recipient Monitoring Plan.
 
 II. DEFINITIONS
 
-County Child Welfare Agency or simply Agency - County Department of Social Services or Consolidated Human Services Agency responsible for the administration of public child welfare services.
+County Child Welfare Agency or simply Agency - County Department of Social
 
-Kinship Guardianship Assistance Program (KinGAP) --- Financial assistance and Medicaid for youth who are determined to be in a permanent family setting with a prospective guardian who is a relative, and for whom a determination has been made that reunification or adoption are not appropriate, as evidenced by the recommendation to cease reunification efforts and the recommendation of guardianship as the permanent plan. "Relative" is defined as a person related to the minor child by blood, marriage, adoption, or an individual that has a substantial relationship with the minor child or the minor child's parent prior to the child being placed in foster care ((H612 section 2.3, amending N.C.G.S § 108A-50.10). See "Eligibility" section for more information.
+Services or Consolidated Human Services Agency responsible for the administration of public child welfare services.
+
+Kinship Guardianship Assistance Program (KinGAP) --- Financial assistance and
+
+Medicaid for youth who are determined to be in a permanent family setting with a prospective guardian who is a relative, and for whom a determination has been made that reunification or adoption are not appropriate, as evidenced by the recommendation to cease reunification efforts and the recommendation of guardianship as the permanent plan. "Relative" is defined as a person related to the minor child by blood, marriage, adoption, or an individual that has a substantial relationship with the minor child or the minor child's parent prior to the child being placed in foster care ((H612 section 2.3, amending N.C.G.S § 108A-50.10). See "Eligibility" section for more information.
 
 Guardianship Assistance Program (GAP) - Financial assistance and Medicaid for youth who are determined to be in a permanent family setting with a prospective guardian to whom the youth is not related or had no prior relationship with prior to entering care, and for whom a determination has been made that the juvenile is unlikely to achieve permanency through reunification or adoption, as evidenced by the recommendation to cease reunification efforts and the recommendation of guardianship as the permanent plan. Funding is limited to IV-B only (SFHF, State Foster Home Funding). Payment is set at the graduated amount set by the General Assembly from the Guardianship Assistance Program. Since payments are set at the maximum allowable amount, adjustments occur only when the graduated amount is changed by the NC General Assembly.
 
@@ -57,15 +69,21 @@ child welfare agencies and legal guardian that shall set responsibilities of the
 <!-- page: 3 -->
 Legal Guardian - An individual defined in N.C.G.S. § 7B-600 who is appointed by the court to serve as the guardian for a juvenile. The guardian shall have the care, custody, and control of the juvenile, or may arrange a suitable placement for the juvenile and may represent the juvenile in legal actions before the court. The guardian may consent to certain actions on the part of the juvenile in place of the parent including marriage, enlisting in the armed forces, and enrollment in school. The guardian may also consent to any necessary remedial, psychological, medical, or surgical treatment for the juvenile.
 
-Legal Guardianship - A legal relationship created when a person or persons are assigned by the court to take care of the minor child.
+Legal Guardianship - A legal relationship created when a person or persons are
+
+assigned by the court to take care of the minor child.
 
 This relationship is terminated only if (N.C.G.S. § 7B-600(a)):
 
 i. By court order; ii. Emancipation; iii. When the juvenile reaches the age of majority; iv. Upon the youth's death.
 
-Licensed Home - Private residence of one or more individuals who permanently reside as members of the household who have met all requirements for family foster home licensing in their state of residence and have been issued a license number in the state of North Carolina that remains active at the time of legal guardianship.
+Licensed Home - Private residence of one or more individuals who permanently reside
 
-Placement Responsibility - Authority granted to the county child welfare agencies by the court to place a child in the custody of the agency in a licensed home or facility or any unlicensed home or facility sanctioned by the court.
+as members of the household who have met all requirements for family foster home licensing in their state of residence and have been issued a license number in the state of North Carolina that remains active at the time of legal guardianship.
+
+Placement Responsibility - Authority granted to the county child welfare agencies by
+
+the court to place a child in the custody of the agency in a licensed home or facility or any unlicensed home or facility sanctioned by the court.
 
 <!-- page: 4 -->
 III. ELIGIBILITY CRITERIA (H612 section 2.3, amending N.C.G.S § 108A-50.10)
@@ -86,21 +104,21 @@ ii. He or she chooses to continue receiving guardianship services until attainin
 
 iii. The Division determines that the individual meets any of the following:
 
+equivalent credential.
+
+vocational education.
+
+remove barriers to employment.
+
 d. Is employed for at least 80 hours per month.
 
 iv. NOTE: KinGAP/GAP benefits cannot be deferred or paid directly to the young person; only a guardian may receive this benefit on behalf of a youth or young adult.
 
 a. Is completing secondary education or a program leading to an
 
-equivalent credential.
-
 b. Is enrolled in an institution that provides postsecondary or
 
-vocational education.
-
 c. Is participating in a program or activity designed to promote or
-
-remove barriers to employment.
 
 e. Is incapable of completing the educational or employment
 
@@ -111,17 +129,14 @@ V. KinGAP and GAP REQUIREMENTS
 
 A. Permanent Plan of Legal Guardianship - Documentation Requirements
 
-Under KinGAP or GAP, a child or youth whose permanent plan is placement with a prospective legal guardian and receipt of guardianship assistance payments, the Permanency Planning Family Case Plan (DSS-5240), Permanency Planning Review (DSS- 5241), and court report must demonstrate:
+Under KinGAP or GAP, a child or youth whose permanent plan is placement with a
+
+prospective legal guardian and receipt of guardianship assistance payments, the Permanency Planning Family Case Plan (DSS-5240), Permanency Planning Review (DSS- 5241), and court report must demonstrate:
 
 1. A determination has been made that:
-
 a. returning home or being adopted are not appropriate, as evidenced by
 
-the cessation of reunification efforts and the selection of guardianship as the permanent plan (KinGAP);
-
 OR
-
-b. the child is unlikely to return home or be adopted, as evidenced by the
 
 cessation of reunification efforts and the selection of guardianship as the permanent plan (GAP).
 
@@ -142,16 +157,26 @@ or relative kin as a more permanent alternative to legal guardianship and, in th
 
 guardianship arrangement, or the reasons why the efforts were not made.
 
-Subsidized guardianship allows children and youth to maintain their family and community roots when they can no longer live with their parents and adoption is not an appropriate permanent plan.
+Subsidized guardianship allows children and youth to maintain their family and
+
+community roots when they can no longer live with their parents and adoption is not an appropriate permanent plan.
+
+the cessation of reunification efforts and the selection of guardianship as the permanent plan (KinGAP);
+
+b. the child is unlikely to return home or be adopted, as evidenced by the
 
 <!-- page: 7 -->
 B. DSS-1813 KinGAP & GAP Eligibility and Determination Checklist
 
-Establishing eligibility for guardianship assistance is the task of the child welfare staff of a child's resident agency.
+Establishing eligibility for guardianship assistance is the task of the child welfare staff of a
+
+child's resident agency.
 
 The agency is required to use the KinGAP & GAP Eligibility and Determination Checklist (DSS-1813). Documentation sufficient to establish eligibility can be in the form of court reports and court orders, statements of the youth and prospective guardian, and case narrative.
 
-Individuals or youth who exit foster care under a guardianship assistance agreement may continue to receive guardianship assistance payments (KinGAP or GAP) after reaching 18 years of age if they meet certain eligibility criteria (see Permanency Planning Manual).
+Individuals or youth who exit foster care under a guardianship assistance agreement may
+
+continue to receive guardianship assistance payments (KinGAP or GAP) after reaching 18 years of age if they meet certain eligibility criteria (see Permanency Planning Manual).
 
 C. KinGAP & GAP Agreement
 
@@ -164,7 +189,9 @@ to meet the requirements for a KinGAP & GAP Agreement (DSS-1810) and a copy of t
 <!-- page: 8 -->
 D. Payment Issues
 
-The General Assembly changes the amounts of guardianship assistance payments from time to time. Guardianship Assistance payments are tied to the foster care board rates and go up or down with changes in legislation. In compliance with the social security act, NCDSS will review the rates to assure their appropriateness at least every 2 years and make recommendations if warranted to the General Assembly. The monthly payment amount as of July 1, 2023 are as follows:
+The General Assembly changes the amounts of guardianship assistance payments
+
+from time to time. Guardianship Assistance payments are tied to the foster care board rates and go up or down with changes in legislation. In compliance with the social security act, NCDSS will review the rates to assure their appropriateness at least every 2 years and make recommendations if warranted to the General Assembly. The monthly payment amount as of July 1, 2023 are as follows:
 
 |$703|0-5 years|
 |---|---|
@@ -173,17 +200,25 @@ The General Assembly changes the amounts of guardianship assistance payments fro
 
 E. Non-Recurring Costs
 
-Legal guardians can be reimbursed up to $2,000 for the expenses incurred by the prospective guardian in obtaining legal guardianship of the child. Non-recurring expenses are defined as the reasonable and necessary court costs, attorney fees and other expenses which are directly related to the legal guardianship of a child who meets eligibility requirements for guardianship assistance, which are not incurred in violation of State or Federal law, and which have been not been reimbursed from other sources or funds. Generally, there will be no expenses since the child welfare agency is responsible for achieving permanence for the youth in agency custody and costs related to achieving permanence would be the county's responsibility.
+Legal guardians can be reimbursed up to $2,000 for the expenses incurred by the
+
+prospective guardian in obtaining legal guardianship of the child. Non-recurring expenses are defined as the reasonable and necessary court costs, attorney fees and other expenses which are directly related to the legal guardianship of a child who meets eligibility requirements for guardianship assistance, which are not incurred in violation of State or Federal law, and which have been not been reimbursed from other sources or funds. Generally, there will be no expenses since the child welfare agency is responsible for achieving permanence for the youth in agency custody and costs related to achieving permanence would be the county's responsibility.
 
 F. Reimbursement Process/Payments
 
-KinGAP/GAP payments are provided on behalf of children to relatives or individuals who meet the eligibility criteria for KinGAP or GAP and assume legal guardianship of children. KinGAP/GAP benefits for a child shall become effective the first month following the month in which legal guardianship is granted by the court. Claims for monthly KinGAP/GAP assistance shall be reimbursed in accordance with the Department of Health and Human Services and county child welfare agency reimbursement process.
+KinGAP/GAP payments are provided on behalf of children to relatives or individuals
+
+who meet the eligibility criteria for KinGAP or GAP and assume legal guardianship of children. KinGAP/GAP benefits for a child shall become effective the first month following the month in which legal guardianship is granted by the court. Claims for monthly KinGAP/GAP assistance shall be reimbursed in accordance with the Department of Health and Human Services and county child welfare agency reimbursement process.
 
 G. Successor Guardianship (KinGAP only)
 
-In the event of the death or incapacity of the legal relative guardian, the eligibility of a child for KinGAP is not affected by reason of the replacement of the guardian with a successor guardian named in the original KinGAP & GAP Agreement (DSS-1810).
+In the event of the death or incapacity of the legal relative guardian, the eligibility of a
 
-Naming a successor for a child receiving KinGAP allows for the continuation of benefits with only a short suspension while the child welfare agency assists the successor guardian in obtaining legal guardianship and completing the necessary paperwork and safety checks.
+child for KinGAP is not affected by reason of the replacement of the guardian with a successor guardian named in the original KinGAP & GAP Agreement (DSS-1810).
+
+Naming a successor for a child receiving KinGAP allows for the continuation of
+
+benefits with only a short suspension while the child welfare agency assists the successor guardian in obtaining legal guardianship and completing the necessary paperwork and safety checks.
 
 Any change to the child's legal guardian requires court action and DSS involvement. The caseworker should contact the county DSS attorney for assistance in this matter. The agency may provide non-recurring costs, not to exceed $2,000.00, to assist the
 
@@ -192,24 +227,36 @@ new guardian in legalizing the relationship with the youth. The agency will be r
 
 H. Medicaid and Social Services
 
-If the youth is eligible for the Kinship Guardian Assistance Program (KinGAP) or Guardianship Assistance Program (GAP), he or she is also entitled to Medicaid. Medicaid will be available to the youth in accordance with the procedures of the state in which he or she and the legal guardian(s) live(s). An application for Medicaid must be completed on behalf of the youth.
+If the youth is eligible for the Kinship Guardian Assistance Program (KinGAP) or
+
+Guardianship Assistance Program (GAP), he or she is also entitled to Medicaid. Medicaid will be available to the youth in accordance with the procedures of the state in which he or she and the legal guardian(s) live(s). An application for Medicaid must be completed on behalf of the youth.
 
 I. Post Permanency Support Children who are recipients of guardianship assistance are eligible for the provision of post permanency support without regard to income. This provides an opportunity for the family to access post-guardianship services that may be helpful in keeping the family system intact. DHHS contracts to provide free, voluntary support services and resources to all 100 North Carolina counties.
 
 VI. DOCUMENTATION AND PERIODIC REVIEWS
 
-The final step in the eligibility process is to have a completed, signed KinGAP & GAP Agreement (DSS-1810) with the prospective guardian. This can be entered into any time after placement but must be signed on or before the court date where guardianship is granted verbally or in writing. Benefits will begin the month following that date. Once a child has been determined eligible for guardianship assistance, no redetermination of his or her eligibility is necessary; however, the child's agency must review the KinGAP & GAP Agreement (DSS-1810) on a periodic basis to ensure that the child remains in the financial responsibility of the legal guardian(s).
+The final step in the eligibility process is to have a completed, signed KinGAP & GAP
 
-The periodic review includes yearly notice to legal guardians to determine the status of the child. See the KinGAP/GAP Annual Eligibility Letter (DSS-1888).
+Agreement (DSS-1810) with the prospective guardian. This can be entered into any time after placement but must be signed on or before the court date where guardianship is granted verbally or in writing. Benefits will begin the month following that date. Once a child has been determined eligible for guardianship assistance, no redetermination of his or her eligibility is necessary; however, the child's agency must review the KinGAP & GAP Agreement (DSS-1810) on a periodic basis to ensure that the child remains in the financial responsibility of the legal guardian(s).
 
-Notification increases to twice a year for youth 18-21 that continue to receive benefits. The agency is also required to immediately notify legal guardian(s), in writing, of changes in Guardianship Assistance payments resulting from increases or decreases in allowable benefits. Benefits are in the amount of the standard board rate as approved by the General Assembly.
+The periodic review includes yearly notice to legal guardians to determine the status of
 
-Counties must ensure that every child who receives guardianship assistance benefits and is of the compulsory age for school attendance under state law is enrolled as a fulltime elementary or secondary school student or has completed secondary school. If the child is not enrolled as a full-time student, documentation must support that the child
+the child. See the KinGAP/GAP Annual Eligibility Letter (DSS-1888).
+
+Notification increases to twice a year for youth 18-21 that continue to receive benefits.
+
+The agency is also required to immediately notify legal guardian(s), in writing, of changes in Guardianship Assistance payments resulting from increases or decreases in allowable benefits. Benefits are in the amount of the standard board rate as approved by the General Assembly.
+
+Counties must ensure that every child who receives guardianship assistance benefits
+
+and is of the compulsory age for school attendance under state law is enrolled as a fulltime elementary or secondary school student or has completed secondary school. If the child is not enrolled as a full-time student, documentation must support that the child
 
 <!-- page: 10 -->
 is unable to attend on a full-time basis due to a medical, physical, or therapeutic condition.
 
-It is the responsibility of the legal guardian to notify the child welfare agency of any changes affecting their legal and financial responsibility for the youth and other changes affecting the receipt of benefits. The legal guardian(s) will immediately notify the County DSS, in writing, of any of the following changes:
+It is the responsibility of the legal guardian to notify the child welfare agency of any
+
+changes affecting their legal and financial responsibility for the youth and other changes affecting the receipt of benefits. The legal guardian(s) will immediately notify the County DSS, in writing, of any of the following changes:
 
 1. If their address changes so that receipt of benefits will not be delayed.
 
@@ -227,13 +274,16 @@ continue benefits if legal guardianship was granted when the youth was 16 or 17 
 
 VII. GUARDIANSHIP ASSISTANCE CASE RECORD
 
-When a child is placed into a home with a legal guardian, a new file must be created which will reflect the guardianship assistance information and documentation. The file must contain a cross-reference to the child's original file so that should the case be audited, documentation establishing the child's eligibility for benefits can be made readily available to the auditors.
+When a child is placed into a home with a legal guardian, a new file must be created
+
+which will reflect the guardianship assistance information and documentation. The file must contain a cross-reference to the child's original file so that should the case be audited, documentation establishing the child's eligibility for benefits can be made readily available to the auditors.
 
 A. Contents of the Child's Guardianship Assistance Case File
 
 The guardianship assistance case file must contain the following:
 
 1. A copy of the DSS-5120 verifying foster care eligibility;
+
 2. KinGAP & GAP Eligibility and Determination Checklist (DSS-1813). This form
 
 must indicate those components of the program for which the child is eligible;
@@ -269,7 +319,9 @@ court orders that led to the child(ren)'s entry into foster care.
 
 X. GUARDIANSHIP ASSISTANCE APPEALS
 
-Guardians of a child or youth have the right to appeal the agency's denial, failure to inform them of the availability of assistance, the amount, a decrease, or termination of Guardianship Assistance benefits for the child or youth.
+Guardians of a child or youth have the right to appeal the agency's denial, failure to
+
+inform them of the availability of assistance, the amount, a decrease, or termination of Guardianship Assistance benefits for the child or youth.
 
 Grounds for a Guardianship Assistance appeal include, but are not limited to:
 
@@ -285,24 +337,32 @@ Grounds for a Guardianship Assistance appeal include, but are not limited to:
 
 • Failure of the State agency to complete the required paperwork prior to the finalization of the guardianship.
 
-If applicants or potential recipients of financial benefits or service programs believe they have been wrongly denied financial assistance, not informed of the availability of a program of assistance, or excluded from a service program, they have a right to a Fair Hearing. They shall be informed in writing of their rights to a Guardianship Assistance Appeal at the time of their request and at the time of any action affecting their guardianship assistance benefits. It is the responsibility of a fair hearing officer to determine whether extenuating circumstances exist and whether the applicant or recipient was wrongly denied eligibility.
+If applicants or potential recipients of financial benefits or service programs believe they
+
+have been wrongly denied financial assistance, not informed of the availability of a program of assistance, or excluded from a service program, they have a right to a Fair Hearing. They shall be informed in writing of their rights to a Guardianship Assistance Appeal at the time of their request and at the time of any action affecting their guardianship assistance benefits. It is the responsibility of a fair hearing officer to determine whether extenuating circumstances exist and whether the applicant or recipient was wrongly denied eligibility.
 
 <!-- page: 12 -->
 A. Process of Appeals
 
-Policy requires that eligibility for guardianship assistance monthly case payments be established prior to the child's placement for guardianship and requires, also, that the KinGAP & GAP Agreement (DSS-1810) be signed prior to issuance of a court order for guardianship. Requests for monthly cash assistance made for children not covered under the provisions described in this policy must follow the appeals process for resolution.
+Policy requires that eligibility for guardianship assistance monthly case payments be
 
-The Guardianship Assistance appeals process is the same as that used for other Public Assistance appeals and would be resolved through the same channels. The Guardianship Assistance appeals must be conducted by an impartial official or designee of the agency. The official or designee cannot have been directly involved in the determination of eligibility for guardianship assistance benefits. The county child welfare agency staff member assigned to hear Public Assistance appeals is the person who should conduct the fair hearing. At no time shall someone in a decisionmaking capacity regarding the child's eligibility serve as the fair hearing officer.
+established prior to the child's placement for guardianship and requires, also, that the KinGAP & GAP Agreement (DSS-1810) be signed prior to issuance of a court order for guardianship. Requests for monthly cash assistance made for children not covered under the provisions described in this policy must follow the appeals process for resolution.
 
-The following procedures should be followed when a parent requests guardianship assistance cash payment:
+The Guardianship Assistance appeals process is the same as that used for other
+
+Public Assistance appeals and would be resolved through the same channels. The Guardianship Assistance appeals must be conducted by an impartial official or designee of the agency. The official or designee cannot have been directly involved in the determination of eligibility for guardianship assistance benefits. The county child welfare agency staff member assigned to hear Public Assistance appeals is the person who should conduct the fair hearing. At no time shall someone in a decisionmaking capacity regarding the child's eligibility serve as the fair hearing officer.
+
+The following procedures should be followed when a parent requests guardianship
+
+assistance cash payment:
 
 1. The guardian(s) should be advised to submit a written request to the child's
 
 agency for guardianship assistance monthly cash payments.
 
-Within five days of notification, the county child welfare agency must notify the guardians that a fair hearing will be held and hold the fair hearing.
+If the guardians request benefits that have not previously been provided and
 
-If the guardians request benefits that have not previously been provided and the agency agrees that the child should have been found eligible, the agency may not administratively change its eligibility determination but may avoid a trial-type evidentiary hearing. The undisputed documentary evidence could be presented to the fair hearing officer for his or her review and determination made on the written record (ACYF-CB-PA-01-01).
+the agency agrees that the child should have been found eligible, the agency may not administratively change its eligibility determination but may avoid a trial-type evidentiary hearing. The undisputed documentary evidence could be presented to the fair hearing officer for his or her review and determination made on the written record (ACYF-CB-PA-01-01).
 
 2. At the fair hearing, the agency may determine as to whether sufficient
 
@@ -311,6 +371,10 @@ information has been presented to substantiate that, based on eligibility requir
 3. If the agency finds the child to be eligible, negotiations can be made at that
 
 time with the guardian(s) to determine the beginning date and amount of payment for the child. If the agency and the guardians cannot reach an agreement, the agency shall advise the guardians of their right to appeal the agency's decision regarding the amount and beginning date. The guardians
+
+Within five days of notification, the county child welfare agency must notify
+
+the guardians that a fair hearing will be held and hold the fair hearing.
 
 <!-- page: 13 -->
 4. If the guardians wish to appeal the agency's decision, the agency completes
@@ -323,7 +387,9 @@ of the guardians, can be appealed to the Superior Court in accordance with N.C.G
 
 B. Results of Successful Appeals
 
-If the child is found eligible for guardianship assistance, the county child welfare agency, in conjunction with the State Division of Social Services, is responsible for negotiating with the parents to establish the effective date of initiating benefits, unless the date is otherwise established by the State Hearings Officer or the Superior Court.
+If the child is found eligible for guardianship assistance, the county child welfare
+
+agency, in conjunction with the State Division of Social Services, is responsible for negotiating with the parents to establish the effective date of initiating benefits, unless the date is otherwise established by the State Hearings Officer or the Superior Court.
 
 A guide to an appropriate retroactive beginning date would be either:
 
@@ -338,20 +404,30 @@ A KinGAP & GAP Agreement (DSS-1810)must be prepared and reflect the beginning
 
 date of the retroactive payments on the agreement. The guardian(s) and agency director or designee will sign and note the date of signature on the agreement. A copy of the fair hearings officer's findings should be attached to the agreement to indicate why the agreement was signed after the guardianship was granted either verbally or in writing by the court.
 
-The county child welfare agency shall notify the Division of Social Services of the decision in writing. The letter should include the address of the guardian(s), the social security number(s) of the guardian(s), the child's SIS I.D. or CNDS number, the funding source, a copy of the decision because of the appeal, the beginning date for retroactive payments, and the monthly and yearly breakdown of payments.
+The county child welfare agency shall notify the Division of Social Services of the
 
-Payment will be issued from the Division, with a sight draft sent to the county child welfare agency for its share of the payment. The state may claim Federal Financial Participation for IV-E eligible children from the earliest date of eligibility as reflected in the signed KinGAP & GAP Agreement (DSS-1810). For continuing payments to the legal guardians, the guardianship information must be entered on the DSS-5095.
+decision in writing. The letter should include the address of the guardian(s), the social security number(s) of the guardian(s), the child's SIS I.D. or CNDS number, the funding source, a copy of the decision because of the appeal, the beginning date for retroactive payments, and the monthly and yearly breakdown of payments.
+
+Payment will be issued from the Division, with a sight draft sent to the county child
+
+welfare agency for its share of the payment. The state may claim Federal Financial Participation for IV-E eligible children from the earliest date of eligibility as reflected in the signed KinGAP & GAP Agreement (DSS-1810). For continuing payments to the legal guardians, the guardianship information must be entered on the DSS-5095.
 
 IX. LOST OR STOLEN GUARDIANSHIP ASSISTANCE CHECK
 
-If for some reason the check is not able to be delivered to the guardian, it is returned to the county office. It is important to determine if the check has been returned to the county before requesting a replacement check. A request for a replacement check, DSS- 8129, must be completed by the agency if a check is lost or stolen and emailed to the Program Benefits Coordinator at NC DHHS Controller's Office at DSSProgramBenefits@dhhs.nc.gov.
+If for some reason the check is not able to be delivered to the guardian, it is returned to
 
-The Controller's Office will not issue a replacement check until it has been shown that the original check has cleared. Therefore, guardians must be advised that a request for a replacement check cannot be paid before the 10th of the month. Replacement checks are mailed to the agency and not the guardian. If a guardian needs cash assistance, the agency may provide the payment and request reimbursement from the guardian when the replacement check is issued. This agreement must be between the guardian and the agency. The Controller's Office will not issue replacement checks payable to the agency.
+the county office. It is important to determine if the check has been returned to the county before requesting a replacement check. A request for a replacement check, DSS- 8129, must be completed by the agency if a check is lost or stolen and emailed to the Program Benefits Coordinator at NC DHHS Controller's Office at DSSProgramBenefits@dhhs.nc.gov.
+
+The Controller's Office will not issue a replacement check until it has been shown that
+
+the original check has cleared. Therefore, guardians must be advised that a request for a replacement check cannot be paid before the 10th of the month. Replacement checks are mailed to the agency and not the guardian. If a guardian needs cash assistance, the agency may provide the payment and request reimbursement from the guardian when the replacement check is issued. This agreement must be between the guardian and the agency. The Controller's Office will not issue replacement checks payable to the agency.
 
 <!-- page: 15 -->
 X. OVERPAYMENT OF GUARDIANSHIP ASSISTANCE
 
-When it is determined that an overpayment to a KinGAP/GAP recipient has occurred, the county should establish a repayment agreement and repayment schedule with the family at that time.
+When it is determined that an overpayment to a KinGAP/GAP recipient has occurred, the
+
+county should establish a repayment agreement and repayment schedule with the family at that time.
 
 When payments are made by the family, the county should complete a DSS-1656
 
@@ -361,7 +437,9 @@ The repayment will be credited to the child's check history screen in the Child 
 
 XI. TERMINATION OF GUARDIANSHIP ASSISTANCE BENEFITS/PAYMENTS
 
-Guardianship Assistance benefits to children and youth will be terminated in any of the following circumstances, upon written notice to the legal guardian(s):
+Guardianship Assistance benefits to children and youth will be terminated in any of the
+
+following circumstances, upon written notice to the legal guardian(s):
 
 1. Upon the legal guardian(s)' request.
 
@@ -376,6 +454,8 @@ years of age when legal guardianship was granted. In that situation, benefits wi
 a. The youth is completing secondary education or a program leading to an
 
 equivalent credential; or
+
+vocational education; or
 
 c. The youth is participating in a program or activity designed to promote or
 
@@ -392,8 +472,6 @@ MSC 2019: 27699-2019
 1910 Human Services Lane, Raleigh, NC 27607
 
 b. The youth is enrolled in an institution which provides post-secondary or
-
-vocational education; or
 
 d. The youth is employed for at least 80 hours per month; or
 

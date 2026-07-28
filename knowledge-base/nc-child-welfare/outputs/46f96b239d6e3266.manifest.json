@@ -3,20 +3,32 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/child-welfare-resources-for-substance-affected-infants-and-plan-of-safe-care.pdf",
   "source_sha256": "20c05d6bd83f1ef307b05fa98ce54e39e0c6cda3077adc60e6d18939726f6a6f",
   "content_sha256": "4c939880e7b66cca9f22c969be319f681ab5637d1596322367432a7f8bc78d4e",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 7,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:00-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:21:49-04:00",
+  "host": "vega"
 }

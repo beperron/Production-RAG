@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0008_InitialNoticetoDAorLE_Electronic_3-2024-1.docx",
   "source_sha256": "a3083248dc2b8a5b6f93ca8422c9e796a623b6031822d6a0d5dcce5e6bbe4590",
   "content_sha256": "59fe2b2dce0aadabdee10fcc60053f42c4cb716c7e797a39291ce39f79011813",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "docx"
   ],
+  "per_page_routes": [
+    "docx"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:30-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:30-04:00",
+  "host": "vega"
 }

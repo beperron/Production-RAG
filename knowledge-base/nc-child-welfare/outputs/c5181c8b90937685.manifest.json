@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-6218-Adult-Services-IntakeInquiry-Elec-3-24.docx",
   "source_sha256": "12310cf9061689ec852fd0b5a67b2d84edaf7a09dc6a403a9fa4ed2e5ef9e1ab",
   "content_sha256": "482d8b2e9415e9cd3f0627fe3bfcb6c660af58c69e7feb0bb2b0343a63233285",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "docx"
   ],
+  "per_page_routes": [
+    "docx"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:31-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:32-04:00",
+  "host": "vega"
 }

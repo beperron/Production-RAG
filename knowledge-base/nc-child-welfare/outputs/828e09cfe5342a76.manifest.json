@@ -3,20 +3,27 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/LINKS-Vehicle-Resource-Guide-April-2026.pdf",
   "source_sha256": "76286a054752bb3261014f4bad25a0592b4dd59071e4f0cb884ddf30ccdcbdca",
   "content_sha256": "3af6cb37aeb353204bd4c2417487ca2b45a7dda80f97e2c0b07dc6829b766281",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 2,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:04:22-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:18:29-04:00",
+  "host": "vega"
 }

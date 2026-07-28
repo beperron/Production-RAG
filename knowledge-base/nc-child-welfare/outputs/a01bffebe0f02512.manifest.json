@@ -2,21 +2,28 @@
   "doc_id": "a01bffebe0f02512",
   "source_path": "knowledge-base/nc-child-welfare/sources/fhlm_cn_01_2014.pdf",
   "source_sha256": "995c782fdeaf0fd9aae6a8c464a8785050b99947e7f20531d31c933acf097d15",
-  "content_sha256": "82f282a66bc4680fc337b372bcd9065b4056534f9a902f5318aa7c4a1885810f",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "5a9101a23bfe613a50f3d0a706e28a15bc5925ca33e80a09943ad3d8e007c87b",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 2,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:11:44-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:27:31-04:00",
+  "host": "vega"
 }

@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-0010_APSNoticeToFinancialCustomer_Electronic-3.2024.docx",
   "source_sha256": "62c33b764ca59e78734a5de09ddb259ce7341e0f4bb5cb5d6935ec3d5ba55f69",
   "content_sha256": "2f96de8b5e2b6264c06a4475fb043271524c052f42d0eeae07ceac831032817e",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "docx"
   ],
+  "per_page_routes": [
+    "docx"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:30-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:30-04:00",
+  "host": "vega"
 }

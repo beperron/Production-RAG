@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/Child-Welfare-Resource_Near-Fatality-Tip-Sheet_03.06.25.pdf",
   "source_sha256": "1f26767fd4ebfec8f4002f0cefd36f18e56501adcb75ca222686686bd5e20b42",
   "content_sha256": "cbf370f6b6c9b47a81565d29d233de6afd78f34307382a3e20b1e9970d0d3444",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:02:49-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:16:40-04:00",
+  "host": "vega"
 }

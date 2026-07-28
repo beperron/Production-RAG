@@ -17,7 +17,7 @@
     "route": "tesseract",
     "chars": 844,
     "garbled": false,
-    "ocr_mean_confidence": 94.624,
+    "ocr_mean_confidence": 94.616,
     "vlm_agreement": null,
     "flagged": false,
     "flag_reasons": [],

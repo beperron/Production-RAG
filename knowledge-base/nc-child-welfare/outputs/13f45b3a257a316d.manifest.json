@@ -3,20 +3,30 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/LINKS-as-an-Outcome-Based-Service-Resource-Guide-April-2026.pdf",
   "source_sha256": "733846538755cbcddab07eb3105ef5438ebfcc938d8c2e02eaab811d82d2c896",
   "content_sha256": "bfa966dfa2d54df71d0e0cc7bda2c1df8ab54396424314baef8678f0be0b9dae",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 5,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:04:23-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:18:30-04:00",
+  "host": "vega"
 }

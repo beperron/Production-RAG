@@ -3,20 +3,36 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/Evidence-Based-Prevention-Services-Policy-02202026.pdf",
   "source_sha256": "844617bcf2a6cc8d87e011c0de8fe8937725ab5a477da509e85135c01105a926",
   "content_sha256": "c3159bbeb1e57b64e8ebbd0221f1526ae079c120ea9b3872747812bba80f535e",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 11,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:55-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:56-04:00",
+  "host": "vega"
 }

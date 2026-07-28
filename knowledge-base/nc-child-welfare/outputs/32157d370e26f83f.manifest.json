@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-6222-HW-Adult-Services-ContactActivity-Log-3.2024.docx",
   "source_sha256": "8f7edecb552ecea76cafffc722b3ccb5c9f874e71dcf5a41f013285880e0ae02",
   "content_sha256": "3b9c75a3c7f5ed51b0a5501723095fc3912193ba699917c4498eef66b38c455a",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "docx"
   ],
+  "per_page_routes": [
+    "docx"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:32-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:32-04:00",
+  "host": "vega"
 }

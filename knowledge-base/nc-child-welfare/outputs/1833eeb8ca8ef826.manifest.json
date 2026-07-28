@@ -3,20 +3,35 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/cws-al-01-15a.pdf",
   "source_sha256": "64cf5de8bd86139951ddab4c6a301c91aa201d8b395d4ce8d73eda14735addee",
   "content_sha256": "6bbdd6b8893307dd2df5da08d4ed8723640f109325606402b0d7b8aea3d51e9d",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 10,
   "page_routes": [
     "tesseract"
   ],
+  "per_page_routes": [
+    "tesseract",
+    "tesseract",
+    "tesseract",
+    "tesseract",
+    "tesseract",
+    "tesseract",
+    "tesseract",
+    "tesseract",
+    "tesseract",
+    "tesseract"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:07:54-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:22:54-04:00",
+  "host": "vega"
 }

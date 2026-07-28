@@ -2,8 +2,8 @@
   "doc_id": "f6fc1c6f4e956bec",
   "source_path": "knowledge-base/nc-child-welfare/sources/dss-5103-ia.pdf",
   "source_sha256": "7cc9fde92d8ee8acbdff02d51085be0d8837532a08d7ad31d82bbe2d2b2c4f3c",
-  "content_sha256": "44c5b0eff34d15ac059283b2444540b824ba33a64d4360b95739d3e59b3da000",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "0ae68dde7f8930b1af11521385b3204a724da5acaac234e55ca25ea76becd1b4",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 5,
@@ -11,13 +11,23 @@
     "native",
     "tesseract"
   ],
+  "per_page_routes": [
+    "native",
+    "tesseract",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:09:54-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:25:24-04:00",
+  "host": "vega"
 }

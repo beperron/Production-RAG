@@ -3,20 +3,26 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/DHHS-AS-6226-Case-Closing-Summary-HW-3-2025.docx",
   "source_sha256": "5bb3d5286cc334a6b1cbd23c022c3e4bee2e5bf2129e42aeeebd9877bf35faab",
   "content_sha256": "79fb769cfa00f84b6d4398c3de859cd5fb36d00298eb8a1cff0ffe74d38b05f7",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 1,
   "page_routes": [
     "docx"
   ],
+  "per_page_routes": [
+    "docx"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:32-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:34-04:00",
+  "host": "vega"
 }

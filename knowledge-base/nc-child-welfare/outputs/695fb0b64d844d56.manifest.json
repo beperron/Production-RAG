@@ -3,20 +3,28 @@
   "source_path": "knowledge-base/nc-child-welfare/sources/safe-sleep-practice-guide-for-child-welfare-workers-1.pdf",
   "source_sha256": "ef1982d1b1fcbdf81387b4fce1cd54a0a62a4dd4062b190db05764eab898794c",
   "content_sha256": "216489a1d923afdb1c665337c3c96dd0a05be5ad517d48df233527e5a87264fb",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 3,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:14:14-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:30:29-04:00",
+  "host": "vega"
 }

@@ -2,21 +2,29 @@
   "doc_id": "028ccb161cf7c1c6",
   "source_path": "knowledge-base/nc-child-welfare/sources/DSS-5025-Evidence-Based-Services-Plan-2026.pdf",
   "source_sha256": "769b043f25c8a90f5cc5c9dd6f21477f31aceb852684388ace7a3c708686ac3c",
-  "content_sha256": "3557f495cab66fd0aec91a7662ee91afb3900830950af5c37757a31230ce5ed4",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "38dc19776f1be98d160db98afe8185e34666ae032b97165ab69ebe1746d17522",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 3,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:03:35-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:17:36-04:00",
+  "host": "vega"
 }

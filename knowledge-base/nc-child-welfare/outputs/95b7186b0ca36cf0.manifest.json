@@ -2,21 +2,28 @@
   "doc_id": "95b7186b0ca36cf0",
   "source_path": "knowledge-base/nc-child-welfare/sources/fscws_al_07_08a3.pdf",
   "source_sha256": "cdfa455d2941d072d6e54b3f6a7c01267743b69b1d4db6baabea60003c11afcc",
-  "content_sha256": "c6cba7f66b4cc19faaca8839cb80b4bf8e47c125a3b6752876cd43698aeddcc9",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "858c26884e3e2d0547a0a171f73eb214fa39fcb5018fdbd5a11a9e6b20de2350",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 2,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:13:54-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:30:06-04:00",
+  "host": "vega"
 }

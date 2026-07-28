@@ -2,21 +2,42 @@
   "doc_id": "bf1c3c301efbea1a",
   "source_path": "knowledge-base/nc-child-welfare/sources/Appendix-3.7-KinGAP-GAP-Payments-April-2026.pdf",
   "source_sha256": "6084c55394504cf94a1b94aab6a8100e7d440f08ec4daeb3c465872b0a7c6781",
-  "content_sha256": "5e29bc22ad564105214dbb5dbd33f1a7ae08b7ae310133fed3ce276a8d8ef0a9",
-  "parsevault_version": "0.1.0",
+  "content_sha256": "71e013d89ab59d2b568e718cc8f91b7c1421485810e551ecd905f3968ccd5d00",
+  "parsevault_version": "git-ad591f6",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 16,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:02:18-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T10:16:02-04:00",
+  "host": "vega"
 }
