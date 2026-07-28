@@ -94,7 +94,17 @@ main{max-width:1040px;margin:14px auto 60px;padding:0 20px}
 .pg.vlm{background:#2A5560}
 .pg.llamaparse{background:#7A4FA3}
 .pg.text{background:#5B6B73}
+.pg.docx{background:#8B5E34}
 .pg.flagged{outline:2px solid var(--seal-deep);outline-offset:1px}
+.timechart-wrap{margin-top:12px}
+.timechart-wrap h2{font:600 12px var(--mono);text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin:0 0 8px}
+.timechart{display:flex;flex-direction:column;gap:2px}
+.timechart-row{display:flex;align-items:center;gap:8px}
+.timechart-label{font:12px var(--mono);color:var(--ink);width:110px;flex:none;text-align:right}
+.timechart-track{flex:1;background:var(--soft);border-radius:4px;height:18px;overflow:hidden}
+.timechart-fill{height:100%;border-radius:0 4px 4px 0;transition:width .3s ease}
+.timechart-val{font:12px var(--mono);color:var(--muted);width:64px;flex:none}
+.timechart-empty{font:12px var(--mono);color:var(--muted);font-style:italic}
 table.chunktbl{width:100%;border-collapse:collapse;font:12.5px var(--mono)}
 table.chunktbl th{text-align:left;color:var(--muted);font-weight:600;padding:4px 8px;border-bottom:1px solid var(--line)}
 table.chunktbl td{padding:4px 8px;border-bottom:1px solid var(--line-soft);vertical-align:top}
@@ -132,12 +142,20 @@ _PAGE = """<!doctype html><html lang=en><head><meta charset=utf-8>
     <div class=stat><div class=stat-label>Current doc</div><div class=stat-val id=stat-current>&ndash;</div></div>
     <div class="stat degrade-badge" id=stat-degrade>0 degradations</div>
   </div>
+  <div class=timechart-wrap>
+    <h2>Time by extraction route</h2>
+    <div class=timechart id=timechart><div class=timechart-empty>no pages extracted yet</div></div>
+  </div>
 </header>
 <main id=timeline><div class=empty>No events yet.</div></main>
 <footer id=footer></footer>
 <script>
-const ROUTE_LABEL = {native:'N', tesseract:'T', vlm:'V', llamaparse:'L', text:'P'};
-const ROUTE_NAME = {native:'native text layer', tesseract:'Tesseract OCR', vlm:'vision-language model', llamaparse:'LlamaParse (cloud)', text:'plain text'};
+const ROUTE_LABEL = {native:'N', tesseract:'T', vlm:'V', llamaparse:'L', text:'P', docx:'D'};
+const ROUTE_NAME = {native:'native text layer', tesseract:'Tesseract OCR', vlm:'vision-language model', llamaparse:'LlamaParse (cloud)', text:'plain text', docx:'Word text layer'};
+// Same hexes as the .pg.* CSS rules above — kept in sync by hand since the
+// bar chart below is plain divs, not styled via those classes.
+const ROUTE_COLOR = {native:'#3F7A57', tesseract:'#B8860B', vlm:'#2A5560', llamaparse:'#7A4FA3', text:'#5B6B73', docx:'#8B5E34'};
+const ROUTE_ORDER = ['native', 'vlm', 'tesseract', 'llamaparse', 'text', 'docx'];
 
 let CURRENT_BUILD = new URLSearchParams(location.search).get('build') || '';
 let BUILDS = [];
@@ -152,6 +170,7 @@ function buildCards(events){
   const byDocId = new Map();
   let buildStart = null, buildDone = null, lastDocStart = null;
   let degradations = 0;
+  const routeTime = {};  // route -> cumulative elapsed_seconds across all pages seen so far
 
   for (const e of events){
     switch (e.stage){
@@ -175,6 +194,10 @@ function buildCards(events){
         card.status = 'chunking';
         degradations += card.degradations.length;
         byDocId.set(e.doc_id, card);
+        for (const p of card.pages){
+          const route = p.route || '?';
+          routeTime[route] = (routeTime[route] || 0) + (p.elapsed_seconds || 0);
+        }
         break;
       }
       case 'chunk_done': {
@@ -209,7 +232,7 @@ function buildCards(events){
         break;
     }
   }
-  return {cards, buildStart, buildDone, lastDocStart, degradations};
+  return {cards, buildStart, buildDone, lastDocStart, degradations, routeTime};
 }
 
 function pageStrip(pages){
@@ -217,9 +240,10 @@ function pageStrip(pages){
     const route = p.route || '?';
     const flagged = p.flagged ? ' flagged' : '';
     const routeName = ROUTE_NAME[route] || route;
+    const timing = p.elapsed_seconds != null ? `, ${p.elapsed_seconds.toFixed(2)}s` : '';
     const title = p.flagged
       ? esc((p.flag_reasons || []).join('; '))
-      : `page ${p.page_number} — read via ${routeName} (${p.chars} chars)`;
+      : `page ${p.page_number} — read via ${routeName} (${p.chars} chars${timing})`;
     return `<div class="pg ${esc(route)}${flagged}" title="${title}">${ROUTE_LABEL[route] || '?'}</div>`;
   }).join('');
 }
@@ -244,6 +268,37 @@ function chunkTable(chunks){
     <td>${esc((c.extraction_routes || []).join(','))}</td>
   </tr>`).join('');
   return `<table class=chunktbl><thead><tr><th>Heading</th><th>What's in this piece</th><th>Pages</th><th>Routes</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+// Cumulative wall-clock time spent per extraction lane, across every page
+// seen so far in this build — local compute time is the honest cost proxy
+// here (no cloud $ during a build: the cascade never leaves the machine).
+function fmtRouteSeconds(seconds){
+  return seconds < 60 ? `${seconds.toFixed(1)}s` : fmtElapsed(seconds);
+}
+
+function renderTimeChart(routeTime){
+  const el = document.getElementById('timechart');
+  const seen = new Set(ROUTE_ORDER);
+  const routes = [...ROUTE_ORDER, ...Object.keys(routeTime).filter(r => !seen.has(r))];
+  const entries = routes
+    .filter(route => (routeTime[route] || 0) > 0)
+    .map(route => ({route, seconds: routeTime[route]}));
+  if (entries.length === 0){
+    el.innerHTML = '<div class=timechart-empty>no pages extracted yet</div>';
+    return;
+  }
+  const max = Math.max(...entries.map(e => e.seconds));
+  el.innerHTML = entries.map(({route, seconds}) => {
+    const pct = max > 0 ? Math.max(2, Math.round(100 * seconds / max)) : 0;
+    const color = ROUTE_COLOR[route] || '#8A8577';
+    const label = ROUTE_NAME[route] || route;
+    return `<div class=timechart-row>
+      <span class=timechart-label>${esc(label)}</span>
+      <div class=timechart-track><div class=timechart-fill style="width:${pct}%;background:${color}"></div></div>
+      <span class=timechart-val>${fmtRouteSeconds(seconds)}</span>
+    </div>`;
+  }).join('');
 }
 
 function cardHtml(c){
@@ -352,7 +407,8 @@ async function tick(){
   } catch (e) {
     return;
   }
-  const {cards, buildStart, buildDone, lastDocStart, degradations} = buildCards(data.events || []);
+  const {cards, buildStart, buildDone, lastDocStart, degradations, routeTime} = buildCards(data.events || []);
+  renderTimeChart(routeTime);
 
   const total = buildStart ? buildStart.total_todo : 0;
   const done = lastDocStart ? lastDocStart.index : 0;

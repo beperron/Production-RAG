@@ -129,7 +129,8 @@ class LocalCascadeExtractor(BaseExtractor):
             r = PlainTextExtractor().extract(file_path)
             from ..quality import score_pages
 
-            pages = score_pages([PageResult(page_number=1, markdown=r.markdown, route="text")])
+            pages = score_pages([PageResult(page_number=1, markdown=r.markdown, route="text",
+                                             elapsed_seconds=time.time() - start)])
             return ExtractionResult(
                 pdf_name=r.pdf_name,
                 markdown=assemble_anchored(pages),
@@ -147,7 +148,8 @@ class LocalCascadeExtractor(BaseExtractor):
             r = DocxExtractor().extract(file_path)
             from ..quality import score_pages
 
-            pages = score_pages([PageResult(page_number=1, markdown=r.markdown, route="docx")])
+            pages = score_pages([PageResult(page_number=1, markdown=r.markdown, route="docx",
+                                             elapsed_seconds=time.time() - start)])
             return ExtractionResult(
                 pdf_name=r.pdf_name,
                 markdown=assemble_anchored(pages),
@@ -165,10 +167,13 @@ class LocalCascadeExtractor(BaseExtractor):
             route = self.config.force_route or (
                 Route.VLM_QUALITY if vlm_ready else Route.TESSERACT
             )
-            md, used, sig = self._render_image_scored(img, route, vlm_ready)
+            md, used, sig, page_elapsed = self._render_image_scored(img, route, vlm_ready)
             from ..quality import score_pages
 
-            pages = score_pages([PageResult(page_number=1, markdown=md, route=used)], {1: sig})
+            pages = score_pages(
+                [PageResult(page_number=1, markdown=md, route=used, elapsed_seconds=page_elapsed)],
+                {1: sig},
+            )
             return ExtractionResult(
                 pdf_name=file_path.stem,
                 markdown=assemble_anchored(pages),
@@ -203,9 +208,10 @@ class LocalCascadeExtractor(BaseExtractor):
                 page, vlm_available=vlm_ready
             ).route
             if route == Route.NATIVE:
+                page_t0 = time.time()
                 md = self.native.render_page(page)
                 if md.strip():
-                    plans.append(("done", md, "native"))
+                    plans.append(("done", md, "native", time.time() - page_t0))
                     page_numbers.append(page.number + 1)
                     continue
                 # Empty text layer despite a NATIVE route → escalate to OCR.
@@ -223,7 +229,7 @@ class LocalCascadeExtractor(BaseExtractor):
         # Pass 2: render the OCR/VLM pages, in parallel when there is more than
         # one (threads — tesseract/VLM release the GIL). Page order preserved.
         ocr_idx = [i for i, p in enumerate(plans) if p[0] == "ocr"]
-        rendered: dict[int, tuple[str, str, dict]] = {}
+        rendered: dict[int, tuple[str, str, dict, float]] = {}
         workers = self._workers()
         if len(ocr_idx) > 1 and workers > 1:
             from concurrent.futures import ThreadPoolExecutor
@@ -246,22 +252,26 @@ class LocalCascadeExtractor(BaseExtractor):
         page_md: list[str] = []
         routes: list[str] = []
         signals: list[dict] = []
+        page_elapsed: list[float] = []
         for i, p in enumerate(plans):
             if p[0] == "done":
-                md, used, sig = p[1], p[2], {}
+                md, used, sig, elapsed = p[1], p[2], {}, p[3]
             else:
-                ocr_md, used, sig = rendered[i]
+                ocr_md, used, sig, elapsed = rendered[i]
                 native_md = p[3]
                 # Keep whichever transcription carries more content (R: conv-eval).
                 # Guards against OCR'ing a page whose text layer was already complete
                 # while still capturing pages whose text lives in images/vectors.
                 if _content_token_count(native_md) > _content_token_count(ocr_md):
                     md, used, sig = native_md, "native", {}
+                    # elapsed stays the OCR-lane time — that's the work actually
+                    # done for this page, even though native won the content check.
                 else:
                     md = ocr_md
             page_md.append(md)
             routes.append(used)
             signals.append(sig)
+            page_elapsed.append(elapsed)
 
         # Remove headers/footers/page numbers repeated across pages (they add no
         # information and pollute retrieval), then drop now-empty pages. Page
@@ -290,8 +300,8 @@ class LocalCascadeExtractor(BaseExtractor):
             for n in native_escalations
         )
         page_objs = [
-            PageResult(page_number=n, markdown=md, route=route)
-            for n, md, route in zip(page_numbers, page_md, routes)
+            PageResult(page_number=n, markdown=md, route=route, elapsed_seconds=elapsed)
+            for n, md, route, elapsed in zip(page_numbers, page_md, routes, page_elapsed)
             if md.strip()
         ]
         from ..quality import score_pages
@@ -338,17 +348,24 @@ class LocalCascadeExtractor(BaseExtractor):
 
     # -- per-image dispatch with fallback ------------------------------------
     def _render_image(self, img, route: Route, vlm_ready: bool) -> tuple[str, str]:
-        md, used, _signals = self._render_image_scored(img, route, vlm_ready)
+        md, used, _signals, _elapsed = self._render_image_scored(img, route, vlm_ready)
         return md, used
 
-    def _render_image_scored(self, img, route: Route, vlm_ready: bool) -> tuple[str, str, dict]:
-        """Render an image, returning (markdown, lane, quality_signals).
+    def _render_image_scored(
+        self, img, route: Route, vlm_ready: bool
+    ) -> tuple[str, str, dict, float]:
+        """Render an image, returning (markdown, lane, quality_signals, elapsed_seconds).
 
         Signals carry the per-page measurements (R3): Tesseract pages → mean OCR
         confidence; VLM pages → a VLM↔OCR token-overlap agreement from an
-        independent Tesseract pass on the same raster (one extra CPU pass)."""
+        independent Tesseract pass on the same raster (one extra CPU pass).
+
+        ``elapsed_seconds`` covers the whole call — including a failed VLM attempt
+        that falls back to Tesseract and the quality cross-check pass — since that
+        is the real wall-clock cost of rendering this page via this lane."""
         from ..quality import jaccard_tokens
 
+        page_t0 = time.time()
         if route in (Route.VLM_FAST, Route.VLM_QUALITY) and vlm_ready:
             client = self._fast if route == Route.VLM_FAST else self._quality
             try:
@@ -361,11 +378,11 @@ class LocalCascadeExtractor(BaseExtractor):
                                    "ocr_mean_confidence": ocr_conf}
                     except Exception:  # noqa: BLE001
                         signals = {}
-                return md, route.value, signals
+                return md, route.value, signals, time.time() - page_t0
             except VLMUnavailable:
                 pass
         md, conf = self.tesseract.render_image_scored(img)
-        return md, "tesseract", {"ocr_mean_confidence": conf}
+        return md, "tesseract", {"ocr_mean_confidence": conf}, time.time() - page_t0
 
     # Convenience for callers that already hold a fitz page (e.g. benchmark).
     def rasterize(self, page):
