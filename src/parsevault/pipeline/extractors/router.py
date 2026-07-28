@@ -342,7 +342,9 @@ class LocalCascadeExtractor(BaseExtractor):
             out.mkdir(parents=True, exist_ok=True)
             for p in page_objs:
                 if (keep_all or p.quality.get("flagged")) and p.page_number in raster_by_page:
-                    raster_by_page[p.page_number].save(out / f"{stem}-p{p.page_number}.png")
+                    dest = out / f"{stem}-p{p.page_number}.png"
+                    raster_by_page[p.page_number].save(dest)
+                    p.raster_path = str(dest)
         except Exception:  # noqa: BLE001 — archival is best-effort, never fail extraction
             pass
 
