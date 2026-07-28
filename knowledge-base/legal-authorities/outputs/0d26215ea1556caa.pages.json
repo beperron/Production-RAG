@@ -54,7 +54,7 @@
   {
     "page_number": 5,
     "route": "native",
-    "chars": 3604,
+    "chars": 3603,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -80,7 +80,7 @@
   {
     "page_number": 7,
     "route": "native",
-    "chars": 3641,
+    "chars": 3640,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -93,7 +93,7 @@
   {
     "page_number": 8,
     "route": "native",
-    "chars": 3942,
+    "chars": 3940,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -119,7 +119,7 @@
   {
     "page_number": 10,
     "route": "native",
-    "chars": 2856,
+    "chars": 2855,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -731,7 +731,7 @@
     "route": "tesseract",
     "chars": 2818,
     "garbled": true,
-    "ocr_mean_confidence": 85.41992882562278,
+    "ocr_mean_confidence": 85.41281138790036,
     "vlm_agreement": null,
     "flagged": true,
     "flag_reasons": [
@@ -759,7 +759,7 @@
     "route": "tesseract",
     "chars": 2827,
     "garbled": true,
-    "ocr_mean_confidence": 90.1023102310231,
+    "ocr_mean_confidence": 90.06930693069307,
     "vlm_agreement": null,
     "flagged": true,
     "flag_reasons": [
@@ -804,7 +804,7 @@
     "route": "tesseract",
     "chars": 2692,
     "garbled": true,
-    "ocr_mean_confidence": 91.93425605536332,
+    "ocr_mean_confidence": 91.91695501730104,
     "vlm_agreement": null,
     "flagged": true,
     "flag_reasons": [
@@ -879,7 +879,7 @@
     "route": "tesseract",
     "chars": 2819,
     "garbled": true,
-    "ocr_mean_confidence": 86.90454545454546,
+    "ocr_mean_confidence": 86.91363636363636,
     "vlm_agreement": null,
     "flagged": true,
     "flag_reasons": [
@@ -894,7 +894,7 @@
     "route": "tesseract",
     "chars": 2813,
     "garbled": true,
-    "ocr_mean_confidence": 88.47549019607843,
+    "ocr_mean_confidence": 88.45588235294117,
     "vlm_agreement": null,
     "flagged": true,
     "flag_reasons": [
@@ -939,7 +939,7 @@
     "route": "tesseract",
     "chars": 2805,
     "garbled": true,
-    "ocr_mean_confidence": 85.95979899497488,
+    "ocr_mean_confidence": 85.96984924623115,
     "vlm_agreement": null,
     "flagged": true,
     "flag_reasons": [
@@ -1294,7 +1294,7 @@
   {
     "page_number": 97,
     "route": "native",
-    "chars": 3599,
+    "chars": 3598,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -2685,7 +2685,7 @@
   {
     "page_number": 204,
     "route": "native",
-    "chars": 3178,
+    "chars": 3177,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,

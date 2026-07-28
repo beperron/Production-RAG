@@ -145,7 +145,7 @@
   {
     "page_number": 12,
     "route": "native",
-    "chars": 3995,
+    "chars": 3993,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -184,7 +184,7 @@
   {
     "page_number": 15,
     "route": "native",
-    "chars": 3856,
+    "chars": 3855,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -418,7 +418,7 @@
   {
     "page_number": 33,
     "route": "native",
-    "chars": 3242,
+    "chars": 3241,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -587,7 +587,7 @@
   {
     "page_number": 46,
     "route": "native",
-    "chars": 3380,
+    "chars": 3379,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -1211,7 +1211,7 @@
   {
     "page_number": 94,
     "route": "native",
-    "chars": 3648,
+    "chars": 3647,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -1588,7 +1588,7 @@
   {
     "page_number": 123,
     "route": "native",
-    "chars": 3863,
+    "chars": 3862,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -1640,7 +1640,7 @@
   {
     "page_number": 127,
     "route": "native",
-    "chars": 3713,
+    "chars": 3712,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -2849,7 +2849,7 @@
   {
     "page_number": 220,
     "route": "native",
-    "chars": 3356,
+    "chars": 3355,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -3980,7 +3980,7 @@
   {
     "page_number": 307,
     "route": "native",
-    "chars": 4169,
+    "chars": 4168,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -4435,7 +4435,7 @@
   {
     "page_number": 342,
     "route": "native",
-    "chars": 3636,
+    "chars": 3635,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -4617,7 +4617,7 @@
   {
     "page_number": 356,
     "route": "native",
-    "chars": 2649,
+    "chars": 2648,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -5410,7 +5410,7 @@
   {
     "page_number": 417,
     "route": "native",
-    "chars": 3193,
+    "chars": 3192,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -6086,7 +6086,7 @@
   {
     "page_number": 469,
     "route": "native",
-    "chars": 3362,
+    "chars": 3361,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,

@@ -392,7 +392,7 @@
   {
     "page_number": 31,
     "route": "native",
-    "chars": 3833,
+    "chars": 3832,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -665,7 +665,7 @@
   {
     "page_number": 52,
     "route": "native",
-    "chars": 3311,
+    "chars": 3310,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,

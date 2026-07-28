@@ -3,20 +3,32 @@
   "source_path": "knowledge-base/legal-authorities/sources/Chapter_49.pdf",
   "source_sha256": "9a420fb3d9a1995b8143c9df8bea9735196463036fef6c9833e5af495ca4ff17",
   "content_sha256": "e24665d7ed066f8879f50bdf6752dd58673f2716f02c800d86ff6e27caaf6836",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-9614d75",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 7,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:05:36-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T11:50:12-04:00",
+  "host": "vega"
 }

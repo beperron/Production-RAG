@@ -613,7 +613,7 @@
   {
     "page_number": 48,
     "route": "native",
-    "chars": 3831,
+    "chars": 3830,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -717,7 +717,7 @@
   {
     "page_number": 56,
     "route": "native",
-    "chars": 3395,
+    "chars": 3393,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -730,7 +730,7 @@
   {
     "page_number": 57,
     "route": "native",
-    "chars": 2823,
+    "chars": 2822,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -899,7 +899,7 @@
   {
     "page_number": 70,
     "route": "native",
-    "chars": 4344,
+    "chars": 4343,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,
@@ -912,7 +912,7 @@
   {
     "page_number": 71,
     "route": "native",
-    "chars": 3391,
+    "chars": 3390,
     "garbled": false,
     "ocr_mean_confidence": null,
     "vlm_agreement": null,

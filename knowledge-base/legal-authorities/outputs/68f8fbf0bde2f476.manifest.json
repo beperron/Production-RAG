@@ -3,20 +3,30 @@
   "source_path": "knowledge-base/legal-authorities/sources/10a_ncac_ch70_subchapter_j_rules.pdf",
   "source_sha256": "2fab072a9b42b10099b9616394e99872483623f798eb803efeba8b26c75b721d",
   "content_sha256": "0b8cc78d8fe4233805f1e468715f5ed5853ec8d5628319198e777832e8dd4b6e",
-  "parsevault_version": "0.1.0",
+  "parsevault_version": "git-9614d75",
   "extractor": "local-cascade",
   "parse_provider": "local-cascade",
   "page_count": 5,
   "page_routes": [
     "native"
   ],
+  "per_page_routes": [
+    "native",
+    "native",
+    "native",
+    "native",
+    "native"
+  ],
   "dpi": 200,
   "tesseract_lang": "eng",
-  "vlm_models": null,
+  "vlm_models": {
+    "quality": "",
+    "fast": ""
+  },
   "normalization": [
     "normalize_unicode",
     "strip_running_headers"
   ],
-  "created_at": "2026-06-25T07:02:45-04:00",
-  "host": "0587669780.vpn.umich.net"
+  "created_at": "2026-07-28T11:46:33-04:00",
+  "host": "vega"
 }
