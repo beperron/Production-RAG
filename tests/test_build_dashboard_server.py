@@ -50,13 +50,28 @@ def test_summarize_done_build():
         {"stage": "build_start", "total_todo": 1},
         {"stage": "doc_start", "index": 1},
         {"stage": "index_done", "dense_missing": 2},
-        {"stage": "build_done", "elapsed_s": 5.0, "chunks": 10},
+        {"stage": "build_done", "elapsed_s": 5.0, "chunks": 10, "docs": 1},
     ]
     s = dash._summarize(events)
     assert s["status"] == "done"
     assert s["degradations"] == 1  # dense_missing > 0
     assert s["elapsed_s"] == 5.0
     assert s["chunks"] == 10
+    assert s["docs"] == 1
+
+
+def test_summarize_done_build_with_nothing_new_to_index():
+    # A fully-resumed build (everything already in the index) emits no
+    # doc_start/index_done events at all — docs_indexed stays 0 even though
+    # the index holds real documents, so "docs" must come from build_done.
+    events = [
+        {"stage": "build_start", "total_todo": 0},
+        {"stage": "build_done", "elapsed_s": 7.0, "chunks": 7449, "docs": 28},
+    ]
+    s = dash._summarize(events)
+    assert s["status"] == "done"
+    assert s["docs_indexed"] == 0
+    assert s["docs"] == 28
 
 
 def test_summarize_aborted_build():
