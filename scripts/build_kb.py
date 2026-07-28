@@ -18,7 +18,13 @@ from parsevault.pipeline.docindex import load_provenance_manifest
 
 SRC = Path(_os.environ.get("KB_SRC", "tests/Test-Docs/NC-Forms"))
 KB = Path(_os.environ.get("KB_OUT", "knowledge-base/nc-child-welfare"))
-MANIFEST = Path("knowledge-base/SOURCE_INDEX.json")
+# Prefer this corpus's own catalog (written by catalog_kb.py from a prior
+# build) over the global scrape manifest — it's the only provenance source
+# guaranteed to survive a full reprocess of THIS corpus specifically, and it
+# stays in sync every time catalog_kb.py is re-run.
+MANIFEST = KB / "MANIFEST.csv"
+if not MANIFEST.exists():
+    MANIFEST = Path("knowledge-base/SOURCE_INDEX.json")
 SUFFIXES = {".pdf", ".docx"}
 
 cfg = cascade_config_from_env()

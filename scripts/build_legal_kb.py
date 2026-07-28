@@ -2,7 +2,9 @@
 federal statutes/regulations/case law (.txt), with provenance.
 
 Provenance sources, in order:
-  * PDFs   → the SOURCE_INDEX.json manifest entry (by filename).
+  * PDFs   → this corpus's own MANIFEST.csv (by filename), falling back to
+             the global SOURCE_INDEX.json scrape manifest if no MANIFEST.csv
+             exists yet for this KB.
   * .txt   → the leading ``Source:``/``Wikisource:`` line embedded by the fetch.
   * else   → minimal (section guess + file mtime); logged so it's visible.
 
@@ -34,7 +36,13 @@ from parsevault.pipeline.docindex import build_document_metadata, load_provenanc
 
 KB = Path(_os.environ.get("KB_OUT", "knowledge-base/legal-authorities"))
 SRC = Path(_os.environ.get("KB_SRC", str(KB / "sources")))
-MANIFEST = Path("knowledge-base/SOURCE_INDEX.json")
+# Prefer this corpus's own catalog (written by catalog_kb.py from a prior
+# build) over the global scrape manifest — it's the only provenance source
+# guaranteed to survive a full reprocess of THIS corpus specifically, and it
+# stays in sync every time catalog_kb.py is re-run.
+MANIFEST = KB / "MANIFEST.csv"
+if not MANIFEST.exists():
+    MANIFEST = Path("knowledge-base/SOURCE_INDEX.json")
 SUFFIXES = {".pdf", ".txt", ".docx"}
 
 _SOURCE_RE = re.compile(r"^\s*source:\s*(\S+)", re.IGNORECASE)
