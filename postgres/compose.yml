@@ -1,0 +1,30 @@
+# Local Postgres for carolina-policy-search — fully isolated from the
+# practicum stack (which runs its own postgres:16-alpine for localscribe's
+# PHI-adjacent data on port 5432). This is a separate container, volume,
+# network, and port so it can be started/stopped/wiped freely without
+# touching anything else on the machine.
+#
+# pgvector/pgvector:pg16 instead of plain postgres:16-alpine because this
+# backs the local GTE-base/768d retrieval stack (see memory:
+# dual-storage-architecture) — vector similarity search needs the `vector`
+# extension, which the plain image doesn't ship.
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_DB: carolina_policy
+      POSTGRES_USER: carolina_policy
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-carolina_policy_dev}
+    volumes:
+      - carolina_policy_pgdata:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U carolina_policy"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  carolina_policy_pgdata:
