@@ -50,6 +50,15 @@ h1{font:600 24px/1.2 var(--display);margin:0 0 10px}
 .build-picker-wrap label{font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
 #build-picker{font:13px var(--mono);background:var(--card);color:var(--ink);border:1px solid var(--line);
   border-radius:6px;padding:5px 8px;flex:1;max-width:520px}
+.run-pills{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.run-pill{display:flex;align-items:center;gap:6px;font:11px var(--mono);color:var(--seal-deep);
+  background:#FCEEEE;border:1px solid var(--seal);border-radius:999px;padding:3px 10px 3px 8px;
+  cursor:pointer;max-width:280px}
+.run-pill:hover{background:#FBDFDF}
+.run-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--seal);flex:none;
+  animation:run-pill-throb 1.2s ease-in-out infinite}
+.run-pill .run-id{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@keyframes run-pill-throb{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.45}}
 .build-path{font:11px var(--mono);color:var(--muted);margin:2px 0 0;word-break:break-all}
 .progress-wrap{margin:10px 0}
 .progress-bar{height:10px;border-radius:6px;background:var(--soft);border:1px solid var(--line);overflow:hidden}
@@ -108,6 +117,7 @@ _PAGE = """<!doctype html><html lang=en><head><meta charset=utf-8>
 <div class=banner>BUILD DASHBOARD &middot; localhost, read-only</div>
 <header>
   <h1>Build Dashboard</h1>
+  <div class=run-pills id=run-pills></div>
   <div class=build-picker-wrap>
     <label for=build-picker>Build</label>
     <select id=build-picker><option value="">loading builds&hellip;</option></select>
@@ -278,6 +288,31 @@ function fmtBuildOption(b){
   return `${b.label} — ${count} docs (${b.status})`;
 }
 
+function selectBuild(id){
+  CURRENT_BUILD = id;
+  const url = new URL(location);
+  if (CURRENT_BUILD) url.searchParams.set('build', CURRENT_BUILD);
+  else url.searchParams.delete('build');
+  history.replaceState(null, '', url);
+  tick();
+}
+
+function renderRunPills(builds){
+  const wrap = document.getElementById('run-pills');
+  const running = builds.filter(b => b.status === 'running');
+  wrap.innerHTML = running.map(b =>
+    `<div class=run-pill data-id="${esc(b.id)}" title="jump to ${esc(b.id)}">` +
+    `<span class=dot></span><span class=run-id>${esc(b.id)}</span></div>`
+  ).join('');
+  for (const el of wrap.querySelectorAll('.run-pill')){
+    el.addEventListener('click', () => {
+      const picker = document.getElementById('build-picker');
+      picker.value = el.dataset.id;
+      selectBuild(el.dataset.id);
+    });
+  }
+}
+
 async function refreshBuilds(){
   let data;
   try {
@@ -287,6 +322,7 @@ async function refreshBuilds(){
     return;
   }
   BUILDS = data.builds || [];
+  renderRunPills(BUILDS);
   const picker = document.getElementById('build-picker');
   if (BUILDS.length === 0){
     picker.innerHTML = '<option value="">no builds found</option>';
@@ -365,12 +401,7 @@ async function tick(){
 }
 
 document.getElementById('build-picker').addEventListener('change', (ev) => {
-  CURRENT_BUILD = ev.target.value;
-  const url = new URL(location);
-  if (CURRENT_BUILD) url.searchParams.set('build', CURRENT_BUILD);
-  else url.searchParams.delete('build');
-  history.replaceState(null, '', url);
-  tick();
+  selectBuild(ev.target.value);
 });
 
 tick();

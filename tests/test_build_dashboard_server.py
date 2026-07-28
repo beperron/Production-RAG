@@ -11,12 +11,9 @@ pyproject.toml.
 from __future__ import annotations
 
 import json
-import threading
 import urllib.request
-from http.server import ThreadingHTTPServer
 
 import build_dashboard_server as dash
-import pytest
 
 from parsevault.pipeline.build_events import BuildEventLogger
 
@@ -89,19 +86,6 @@ def test_read_events_unknown_build_is_empty(pg_test_dsn, pg_conn):
 # HTTP layer — real server, real socket, pointed at the test DB
 # --------------------------------------------------------------------- #
 
-@pytest.fixture
-def dashboard_server(pg_test_dsn, monkeypatch):
-    monkeypatch.setattr(dash, "_DSN", pg_test_dsn)
-    httpd = ThreadingHTTPServer(("127.0.0.1", 0), dash.Handler)
-    thread = threading.Thread(target=httpd.serve_forever, daemon=True)
-    thread.start()
-    port = httpd.server_address[1]
-    yield f"http://127.0.0.1:{port}"
-    httpd.shutdown()
-    thread.join(timeout=5)
-    httpd.server_close()
-
-
 def test_health_endpoint(dashboard_server):
     with urllib.request.urlopen(f"{dashboard_server}/health") as resp:
         assert resp.status == 200
@@ -113,6 +97,7 @@ def test_index_page_serves_html(dashboard_server):
         assert resp.status == 200
         body = resp.read().decode()
         assert "<title>Build Dashboard</title>" in body
+        assert 'id=run-pills' in body  # throbbing-pill container for in-progress builds
 
 
 def test_api_builds_and_events_roundtrip(pg_test_dsn, dashboard_server):
@@ -133,3 +118,21 @@ def test_api_builds_and_events_roundtrip(pg_test_dsn, dashboard_server):
 def test_api_events_missing_build_param_is_empty(dashboard_server):
     with urllib.request.urlopen(f"{dashboard_server}/api/events") as resp:
         assert json.loads(resp.read())["events"] == []
+
+
+def test_api_builds_reports_multiple_concurrent_running_builds(pg_test_dsn, dashboard_server):
+    for build_id in ("concurrent-a", "concurrent-b"):
+        logger = BuildEventLogger(build_id, dsn=pg_test_dsn)
+        logger.event("build_start", total_todo=5, provider="local")
+        logger.close()
+    done_logger = BuildEventLogger("concurrent-done", dsn=pg_test_dsn)
+    done_logger.event("build_start", total_todo=1, provider="local")
+    done_logger.event("build_done", docs=1, chunks=1, elapsed_s=0.1, report_path="r.json")
+    done_logger.close()
+
+    with urllib.request.urlopen(f"{dashboard_server}/api/builds") as resp:
+        builds = {b["id"]: b for b in json.loads(resp.read())["builds"]}
+
+    assert builds["concurrent-a"]["status"] == "running"
+    assert builds["concurrent-b"]["status"] == "running"
+    assert builds["concurrent-done"]["status"] == "done"
