@@ -425,7 +425,9 @@ function fmtElapsed(seconds){
 }
 
 function fmtBuildOption(b){
-  const count = b.total_todo ? `${b.done}/${b.total_todo}` : `${b.docs_indexed}`;
+  const count = b.status === 'done'
+    ? b.docs
+    : (b.total_todo ? `${b.done}/${b.total_todo}` : b.docs_indexed);
   return `${b.label} — ${count} docs (${b.status})`;
 }
 
@@ -654,6 +656,7 @@ def _summarize(events: list[dict], last_seen: datetime.datetime | None = None) -
         "degradations": degradations,
         "elapsed_s": build_done.get("elapsed_s") if build_done else None,
         "chunks": build_done.get("chunks") if build_done else None,
+        "docs": build_done.get("docs") if build_done else None,
     }
 
 
