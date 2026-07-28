@@ -713,10 +713,17 @@ def load_provenance_manifest(path: str | Path, *, retrieved_at: str = "") -> dic
     return out
 
 
+# Defensive cap on per-event page/chunk detail arrays (build_events dashboard) —
+# this corpus won't hit it, but no event payload should be allowed to grow
+# unbounded with document size.
+_EVENT_ARRAY_CAP = 500
+
+
 def build_document_metadata(
     source_path: str | Path, *, config=None, max_chunk_chars: int = 1500,
     outputs_dir: str | Path | None = None, provenance: dict | None = None,
     degradation_sink: list | None = None, archive_sources: bool = False,
+    event_sink=None,
 ) -> tuple[DocMetadata, list[Chunk]]:
     """Convert a document and build its metadata + chunks.
 
@@ -739,6 +746,26 @@ def build_document_metadata(
     # doc_id and citations hang on, independent of how extraction renders it.
     source_sha256 = hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else ""
     result = _extract_with_provider(path, config)
+    if event_sink is not None:
+        doc_id = _doc_id(str(path), source_sha256 or "")
+        event_sink(
+            "extract_done",
+            doc_id=doc_id,
+            path=str(path),
+            extractor=result.extractor,
+            page_count=result.page_count,
+            pages=[
+                {
+                    "page_number": p.page_number,
+                    "route": p.route,
+                    "chars": len(p.markdown),
+                    "flagged": bool(p.quality.get("flagged")) if p.quality else False,
+                    "flag_reasons": p.quality.get("flag_reasons", []) if p.quality else [],
+                }
+                for p in result.pages[:_EVENT_ARRAY_CAP]
+            ],
+            degradations=result.degradations,
+        )
     page_route_map = {p.page_number: p.route for p in result.pages}
     meta, chunks = parse_document_metadata(
         result.markdown,
@@ -750,6 +777,24 @@ def build_document_metadata(
         page_route_map=page_route_map,
         max_chunk_chars=max_chunk_chars,
     )
+    if event_sink is not None:
+        event_sink(
+            "chunk_done",
+            doc_id=meta.doc_id,
+            chunk_count=len(chunks),
+            chunks=[
+                {
+                    "chunk_id": c.chunk_id,
+                    "heading_path": c.heading_path,
+                    "char_len": c.char_len,
+                    "token_estimate": c.token_estimate,
+                    "page_start": c.page_start,
+                    "page_end": c.page_end,
+                    "extraction_routes": c.extraction_routes,
+                }
+                for c in chunks[:_EVENT_ARRAY_CAP]
+            ],
+        )
     apply_provenance(meta, provenance)
     # Surface extraction-time degradations (vlm→tesseract, llamaparse→local) into
     # the caller's ledger, stamped with this document's id + a timestamp (R4).
