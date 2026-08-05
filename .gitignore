@@ -1,3 +1,4 @@
 0_source/*.pdf
 __pycache__/
 .DS_Store
+2_eval/*.tmp
