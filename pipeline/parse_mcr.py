@@ -49,8 +49,9 @@ LADDER = 21.6             # points per hierarchy level
 # indent -> depth. 108.0 is a flush paragraph under a rule with no subrules;
 # it behaves as depth 1 without consuming a marker slot.
 INDENT_DEPTH = {72.0: 0, 93.6: 1, 108.0: 1, 115.2: 2, 136.8: 3, 158.4: 4,
-                180.0: 5, 201.6: 6}
+                180.0: 5, 201.6: 6, 223.2: 7}
 INDENT_TOL = 1.5
+LOOSE_TOL = 4.0   # a rung typeset slightly shy of nominal
 
 # FrameMaker sets the marker in a fixed-width slot, and where the label is
 # wide ("(10)", "(vii)") the following space can be absorbed entirely -- 195
@@ -107,10 +108,20 @@ FIRST = {"A", "1", "a", "i", "I", "(a)"}
 
 
 def snap(x):
-    """Snap a measured indent onto the ladder, or return None if it is off it."""
+    """Snap a measured indent onto the ladder, or return None if it is off it.
+
+    A rung set a few points shy of its nominal position is still that rung --
+    MCR 2.002(G)(2)(b)(ii) is typeset at 162.0 against a 158.4 rung and was
+    losing its marker entirely. Exact matches win first; the wider pass is a
+    fallback so a genuinely off-ladder line (a form, a centred caption) still
+    reports as off-ladder.
+    """
     for known in INDENT_DEPTH:
         if abs(x - known) <= INDENT_TOL:
             return known
+    near = min(INDENT_DEPTH, key=lambda k: abs(x - k))
+    if abs(x - near) <= LOOSE_TOL:
+        return near
     return None
 
 
@@ -352,6 +363,36 @@ def b_subpath(stack):
     return "".join(f"({m})" for _, m in stack)
 
 
+def mark_tail_guards(blocks):
+    """Flag the unmarked blocks that must NOT be re-parented to their parent.
+
+    Two populations look like closing paragraphs but are not:
+
+    * a STEM that introduces a deeper list ("...the court must:" followed by
+      (1), (2)) belongs to the subrule it opens, not to the rule above it;
+    * a VERBATIM EXHIBIT -- the specimen brief cover in MCR 7.312(C) -- is set
+      at mixed indents, some of which fall off the ladder. Re-parenting only
+      the on-ladder lines tears one form across two citations.
+    """
+    for i, b in enumerate(blocks):
+        nxt = blocks[i + 1] if i + 1 < len(blocks) else None
+        if (b["kind"] == "body" and b["marker"] is None and b["depth"] is not None
+                and nxt and nxt["kind"] == "body" and nxt["marker"] is not None
+                and nxt["depth"] is not None and nxt["depth"] > b["depth"]):
+            b["introduces_list"] = True
+
+    # a run of unmarked body blocks containing any off-ladder line is an exhibit
+    run = []
+    for b in blocks + [None]:
+        if b is not None and b["kind"] == "body" and b["marker"] is None:
+            run.append(b)
+            continue
+        if any(x["depth"] is None for x in run):
+            for x in run:
+                x["verbatim"] = True
+        run = []
+
+
 def assign_paths(blocks):
     """Walk the blocks, maintaining the Chapter/Subchapter/Rule/(A)(1)(a)(i)
     stack, and stamp every block with the citation it lives under."""
@@ -418,7 +459,9 @@ def assign_paths(blocks):
         # that does not contain it. The running stack is left intact -- the
         # next real sibling still needs it.
         eff = stack
-        if b["kind"] == "body" and b["marker"] is None and b["depth"] is not None:
+        if (b["kind"] == "body" and b["marker"] is None
+                and b["depth"] is not None
+                and not b.get("introduces_list") and not b.get("verbatim")):
             eff = [(d, m) for d, m in stack if d < b["depth"]]
         b["subpath"] = "".join(f"({mk})" for _, mk in eff)
         b["citation"] = (f"MCR {rule}{b['subpath']}" if rule else
@@ -463,6 +506,7 @@ def main():
     all_lines, banner_pages = extract_lines(doc)
     lines = [l for l in all_lines if l["page"] >= args.body_start]
     blocks, warnings = build_blocks(lines)
+    mark_tail_guards(blocks)
     problems = assign_paths(blocks)
 
     body = [b for b in blocks if b["kind"] == "body"]

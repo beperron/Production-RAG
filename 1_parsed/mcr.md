@@ -648,7 +648,7 @@ The rules in this chapter govern procedure in all civil proceedings in all court
 
             (i) If the court holds a hearing on the request for de novo review, it shall be closed and held on the record. The clerk of the court shall serve notice of the review at least 9 days before the time set for the hearing if served by mail, or at least 7 days before the time set for the hearing if served by delivery under MCR 2.107(C)(1) or (2). The Michigan Rules of Evidence do not apply at this hearing.
 
-(ii)If a hearing is held, the individual shall bring documents to verify the statements made in the fee waiver request and request for de novo review. The court may question the individual regarding the statements made in the requests.
+            (ii) If a hearing is held, the individual shall bring documents to verify the statements made in the fee waiver request and request for de novo review. The court may question the individual regarding the statements made in the requests.
 
         (c) Chief Judge Ruling, Judicial Assignment.
 
@@ -22234,29 +22234,29 @@ The state court administrator, under the Supreme Court’s supervision and direc
 
         (a) The following holidays are to be observed by all state courts, except those courts which have adopted modifying administrative orders pursuant to MCR 8.112(B):
 
-New Year’s Day, January 1;
+            New Year’s Day, January 1;
 
-Martin Luther King, Jr., Day, the third Monday in January in conjunction with the federal holiday;
+            Martin Luther King, Jr., Day, the third Monday in January in conjunction with the federal holiday;
 
-Presidents’ Day, the third Monday in February;
+            Presidents’ Day, the third Monday in February;
 
-Memorial Day, the last Monday in May;
+            Memorial Day, the last Monday in May;
 
-Juneteenth, June 19;
+            Juneteenth, June 19;
 
-Independence Day, July 4;
+            Independence Day, July 4;
 
-Labor Day, the first Monday in September;
+            Labor Day, the first Monday in September;
 
-Veterans’ Day, November 11;
+            Veterans’ Day, November 11;
 
-Thanksgiving Day, the fourth Thursday in November; Friday after Thanksgiving;
+            Thanksgiving Day, the fourth Thursday in November; Friday after Thanksgiving;
 
-Christmas Eve, December 24;
+            Christmas Eve, December 24;
 
-Christmas Day, December 25;
+            Christmas Day, December 25;
 
-New Year’s Eve, December 31;
+            New Year’s Eve, December 31;
 
         (b) When New Year’s Day, Juneteenth, Independence Day, Veterans’ Day, or Christmas Day falls on Saturday, the preceding Friday shall be a holiday. When New Year’s Day, Juneteenth, Independence Day, Veterans’ Day, or Christmas Day falls on Sunday, the following Monday shall be a holiday. When Christmas Eve or New Year’s Eve falls on Friday, the preceding Thursday shall be a holiday. When Christmas Eve or New Year’s Eve falls on Saturday or Sunday, the preceding Friday shall be a holiday.
 
