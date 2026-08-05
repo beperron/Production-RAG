@@ -88,6 +88,22 @@ def _norm_cite(rule, subs):
     return f"MCR {rule}{subs}"
 
 
+def resolve_cite(rule, subs, known):
+    """Trim a greedily-matched citation back to one the corpus recognises.
+
+    The marker pattern cannot tell "MCR 3.205(D)(3)" followed by a
+    parenthetical clause from "MCR 3.205(D)(3)(4)", so it over-reaches and the
+    result was being counted as a fabricated citation. The corpus is the
+    authority: drop trailing groups until the citation resolves.
+    """
+    groups = re.findall(r"\([A-Za-z0-9]{1,4}\)", subs or "")
+    for n in range(len(groups), -1, -1):
+        cand = f"MCR {rule}{''.join(groups[:n])}"
+        if cand in known:
+            return cand
+    return f"MCR {rule}{''.join(groups)}"
+
+
 class Engine:
     def __init__(self, chunks_path=CHUNKS, embedder=EMBEDDER, quiet=False):
         self.quiet = quiet

@@ -43,7 +43,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from mcr_search import Engine, RE_CITE, _norm_cite      # noqa: E402
+from mcr_search import Engine, RE_CITE, resolve_cite    # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 KEY_PATH = pathlib.Path(os.path.expanduser("~/.config/ollama/cloud.key"))
@@ -102,10 +102,10 @@ def judge(prompt, timeout=180, attempts=3):
     return {}
 
 
-def cites_in(text):
+def cites_in(text, known):
     out = []
     for m in RE_CITE.finditer(text):
-        out.append(_norm_cite(m.group(1), m.group(2)))
+        out.append(resolve_cite(m.group(1), m.group(2), known))
     return out
 
 
@@ -135,6 +135,12 @@ def main():
 
     eng = Engine(quiet=True)
     _ = eng.vecs
+    # Pre-warm the MODEL, not just the vectors. The vector property hits cache
+    # and returns without ever touching the encoder, so the first query encode
+    # happens inside the thread pool and N workers race to load a 4B model at
+    # once. Loading it here makes that a single serial cost.
+    _ = eng.model.encode(["warm"], normalize_embeddings=True,
+                         prompt_name="query", show_progress_bar=False)
     out_path = ROOT / args.out
     out_path.parent.mkdir(parents=True, exist_ok=True)
     done = set()
@@ -159,7 +165,7 @@ def main():
             return
         ans = r["answer"]
         shown = {c for h in r["hits"] for c in h["citations"]}
-        emitted = cites_in(ans)
+        emitted = cites_in(ans, valid)
         gold = set(q["gold"]) | set(q.get("also_answered_by") or [])
 
         rec = {
