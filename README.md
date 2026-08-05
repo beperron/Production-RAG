@@ -77,6 +77,67 @@ Lawyers cite `MCR 2.116(C)(10)`, not "page 312". Every block carries the full
 path it sits under, so a chunk can be cited and a query naming a subrule can
 be matched to it.
 
+## The retrieval system
+
+Settled by a systematic sweep over 1,060 paired evaluation queries, every
+comparison tested with McNemar on discordant pairs.
+
+| | |
+|---|---|
+| chunks | rule-scoped, 256 tokens, plain text — 3,580 passages |
+| embedder | Qwen3-Embedding-4B (2000d indexes losslessly, p = 0.80) |
+| retrieval | **dense only**, citation router in front |
+| answering | deepseek-v4-flash, cross-reference expansion |
+
+**R@1 0.660 · R@10 0.947 · R@2048tok 0.944 · citation lookups 1.000**
+**citation validity 1.000 · cites gold when gold retrieved 0.957**
+
+### Eight priors carried from the CPS bake-off, eight corrected
+
+| carried over | measured here |
+|---|---|
+| 512-token chunks, size a tie | 256 wins, p = 2e-05 |
+| citation-path prefix, worth ~32 pts | **0.000**, p = 0.78 |
+| parent stem | 0.000 |
+| rule-level dedup | **−12 to −14 pts** |
+| structure-aware chunking dominates | +0.022 overall, n.s. |
+| hybrid retrieval | dense-only, **+15.6 pts** |
+| reranking is the top lever | **−8.9 pts**, p = 1e-16 |
+| HyDE closes the register gap | **−6.7 pts**, p = 1e-11 |
+
+Every surviving optimisation was a **deletion**. The only two additions that
+earned their place are the citation router (+11.5 pts) and cross-reference
+expansion (answer quality only, directional).
+
+The failures split on one line. Findings tied to **where the gold sits** did
+not transfer — CPS scored at section level, this at provision level, and the
+prefix, the stem and boundary-respect all discriminate at the rung that no
+longer matters (342 rules split across chunks; not one pair shares a heading
+path). Findings orthogonal to granularity transferred **exactly** — dense-only
+over hybrid, and rerankers hurting strong retrieval. Both of those I overrode,
+and both overrides cost points.
+
+*The rule for the next manual: ask whether a finding depends on where your
+gold sits. If it does, re-measure. If it does not, trust it.*
+
+## Provenance
+
+Every answer is falsifiable by the reader without trusting the system's
+account of itself:
+
+```
+answer sentence -> citation      audited against 11,860 parsed citations
+citation        -> chunk         deterministic; what the generator read
+chunk           -> block ids     the parse's atoms
+block           -> printed page  from PDF geometry
+page            -> source sha256 the PDF the parse ran on
+retrieval route  dense | citation-router | cross-reference, labelled
+                 because they are different kinds of evidence
+```
+
+A passage that arrived by exact citation lookup is not the same evidence as
+one that arrived by similarity, and the interface says which.
+
 ## Run
 
 ```bash
