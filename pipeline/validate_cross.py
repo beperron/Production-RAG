@@ -149,10 +149,16 @@ def main():
     key = KEY_PATH.read_text().strip()
     queries = [json.loads(l) for l in open(args.queries) if l.strip()]
     blocks = [json.loads(l) for l in open(args.blocks) if l.strip()]
-    by_cit = {}
+    # A provision can span several blocks -- 246 citations do. Showing the
+    # checker only the first block makes it report, correctly, that it cannot
+    # answer from the text given, and that verdict then lands on the question
+    # instead of on the harness. Gold is the WHOLE provision, which is also
+    # what a chunk will contain.
+    parts = collections.defaultdict(list)
     for b in blocks:
-        if b.get("citation") and b["citation"] not in by_cit:
-            by_cit[b["citation"]] = b
+        if b.get("citation") and b["kind"] == "body":
+            parts[b["citation"]].append(b["text"])
+    by_cit = {c: {"text": "\n\n".join(v)} for c, v in parts.items()}
     titles = {b["rule"]: b["text"] for b in blocks if b["kind"] == "rule"}
 
     out_path = pathlib.Path(args.out)
