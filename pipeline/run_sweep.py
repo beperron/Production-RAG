@@ -60,6 +60,14 @@ def run(tag, chunks, queries, eq, mode, router=True, rr=None, out=None):
     if out:
         with open(out, "a") as fh:
             fh.write(json.dumps(m) + "\n")
+        # per-query outcomes are what make a PAIRED test possible; without
+        # them only overlapping confidence intervals are available, which is
+        # the comparison LESSONS-LEARNED warns against
+        with open(pathlib.Path(out).with_name("ranks.jsonl"), "a") as fh:
+            fh.write(json.dumps({"tag": tag, "mode": mode, "router": router,
+                                 "rerank": getattr(rr, "_name", None),
+                                 "ranks": ranks,
+                                 "query_ids": [q["query_id"] for q in queries]}) + "\n")
     print(f"  {tag:<14} {mode:<7} router={str(router):<5} "
           f"R@1 {m['R@1']:.3f}  R@5 {m['R@5']:.3f}  R@10 {m['R@10']:.3f}  "
           f"MRR {m['MRR@10']:.3f}  ({m['secs']:.0f}s)", flush=True)

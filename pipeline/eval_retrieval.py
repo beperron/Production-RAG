@@ -41,6 +41,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CACHE = ROOT / "4_eval" / "cache"
 EMBEDDER = "Qwen/Qwen3-Embedding-4B"
 RRF_K = 60
+BUDGET_TOKENS = 2048   # what a generator actually gets to read
 
 
 def load_jsonl(p):
@@ -172,7 +173,7 @@ def evaluate(chunks_path, queries, eq, mode="hybrid", k=10, use_router=True,
                                 f"queries.{len(queries)}", is_query=True)
     bm = build_bm25(chunks) if mode in ("hybrid", "bm25") else None
 
-    ranks = []
+    ranks, budget_hits, spend = [], [], []
     for n, q in enumerate(queries):
         seen, order = set(), []
         if use_router:
@@ -215,6 +216,17 @@ def evaluate(chunks_path, queries, eq, mode="hybrid", k=10, use_router=True,
             sc = reranker.predict(pairs, batch_size=32, show_progress_bar=False)
             order = [pool[j] for j in np.argsort(-np.asarray(sc))] + order[40:]
 
+        # BUDGET-NORMALISED RECALL.
+        # R@k is confounded with chunk granularity here: R@1 tracks
+        # citations-per-chunk almost exactly (3.2 -> 0.478, 7.0 -> 0.512,
+        # 12.4 -> 0.554), because a chunk holding N citations satisfies the
+        # containment test for any of N provisions. Coarser chunks score
+        # better without retrieving better, and the reader still has to find
+        # the provision inside what came back.
+        # Comparing at a fixed TOKEN budget removes the confound: every
+        # configuration gets the same amount of the generator's context
+        # window, which is also the constraint that actually binds in
+        # production.
         gold = set(q["gold"]) | set(q.get("also_answered_by") or [])
         for g in list(gold):
             gold |= eq.get(g, set())
@@ -224,16 +236,32 @@ def evaluate(chunks_path, queries, eq, mode="hybrid", k=10, use_router=True,
                 hit_rank = r_ + 1
                 break
         ranks.append(hit_rank)
-    return ranks
+
+        spent, budget_hit = 0, None
+        for i in order:
+            t = chunks[i]["n_tokens"]
+            if spent + t > BUDGET_TOKENS and spent > 0:
+                break
+            spent += t
+            if chunk_cits[i] & gold:
+                budget_hit = True
+                break
+        budget_hits.append(bool(budget_hit))
+        spend.append(spent)
+    return ranks, budget_hits, spend
 
 
-def metrics(ranks):
+def metrics(ranks, budget_hits=None, spend=None):
     n = len(ranks)
     at = lambda t: sum(1 for r in ranks if r and r <= t) / n
     mrr = sum(1.0 / r for r in ranks if r) / n
-    return {"n": n, "R@1": round(at(1), 4), "R@3": round(at(3), 4),
-            "R@5": round(at(5), 4), "R@10": round(at(10), 4),
-            "MRR@10": round(mrr, 4)}
+    out = {"n": n, "R@1": round(at(1), 4), "R@3": round(at(3), 4),
+           "R@5": round(at(5), 4), "R@10": round(at(10), 4),
+           "MRR@10": round(mrr, 4)}
+    if budget_hits is not None:
+        out["R@2048tok"] = round(sum(budget_hits) / n, 4)
+        out["median_tok_spent"] = int(sorted(spend)[len(spend) // 2])
+    return out
 
 
 def main():
