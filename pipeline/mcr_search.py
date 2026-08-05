@@ -34,13 +34,20 @@ import urllib.request
 import numpy as np
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-CHUNKS = ROOT / "3_chunks" / "chunks.jsonl"
-VECTORS = ROOT / "3_chunks" / "vectors.npy"
+# The winning configuration, settled by paired tests over 1,060 queries:
+# rule-scoped 256-token chunks, dense only, citation router.
+#   R@1 0.660 · R@10 0.947 · R@2048tok 0.944 · citation lookups 1.000
+# Everything else measured worse. BM25 fused into dense costs 15.6 points
+# (p=7.7e-36); bge-reranker-base costs 8.9 (p=1.3e-16); the citation-path
+# prefix and the parent stem are worth 0.000; rule-level dedup costs 12-14.
+CHUNKS = ROOT / "3_chunks" / "v_rule256.jsonl"
+VECTORS = ROOT / "4_eval" / "cache" / "rule256.v_rule256.3580.npy"
 KEY_PATH = pathlib.Path(os.path.expanduser("~/.config/ollama/cloud.key"))
 
-EMBEDDER = os.environ.get("MCR_EMBEDDER", "thenlper/gte-base")
+EMBEDDER = os.environ.get("MCR_EMBEDDER", "Qwen/Qwen3-Embedding-4B")
 GEN_MODEL = os.environ.get("MCR_GEN_MODEL", "deepseek-v4-flash:0731")
 RRF_K = 60
+MODE = os.environ.get("MCR_MODE", "dense")
 
 RE_CITE = re.compile(r"\bMCR\s*(\d+\.\d+[A-Za-z]?)((?:\s*\([A-Za-z0-9]{1,4}\))*)",
                      re.I)
@@ -108,14 +115,18 @@ class Engine:
     @property
     def model(self):
         if self._model is None:
+            import torch
             from sentence_transformers import SentenceTransformer
-            self._model = SentenceTransformer(self.embedder_name, device="mps")
+            self._model = SentenceTransformer(
+                self.embedder_name, device="mps",
+                model_kwargs={"torch_dtype": torch.float16})
+            self._model.max_seq_length = 1536
         return self._model
 
     @property
     def vecs(self):
         if self._vecs is None:
-            tag = VECTORS.with_name(
+            tag = VECTORS if VECTORS.exists() else VECTORS.with_name(
                 f"vectors.{self.embedder_name.split('/')[-1]}.npy")
             if tag.exists():
                 self._vecs = np.load(tag)
@@ -150,7 +161,7 @@ class Engine:
         return None
 
     # -- search -----------------------------------------------------------
-    def search(self, query, k=8, mode="hybrid"):
+    def search(self, query, k=8, mode=MODE):
         routed = self.route_citation(query) if mode != "dense_only" else None
         hits, seen = [], set()
         if routed:
@@ -164,7 +175,8 @@ class Engine:
             ranks.append(list(np.argsort(-s)[:60]))
         if mode in ("hybrid", "dense", "dense_only"):
             q = self.model.encode([query], convert_to_numpy=True,
-                                  normalize_embeddings=True)
+                                  normalize_embeddings=True,
+                                  prompt_name="query")
             s = self.vecs @ q[0]
             ranks.append(list(np.argsort(-s)[:60]))
 
@@ -228,7 +240,7 @@ class Engine:
         return extra
 
     # -- generation -------------------------------------------------------
-    def answer(self, question, k=6, mode="hybrid", timeout=180, expand=True):
+    def answer(self, question, k=6, mode=MODE, timeout=180, expand=True):
         hits = self.search(question, k=k, mode=mode)
         if expand:
             hits = hits + self.expand(hits)
