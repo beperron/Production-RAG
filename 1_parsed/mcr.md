@@ -1,5 +1,3 @@
-MICHIGAN COURT RULES OF 1985
-
 Updated with MSC Order(s) Effective on July 31, 2026
 
 The Michigan Court Rules
@@ -20,7 +18,7 @@ Keep Informed
 
 Sign-up to receive emails that contain recent orders of the Michigan Supreme Court that propose
 
-and adopt rule amendments or pertain to other administrative matters of the Court. MICHIGAN COURT RULES OF 1985
+and adopt rule amendments or pertain to other administrative matters of the Court.
 
 # Chapter 1. General Provisions
 
@@ -106,9 +104,7 @@ In computing a period of time prescribed or allowed by these rules, by court ord
 
             (i) the name of the court;
 
-            (ii) the names of the parties or the title of the action or proceeding, subject to
-
-                (c);
+            (ii) the names of the parties or the title of the action or proceeding, subject to (c);
 
             (iii) the case number, including a prefix of the year filed and a two-letter suffix for the case-type code from a list provided by the State Court Administrator pursuant to MCR 8.117, according to the principal subject matter of the proceeding;
 
@@ -216,7 +212,7 @@ In computing a period of time prescribed or allowed by these rules, by court ord
 
             (vi) A party or a court is not exempt from the requirement to serve a nonpublic document containing protected personal identifying information that has been filed with the court under subrule (i), except by court order in accordance with subrule (vii).
 
-            (vii)Upon a finding of just cause, on the court’s own motion or on motion of the party, the court may order any personal identifying information be made confidential. The order shall identify the party, person, or entity to whom access is restricted. If a party’s home address or telephone number is made confidential, the order shall designate an alternative address for serving documents on that party or provide an alternative telephone number for making contact with that party for purposes of case activity.
+            (vii) Upon a finding of just cause, on the court’s own motion or on motion of the party, the court may order any personal identifying information be made confidential. The order shall identify the party, person, or entity to whom access is restricted. If a party’s home address or telephone number is made confidential, the order shall designate an alternative address for serving documents on that party or provide an alternative telephone number for making contact with that party for purposes of case activity.
 
         (c) Local court forms shall not contain fields for protected personal identifying information. A court shall not reject a document for filing, dismiss a case, or take other negative action against a party for failure to file protected personal identifying information on a local court form.
 
@@ -228,7 +224,7 @@ In computing a period of time prescribed or allowed by these rules, by court ord
 
         (e) Protected personal identifying information provided to the court as required by subrule (b) shall be entered into the court's case management system in accordance with standards established by the State Court Administrative Office. The information shall be maintained for the purposes for which it was collected and for which its use is authorized by federal or state law or court rule; however, it shall not be included or displayed as case history under MCR 8.119(D)(1).
 
-    (10)Request for Copy of Public Document with Protected Personal Identifying Information; Redacting Personal Identifying Information; Responsibility; Certifying Original Record; Other.
+    (10) Request for Copy of Public Document with Protected Personal Identifying Information; Redacting Personal Identifying Information; Responsibility; Certifying Original Record; Other.
 
         (a) The responsibility for excluding or redacting personal identifying information listed in subrule (9) from all documents filed with or offered to the court rests solely with the parties and their attorneys. The clerk of the court is not required to review, redact, or screen documents at time of filing for personal identifying information, protected or otherwise, whether filed electronically or on paper. For a document filed with or offered to the court, except as otherwise provided in these rules, the clerk of the court is not required to redact protected personal identifying information from that document, regardless of whether filed before or after April 1, 2022, before providing a requested copy of the document (whether requested in person or via the internet) or before providing direct access to the document via a publicly accessible computer at the courthouse.
 
@@ -248,7 +244,7 @@ In computing a period of time prescribed or allowed by these rules, by court ord
 
         (e) Maintenance of Redacted or Restricted Access Personal Identifying Information. A document from which personal identifying information has been redacted shall be maintained in accordance with standards established by the State Court Administrative Office.
 
-    (11)Change in Contact Information for Purposes of Service; Modified Captions of Documents.
+    (11) Change in Contact Information for Purposes of Service; Modified Captions of Documents.
 
         (a) A party or attorney must file with the court and serve on other parties or attorneys written notice of a change in contact information that is needed for service under MCR 2.107(C) or MCR 1.109(G)(6)(a). Contact information includes name, physical address, mailing address, phone number, and when required, email address. The written notice of changed contact information must be served in accordance with MCR 2.107(C) or MCR 1.109(G)(6)(a), as applicable.
 
@@ -582,7 +578,7 @@ If filed by an unrepresented individual who is incarcerated in a prison or jail,
 
 (D) Exceptions. The Court may modify or dispense with the notice requirements of this rule if it determines that there is a need for immediate action or if the proposed amendment would not significantly affect the delivery of justice.
 
-(E) Administrative Public Hearings. The Court will conduct a public hearing pursuant to Supreme Court Administrative Order 1997-11 before acting on a proposed amendment that requires notice, unless there is a need for immediate action, in which event the amendment will be considered at a public hearing following adoption. Public hearing agendas will be posted on the Court's website. MICHIGAN COURT RULES OF 1985
+(E) Administrative Public Hearings. The Court will conduct a public hearing pursuant to Supreme Court Administrative Order 1997-11 before acting on a proposed amendment that requires notice, unless there is a need for immediate action, in which event the amendment will be considered at a public hearing following adoption. Public hearing agendas will be posted on the Court's website.
 
 # Chapter 2. Civil Procedure
 
@@ -606,15 +602,11 @@ The rules in this chapter govern procedure in all civil proceedings in all court
 
     (4) A request to waive fees must be filed in each case for which a waiver is requested. A request cannot be applied to multiple cases involving the same individual.
 
-    (5) If fees are waived under this rule before judgment, the waiver continues through the date of judgment unless ordered otherwise under subrule (J). If fees are waived under this rule postjudgment, the waiver continues through the date of adjudication of the postjudgment proceedings. In probate proceedings, “postjudgment” means any proceeding in the case after the original petition is adjudicated. If jurisdiction of the case is transferred to another court, the waiver continues in the receiving court according to this rule unless ordered otherwise by the receiving court under subrule
-
-        (J). If an interlocutory appeal is filed in another court, the waiver continues in the appellate court.
+    (5) If fees are waived under this rule before judgment, the waiver continues through the date of judgment unless ordered otherwise under subrule (J). If fees are waived under this rule postjudgment, the waiver continues through the date of adjudication of the postjudgment proceedings. In probate proceedings, “postjudgment” means any proceeding in the case after the original petition is adjudicated. If jurisdiction of the case is transferred to another court, the waiver continues in the receiving court according to this rule unless ordered otherwise by the receiving court under subrule (J). If an interlocutory appeal is filed in another court, the waiver continues in the appellate court.
 
     (6) If the case is appealed, the waiver is void in the appellate court. A request to waive appellate filing fees may be filed in the appellate court in accordance with this rule.
 
-(B) Request for Waiver of Fees. A request to waive fees must accompany the documents the individual is filing with the court. If the request is being made by a prisoner under the jurisdiction of the Michigan Department of Corrections, the prisoner must also file a certified copy of their institutional account showing the current balance and a 12-month history of any deposits and withdrawals. The request must be on a form approved by the State Court Administrative Office entitled “Fee Waiver Request.” Except as provided in
-
-    (K), no additional documentation may be required. The information contained on the form shall be nonpublic. The request must be verified in accordance with MCR 1.109(D)(3)(b) and may be signed either
+(B) Request for Waiver of Fees. A request to waive fees must accompany the documents the individual is filing with the court. If the request is being made by a prisoner under the jurisdiction of the Michigan Department of Corrections, the prisoner must also file a certified copy of their institutional account showing the current balance and a 12-month history of any deposits and withdrawals. The request must be on a form approved by the State Court Administrative Office entitled “Fee Waiver Request.” Except as provided in (K), no additional documentation may be required. The information contained on the form shall be nonpublic. The request must be verified in accordance with MCR 1.109(D)(3)(b) and may be signed either
 
     (1) by the individual in whose behalf the request is made; or
 
@@ -714,7 +706,7 @@ The rules in this chapter govern procedure in all civil proceedings in all court
 
 (D) Procedure.
 
-    (1)(a)Time for Filing in the Trial Courts. To avoid delaying trial and inconveniencing the witnesses, all motions for disqualification must be filed within 14 days of the discovery of the grounds for disqualification. If the discovery is made within 14 days of the trial date, the motion must be made forthwith.
+        (1)(a) Time for Filing in the Trial Courts. To avoid delaying trial and inconveniencing the witnesses, all motions for disqualification must be filed within 14 days of the discovery of the grounds for disqualification. If the discovery is made within 14 days of the trial date, the motion must be made forthwith.
 
         (b) Time for Filing in the Court of Appeals. All motions for disqualification must be filed within 14 days of disclosure of the judge’s assignment to the case or within 14 days of the discovery of the grounds for disqualification. If a party discovers the grounds for disqualification within 14 days of a scheduled oral argument or argument on the application for leave to appeal, the motion must be made forthwith.
 
@@ -816,9 +808,9 @@ The rules in this chapter govern procedure in all civil proceedings in all court
 
     (9) a statement that the summons is invalid unless served on or before the last date on which it is valid,
 
-    (10)the time within which the defendant is required to answer or take other action, and
+    (10) the time within which the defendant is required to answer or take other action, and
 
-    (11)a notice that if the defendant fails to answer or take other action within the time allowed, judgment may be entered against the defendant for the relief demanded in the complaint.
+    (11) a notice that if the defendant fails to answer or take other action within the time allowed, judgment may be entered against the defendant for the relief demanded in the complaint.
 
 (C) Amendment. At any time on terms that are just, a court may allow process or proof of service of process to be amended, unless it clearly appears that to do so would materially prejudice the substantive rights of the party against whom the process issued. An amendment relates back to the date of the original issuance or service of process unless the court determines that relation back would unfairly prejudice the party against whom the process issued.
 
@@ -890,9 +882,7 @@ The rules in this chapter govern procedure in all civil proceedings in all court
 
     (1) delivering a summons and a copy of the complaint to the defendant personally; or
 
-    (2) sending a summons and a copy of the complaint by registered or certified mail, return receipt requested, and delivery restricted to the addressee. Service is made when the defendant acknowledges receipt of the mail. A copy of the return receipt signed by the defendant must be attached to proof showing service under subrule
-
-        (A)(2).
+    (2) sending a summons and a copy of the complaint by registered or certified mail, return receipt requested, and delivery restricted to the addressee. Service is made when the defendant acknowledges receipt of the mail. A copy of the return receipt signed by the defendant must be attached to proof showing service under subrule (A)(2).
 
 (B) Individuals; Substituted Service. Service of process may be made
 
@@ -1394,9 +1384,7 @@ A person who becomes a new or additional surety is liable for all costs from the
 
 (G) Judgment. A judgment or decision of a domestic or foreign court, a tribal court of a federally recognized Indian tribe, a judicial or quasi-judicial tribunal, or a board or officer, must be alleged with sufficient particularity to identify it; it is not necessary to state facts showing jurisdiction to render it.
 
-(H) Statutes, Ordinances, or Charters. In pleading a statute, ordinance, or municipal charter, it is sufficient to identify it, without stating its substance, except as provided in subrule
-
-    (M).
+(H) Statutes, Ordinances, or Charters. In pleading a statute, ordinance, or municipal charter, it is sufficient to identify it, without stating its substance, except as provided in subrule (M).
 
 (I) Special Damages. When items of special damage are claimed, they must be specifically stated.
 
@@ -1582,7 +1570,7 @@ A person who becomes a new or additional surety is liable for all costs from the
 
     (9) The opposing party has failed to state a valid defense to the claim asserted against him or her.
 
-    (10)Except as to the amount of damages, there is no genuine issue as to any material fact, and the moving party is entitled to judgment or partial judgment as a matter of law.
+    (10) Except as to the amount of damages, there is no genuine issue as to any material fact, and the moving party is entitled to judgment or partial judgment as a matter of law.
 
 (D) Time to Raise Defenses and Objections. The grounds listed in subrule (C) must be raised as follows:
 
@@ -1956,7 +1944,7 @@ A person who becomes a new or additional surety is liable for all costs from the
 
         (c) If the minor or incompetent person does not have a conservator to represent the person as defendant, the action may not proceed until the court appoints a guardian ad litem, who is not responsible for the costs of the action unless, by reason of personal misconduct, he or she is specifically charged costs by the court. It is unnecessary to appoint a representative for a minor accused of a civil infraction.
 
-(2) Appointment of Representative.
+    (2) Appointment of Representative.
 
         (a) Appointment of a next friend or guardian ad litem shall be made by the court as follows:
 
@@ -1992,9 +1980,7 @@ A person who becomes a new or additional surety is liable for all costs from the
 
     (2) If one or more of the plaintiffs or one or more of the defendants in an action dies, and the right sought to be enforced survives only to the surviving plaintiffs or only against the surviving defendants, the action does not abate. A party or attorney who learns that a party has died must promptly file a notice of the death.
 
-(B) Transfer or Change of Interest. If there is a change or transfer of interest, the action may be continued by or against the original party in his or her original capacity, unless the court, on motion supported by affidavit, directs that the person to whom the interest is transferred be substituted for or joined with the original party, or directs that the original party be made a party in another capacity. Notice must be given as provided in subrule
-
-    (A)(1)(c).
+(B) Transfer or Change of Interest. If there is a change or transfer of interest, the action may be continued by or against the original party in his or her original capacity, unless the court, on motion supported by affidavit, directs that the person to whom the interest is transferred be substituted for or joined with the original party, or directs that the original party be made a party in another capacity. Notice must be given as provided in subrule (A)(1)(c).
 
 (C) Public Officers; Death or Separation From Office. When an officer of the class described in MCR 2.201(C)(5) is a party to an action and during its pendency dies, resigns, or otherwise ceases to hold office, the action may be continued and maintained by or against the officer's successor without a formal order of substitution.
 
@@ -2372,7 +2358,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
     (4) Trial Preparation; Experts. Discovery of facts known and opinions held by experts, otherwise discoverable under the provisions of subrule (B)(1) and acquired or developed in anticipation of litigation or for trial, may be obtained only as follows:
 
-        (a)(i) A party may through interrogatories require another party to identify each person whom the other party expects to call as an expert witness at trial, to state the subject matter about which the expert is expected to testify, and to state the substance of the facts and opinions to which the expert is expected to testify and a summary of the grounds for each opinion.
+            (a)(i) A party may through interrogatories require another party to identify each person whom the other party expects to call as an expert witness at trial, to state the subject matter about which the expert is expected to testify, and to state the substance of the facts and opinions to which the expert is expected to testify and a summary of the grounds for each opinion.
 
             (ii) A party may take the deposition of a person whom the other party expects to call as an expert witness at trial.   The party taking the deposition may notice that the deposition is to be taken for the purpose of discovery only and that it shall not be admissible at trial except for the purpose of impeachment, without the necessity of obtaining a protective order as set forth in MCR 2.302(C)(7).
 
@@ -2386,13 +2372,9 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
         (c) Unless manifest injustice would result
 
-            (i) the court shall require that the party seeking discovery under subrules
+            (i) the court shall require that the party seeking discovery under subrules (B)(4)(a)(ii) or (iii) or (B)(4)(b) pay the expert a reasonable fee for time spent in a deposition, but not including preparation time; and
 
-                (B)(4)(a)(ii) or (iii) or (B)(4)(b) pay the expert a reasonable fee for time spent in a deposition, but not including preparation time; and
-
-            (ii) with respect to discovery obtained under subrule (B)(4)(a)(ii) or (iii), the court may require, and with respect to discovery obtained under subrule
-
-                (B)(4)(b) the court shall require, the party seeking discovery to pay the other party a fair portion of the fees and expenses reasonably incurred by the latter party in obtaining facts and opinions from the expert.
+            (ii) with respect to discovery obtained under subrule (B)(4)(a)(ii) or (iii), the court may require, and with respect to discovery obtained under subrule (B)(4)(b) the court shall require, the party seeking discovery to pay the other party a fair portion of the fees and expenses reasonably incurred by the latter party in obtaining facts and opinions from the expert.
 
         (d) A party may depose a witness that he or she expects to call as an expert at trial. The deposition may be taken at any time before trial on reasonable notice to the opposite party, and may be offered as evidence at trial as provided in MCR 2.308(A). The court need not adjourn the trial because of the unavailability of expert witnesses or their depositions.
 
@@ -2568,11 +2550,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
 (A) General Provisions.
 
-    (1) A represented party may issue a subpoena to a non-party for a deposition, production or inspection of documents, inspection of tangible things, or entry to land upon court order or after all parties have had a reasonable opportunity to obtain an attorney, as determined under MCR 2.306(A). An unrepresented party may move the court for issuance of non-party discovery subpoenas. MCR 2.306(B)(1)-(2) and
-
-        (C)-(G) apply to a subpoena under this rule. This rule governs discovery from a non-party under MCR 2.303(A)(4), 2.307, 2.310(B)(2) or 2.315. MCR 2.506(A)(2) and
-
-        (3) apply to any request for production of ESI. A subpoena for hospital records is governed by MCR 2.506(I).
+    (1) A represented party may issue a subpoena to a non-party for a deposition, production or inspection of documents, inspection of tangible things, or entry to land upon court order or after all parties have had a reasonable opportunity to obtain an attorney, as determined under MCR 2.306(A). An unrepresented party may move the court for issuance of non-party discovery subpoenas. MCR 2.306(B)(1)-(2) and (C)-(G) apply to a subpoena under this rule. This rule governs discovery from a non-party under MCR 2.303(A)(4), 2.307, 2.310(B)(2) or 2.315. MCR 2.506(A)(2) and (3) apply to any request for production of ESI. A subpoena for hospital records is governed by MCR 2.506(I).
 
     (2) A subpoena may provide that it is solely for producing documents or other tangible things for inspection and copying, and that the party does not intend to examine the deponent. The subpoena shall specify whether an inspection is requested or whether the subpoena may be satisfied by delivering a copy of the requested documents. Any request for documents shall indicate that the subpoenaing party will pay reasonable copying costs.
 
@@ -2930,9 +2908,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
             (ii) a corporation or other entity fails to make a designation under MCR 2.306(B)(3) or 2.307(A)(1),
 
-            (iii) a party fails to answer an interrogatory submitted under MCR 2.309(A) or
-
-                (B),
+            (iii) a party fails to answer an interrogatory submitted under MCR 2.309(A) or (B),
 
             (iv) in response to a request for inspection submitted under MCR 2.310, a person fails to respond that inspection will be permitted as requested, or
 
@@ -2952,9 +2928,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
         (c) If the motion is granted in part and denied in part, the court may after opportunity for hearing, apportion the reasonable expenses incurred in relation to the motion among the parties and other persons in a just manner.
 
-    (6) Additional Sanctions. The court in which the action is pending may order such sanctions as are just. Among others, it may take an action authorized under subrule
-
-        (B)(2)(a), (b), and (c).
+    (6) Additional Sanctions. The court in which the action is pending may order such sanctions as are just. Among others, it may take an action authorized under subrule (B)(2)(a), (b), and (c).
 
 (B) Failure to Comply With Order.
 
@@ -3038,9 +3012,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
         (d) furnish the requesting party with signed authorizations in the form approved by the state court administrator sufficient in number to enable the requesting party to obtain the information requested from persons, institutions, hospitals, and other custodians in actual possession of the information requested.
 
-    (2) A party responding to a request for medical information as permitted by subrule
-
-        (C)(1)(d) must also inform the adverse party of the physical location of the information requested.
+    (2) A party responding to a request for medical information as permitted by subrule (C)(1)(d) must also inform the adverse party of the physical location of the information requested.
 
 (D) Release of Medical Information by Custodian.
 
@@ -3208,7 +3180,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
             (vi) the exchange of witness lists under subrule (H)(2)(h), and
 
-            (vii)the scheduling of a pretrial conference, a settlement conference, or trial.
+            (vii) the scheduling of a pretrial conference, a settlement conference, or trial.
 
             More than one such order may be entered in a case.
 
@@ -3248,9 +3220,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
     The court's order may specify whether the availability is to be in person or by telephone.
 
-    This subrule does not apply to an early scheduling conference held pursuant to subrule
-
-    (B).
+    This subrule does not apply to an early scheduling conference held pursuant to subrule (B).
 
 (G) Failure to Attend or to Participate.
 
@@ -3546,13 +3516,9 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
     (1) If all the parties accept the panel's evaluation, judgment will be entered in accordance with the evaluation, unless the amount of the award is paid within 28 days after notification of the acceptances, in which case the court shall dismiss the action with prejudice. The judgment or dismissal shall be deemed to dispose of all claims in the action and includes all fees, costs, and interest to the date it is entered, except for cases involving rights to personal protection insurance benefits under MCL 500.3101 et seq., for which judgment or dismissal shall not be deemed to dispose of claims that have not accrued as of the date of the case evaluation hearing.
 
-    (2) If only a part of an action has been submitted to case evaluation pursuant to subrule
+    (2) If only a part of an action has been submitted to case evaluation pursuant to subrule (A)(3) and all of the parties accept the panel’s evaluation, the court shall enter an order disposing of only those claims.
 
-        (A)(3) and all of the parties accept the panel’s evaluation, the court shall enter an order disposing of only those claims.
-
-    (3) In a case involving multiple parties, judgment, or dismissal as provided in subrule
-
-        (1), shall be entered as to those opposing parties who have accepted the portions of the evaluation that apply to them.
+    (3) In a case involving multiple parties, judgment, or dismissal as provided in subrule (1), shall be entered as to those opposing parties who have accepted the portions of the evaluation that apply to them.
 
 (N) Proceedings After Rejection.
 
@@ -3564,9 +3530,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
         (b) After reviewing the materials submitted, the court shall determine whether the action or defense is frivolous.
 
-        (c) If the court agrees with the panel's determination, the provisions of subrule
-
-            (N)(3) apply, except that the bond must be filed within 28 days after the entry of the court's order determining the action or defense to be frivolous.
+        (c) If the court agrees with the panel's determination, the provisions of subrule (N)(3) apply, except that the bond must be filed within 28 days after the entry of the court's order determining the action or defense to be frivolous.
 
         (d) The judge who hears a motion under this subrule may not preside at a nonjury trial of the action.
 
@@ -3774,7 +3738,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
     (9) All proceedings that are held using videoconferencing technology or communication equipment must be recorded verbatim by the court with the exception of hearings that are not required to be recorded by law.
 
-    (10)Courts must provide access to a proceeding held using videoconferencing technology to the public either during the proceeding or immediately after via access to a video recording of the proceeding, unless the proceeding is closed or access would otherwise be limited by statute or rule.
+    (10) Courts must provide access to a proceeding held using videoconferencing technology to the public either during the proceeding or immediately after via access to a video recording of the proceeding, unless the proceeding is closed or access would otherwise be limited by statute or rule.
 
 (C) Criteria for Videoconferencing.
 
@@ -3798,11 +3762,11 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
     (9) Whether the person appearing by videoconferencing technology presents a significant security risk to transport and be present physically in the courtroom.
 
-    (10)Whether the parties or witness(es) have waived personal appearance or stipulated to videoconferencing.
+    (10) Whether the parties or witness(es) have waived personal appearance or stipulated to videoconferencing.
 
-    (11)The proximity of the videoconferencing request date to the proposed appearance date.
+    (11) The proximity of the videoconferencing request date to the proposed appearance date.
 
-    (12)Any other factors that the court may determine to be relevant.
+    (12) Any other factors that the court may determine to be relevant.
 
 (D) Request for videoconferencing and Participant Contact Information.
 
@@ -3844,7 +3808,7 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
     (9) motions to correct, strike, or amend pleadings; and
 
-    (10)motions pursuant to MCR 2.116.
+    (10) motions pursuant to MCR 2.116.
 
 (C) Use of Videoconferencing Technology in District Court. Subject to a determination by the court that the use of videoconferencing technology is inappropriate for a particular case under an analysis as contained in MCR 2.407(C), the use of videoconferencing technology shall be presumed for:
 
@@ -4096,11 +4060,11 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
             (ii) Is made in any subsequent or related proceeding based on the disclosure under subrule (D)(9)(b)(i).
 
-    (10)The disclosure is included in a report of professional misconduct filed against a mediation participant or is sought or offered to prove or disprove misconduct allegations in the attorney disciplinary process.
+    (10) The disclosure is included in a report of professional misconduct filed against a mediation participant or is sought or offered to prove or disprove misconduct allegations in the attorney disciplinary process.
 
-    (11)The mediation communication occurs in a case out of which a claim of malpractice arises and the disclosure is sought or offered to prove or disprove a claim of malpractice against a mediation participant.
+    (11) The mediation communication occurs in a case out of which a claim of malpractice arises and the disclosure is sought or offered to prove or disprove a claim of malpractice against a mediation participant.
 
-    (12)The disclosure is in a proceeding to enforce, rescind, reform, or avoid liability on a document signed by the mediation parties or acknowledged by the parties on an audio or video recording that arose out of mediation, if the court finds, after an in camera hearing, that the party seeking discovery or the proponent of the evidence has shown
+    (12) The disclosure is in a proceeding to enforce, rescind, reform, or avoid liability on a document signed by the mediation parties or acknowledged by the parties on an audio or video recording that arose out of mediation, if the court finds, after an in camera hearing, that the party seeking discovery or the proponent of the evidence has shown
 
         (a) that the evidence is not otherwise available, and
 
@@ -4582,11 +4546,11 @@ Misjoinder of parties is not a ground for dismissal of an action. Parties may be
 
     (9) is the guardian, conservator, ward, landlord, tenant, employer, employee, partner, or client of a party or attorney;
 
-    (10)is or has been a party adverse to the challenging party or attorney in a civil action, or has complained of or has been accused by that party in a criminal prosecution;
+    (10) is or has been a party adverse to the challenging party or attorney in a civil action, or has complained of or has been accused by that party in a criminal prosecution;
 
-    (11)has a financial interest other than that of a taxpayer in the outcome of the action;
+    (11) has a financial interest other than that of a taxpayer in the outcome of the action;
 
-    (12)is interested in a question like the issue to be tried.
+    (12) is interested in a question like the issue to be tried.
 
     Exemption from jury service is the privilege of the person exempt, not a ground for challenge.
 
@@ -4846,9 +4810,7 @@ A party may move for a directed verdict at the close of the evidence offered by 
 
         (c) The party filing the objections must serve them on all parties as required by MCR 2.107, together with a notice of hearing and an alternative proposed judgment or order.
 
-        (d) The court must schedule the hearing upon filing of the first objection, and the party filing the objection must serve the notice of hearing under subrule
-
-            (B)(3)(c). Other parties to the action may file objections with the court through the end of the 7-day period. The court must schedule a hearing for all objections within 14 days after the first objection is filed or as soon as is practical afterward.
+        (d) The court must schedule the hearing upon filing of the first objection, and the party filing the objection must serve the notice of hearing under subrule (B)(3)(c). Other parties to the action may file objections with the court through the end of the 7-day period. The court must schedule a hearing for all objections within 14 days after the first objection is filed or as soon as is practical afterward.
 
     (4) A party may prepare a proposed judgment or order and notice it for settlement before the court. Pursuant to MCR 2.119(G)(3)(b), a motion fee may not be charged.
 
@@ -4898,9 +4860,7 @@ A party may move for a directed verdict at the close of the evidence offered by 
 
         The notice must be sent by the party who sought entry of the default. Proof of service and a copy of the notice must be filed with the court.
 
-    (3) After the default of a party has been entered, that party may not proceed with the action until the default has been set aside by the court in accordance with subrule
-
-        (D) or MCR 2.612.
+    (3) After the default of a party has been entered, that party may not proceed with the action until the default has been set aside by the court in accordance with subrule (D) or MCR 2.612.
 
 (B) Default Judgment.
 
@@ -5172,9 +5132,7 @@ A party may move for a directed verdict at the close of the evidence offered by 
 
     (2) transmits the ordinance, court rule or other measure to the State Court Administrative Office. The State Court Administrative Office shall make available to state courts the material received pursuant to paragraph (B)(1).
 
-(C) A judgment, decree, order, warrant, subpoena, record, or other judicial act of a tribal court of a federally recognized Indian tribe that has taken the actions described in subrule
-
-    (B) is presumed to be valid. To overcome that presumption, an objecting party must demonstrate that
+(C) A judgment, decree, order, warrant, subpoena, record, or other judicial act of a tribal court of a federally recognized Indian tribe that has taken the actions described in subrule (B) is presumed to be valid. To overcome that presumption, an objecting party must demonstrate that
 
     (1) the tribal court lacked personal or subject-matter jurisdiction, or
 
@@ -5246,9 +5204,7 @@ A party may move for a directed verdict at the close of the evidence offered by 
 
 (H) Appeal; Procedure; Bonds. A final order entered in a supplementary proceeding may be appealed in the usual manner. The appeal is governed by the provisions of chapter 7 of these rules except as modified by this subrule.
 
-    (1) The appellant must give a bond to the effect that he or she will pay all costs and damages that may be awarded against him or her on the appeal. If the appeal is by the judgment creditor, the amount of the bond may not exceed $200, and subrules
-
-        (H)(2)-(4) do not apply. If the appeal is by a party other than the judgment creditor, subrules (H)(2)-(4) apply.
+    (1) The appellant must give a bond to the effect that he or she will pay all costs and damages that may be awarded against him or her on the appeal. If the appeal is by the judgment creditor, the amount of the bond may not exceed $200, and subrules (H)(2)-(4) do not apply. If the appeal is by a party other than the judgment creditor, subrules (H)(2)-(4) apply.
 
     (2) If the order appealed from is for the payment of money or the delivery of property, the bond of the appellant must be in an amount at least double the amount of the money or property ordered to be paid or delivered. The bond must be on the condition that if the order appealed from is affirmed in whole or in part the appellant will
 
@@ -5266,13 +5222,9 @@ A party may move for a directed verdict at the close of the evidence offered by 
 
 (B) Selection of Receiver. If the court determines there is good cause to appoint a receiver, the court shall select the receiver in accordance with this subrule. Every receiver selected by the court must have sufficient competence, qualifications, and experience to administer the receivership estate.
 
-    (1) Stipulated Receiver or No Objection Raised. The moving party may request, or the parties may stipulate to, the selection of a receiver. The moving party shall describe how the nominated receiver meets the requirement in subsection (B) that a receiver selected by the court have sufficient competence, qualifications, and experience to administer the receivership estate, considering the factors listed in subsection
+    (1) Stipulated Receiver or No Objection Raised. The moving party may request, or the parties may stipulate to, the selection of a receiver. The moving party shall describe how the nominated receiver meets the requirement in subsection (B) that a receiver selected by the court have sufficient competence, qualifications, and experience to administer the receivership estate, considering the factors listed in subsection (B)(5). If the nonmoving party does not file an objection to the moving party’s nominated receiver within 14 days after the petition or motion is served, or if the parties stipulate to the selection of a receiver, the court shall appoint the receiver nominated by the party or parties, unless the court finds that a different receiver should be appointed.
 
-        (B)(5). If the nonmoving party does not file an objection to the moving party’s nominated receiver within 14 days after the petition or motion is served, or if the parties stipulate to the selection of a receiver, the court shall appoint the receiver nominated by the party or parties, unless the court finds that a different receiver should be appointed.
-
-    (2) Receiver Appointed Sua Sponte. If the court appoints a receiver on its own initiative, any party may file objection to the selected receiver and submit an alternative nominee for appointment as receiver within 14 days after the order appointing the receiver is served. The objecting party shall describe how the alternative nominee meets the requirement in subsection (B) that a receiver selected by the court have sufficient competence, qualifications, and experience to administer the receivership estate, considering the factors listed in subsection
-
-        (B)(5).
+    (2) Receiver Appointed Sua Sponte. If the court appoints a receiver on its own initiative, any party may file objection to the selected receiver and submit an alternative nominee for appointment as receiver within 14 days after the order appointing the receiver is served. The objecting party shall describe how the alternative nominee meets the requirement in subsection (B) that a receiver selected by the court have sufficient competence, qualifications, and experience to administer the receivership estate, considering the factors listed in subsection (B)(5).
 
     (3) Reduction in Time to Object. The court, for good cause shown, may in its discretion, with or without motion or notice, order the period for objection to the selected receiver reduced.
 
@@ -5288,9 +5240,7 @@ A party may move for a directed verdict at the close of the evidence offered by 
 
         (d) any objections to any receiver considered for appointment;
 
-        (e) whether the receiver considered for appointment is disqualified under subrule
-
-            (B)(6); and
+        (e) whether the receiver considered for appointment is disqualified under subrule (B)(6); and
 
         (f) any other factor the court deems appropriate.
 
@@ -5368,9 +5318,7 @@ A party may move for a directed verdict at the close of the evidence offered by 
 
         (a) the source and method of compensation of the receiver;
 
-        (b) that interim compensation may be paid to the receiver after notice to all parties to the action or proceeding and opportunity to object as provided in subsection
-
-            (5);
+        (b) that interim compensation may be paid to the receiver after notice to all parties to the action or proceeding and opportunity to object as provided in subsection (5);
 
         (c) that all compensation of the receiver is subject to final review and approval of the court.
 
@@ -5522,7 +5470,7 @@ An award of attorney fees may include an award for the time and labor of any leg
 
 ### Rule 2.630 Disability of Judge
 
-If, after a verdict is returned or findings of fact and conclusions of law are filed, the judge before whom an action has been tried is unable to perform the duties prescribed by these rules because of death, illness, or other disability, another judge regularly sitting in or assigned to the court in which the action was tried may perform those duties. However, if the substitute judge is not satisfied that he or she can do so, the substitute judge may grant a new trial. MICHIGAN COURT RULES OF 1985
+If, after a verdict is returned or findings of fact and conclusions of law are filed, the judge before whom an action has been tried is unable to perform the duties prescribed by these rules because of death, illness, or other disability, another judge regularly sitting in or assigned to the court in which the action was tried may perform those duties. However, if the substitute judge is not satisfied that he or she can do so, the substitute judge may grant a new trial.
 
 # Chapter 3. Special Proceedings and Actions
 
@@ -5590,31 +5538,31 @@ For purposes of applying the Indian Child Welfare Act, 25 USC 1901 et seq., and 
 
 (9) “Guardian” means a person who has qualified as a guardian of a minor under a parental or spousal nomination or a court order issued under section 19a or 19c of chapter XIIA, section 5204 or 5205 of the estates and protected individuals code, 1998 PA 386, MCL 700.5204 and 700.5205, or sections 600 to 644 of the mental health code, 1974 PA 258, MCL 330.1600 to 330.1644. Guardian may also include a person appointed by a tribal court under tribal code or custom. Guardian does not include a guardian ad litem.
 
-(10)“Guardian ad litem” means an individual whom the court appoints to assist the court in determining the child’s best interests. A guardian ad litem does not need to be an attorney.
+(10) “Guardian ad litem” means an individual whom the court appoints to assist the court in determining the child’s best interests. A guardian ad litem does not need to be an attorney.
 
-(11)“Indian” means any member of any Indian tribe, band, nation, or other organized group or community of Indians recognized as eligible for the services provided to Indians by the secretary because of their status as Indians, including any Alaska native village as defined in section 1602(c) of the Alaska native claims settlement act, 43 USC 1602.
+(11) “Indian” means any member of any Indian tribe, band, nation, or other organized group or community of Indians recognized as eligible for the services provided to Indians by the secretary because of their status as Indians, including any Alaska native village as defined in section 1602(c) of the Alaska native claims settlement act, 43 USC 1602.
 
-(12)“Indian child” means any unmarried person who is under age 18 and is either
+(12) “Indian child” means any unmarried person who is under age 18 and is either
 
     (a) a member of an Indian tribe, or
 
     (b) is eligible for membership in an Indian tribe as determined by that Indian tribe.
 
-(13)“Indian child’s tribe” means
+(13) “Indian child’s tribe” means
 
     (a) the Indian tribe in which an Indian child is a member or eligible for membership, or
 
     (b) in the case of an Indian child who is a member of or eligible for membership in more than one tribe, the Indian tribe with which the Indian child has the most significant contacts.
 
-(14)“Indian child welfare act” means the Indian child welfare act of 1978, 25 USC 1901 to 1963.
+(14) “Indian child welfare act” means the Indian child welfare act of 1978, 25 USC 1901 to 1963.
 
-(15)“Indian custodian” means any Indian person who has custody of an Indian child under tribal law or custom or under state law, or to whom temporary physical care, custody, and control have been transferred by the child’s parent.
+(15) “Indian custodian” means any Indian person who has custody of an Indian child under tribal law or custom or under state law, or to whom temporary physical care, custody, and control have been transferred by the child’s parent.
 
-(16)“Indian organization” means any group, association, partnership, corporation, or other legal entity owned or controlled by Indians, or a majority of whose members are Indians.
+(16) “Indian organization” means any group, association, partnership, corporation, or other legal entity owned or controlled by Indians, or a majority of whose members are Indians.
 
-(17)“Indian tribe” means any Indian tribe, band, nation, or other organized group or community of Indians recognized as eligible for the services provided to Indians by the Secretary because of their status as Indians, including any Alaska Native village as defined in section 43 USC 1602(c).
+(17) “Indian tribe” means any Indian tribe, band, nation, or other organized group or community of Indians recognized as eligible for the services provided to Indians by the Secretary because of their status as Indians, including any Alaska Native village as defined in section 43 USC 1602(c).
 
-(18)“Lawyer-guardian ad litem” means an attorney appointed under MCL 712B.21 to represent the child with the powers and duties as set forth in MCL 712A.17d. The provisions of MCL 712A.17d also apply to a lawyer-guardian ad litem appointed for the purposes of MIFPA under each of the following:
+(18) “Lawyer-guardian ad litem” means an attorney appointed under MCL 712B.21 to represent the child with the powers and duties as set forth in MCL 712A.17d. The provisions of MCL 712A.17d also apply to a lawyer-guardian ad litem appointed for the purposes of MIFPA under each of the following:
 
     (a) MCL 700.5213 and 700.5219,
 
@@ -5622,17 +5570,17 @@ For purposes of applying the Indian Child Welfare Act, 25 USC 1901 et seq., and 
 
     (c) MCL 722.630.
 
-(19)“Official tribal representative” means an individual who is designated by the Indian child’s tribe to represent the tribe in a court overseeing a child custody proceeding. An official tribal representative does not need to be an attorney.
+(19) “Official tribal representative” means an individual who is designated by the Indian child’s tribe to represent the tribe in a court overseeing a child custody proceeding. An official tribal representative does not need to be an attorney.
 
-(20)“Parent” means any biological parent or parents of an Indian child or any Indian person who has lawfully adopted an Indian child, including adoptions under tribal law or custom. It does not include the putative father if paternity has not been acknowledged or established.
+(20) “Parent” means any biological parent or parents of an Indian child or any Indian person who has lawfully adopted an Indian child, including adoptions under tribal law or custom. It does not include the putative father if paternity has not been acknowledged or established.
 
-(21)“Reservation” means Indian country as defined in section 18 USC 1151 and any lands not covered under such section, for which title is either held by the United States in trust for the benefit of any Indian tribe or individual or held by any Indian tribe or individual subject to a restriction by the United States against alienation.
+(21) “Reservation” means Indian country as defined in section 18 USC 1151 and any lands not covered under such section, for which title is either held by the United States in trust for the benefit of any Indian tribe or individual or held by any Indian tribe or individual subject to a restriction by the United States against alienation.
 
-(22)“Secretary” means the Secretary of the Interior.
+(22) “Secretary” means the Secretary of the Interior.
 
-(23)“Tribal court” means a court with jurisdiction over child custody proceedings and that is either a Court of Indian Offenses, a court established and operated under the code or custom of an Indian tribe, or any other administrative body of a tribe that is vested with authority over child custody proceedings.
+(23) “Tribal court” means a court with jurisdiction over child custody proceedings and that is either a Court of Indian Offenses, a court established and operated under the code or custom of an Indian tribe, or any other administrative body of a tribe that is vested with authority over child custody proceedings.
 
-(24)“Ward of tribal court” means a child over whom an Indian tribe exercises authority by official action in tribal court or by the governing body of the tribe.
+(24) “Ward of tribal court” means a child over whom an Indian tribe exercises authority by official action in tribal court or by the governing body of the tribe.
 
 ## Subchapter 3.100 Debtor-Creditor
 
@@ -6026,9 +5974,7 @@ For purposes of applying the Indian Child Welfare Act, 25 USC 1901 et seq., and 
 
 (I) Proceedings After Judgment.
 
-    (1) If the garnishment remains in effect until entry of judgment in favor of the plaintiff against the defendant, the garnished property or obligation may be applied to the satisfaction of the judgment in the manner provided in MCR 3.101(I), (J), (M), and
-
-        (O).
+    (1) If the garnishment remains in effect until entry of judgment in favor of the plaintiff against the defendant, the garnished property or obligation may be applied to the satisfaction of the judgment in the manner provided in MCR 3.101(I), (J), (M), and (O).
 
     (2) MCR 3.101(P) and (Q) and MCR 3.103(I)(2) apply to prejudgment garnishment.
 
@@ -7296,9 +7242,7 @@ Postjudgment motions in domestic relations actions are governed by MCR 2.119.
 
     (2) If the alleged father appears in court following the issuance of a summons under MCL 722.714, the court must personally advise him that he is entitled to the assistance of an attorney, and that the court will appoint an attorney at public expense, at his request, if he is financially unable to retain an attorney of his choice.
 
-    (3) If the alleged father indicates that he wants to proceed without an attorney, the record must affirmatively show that he was given the advice required by subrule
-
-        (C)(2) and that he waived the right to counsel.
+    (3) If the alleged father indicates that he wants to proceed without an attorney, the record must affirmatively show that he was given the advice required by subrule (C)(2) and that he waived the right to counsel.
 
     (4) If the alleged father does not appear in court following the issuance of a summons under MCL 722.714, subrule (C)(3) does not apply.
 
@@ -7658,7 +7602,7 @@ If there is a dispute involving custody, visitation, or change of domicile, and 
 
     (9) Set forth any additional procedures, standards, training, qualifications, and confidentiality requirements of any other friend of the court ADR process the court uses other than those processes set forth in this rule.
 
-    (10)Provide that participants in a friend of the court ADR process may not record the proceeding.
+    (10) Provide that participants in a friend of the court ADR process may not record the proceeding.
 
 (B) Definitions. When used in this rule, unless the context indicates otherwise:
 
@@ -7734,9 +7678,7 @@ If there is a dispute involving custody, visitation, or change of domicile, and 
 
         (c) At the beginning of the conference, the facilitator will advise the parties and their attorneys, if applicable, of the following:
 
-            (i) the purpose of the conference and how the facilitator will conduct the conference and submit an order or recommendation to the court under
-
-                (F)(2)(a);
+            (i) the purpose of the conference and how the facilitator will conduct the conference and submit an order or recommendation to the court under (F)(2)(a);
 
             (ii) how information gathered during the conference will be used;
 
@@ -7796,17 +7738,13 @@ If there is a dispute involving custody, visitation, or change of domicile, and 
 
             (iii) advise the parties that the person may recommend an order to the court to resolve the dispute; and
 
-            (iv) explain to the parties the information provided for in subrules (H)(1)(d)-
-
-                (e).
+            (iv) explain to the parties the information provided for in subrules (H)(1)(d)-(e).
 
         (d) At the conclusion of a joint meeting, the person conducting the meeting shall submit a report within seven days pursuant to subrule (I) and may do one of the following:
 
             (i) If the parties reach an accommodation, record the accommodation in writing and provide a copy to the parties and attorneys of record. If the accommodation modifies an order, the person must submit a proposed order to the court. If the court approves the order, the court shall enter it; or
 
-            (ii) Submit an order to the court stating the person’s recommendation for resolving the dispute. The parties may consent by signing the recommended order and waiving the objection period in accordance with
-
-                (H)(1)(e)(iii). If the court approves the order, the court shall enter it.
+            (ii) Submit an order to the court stating the person’s recommendation for resolving the dispute. The parties may consent by signing the recommended order and waiving the objection period in accordance with (H)(1)(e)(iii). If the court approves the order, the court shall enter it.
 
         (e) If the person conducting the joint meeting submits a recommended order within seven days to the court, the friend of the court must serve the parties and attorneys of record a copy of the order and a notice that provides the following information:
 
@@ -8154,9 +8092,7 @@ If there is a dispute involving custody, visitation, or change of domicile, and 
 
         (b) an application is presented to the judge before or after normal court hours.
 
-    (2) If the prisoner is being held on criminal charges, the writ or order may only be issued by a judge of a court authorized to issue a writ of habeas corpus under subrule
-
-        (A)(3).
+    (2) If the prisoner is being held on criminal charges, the writ or order may only be issued by a judge of a court authorized to issue a writ of habeas corpus under subrule (A)(3).
 
     (3) If a complaint is presented to a judge under the provisions of subrule (F)(1)(b), it need not be filed with the court before the issuance of a writ of habeas corpus. The complaint must subsequently be filed with the court whether or not the writ is granted.
 
@@ -8528,9 +8464,7 @@ If there is a dispute involving custody, visitation, or change of domicile, and 
 
     (1) When premises that include a dower interest or life estate are sold, the owner of the dower interest or life estate shall be compensated as provided in this subrule.
 
-        (a) Unless the owner consents to the alternative compensation provided in subrule
-
-            (D)(1)(b), the court shall order that the following amount be invested in interest-bearing accounts insured by an agency of the United States government, with the interest paid annually for life to the owner of the dower interest or life estate:
+        (a) Unless the owner consents to the alternative compensation provided in subrule (D)(1)(b), the court shall order that the following amount be invested in interest-bearing accounts insured by an agency of the United States government, with the interest paid annually for life to the owner of the dower interest or life estate:
 
             (i) in the case of a dower interest, one-third of the proceeds of the sale of the premises or of the undivided share of the premises on which the claim of dower existed, after deduction of the owner's share of the expenses of the proceeding;
 
@@ -8780,9 +8714,7 @@ In an action to enforce a lien under MCL 570.1101 et seq., or other similar law,
 
     (6) Cost of Notice.
 
-        (a) The plaintiff shall bear the expense of the notification required by subrule
-
-            (C)(1). The court may require the defendant to cooperate in the notice process, but any additional costs incurred by the defendant in doing so shall be paid by the plaintiff.
+        (a) The plaintiff shall bear the expense of the notification required by subrule (C)(1). The court may require the defendant to cooperate in the notice process, but any additional costs incurred by the defendant in doing so shall be paid by the plaintiff.
 
         (b) Upon termination of the action, the court may allow as taxable costs the expenses of notification incurred by the prevailing party.
 
@@ -9258,7 +9190,7 @@ In an action to enforce a lien under MCL 570.1101 et seq., or other similar law,
 
     (9) Following the hearing under subrule (4)(a), the court must provide the reasons for granting or denying a petition requesting nonpublication on the record and enter an appropriate order.
 
-    (10)If a petition requesting nonpublication under this subrule is denied, and the petitioner or the court proceed with the name change as provided in subrules (4)(c) or (6), the court must order that the record is no longer confidential.
+    (10) If a petition requesting nonpublication under this subrule is denied, and the petitioner or the court proceed with the name change as provided in subrules (4)(c) or (6), the court must order that the record is no longer confidential.
 
 (D) Minor’s Signature. A petition for a change of name by a minor need not be signed in the presence of a judge.
 
@@ -9592,9 +9524,7 @@ Except as specified in MCR 3.705(A)(5) and (B), an action for a personal protect
 
     (4) If an ex parte order is entered, the petitioner shall serve the petition and order as provided in MCR 3.706(D). However, failure to make service does not affect the order's validity or effectiveness.
 
-    (5) If the court refuses to grant an ex parte order, it shall state the reasons in writing and shall advise the petitioner of the right to request a hearing as provided in subrule
-
-        (B). If the petitioner does not request a hearing within 21 days of entry of the order, the order denying the petition is final. The court shall not be required to give such notice if the court determines after interviewing the petitioner that the petitioner's claims are sufficiently without merit that the action should be dismissed without a hearing.
+    (5) If the court refuses to grant an ex parte order, it shall state the reasons in writing and shall advise the petitioner of the right to request a hearing as provided in subrule (B). If the petitioner does not request a hearing within 21 days of entry of the order, the order denying the petition is final. The court shall not be required to give such notice if the court determines after interviewing the petitioner that the petitioner's claims are sufficiently without merit that the action should be dismissed without a hearing.
 
 (B) Hearings.
 
@@ -9808,9 +9738,9 @@ When used in MCR 3.716-3.722, unless the context otherwise indicates:
 
 (9) “Petitioner” means the party seeking an extreme risk protection order.
 
-(10)“Possession or control” means that term as defined in MCL 691.1803.
+(10) “Possession or control” means that term as defined in MCL 691.1803.
 
-(11)“Respondent” means the party to be restrained by the extreme risk protection order.
+(11) “Respondent” means the party to be restrained by the extreme risk protection order.
 
 ### Rule 3.716 Commencing an Extreme Risk Protection Action
 
@@ -9966,21 +9896,15 @@ Except as specified in MCR 3.718(B), MCR 3.718(D), and MCR 3.720, an action for 
 
         (b) within 5 days, excluding weekends and holidays if the court is closed to the public, after the order is served on the respondent or after the respondent receives actual notice of the order, if the respondent is an individual described in MCL 691.1805(5). A respondent must request this hearing within 3 days after the order is served or after the respondent receives actual notice of the order. If the court is closed to the public upon the expiration of this 3-day period, the request must be made not later than the next business day. To ensure timely notice, the clerk of the court must notify the petitioner of this hearing at the email address and telephone number provided by the petitioner under MCR 3.716(C).
 
-    A respondent waives their right to a hearing on an ex parte order under subrule (D)(2)(c) if the respondent does not request a hearing within the timeframes specified in subrules
+    A respondent waives their right to a hearing on an ex parte order under subrule (D)(2)(c) if the respondent does not request a hearing within the timeframes specified in subrules (D)(3)(a) and (D)(3)(b).
 
-    (D)(3)(a) and (D)(3)(b).
-
-    (4) The petitioner must serve on the respondent the complaint and notice of the hearing as provided in MCR 2.105(A), for a hearing scheduled under subrules (D)(2)(a)-(b). If the respondent is a minor, and the whereabouts of the respondent’s parent(s), guardian, or custodian are known, the petitioner must also in the same manner serve the complaint and notice of the hearing on the respondent’s parent(s), guardian, or custodian. The clerk of the court must serve the respondent’s request for a hearing under subrule (D)(2)(c) on the petitioner, as provided in MCR 2.107(C) and subrule
-
-        (D)(3)(b), due to the confidential nature of the petitioner’s address unless the petitioner electronically filed the case under MCR 1.109(G) and the respondent has registered with the electronic-filing system. In that instance, the respondent must serve the petitioner electronically at the petitioner’s registered email address. If the respondent is a person described in MCL 691.1805(5), providing notice one day before the hearing is deemed as sufficient notice to the petitioner.
+    (4) The petitioner must serve on the respondent the complaint and notice of the hearing as provided in MCR 2.105(A), for a hearing scheduled under subrules (D)(2)(a)-(b). If the respondent is a minor, and the whereabouts of the respondent’s parent(s), guardian, or custodian are known, the petitioner must also in the same manner serve the complaint and notice of the hearing on the respondent’s parent(s), guardian, or custodian. The clerk of the court must serve the respondent’s request for a hearing under subrule (D)(2)(c) on the petitioner, as provided in MCR 2.107(C) and subrule (D)(3)(b), due to the confidential nature of the petitioner’s address unless the petitioner electronically filed the case under MCR 1.109(G) and the respondent has registered with the electronic-filing system. In that instance, the respondent must serve the petitioner electronically at the petitioner’s registered email address. If the respondent is a person described in MCL 691.1805(5), providing notice one day before the hearing is deemed as sufficient notice to the petitioner.
 
     (5) The hearing must be held on the record. In accordance with MCR 2.407 and MCR 2.408, the court may allow the use of videoconferencing technology.
 
     (6) The petitioner must attend the hearing and carries the burden of proving, by a preponderance of the evidence, that the respondent can reasonably be expected within the near future to, intentionally or unintentionally, seriously physically injure themselves or another individual by possessing a firearm and has engaged in an act or acts or made significant threats that are substantially supportive of the expectation. If the petitioner fails to attend the hearing, the court may adjourn and reschedule the hearing or dismiss the complaint.
 
-    (7) If the respondent fails to appear at a hearing on the complaint under subrules
-
-        (D)(2)(a)-(b) and the court determines the petitioner made diligent attempts to serve the respondent, whether the respondent was served or not, the order may be entered without further notice to the respondent if the court determines an extreme risk protection order is necessary. If the respondent fails to appear at a hearing on the complaint requested under subrule (D)(2)(c), the court may adjourn and reschedule the hearing or continue the order without further hearing.
+    (7) If the respondent fails to appear at a hearing on the complaint under subrules (D)(2)(a)-(b) and the court determines the petitioner made diligent attempts to serve the respondent, whether the respondent was served or not, the order may be entered without further notice to the respondent if the court determines an extreme risk protection order is necessary. If the respondent fails to appear at a hearing on the complaint requested under subrule (D)(2)(c), the court may adjourn and reschedule the hearing or continue the order without further hearing.
 
     (8) At the hearing, the court must consider the factors identified in MCL 691.1807(1) and state on the record the reasons for granting, denying, or continuing an extreme risk protection order and enter an appropriate order. Additionally, the court must immediately state the reasons for granting, denying, or continuing an extreme risk protection order in writing.
 
@@ -10008,7 +9932,7 @@ Except as specified in MCR 3.718(B), MCR 3.718(D), and MCR 3.720, an action for 
 
     (9) LEIN Entry. Directions to a local entering authority or the law enforcement agency designated under MCL 691.1809(1)(g) to enter the order into LEIN.
 
-    (10)Order Violations. A statement that violating the order will subject the respondent to the following:
+    (10) Order Violations. A statement that violating the order will subject the respondent to the following:
 
         (a) immediate arrest;
 
@@ -10018,7 +9942,7 @@ Except as specified in MCR 3.718(B), MCR 3.718(D), and MCR 3.720, an action for 
 
         (d) criminal penalties, including imprisonment for up to one year for an initial violation and up to five years for a subsequent violation.
 
-    (11)Right to Attorney. A statement that the respondent has the right to seek the advice of, and be represented by, an attorney.
+    (11) Right to Attorney. A statement that the respondent has the right to seek the advice of, and be represented by, an attorney.
 
     (12) Expiration Date. An expiration date that is one year after the date of issuance.
 
@@ -10448,7 +10372,7 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
             (vi) reports of sexually motivated crimes, MCL 28.247;
 
-            (vii)test results of those charged with certain sexual offenses or substance abuse offenses, MCL 333.5129;
+            (vii) test results of those charged with certain sexual offenses or substance abuse offenses, MCL 333.5129;
 
         (b) the contents of a social file maintained by the court, including materials such as:
 
@@ -10464,7 +10388,7 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
             (vi) victim statements;
 
-            (vii)information regarding the identity or location of a foster parent, preadoptive parent, or relative caregiver.
+            (vii) information regarding the identity or location of a foster parent, preadoptive parent, or relative caregiver.
 
     (4) “Court” means the family division of the circuit court.
 
@@ -10488,25 +10412,25 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
     (9) A petition is deemed “filed” when it is delivered to, and accepted by, the clerk of the court.
 
-    (10)“Formal calendar” means judicial proceedings other than a delinquency proceeding on the consent calendar, a preliminary inquiry, or a preliminary hearing of a delinquency or child protective proceeding.
+    (10) “Formal calendar” means judicial proceedings other than a delinquency proceeding on the consent calendar, a preliminary inquiry, or a preliminary hearing of a delinquency or child protective proceeding.
 
-    (11)“Guardian” means a person appointed as guardian of a child by a Michigan court pursuant to MCL 700.5204 or 700.5205, by a court of another state under a comparable statutory provision, or by parental or testamentary appointment as provided in MCL 700.5202, or a juvenile guardian appointed pursuant to MCL 712A.19a or MCL 712A.19c.
+    (11) “Guardian” means a person appointed as guardian of a child by a Michigan court pursuant to MCL 700.5204 or 700.5205, by a court of another state under a comparable statutory provision, or by parental or testamentary appointment as provided in MCL 700.5202, or a juvenile guardian appointed pursuant to MCL 712A.19a or MCL 712A.19c.
 
-    (12)“Juvenile Code” means 1944 (1st Ex Sess) PA 54, MCL 712A.1 et seq., as amended.
+    (12) “Juvenile Code” means 1944 (1st Ex Sess) PA 54, MCL 712A.1 et seq., as amended.
 
-    (13)“Juvenile Guardian” means a person appointed guardian of a child by a Michigan court pursuant to MCL 712A.19a or MCL 712A.19c. A juvenile guardianship is distinct from a guardianship authorized under the Estates and Protected Individuals Code.
+    (13) “Juvenile Guardian” means a person appointed guardian of a child by a Michigan court pursuant to MCL 712A.19a or MCL 712A.19c. A juvenile guardianship is distinct from a guardianship authorized under the Estates and Protected Individuals Code.
 
-    (14)“Legal Custodian” means an adult who has been given legal custody of a minor by order of a circuit court in Michigan or a comparable court of another state or who possesses a valid power of attorney given pursuant to MCL 700.5103 or a comparable statute of another state. It also includes the term “Indian custodian” as defined in MCR 3.002(15).
+    (14) “Legal Custodian” means an adult who has been given legal custody of a minor by order of a circuit court in Michigan or a comparable court of another state or who possesses a valid power of attorney given pursuant to MCL 700.5103 or a comparable statute of another state. It also includes the term “Indian custodian” as defined in MCR 3.002(15).
 
-    (15)“Legally admissible evidence” means evidence admissible under the Michigan Rules of Evidence.
+    (15) “Legally admissible evidence” means evidence admissible under the Michigan Rules of Evidence.
 
-    (16)“Minor” means a person under the age of 18, and may include a person of age 18 or older over whom the court has continuing jurisdiction pursuant to MCL 712A.2a.
+    (16) “Minor” means a person under the age of 18, and may include a person of age 18 or older over whom the court has continuing jurisdiction pursuant to MCL 712A.2a.
 
-    (17)“Officer” means a government official with the power to arrest or any other person designated and directed by the court to apprehend, detain, or place a minor.
+    (17) “Officer” means a government official with the power to arrest or any other person designated and directed by the court to apprehend, detain, or place a minor.
 
-    (18)“Parent” means the mother, the father as defined in MCR 3.903(A)(7), or both, of the minor. It also includes the term “parent” as defined in MCR 3.002(20).
+    (18) “Parent” means the mother, the father as defined in MCR 3.903(A)(7), or both, of the minor. It also includes the term “parent” as defined in MCR 3.002(20).
 
-    (19)“Party” includes
+    (19) “Party” includes
 
         (a) in a delinquency proceeding,
 
@@ -10518,23 +10442,21 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
             (ii) the parent, guardian, or legal custodian.
 
-    (20)“Petition” means a complaint or other written allegation, verified in the manner provided in MCR 1.109(D)(3), that a parent, guardian, nonparent adult, or legal custodian has harmed or failed to properly care for a child, or that a juvenile has committed an offense.
+    (20) “Petition” means a complaint or other written allegation, verified in the manner provided in MCR 1.109(D)(3), that a parent, guardian, nonparent adult, or legal custodian has harmed or failed to properly care for a child, or that a juvenile has committed an offense.
 
-    (21)“Petition authorized to be filed” refers to written permission given by the court to proceed with placement on the formal calendar. Until a petition is authorized, it remains on the informal calendar.
+    (21) “Petition authorized to be filed” refers to written permission given by the court to proceed with placement on the formal calendar. Until a petition is authorized, it remains on the informal calendar.
 
-    (22)“Petitioner” means the person or agency who requests the court to take action.
+    (22) “Petitioner” means the person or agency who requests the court to take action.
 
-    (23)“Preliminary inquiry” means informal review by the court to determine appropriate action on a petition.
+    (23) “Preliminary inquiry” means informal review by the court to determine appropriate action on a petition.
 
-    (24)“Putative father” means a man who is alleged to be the biological father of a child who has no father as defined in MCR 3.903(A)(7).
+    (24) “Putative father” means a man who is alleged to be the biological father of a child who has no father as defined in MCR 3.903(A)(7).
 
-    (25)“Records” are as defined in MCR 1.109 and MCR 8.119 and include, but are not limited to, pleadings, complaints, citations, motions, authorized and unauthorized petitions, notices, memoranda, briefs, exhibits, available transcripts, findings of the court, registers of action, consent calendar case plans, and court orders.
+    (25) “Records” are as defined in MCR 1.109 and MCR 8.119 and include, but are not limited to, pleadings, complaints, citations, motions, authorized and unauthorized petitions, notices, memoranda, briefs, exhibits, available transcripts, findings of the court, registers of action, consent calendar case plans, and court orders.
 
-    (26)“Register of actions” means the case history of all cases, as defined in subrule
+    (26) “Register of actions” means the case history of all cases, as defined in subrule (A)(1), maintained in accordance with Michigan Supreme Court Records Management Standards. See MCR 8.119(D)(1)(a).
 
-        (A)(1), maintained in accordance with Michigan Supreme Court Records Management Standards. See MCR 8.119(D)(1)(a).
-
-    (27)“Trial” means the fact-finding adjudication of an authorized petition to determine if the minor comes within the jurisdiction of the court. “Trial” also means a specific adjudication of a parent’s unfitness to determine whether the parent is subject to the dispositional authority of the court.
+    (27) “Trial” means the fact-finding adjudication of an authorized petition to determine if the minor comes within the jurisdiction of the court. “Trial” also means a specific adjudication of a parent’s unfitness to determine whether the parent is subject to the dispositional authority of the court.
 
 (B) Delinquency Proceedings. When used in delinquency proceedings, unless the context otherwise indicates:
 
@@ -10576,13 +10498,13 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
     (9) “Offense against a child” means an act or omission by a parent, guardian, nonparent adult, or legal custodian asserted as grounds for bringing the child within the jurisdiction of the court pursuant to the Juvenile Code.
 
-    (10)“Placement” means court-approved transfer of physical custody of a child to foster care, a shelter home, a hospital, or a private treatment agency.
+    (10) “Placement” means court-approved transfer of physical custody of a child to foster care, a shelter home, a hospital, or a private treatment agency.
 
-    (11)“Prosecutor” or “prosecuting attorney” means the prosecuting attorney of the county in which the court has its principal office or an assistant to the prosecuting attorney.
+    (11) “Prosecutor” or “prosecuting attorney” means the prosecuting attorney of the county in which the court has its principal office or an assistant to the prosecuting attorney.
 
-    (12)Except as provided in MCR 3.977(B), “respondent” means the parent, guardian, legal custodian, or nonparent adult who is alleged to have committed an offense against a child.
+    (12) Except as provided in MCR 3.977(B), “respondent” means the parent, guardian, legal custodian, or nonparent adult who is alleged to have committed an offense against a child.
 
-    (13)“Supplemental petition” means:
+    (13) “Supplemental petition” means:
 
         (a) a written allegation, verified in the manner provided in MCR 1.109(D)(3), that a parent, for whom a petition was authorized, has committed an additional offense since the adjudication of the petition, or
 
@@ -10590,7 +10512,7 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
         (c) a written allegation, verified in the manner provided in MCR 1.109(D)(3), that requests the court terminate parental rights of a parent or parents under MCR 3.977(F) or MCR 3.977(H).
 
-    (14)“Qualified Residential Treatment Program” means a residential program that has met all of the following criteria:
+    (14) “Qualified Residential Treatment Program” means a residential program that has met all of the following criteria:
 
         (a) Use of a trauma-informed treatment model;
 
@@ -10604,7 +10526,7 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
         (f) Does not include a detention center, forestry camp training school, or other facility operated primarily for minor children determined to be delinquent.
 
-    (15)“Qualified Individual” means a trained professional or licensed clinician who is not an employee of the department and who is not connected to, or affiliated with, any placement setting in which children are placed by the department, and who is responsible for conducting an assessment of a child placed in a qualified residential treatment program pursuant to MCL 722.123a.
+    (15) “Qualified Individual” means a trained professional or licensed clinician who is not an employee of the department and who is not connected to, or affiliated with, any placement setting in which children are placed by the department, and who is responsible for conducting an assessment of a child placed in a qualified residential treatment program pursuant to MCL 722.123a.
 
 (D) Designated Proceedings.
 
@@ -10662,9 +10584,7 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
         (p) escape or attempted escape from a medium security or high security facility operated by the Department of Health and Human Services or a high-security facility operated by a private agency under contract with the Department of Health and Human Services, MCL 750.186a;
 
-        (q) any lesser-included offense of an offense described in subrules (a)-(p), if the petition alleged that the juvenile committed an offense described in subrules
-
-            (a)-(p); or
+        (q) any lesser-included offense of an offense described in subrules (a)-(p), if the petition alleged that the juvenile committed an offense described in subrules (a)-(p); or
 
         (r) any offense arising out of the same transaction as an offense described in subrules (a)-(p), if the petition alleged that the juvenile committed an offense described in subrules (a)-(p).
 
@@ -11022,9 +10942,7 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
     (4) Manner of Serving Summons.
 
-        (a) Except as provided in subrule (B)(4)(b), a summons required under subrule
-
-            (B)(2) must be served by delivering the summons to the party personally.
+        (a) Except as provided in subrule (B)(4)(b), a summons required under subrule (B)(2) must be served by delivering the summons to the party personally.
 
         (b) If the court finds, on the basis of testimony or a motion and affidavit, that personal service of the summons is impracticable or cannot be achieved, the court may by ex parte order direct that it be served in any manner reasonably calculated to give notice of the proceedings and an opportunity to be heard, including publication.
 
@@ -11076,9 +10994,7 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
     (3) Except as otherwise stated in this subrule, service of a subpoena is governed by MCR 2.506.
 
-(F) Waiver of Notice and Service. A person may waive notice of hearing or service of process. The waiver shall be in writing. When a party waives service of a summons required by subrule (B), the party must be provided the advice required by subrule
-
-    (B)(3).
+(F) Waiver of Notice and Service. A person may waive notice of hearing or service of process. The waiver shall be in writing. When a party waives service of a summons required by subrule (B), the party must be provided the advice required by subrule (B)(3).
 
 (G) Subsequent Notices. After a party's first appearance before the court, subsequent notice of proceedings and pleadings shall be served on that party or, if the party has an attorney, on the attorney for the party as provided in subrule (D), except that a summons must be served for trial or termination hearing as provided in subrule (B).
 
@@ -11126,9 +11042,7 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
 (B) Protective Proceedings.
 
-    (1) General. In a child protective proceeding, except as provided in subrules (B)(2) and
-
-        (3), the court shall ensure that the following persons are notified of each hearing:
+    (1) General. In a child protective proceeding, except as provided in subrules (B)(2) and (3), the court shall ensure that the following persons are notified of each hearing:
 
         (a) the respondent,
 
@@ -11202,7 +11116,7 @@ Except as otherwise provided, the court may allow the use of videoconferencing t
 
     (9) the Michigan Children’s Institute superintendent; and
 
-    (10)any other person the court may direct to be notified.
+    (10) any other person the court may direct to be notified.
 
 (D) Putative Fathers. If, at any time during the pendency of a proceeding, the court determines that the minor has no father as defined in MCR 3.903(A)(7), the court may, in its discretion, take appropriate action as described in this subrule.
 
@@ -11552,9 +11466,7 @@ The parties may file records, as defined in MCR 3.903(A)(25), by the use of facs
 
     (5) Conference. After placing a matter on the consent calendar, the court must conduct a consent calendar case conference with the juvenile, the juvenile’s attorney, if any, and the juvenile’s parent, guardian, or legal custodian. The prosecutor and victim may, but need not, be present. At the conference, the court must discuss the allegations with the juvenile and issue a written consent calendar case plan in accordance with MCL 712A.2f(9). The period for a juvenile to complete the terms of a consent calendar case plan must not exceed 6 months, unless the court determines that a longer period is needed for the juvenile to complete a specific treatment program and includes this determination as part of the consent calendar case record.
 
-    (6) Case Plan. The case plan is not an order of the court, but shall be included as part of the case record. If the court determines the juvenile has violated the terms of the case plan, it may transfer the case to the formal calendar in accordance with subrule
-
-        (C)(9).
+    (6) Case Plan. The case plan is not an order of the court, but shall be included as part of the case record. If the court determines the juvenile has violated the terms of the case plan, it may transfer the case to the formal calendar in accordance with subrule (C)(9).
 
     (7) Disposition. The court shall not enter an order of disposition in a case while it is on the consent calendar.
 
@@ -11570,9 +11482,9 @@ The parties may file records, as defined in MCR 3.903(A)(25), by the use of facs
 
             (ii) Allow the juvenile and the juvenile’s attorney, if any, the opportunity to address the court and state on the record why the case should not be transferred to the formal calendar.
 
-    (10)Closing the Case. Upon a judicial determination that the juvenile has completed the terms of the consent calendar case plan, the court shall report the successful completion to the juvenile and the Department of State Police. The report to the Department of State police shall be in a form prescribed by the Department of State Police.
+    (10) Closing the Case. Upon a judicial determination that the juvenile has completed the terms of the consent calendar case plan, the court shall report the successful completion to the juvenile and the Department of State Police. The report to the Department of State police shall be in a form prescribed by the Department of State Police.
 
-    (11)Record Retention. The case records shall only be destroyed in accordance with the approved record retention and disposal schedule established by the State Court Administrative Office.
+    (11) Record Retention. The case records shall only be destroyed in accordance with the approved record retention and disposal schedule established by the State Court Administrative Office.
 
 (D) Formal Calendar. The court may authorize a petition to be filed and docketed on the formal calendar if it appears to the court that formal court action is in the best interest of the juvenile and the public. The court shall not authorize an original petition under MCL 712A.2(a)(1), unless the prosecuting attorney has approved submitting the petition to the court. At any time before disposition, the court may transfer the matter to the consent calendar.
 
@@ -11736,9 +11648,7 @@ The parties may file records, as defined in MCR 3.903(A)(25), by the use of facs
 
         (g) pretrial detention is otherwise specifically authorized by law.
 
-    (2) Waiver. A juvenile may waive the probable cause determination required by subrule
-
-        (1) only if the juvenile is represented by an attorney.
+    (2) Waiver. A juvenile may waive the probable cause determination required by subrule (1) only if the juvenile is represented by an attorney.
 
     (3) Evidence; Findings. The juvenile may contest the sufficiency of evidence by cross-examination of witnesses, presentation of defense witnesses, or by other evidence. The court shall permit the use of subpoena power to secure attendance of defense witnesses. The Michigan Rules of Evidence do not apply, other than those with respect to privileges.
 
@@ -11860,9 +11770,9 @@ The parties may file records, as defined in MCR 3.903(A)(25), by the use of facs
 
             (vi) to question the witnesses against the juvenile,
 
-            (vii)to have the court order any witnesses for the juvenile's defense to appear at the trial,
+            (vii) to have the court order any witnesses for the juvenile's defense to appear at the trial,
 
-            (viii)to remain silent and not have that silence used against the juvenile, and
+            (viii) to remain silent and not have that silence used against the juvenile, and
 
             (ix) to testify at trial, if the juvenile wants to testify.
 
@@ -11972,9 +11882,7 @@ The parties may file records, as defined in MCR 3.903(A)(25), by the use of facs
 
         (b) order that the juvenile be apprehended and brought to the court for a detention hearing, which, except as otherwise provided in this rule, must be commenced within 24 hours after the juvenile has been taken into court custody, excluding Sundays and holidays as defined in MCR 8.110 (D)(2).
 
-    (2) When a juvenile is apprehended pursuant to court order as provided in subrule
-
-        (A)(1)(b), the officer must:
+    (2) When a juvenile is apprehended pursuant to court order as provided in subrule (A)(1)(b), the officer must:
 
         (a) forthwith take the juvenile
 
@@ -11992,9 +11900,7 @@ The parties may file records, as defined in MCR 3.903(A)(25), by the use of facs
 
     (3) The court must read the petition to the juvenile, unless the attorney or juvenile waives the reading.
 
-    (4) The court must advise the juvenile of the juvenile's rights as provided in subrule
-
-        (C)(1) and of the possible dispositions.
+    (4) The court must advise the juvenile of the juvenile's rights as provided in subrule (C)(1) and of the possible dispositions.
 
     (5) The juvenile must be allowed an opportunity to deny or otherwise plead to the probation violation. If the juvenile wishes to admit the probation violation or plead no contest, the court must comply with subrule (D) before accepting the plea.
 
@@ -12080,7 +11986,7 @@ The parties may file records, as defined in MCR 3.903(A)(25), by the use of facs
 
     (1) Generally. The court must conduct periodic hearings to review the dispositional orders in delinquency cases in which the juvenile has been placed outside the home. Such review hearings must be conducted at intervals designated by the court, or may be requested at any time by a party or by a probation officer or caseworker. The victim has a right to make a statement at the hearing or submit a written statement for use at the hearing, or both. At a dispositional review hearing, the court may modify or amend the dispositional order or treatment plan to include any disposition permitted by MCL 712A.18 and MCL 712A.18a or as otherwise permitted by law; and shall permit the court to approve or disapprove of the child’s initial or continued placement in a qualified residential treatment. The Michigan Rules of Evidence, other than those with respect to privileges, do not apply.
 
-(2) Required Review Hearings.
+    (2) Required Review Hearings.
 
         (a) If the juvenile is placed in out-of-home care, the court must hold dispositional review hearings no later than every 182 days after the initial disposition, as provided in MCL 712A.19(2).
 
@@ -12206,9 +12112,9 @@ The parties may file records, as defined in MCR 3.903(A)(25), by the use of facs
 
             (vi) the dispositional options available for the juvenile;
 
-            (vii)the juvenile’s developmental maturity, emotional health, and mental health;
+            (vii) the juvenile’s developmental maturity, emotional health, and mental health;
 
-            (viii)if the juvenile is a member of a federally-recognized Indian tribe, culturally honoring traditional values of the juvenile’s tribe; and
+            (viii) if the juvenile is a member of a federally-recognized Indian tribe, culturally honoring traditional values of the juvenile’s tribe; and
 
             (ix) the impact on any victim.
 
@@ -12320,7 +12226,7 @@ The parties may file records, as defined in MCR 3.903(A)(25), by the use of facs
 
             (vi) that if the case is designated by the court for trial in the same manner as an adult and, if a preliminary examination is required by law, the prosecuting attorney proves that there is probable cause to believe that an offense was committed and there is probable cause to believe that the juvenile committed the offense, the juvenile will be afforded all the rights of an adult charged with the same crime and that upon conviction the juvenile may be sentenced as an adult;
 
-            (vii)of the maximum possible prison sentence and any mandatory minimum sentence required by law.
+            (vii) of the maximum possible prison sentence and any mandatory minimum sentence required by law.
 
         (c) Unless the arraignment is adjourned, the court must decide whether to authorize the petition to be filed. If it authorizes the filing of the petition, the court must:
 
@@ -12488,7 +12394,7 @@ Trials of designated cases are governed by subchapter 6.400, except for MCR 6.40
 
             (vi) the recommendation of the institution, agency, or facility charged with the juvenile's care for the juvenile's release or continued custody;
 
-            (vii)any other information the prosecuting attorney or the juvenile submit.
+            (vii) any other information the prosecuting attorney or the juvenile submit.
 
         (b) Before the court may impose a sentence at the final review hearing, the court must determine that the best interests of the public would be served by the imposition of a sentence provided by law for an adult offender. In making the determination, the court must consider the following factors, in addition to the criteria specified in subrule (4)(a):
 
@@ -12660,13 +12566,13 @@ Trials of designated cases are governed by subchapter 6.400, except for MCR 6.40
 
     (9) The court shall allow the respondent an opportunity to deny or admit the allegations and make a statement of explanation.
 
-    (10)The court must inquire whether the child is subject to the continuing jurisdiction of another court and, if so, which court.
+    (10) The court must inquire whether the child is subject to the continuing jurisdiction of another court and, if so, which court.
 
-    (11)The court may adjourn the hearing for up to 14 days to secure the attendance of witnesses or for other good cause shown. If the court knows or has reason to know the child is an Indian, the court may adjourn the hearing for up to 21 days to ensure proper notice to the tribe or Secretary of the Interior as required by MCR 3.920(C)(1). If the preliminary hearing is adjourned, the court may make temporary orders for the placement of the child when necessary to assure the immediate safety of the child, pending the completion of the preliminary hearing and subject to subrule (C), and as applicable, MCR 3.967.
+    (11) The court may adjourn the hearing for up to 14 days to secure the attendance of witnesses or for other good cause shown. If the court knows or has reason to know the child is an Indian, the court may adjourn the hearing for up to 21 days to ensure proper notice to the tribe or Secretary of the Interior as required by MCR 3.920(C)(1). If the preliminary hearing is adjourned, the court may make temporary orders for the placement of the child when necessary to assure the immediate safety of the child, pending the completion of the preliminary hearing and subject to subrule (C), and as applicable, MCR 3.967.
 
-    (12)Unless the preliminary hearing is adjourned, the court must decide whether to authorize the filing of the petition and, if authorized, whether the child should remain in the home, be returned home, or be placed in foster care pending trial. The court may authorize the filing of the petition upon a showing of probable cause, unless waived, that one or more of the allegations in the petition are true and fall within MCL 712A.2(b). The Michigan Rules of Evidence do not apply, other than those with respect to privileges, except to the extent that such privileges are abrogated by MCL 722.631.
+    (12) Unless the preliminary hearing is adjourned, the court must decide whether to authorize the filing of the petition and, if authorized, whether the child should remain in the home, be returned home, or be placed in foster care pending trial. The court may authorize the filing of the petition upon a showing of probable cause, unless waived, that one or more of the allegations in the petition are true and fall within MCL 712A.2(b). The Michigan Rules of Evidence do not apply, other than those with respect to privileges, except to the extent that such privileges are abrogated by MCL 722.631.
 
-    (13)If the court authorizes the filing of the petition, the court:
+    (13) If the court authorizes the filing of the petition, the court:
 
         (a) may release the child to a parent, guardian, or legal custodian and may order such reasonable terms and conditions believed necessary to protect the physical health or mental well-being of the child; or
 
@@ -12682,9 +12588,9 @@ Trials of designated cases are governed by subchapter 6.400, except for MCR 6.40
 
             The court may order another placement for good cause shown in accordance with MCL 712B.23(3)-(5). If the Indian child’s tribe has established a different order of preference than the order prescribed above, placement shall follow that tribe’s order of preference as long as the placement is the least restrictive setting appropriate to the particular needs of the child, as provided in MCL 712B.23(6). The standards to be applied in meeting the preference requirements above shall be the prevailing social and cultural standards of the Indian community in which the parent or extended family resides or with which the parent or extended family members maintain social and cultural ties.
 
-    (14)The court must inquire of the parent, guardian, or legal custodian regarding the identity of relatives of the child who might be available to provide care. If the father of the child has not been identified, the court must inquire of the mother regarding the identity and whereabouts of the father.
+    (14) The court must inquire of the parent, guardian, or legal custodian regarding the identity of relatives of the child who might be available to provide care. If the father of the child has not been identified, the court must inquire of the mother regarding the identity and whereabouts of the father.
 
-    (15)If the court orders removal of the child from a parent’s care or custody, the court shall advise the parent, guardian, or legal custodian of the right to appeal that action.
+    (15) If the court orders removal of the child from a parent’s care or custody, the court shall advise the parent, guardian, or legal custodian of the right to appeal that action.
 
 (C) Pretrial Placement.
 
@@ -12870,9 +12776,7 @@ Trials of designated cases are governed by subchapter 6.400, except for MCR 6.40
 
         The court shall not order a party to pay a fee for mediation services.
 
-    (4) The order may require attendance at mediation proceedings as provided in subrule
-
-        (E).
+    (4) The order may require attendance at mediation proceedings as provided in subrule (E).
 
 (D) Objections to Mediation. A party may orally object to an order to mediate or in writing. Cases may be exempt from mediation on the basis of the following:
 
@@ -13280,9 +13184,7 @@ Trials of designated cases are governed by subchapter 6.400, except for MCR 6.40
 
     (3) The court, upon receipt of a local foster care review board’s report, shall include the report in the court’s confidential social file. The court shall ensure that all parties have had the opportunity to review the report and file objections before a dispositional order, dispositional review order, or permanency planning order is entered. The court may at its discretion include recommendations from the report in its orders.
 
-    (4) Written reports in the Agency case file, including but not limited to case service plans, treatment plans, substance abuse evaluations, psychological evaluations, therapists’ reports, drug and alcohol screens, contracted service provider reports, and parenting time logs, shall be provided to the court and parties no less than seven
-
-        (7) days before the hearing.
+    (4) Written reports in the Agency case file, including but not limited to case service plans, treatment plans, substance abuse evaluations, psychological evaluations, therapists’ reports, drug and alcohol screens, contracted service provider reports, and parenting time logs, shall be provided to the court and parties no less than seven (7) days before the hearing.
 
 (E) Determinations; Permanency Options.
 
@@ -13376,9 +13278,7 @@ Trials of designated cases are governed by subchapter 6.400, except for MCR 6.40
 
         (a) are true, and
 
-        (b) establish grounds for termination of parental rights under MCL 712A.19b(3)(a),
-
-            (b), (d), (e), (f), (g), (h), (i), (j), (k), (l), or (m);
+        (b) establish grounds for termination of parental rights under MCL 712A.19b(3)(a), (b), (d), (e), (f), (g), (h), (i), (j), (k), (l), or (m);
 
     (4) termination of parental rights is in the child’s best interests.
 
@@ -13392,9 +13292,7 @@ Trials of designated cases are governed by subchapter 6.400, except for MCR 6.40
 
             (i) are true; and
 
-            (ii) come within MCL 712A.19b(3)(a), (b), (c)(ii), (d), (e), (f), (g), (i), (j), (k),
-
-                (l), or (m); and
+            (ii) come within MCL 712A.19b(3)(a), (b), (c)(ii), (d), (e), (f), (g), (i), (j), (k), (l), or (m); and
 
         (c) termination of parental rights is in the child’s best interests.
 
@@ -13420,9 +13318,7 @@ Trials of designated cases are governed by subchapter 6.400, except for MCR 6.40
 
     (3) Order. The court must order termination of the parental rights of a respondent and must order that additional efforts for reunification of the child with the respondent must not be made, if the court finds
 
-        (a) on the basis of clear and convincing evidence admitted pursuant to subrule
-
-            (H)(2) that one or more facts alleged in the petition:
+        (a) on the basis of clear and convincing evidence admitted pursuant to subrule (H)(2) that one or more facts alleged in the petition:
 
             (i) are true; and
 
@@ -13440,7 +13336,7 @@ Trials of designated cases are governed by subchapter 6.400, except for MCR 6.40
 
 (J) Respondent's Rights Following Termination.
 
-(4) Advice. Immediately after entry of an order terminating parental rights, the court shall advise the respondent parent orally or in writing that:
+    (4) Advice. Immediately after entry of an order terminating parental rights, the court shall advise the respondent parent orally or in writing that:
 
         (a) The respondent is entitled to appellate review of the order.
 
@@ -13580,9 +13476,7 @@ Procedure for the issuance, dismissal, modification, or recision of minor person
 
 ### Rule 3.982 Enforcement of Minor Personal Protection Orders
 
-(A) In General. A minor personal protection order is enforceable under MCL 600.2950(22),
-
-    (25), 600.2950a(22), (25), 764.15b, and 600.1701 et seq. For the purpose of MCR 3.981-3.989, “minor personal protection order” includes a foreign protection order against a minor respondent enforceable in Michigan under MCL 600.2950l.
+(A) In General. A minor personal protection order is enforceable under MCL 600.2950(22), (25), 600.2950a(22), (25), 764.15b, and 600.1701 et seq. For the purpose of MCR 3.981-3.989, “minor personal protection order” includes a foreign protection order against a minor respondent enforceable in Michigan under MCL 600.2950l.
 
 (B) Procedure. Unless indicated otherwise in these rules, contempt proceedings for the enforcement of minor personal protection orders where the respondent is under 18 years of age are governed by MCR 3.982-3.989.
 
@@ -13932,9 +13826,7 @@ When it is alleged that a minor placed on probation for the violation of a minor
 
         The chief judge of the court shall bear primary responsibility for ensuring that the appointment is made within the deadline stated in this rule.
 
-    (3) All requests for the appointment of appellate counsel must be granted or denied on forms approved by the State Court Administrative Office. If the order being appealed is appealable by right and the request for appointment of appellate counsel was filed within the time provided in subrule (D)(1), the order described in subrule
-
-        (D)(2) must be entered on a form entitled “Claim of Appeal and Order Appointing Counsel.”
+    (3) All requests for the appointment of appellate counsel must be granted or denied on forms approved by the State Court Administrative Office. If the order being appealed is appealable by right and the request for appointment of appellate counsel was filed within the time provided in subrule (D)(1), the order described in subrule (D)(2) must be entered on a form entitled “Claim of Appeal and Order Appointing Counsel.”
 
     (4) The court must immediately send to the Court of Appeals a copy of the Claim of Appeal and Order Appointing Counsel, a copy of the judgment or order being appealed, and a copy of the complete register of actions in the case. The court must also file in the Court of Appeals proof of having made service of the Claim of Appeal and Order Appointing Counsel on the respondent(s), appointed counsel for the respondent(s), the court reporter(s)/recorder(s), petitioner, the prosecuting attorney, the lawyer-guardian ad litem for the child(ren) under MCL 712A.13a(1)(f), and the guardian ad litem or attorney (if any) for the child(ren). Entry of the order by the trial court pursuant to this subrule constitutes a timely filed claim of appeal for the purposes of MCR 7.204.
 
@@ -13962,7 +13854,7 @@ When it is alleged that a minor placed on probation for the violation of a minor
 
     (4) A respondent filing an appeal after receiving an order issued under this subrule must provide the Court of Appeals with a copy of the order when filing the appeal with the claim of appeal or application for leave to appeal. The Court of Appeals can excuse this requirement for good cause.
 
-    (5) In determining a “reasonable time” under this subrule, the court must consider whether factors existed outside the respondent’s control that contributed to the delay in filing a motion under this subrule. MICHIGAN COURT RULES OF 1985
+    (5) In determining a “reasonable time” under this subrule, the court must consider whether factors existed outside the respondent’s control that contributed to the delay in filing a motion under this subrule.
 
 # Chapter 4. District Court
 
@@ -14156,9 +14048,7 @@ The rules in this chapter apply to the specific types of proceedings within the 
 
         (b) A plaintiff's appeal must be asserted by the prosecuting authority of the political unit that is responsible for providing the plaintiff's attorney for the formal hearing. A bond is not required.
 
-    (3) There is no appeal of right from an admission of responsibility. However, within 14 days after the admission, a defendant may file with the district court a written request to withdraw the admission, and must post a bond as provided in subrule
-
-        (1)(a). If the court grants the request, the case will be scheduled for either a formal hearing or an informal hearing, as ordered by the court. If the court denies the request, the bond may be applied to the fine and costs.
+    (3) There is no appeal of right from an admission of responsibility. However, within 14 days after the admission, a defendant may file with the district court a written request to withdraw the admission, and must post a bond as provided in subrule (1)(a). If the court grants the request, the case will be scheduled for either a formal hearing or an informal hearing, as ordered by the court. If the court denies the request, the bond may be applied to the fine and costs.
 
 ## Subchapter 4.200 Landlord-Tenant Proceedings; Land Contract Forfeiture
 
@@ -14260,9 +14150,7 @@ The rules in this chapter apply to the specific types of proceedings within the 
 
         (a) The court may order change of venue on its own motion.
 
-        (b) A motion to change venue pursuant to this subrule and MCL 600.5706(4) may be made in writing before the date listed on the summons, pursuant to section
-
-            (C)(1) of this rule, or orally in response to the court’s advisement in this subrule.
+        (b) A motion to change venue pursuant to this subrule and MCL 600.5706(4) may be made in writing before the date listed on the summons, pursuant to section (C)(1) of this rule, or orally in response to the court’s advisement in this subrule.
 
         (c) Transfer of the case shall be pursuant to MCR 2.223.
 
@@ -14280,9 +14168,7 @@ The rules in this chapter apply to the specific types of proceedings within the 
 
             (iv) the defendant appears on the date and time noticed by the summons but fails to appear on the date and time in which the trial was adjourned under subrule (K)(1).
 
-        (b) If satisfied that the complaint has met pleading and proof requirements and a default may enter under subrule (G)(5)(a), the court must enter a default judgment under MCL 600.5741 and in accordance with subrule
-
-            (L). The default judgment must be mailed to the defendant by the court clerk and must inform the defendant that, if applicable,
+        (b) If satisfied that the complaint has met pleading and proof requirements and a default may enter under subrule (G)(5)(a), the court must enter a default judgment under MCL 600.5741 and in accordance with subrule (L). The default judgment must be mailed to the defendant by the court clerk and must inform the defendant that, if applicable,
 
             (i) he or she may be evicted from the premises;
 
@@ -14346,9 +14232,7 @@ The rules in this chapter apply to the specific types of proceedings within the 
 
     (3) Stay of Proceedings.
 
-        (a) In cases filed pursuant to MCL 600.5714(1)(a) for nonpayment of rent due under a residential lease or agreement, the court must stay further proceedings after advising the defendant of the rights and information listed in subrule
-
-            (K)(2)(a) and adjourning the trial under subrule (K). The court must not proceed to judgment if the defendant has applied for rental assistance from the Michigan Department of Health and Human Services, local Coordinated Entry Agency, Housing Assessment and Resource Agency or federal Help for Homeless Veterans program and provides written proof to the court that the application has been submitted for processing not later than five days after the defendant is verbally informed as provided in subrule (K)(2)(a) or (b). The State Court Administrative Office may provide a form to evidence this requirement.
+        (a) In cases filed pursuant to MCL 600.5714(1)(a) for nonpayment of rent due under a residential lease or agreement, the court must stay further proceedings after advising the defendant of the rights and information listed in subrule (K)(2)(a) and adjourning the trial under subrule (K). The court must not proceed to judgment if the defendant has applied for rental assistance from the Michigan Department of Health and Human Services, local Coordinated Entry Agency, Housing Assessment and Resource Agency or federal Help for Homeless Veterans program and provides written proof to the court that the application has been submitted for processing not later than five days after the defendant is verbally informed as provided in subrule (K)(2)(a) or (b). The State Court Administrative Office may provide a form to evidence this requirement.
 
         (b) The initial stay is lifted after 14 days unless the defendant demonstrates to the court that the application is still pending or has been approved and rental assistance will be received. The total stay period under this subrule must not exceed 28 days and is automatically lifted 28 days from the date that the initial stay of the proceedings began.
 
@@ -14364,17 +14248,13 @@ The rules in this chapter apply to the specific types of proceedings within the 
 
     (1) Time.
 
-        (a) If, after advising the defendant of the rights and information listed in subrule
+        (a) If, after advising the defendant of the rights and information listed in subrule (K)(2)(a) the court adjourns the trial, it must be scheduled at least 7 days but not more than 14 days after the initial date and time set for trial noticed by the summons, unless a jury demand is made under subrule (G)(4) or good cause is shown under subrule (K)(1)(c).
 
-            (K)(2)(a) the court adjourns the trial, it must be scheduled at least 7 days but not more than 14 days after the initial date and time set for trial noticed by the summons, unless a jury demand is made under subrule (G)(4) or good cause is shown under subrule (K)(1)(c).
-
-        (b) After advising the defendant of the rights and information listed in subrule
-
-            (K)(2)(a), the court must decide remaining pretrial motions and determine if there is a triable issue. If there is no triable issue, the court must enter judgment.
+        (b) After advising the defendant of the rights and information listed in subrule (K)(2)(a), the court must decide remaining pretrial motions and determine if there is a triable issue. If there is no triable issue, the court must enter judgment.
 
         (c) The court may try the action pursuant to subrule (K), or, if good cause is shown, may adjourn trial up to 56 days. If the court adjourns trial for more than 14 days, an escrow order may be entered pursuant to subrule (I)(2). The parties may adjourn trial by stipulation in writing or on the record, subject to the approval of the court.
 
-(2) Conducting the Trial.
+    (2) Conducting the Trial.
 
         (a) Unless otherwise provided in subrule (K)(2), at the initial date and time set for trial noticed by the summons, the court must verbally inform the parties of the following rights and information:
 
@@ -14384,15 +14264,13 @@ The rules in this chapter apply to the specific types of proceedings within the 
 
             (iii) The right to demand a jury trial under subrule (G)(4).
 
-            (iv) In cases filed pursuant to MCL 600.5714(1)(a) for nonpayment of rent due under a residential lease or agreement, the Michigan Department of Health and Human Services, local Coordinated Entry Agency, Housing Assessment and Resource Agency, or federal Help for Homeless Veterans program may be able to assist with payment of some or all of the rent due. Within five days of receiving the advice of rights and information under this subrule, the defendant must provide written proof to the court that an application for assistance has been submitted for processing under subrule
-
-                (I)(3).
+            (iv) In cases filed pursuant to MCL 600.5714(1)(a) for nonpayment of rent due under a residential lease or agreement, the Michigan Department of Health and Human Services, local Coordinated Entry Agency, Housing Assessment and Resource Agency, or federal Help for Homeless Veterans program may be able to assist with payment of some or all of the rent due. Within five days of receiving the advice of rights and information under this subrule, the defendant must provide written proof to the court that an application for assistance has been submitted for processing under subrule (I)(3).
 
             (v) In cases filed pursuant to MCL 600.5714(1)(a) for nonpayment of rent due under a residential lease or agreement, defendants do not need a judgment to receive assistance from the Michigan Department of Health and Human Services, local Coordinated Entry Agency, or Housing Assessment and Resource Agency. The summons and complaint from the court case are sufficient for help from the state.
 
             (vi) The availability of the Michigan and local community dispute resolution program office as a possible source of case resolution.
 
-            (vii)The possibility of a conditional dismissal pursuant to MCR 2.602 if approved by all parties. The parties must be provided with a form to effectuate such conditional dismissal or direct the parties to the location of the SCAO approved form online.
+            (vii) The possibility of a conditional dismissal pursuant to MCR 2.602 if approved by all parties. The parties must be provided with a form to effectuate such conditional dismissal or direct the parties to the location of the SCAO approved form online.
 
             If the defendant does not appear for trial on the date and time noticed by the summons and a default was not entered, the court must verbally inform the parties of the information in this subrule at the defendant’s first appearance and allow the defendant time to make a jury demand under subrule (G)(4) and to retain an attorney under subrule (G)(2).
 
@@ -14400,9 +14278,7 @@ The rules in this chapter apply to the specific types of proceedings within the 
 
         (c) If authorized by statutory amendment, a district court magistrate may advise the defendant of the rights and information in subrule (K)(2)(a).
 
-        (d) Unless otherwise provided in this rule, at the date and time set for trial and after verbally advising the parties of the rights and information under subrule
-
-            (K)(2)(a), the court shall adjourn the trial as provided in subrule (K)(1).
+        (d) Unless otherwise provided in this rule, at the date and time set for trial and after verbally advising the parties of the rights and information under subrule (K)(2)(a), the court shall adjourn the trial as provided in subrule (K)(1).
 
         (e) Unless otherwise provided in this rule, immediately following the advice of rights and information required by subrule (K)(2)(a), the court may resolve the case without adjourning the trial, if any of the following occur:
 
@@ -14412,15 +14288,13 @@ The rules in this chapter apply to the specific types of proceedings within the 
 
             (iii) Both plaintiff and defendant are represented by counsel, and a consent judgment or conditional dismissal is filed with the court.
 
-            (iv) The parties enter into a consent judgment or conditional dismissal on the record after knowingly and voluntarily waiving the rights identified in subrule (K)(2)(a) and the adjournment required by subrule (K)(2)(d). The court must review the defendant’s waiver of rights and the terms of the consent judgment or conditional dismissal. After adequate inquiry, if the court determines that a valid waiver exists and the terms are fair, it may enter the consent judgment or conditional dismissal on the record. A defendant who has consulted with an attorney either in person or remotely after receiving the summons and who is waiving these rights is presumed to have knowingly and voluntarily waived the rights identified in subrule
-
-                (K)(2)(a).
+            (iv) The parties enter into a consent judgment or conditional dismissal on the record after knowingly and voluntarily waiving the rights identified in subrule (K)(2)(a) and the adjournment required by subrule (K)(2)(d). The court must review the defendant’s waiver of rights and the terms of the consent judgment or conditional dismissal. After adequate inquiry, if the court determines that a valid waiver exists and the terms are fair, it may enter the consent judgment or conditional dismissal on the record. A defendant who has consulted with an attorney either in person or remotely after receiving the summons and who is waiving these rights is presumed to have knowingly and voluntarily waived the rights identified in subrule (K)(2)(a).
 
             (v) any of the circumstances listed in subrule (G)(5)(a)(ii), except for an action in which MCL 600.5714(1)(b) applies, is pleaded and proved, with notice, sufficient to meet the statutory requirements. Actions in which MCL 600.5714(1)(b) apply shall be heard pursuant to MCL 600.5735(7).
 
-(3) Government Reports. If the defendant claims that the plaintiff failed to comply with an ordinance or statute, the court may admit an authenticated copy of any relevant government employee’s report filed with a government agency. Objections to the report affect the weight given it, not its admissibility.
+    (3) Government Reports. If the defendant claims that the plaintiff failed to comply with an ordinance or statute, the court may admit an authenticated copy of any relevant government employee’s report filed with a government agency. Objections to the report affect the weight given it, not its admissibility.
 
-(4) Payment or Acceptance of Money. The payment or the acceptance of money by a party before trial does not necessarily prevent or delay the proceedings.
+    (4) Payment or Acceptance of Money. The payment or the acceptance of money by a party before trial does not necessarily prevent or delay the proceedings.
 
 (L) Judgment.
 
@@ -14664,9 +14538,7 @@ Actions in a small claims division are governed by the procedural provisions of 
 
 ### Rule 4.302 Statement of Claim
 
-(A) Contents. The statement of the claim must be in an affidavit in substantially the form approved by the state court administrator. Affidavit forms shall be available at the clerk's office. The nature and amount of the claim must be stated in concise, nontechnical language, and the affidavit must state the date or dates when the claim arose. The form, captioning, signing, and verifying of documents are prescribed in MCR 1.109(D) and
-
-    (E).
+(A) Contents. The statement of the claim must be in an affidavit in substantially the form approved by the state court administrator. Affidavit forms shall be available at the clerk's office. The nature and amount of the claim must be stated in concise, nontechnical language, and the affidavit must state the date or dates when the claim arose. The form, captioning, signing, and verifying of documents are prescribed in MCR 1.109(D) and (E).
 
 (B) Affidavit; Signature.
 
@@ -14762,7 +14634,7 @@ Actions in a small claims division are governed by the procedural provisions of 
 
 (D) Appeals. Appeals of right may be taken from a decision of the district court magistrate to the district court in the district in which the magistrate serves by filing a written claim of appeal in substantially the form provided by MCR 7.104 within 7 days of the entry of the decision of the magistrate. No fee is required on the filing of the appeal, except as otherwise provided by statute or court rule. The action is heard de novo by the district court.
 
-(E) A district court magistrate may use videoconferencing technology in accordance with MCR 2.407 and MCR 6.006. MICHIGAN COURT RULES OF 1985
+(E) A district court magistrate may use videoconferencing technology in accordance with MCR 2.407 and MCR 6.006.
 
 # Chapter 5. Probate Court
 
@@ -15250,7 +15122,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (d) presumptive heirs of the absent person.
 
-    (11)The persons interested in a petition for supervised administration after an estate has been commenced are the
+    (11) The persons interested in a petition for supervised administration after an estate has been commenced are the
 
         (a) devisees, unless the court has previously found decedent died intestate,
 
@@ -15260,13 +15132,13 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (d) claimants.
 
-    (12)The persons interested in an independent request for adjudication under MCL 700.3415 and a petition for an interim order under MCL 700.3505 are the
+    (12) The persons interested in an independent request for adjudication under MCL 700.3415 and a petition for an interim order under MCL 700.3505 are the
 
         (a) personal representative, and
 
         (b) other persons who will be affected by the adjudication.
 
-    (13)The persons interested in a petition for settlement of a wrongful-death action or distribution of wrongful-death proceeds are the
+    (13) The persons interested in a petition for settlement of a wrongful-death action or distribution of wrongful-death proceeds are the
 
         (a) heirs of the decedent,
 
@@ -15274,27 +15146,27 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (c) claimants whose interests are affected.
 
-    (14)The persons interested in a will contest settlement proceeding are the
+    (14) The persons interested in a will contest settlement proceeding are the
 
         (a) heirs of the decedent and
 
         (b) devisees affected by settlement.
 
-    (15)The persons interested in a partition proceeding where the property has not been assigned to a trust under the will are the
+    (15) The persons interested in a partition proceeding where the property has not been assigned to a trust under the will are the
 
         (a) heirs in an intestate estate or
 
         (b) devisees affected by partition.
 
-    (16)The persons interested in a partition proceeding where the property has been assigned to a trust under the will are the
+    (16) The persons interested in a partition proceeding where the property has been assigned to a trust under the will are the
 
         (a) trustee and
 
         (b) beneficiaries affected by the partition.
 
-    (17)The persons interested in a petition to establish the cause and date of death in an accident or disaster case under MCL 700.1208 are the heirs of the presumed decedent.
+    (17) The persons interested in a petition to establish the cause and date of death in an accident or disaster case under MCL 700.1208 are the heirs of the presumed decedent.
 
-    (18)The persons interested in a proceeding under the Mental Health Code that may result in an individual receiving involuntary mental health treatment or judicial admission of an individual with a developmental disability to a center are the
+    (18) The persons interested in a proceeding under the Mental Health Code that may result in an individual receiving involuntary mental health treatment or judicial admission of an individual with a developmental disability to a center are the
 
         (a) individual,
 
@@ -15314,7 +15186,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (i) such other relatives or persons as the court may determine.
 
-    (19)The persons interested in a proceeding under the Mental Health Code in a petition for appointment of a guardian of an individual with a developmental disability are the
+    (19) The persons interested in a proceeding under the Mental Health Code in a petition for appointment of a guardian of an individual with a developmental disability are the
 
         (a) individual,
 
@@ -15332,7 +15204,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (h) such other persons as the court may determine.
 
-    (20)The persons interested in an application for appointment of a guardian of a minor by a guardian appointed in another state and in a petition for appointment of a guardian of a minor are
+    (20) The persons interested in an application for appointment of a guardian of a minor by a guardian appointed in another state and in a petition for appointment of a guardian of a minor are
 
         (a) the minor, if 14 years of age or older;
 
@@ -15344,7 +15216,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (e) if known by the petitioner or applicant, a guardian or conservator appointed by a court in another state to make decisions regarding the person of a minor.
 
-    (21)The persons interested in the acceptance of parental appointment of the guardian of a minor under MCL 700.5202 are
+    (21) The persons interested in the acceptance of parental appointment of the guardian of a minor under MCL 700.5202 are
 
         (a) the minor, if 14 years of age or older,
 
@@ -15352,7 +15224,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (c) each grandparent and the adult presumptive heirs of the minor.
 
-    (22)The persons interested in a 7-day notice of acceptance of appointment as guardian of an incapacitated individual under MCL 700.5301 are the
+    (22) The persons interested in a 7-day notice of acceptance of appointment as guardian of an incapacitated individual under MCL 700.5301 are the
 
         (a) incapacitated individual,
 
@@ -15360,7 +15232,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (c) presumptive heirs of the incapacitated individual.
 
-    (23)The persons interested in an application for appointment of a guardian of an incapacitated individual by a guardian appointed in another state or in a petition for appointment of a guardian of an alleged incapacitated individual are
+    (23) The persons interested in an application for appointment of a guardian of an incapacitated individual by a guardian appointed in another state or in a petition for appointment of a guardian of an alleged incapacitated individual are
 
         (a) the alleged incapacitated individual or the incapacitated individual,
 
@@ -15378,7 +15250,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (h) if known by the petitioner or applicant, a guardian or conservator appointed by a court in another state to have care and control of the incapacitated individual.
 
-    (24)The persons interested in receiving a copy of the report of a guardian of a minor, or of a legally incapacitated individual, on the condition of a ward are:
+    (24) The persons interested in receiving a copy of the report of a guardian of a minor, or of a legally incapacitated individual, on the condition of a ward are:
 
         (a) the ward, if 14 years of age or older;
 
@@ -15388,7 +15260,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (d) for a minor guardianship, the parents of the minor or, if neither of them is living, any grandparents and the adult presumptive heirs of the minor.
 
-    (25)The persons interested in an application for appointment of a conservator for a protected individual by a conservator appointed in another state or for the petition for the appointment of a conservator or for a protective order are:
+    (25) The persons interested in an application for appointment of a conservator for a protected individual by a conservator appointed in another state or for the petition for the appointment of a conservator or for a protective order are:
 
         (a) the individual to be protected if 14 years of age or older,
 
@@ -15402,19 +15274,19 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (f) if known by the petitioner or applicant, a guardian or conservator appointed by a court in another state to manage the protected individual’s finances.
 
-    (26)The persons interested in a petition for the modification or termination of a guardianship or conservatorship or for the removal of a guardian or a conservator are
+    (26) The persons interested in a petition for the modification or termination of a guardianship or conservatorship or for the removal of a guardian or a conservator are
 
         (a) those interested in a petition for appointment under subrule (C)(20), (22), (23), or (25) as the case may be, and
 
         (b) the guardian or conservator.
 
-    (27)The persons interested in a petition by a conservator for instructions or approval of sale of real estate or other assets are
+    (27) The persons interested in a petition by a conservator for instructions or approval of sale of real estate or other assets are
 
         (a) the protected individual and
 
         (b) those persons listed in subrule (C)(25) who will be affected by the instructions or order.
 
-    (28)The persons interested in receiving a copy of an inventory or account of a conservator or of a guardian are:
+    (28) The persons interested in receiving a copy of an inventory or account of a conservator or of a guardian are:
 
         (a) the protected individual or ward, if he or she is 14 years of age or older,
 
@@ -15426,7 +15298,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (e) the personal representative, if any.
 
-    (29)The persons interested in a petition for approval of a trust under MCR 2.420 are
+    (29) The persons interested in a petition for approval of a trust under MCR 2.420 are
 
         (a) the protected individual if 14 years of age or older,
 
@@ -15438,7 +15310,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (e) a governmental agency paying benefits to the individual to be protected or before which an application for benefits is pending.
 
-    (30)Interested persons for any proceeding concerning a durable power of attorney for health care are
+    (30) Interested persons for any proceeding concerning a durable power of attorney for health care are
 
         (a) the patient,
 
@@ -15456,7 +15328,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (h) the patient’s guardian ad litem.
 
-    (31)Persons interested in a proceeding to require, hear, or settle an accounting of an agent under a power of attorney are
+    (31) Persons interested in a proceeding to require, hear, or settle an accounting of an agent under a power of attorney are
 
         (a) the principal,
 
@@ -15468,7 +15340,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (e) the principal’s presumptive heirs.
 
-    (32)Subject to the provisions of Part 3 of Article VII of the Estates and Protected Individuals Code, the persons interested in the modification or termination of a noncharitable irrevocable trust are:
+    (32) Subject to the provisions of Part 3 of Article VII of the Estates and Protected Individuals Code, the persons interested in the modification or termination of a noncharitable irrevocable trust are:
 
         (a) the qualified trust beneficiaries affected by the relief requested,
 
@@ -15482,7 +15354,7 @@ The fiduciary represents the interested persons in a contested matter. The fiduc
 
         (f) any other person named in the terms of the trust to receive notice of such a proceeding.
 
-    (33)Subject to the provisions of Part 3 of Article VII of the Estates and Protected Individuals Code, the persons interested in a proceeding affecting a trust other than those already covered by subrules (C)(6), (C)(29), and (C)(32) are:
+    (33) Subject to the provisions of Part 3 of Article VII of the Estates and Protected Individuals Code, the persons interested in a proceeding affecting a trust other than those already covered by subrules (C)(6), (C)(29), and (C)(32) are:
 
         (a) the qualified trust beneficiaries affected by the relief requested,
 
@@ -16018,13 +15890,9 @@ This subchapter governs guardianships, conservatorships, and protective order pr
 
         (a) schedule a hearing to be conducted in accordance with MCR 5.404(C) and MCR 5.404(F).
 
-        (b) enter an order for an investigation in accordance with MCR 5.404(A)(2). The order shall be on a form approved by the State Court Administrative Office and shall require the guardian to cooperate in the investigation. The court shall mail a copy of the order to the persons prescribed in MCR 5.125(A)(8), (C)(20), and
+        (b) enter an order for an investigation in accordance with MCR 5.404(A)(2). The order shall be on a form approved by the State Court Administrative Office and shall require the guardian to cooperate in the investigation. The court shall mail a copy of the order to the persons prescribed in MCR 5.125(A)(8), (C)(20), and (C)(26) by first-class mail.
 
-            (C)(26) by first-class mail.
-
-        (c) provide notice of the guardianship and the hearing scheduled in subrule (5)(a) and the potential applicability of the Indian Child Welfare Act and the Michigan Indian Family Preservation Act on a form approved by the State Court Administrative Office to the persons prescribed in MCR 5.125(A)(8),
-
-            (C)(20), and (C)(26) in accordance with MCR 5.109(1). A copy of the notice shall be served on the guardian.
+        (c) provide notice of the guardianship and the hearing scheduled in subrule (5)(a) and the potential applicability of the Indian Child Welfare Act and the Michigan Indian Family Preservation Act on a form approved by the State Court Administrative Office to the persons prescribed in MCR 5.125(A)(8), (C)(20), and (C)(26) in accordance with MCR 5.109(1). A copy of the notice shall be served on the guardian.
 
 ### Rule 5.403 Proceedings on Temporary Guardianship
 
@@ -16048,9 +15916,7 @@ This subchapter governs guardianships, conservatorships, and protective order pr
 
     (2) Investigation. Upon the filing of a petition, the court may appoint a guardian ad litem to represent the interests of a minor and may order the Department of Health and Human Services or a court employee or agent to conduct an investigation of the proposed guardianship and file a written report of the investigation in accordance with MCL 700.5204(1). If the petition involves an Indian child, the report shall contain the information required in MCL 712B.25(1). The report shall be filed with the court and served no later than 7 days before the hearing on the petition. If the petition for guardianship states that it is unknown whether the minor is an Indian child, the investigation shall include an inquiry into Indian tribal membership.
 
-    (3) Guardianship of an Indian Child. If the petition involves an Indian child and both parents intend to execute a consent pursuant to MCL 712B.13 and these rules, the court shall proceed under subrule (B). If the petition involves an Indian child and a consent will not be executed pursuant to MCL 712B.13 and these rules, the petitioner shall state in the petition what active efforts were made to provide remedial services and rehabilitative programs designed to prevent the breakup of the Indian family as defined in MCR 3.002(1). The court shall proceed under subrule
-
-        (C).
+    (3) Guardianship of an Indian Child. If the petition involves an Indian child and both parents intend to execute a consent pursuant to MCL 712B.13 and these rules, the court shall proceed under subrule (B). If the petition involves an Indian child and a consent will not be executed pursuant to MCL 712B.13 and these rules, the petitioner shall state in the petition what active efforts were made to provide remedial services and rehabilitative programs designed to prevent the breakup of the Indian family as defined in MCR 3.002(1). The court shall proceed under subrule (C).
 
     (4) Social History. The petitioner must file a social history before a hearing is held on a petition for guardianship of a minor and shall do so on a form approved by the State Court Administrative Office. The social history for minor guardianship is confidential, and it is not to be released, except on order of the court, to the parties or the attorneys for the parties.
 
@@ -16080,9 +15946,7 @@ This subchapter governs guardianships, conservatorships, and protective order pr
 
         (a) if the tribe has exclusive jurisdiction as defined in MCR 3.002(6). The court shall comply with MCR 5.402(E)(2).
 
-        (b) if the placement with the guardian meets the placement requirements in subrule
-
-            (C)(2) and (3).
+        (b) if the placement with the guardian meets the placement requirements in subrule (C)(2) and (3).
 
         (c) if it is in the Indian child’s best interest to appoint a guardian.
 
@@ -16246,9 +16110,7 @@ A conservator may not enter into a settlement in any court on behalf of the prot
 
     (4) Exception, Conservatorship of Minor. Unless otherwise ordered by the court, no accounting is required in a minor conservatorship where the assets are restricted or in a conservatorship where no assets have been received by the conservator. If the assets are ordered to be placed in a restricted account, proof of the restricted account must be filed with the court within 28 days of the conservator's qualification or as otherwise ordered by the court. The conservator must file with the court an annual verification of funds on deposit with a copy of the corresponding financial institution statement attached.
 
-    (5) Contents. The accounting is subject to the provisions of MCR 5.310(C)(2)(c) and
-
-        (d), except that references to a personal representative shall be to a conservator. A copy of the corresponding financial institution statement or a verification of funds on deposit must be filed with the court, either of which must reflect the value of all liquid assets held by a financial institution dated within 30 days after the end of the accounting period, unless waived by the court for good cause.
+    (5) Contents. The accounting is subject to the provisions of MCR 5.310(C)(2)(c) and (d), except that references to a personal representative shall be to a conservator. A copy of the corresponding financial institution statement or a verification of funds on deposit must be filed with the court, either of which must reflect the value of all liquid assets held by a financial institution dated within 30 days after the end of the accounting period, unless waived by the court for good cause.
 
     (6) Periodic Review. The court shall either review or allow accounts annually, unless no account is required under MCR 5.409(C)(1) or (C)(4). Accounts shall be set for hearing to determine whether they will be allowed at least once every three years.
 
@@ -16398,9 +16260,7 @@ Unless a statute or court rule requires that a waiver be made by the individual 
 
 (B) Notifications. When an administratively admitted individual has been returned to a center from an authorized leave in excess of 10 days, the director of the center must, within 24 hours, notify the court of the return and notify the individual of the right to appeal the return. The court must notify the individual's guardian, if any, and the parents of an individual who is a minor of the return and the right to appeal the return and have a hearing to determine the appeal.
 
-(C) Request for Hearing. An individual who wishes to appeal that individual's return must request a hearing in writing within 7 days of the notice to the individual under subrule
-
-    (B). If the individual is less than 13 years of age, the request may be made by the individual's parent or guardian. The court must schedule a requested hearing to be held within 7 days of the court's receipt of the request.
+(C) Request for Hearing. An individual who wishes to appeal that individual's return must request a hearing in writing within 7 days of the notice to the individual under subrule (B). If the individual is less than 13 years of age, the request may be made by the individual's parent or guardian. The court must schedule a requested hearing to be held within 7 days of the court's receipt of the request.
 
 (D) Statement Filed With Court. At least 3 days before the hearing, the director of the center must deliver to the court, the individual, the individual's parents or guardian, if applicable, and the individual's attorney a statement setting forth:
 
@@ -16612,13 +16472,15 @@ If on March 27, 1996, any individual is subject to any order that may result in 
 
         (aa) distributing proceeds recovered for wrongful death under MCL 600.2922;
 
-        (bb)assigning residue;
+        (bb) assigning residue;
 
         (cc) granting or denying a petition for instructions;
 
-        (dd)authorizing disclaimers.
+        (dd) authorizing disclaimers.
 
-        (ee) allowing or disallowing a trustee to change the principal place of a trust’s administration; (ff) adoption assistance determinations pursuant to MCL 400.115k;
+        (ee) allowing or disallowing a trustee to change the principal place of a trust’s administration;
+
+        (ff) adoption assistance determinations pursuant to MCL 400.115k;
 
     (3) a final order affecting the rights and interests of an adult or a minor in a guardianship proceeding under the Estates and Protected Individuals Code;
 
@@ -16646,7 +16508,7 @@ If on March 27, 1996, any individual is subject to any order that may result in 
 
 ### Rule 5.900 Note:
 
-Subchapter 5.900 was deleted effective May 1, 2003, and many of its provisions relocated to subchapter 3.900. MICHIGAN COURT RULES OF 1985
+Subchapter 5.900 was deleted effective May 1, 2003, and many of its provisions relocated to subchapter 3.900.
 
 # Chapter 6. Criminal Procedure
 
@@ -17190,9 +17052,7 @@ Records are public except as otherwise indicated in court rule or statute.
 
         (a) At the custody hearing, the defendant is entitled to be present and to be represented by a lawyer, and the defendant and the prosecutor are entitled to present witnesses and evidence, to proffer information, and to cross-examine each other’s witnesses.
 
-        (b) The rules of evidence, except those pertaining to privilege, are not applicable. Unless the court makes the findings required to enter an order under subrule
-
-            (B)(1), the defendant must be ordered released under subrule (C) or (D). A verbatim record of the hearing must be made.
+        (b) The rules of evidence, except those pertaining to privilege, are not applicable. Unless the court makes the findings required to enter an order under subrule (B)(1), the defendant must be ordered released under subrule (C) or (D). A verbatim record of the hearing must be made.
 
 (H) Appeals; Modification of Release Decision.
 
@@ -17284,9 +17144,7 @@ Records are public except as otherwise indicated in court rule or statute.
 
     (ii) If an interested party requests a transcript of a district or municipal court proceeding after the case is bound over, the circuit court shall forward that request to the district or municipal court for transcription as provided in MCR 8.108. The circuit court shall forward this request only if the circuit court case record is publicly-accessible.
 
-(H) Motion to Dismiss. If, on proper motion, the trial court finds a violation of subrule (C),
-
-    (D), (E), or (F), it must either dismiss the information or remand the case to the district court for further proceedings.
+(H) Motion to Dismiss. If, on proper motion, the trial court finds a violation of subrule (C), (D), (E), or (F), it must either dismiss the information or remand the case to the district court for further proceedings.
 
 (I) Scheduling the Arraignment. Unless the trial court does the scheduling of the arraignment on the information, the district court must do so in accordance with the administrative orders of the trial court.
 
@@ -17484,9 +17342,7 @@ Where the court makes a decision on the admissibility of evidence and the prosec
 
 (C) Notice and Demand.
 
-    (1) Notice. If a party intends to offer the report described in subsection (B) as evidence at trial, the party’s attorney or party, if not represented by an attorney, shall provide the opposing party’s attorney or party, if not represented by an attorney, with notice of that fact in writing. If the prosecuting attorney intends to offer the report as evidence at trial, notice to the defendant’s attorney or the defendant, if not represented by an attorney, shall be included with the report. If the defendant intends to offer the report as evidence at trial, notice to the prosecuting attorney shall be provided within 14 days after receipt of the report. Except as provided in subrule
-
-        (C)(2), the report and certification, if applicable, is admissible in evidence to the same effect as if the person who performed the analysis or examination had personally testified.
+    (1) Notice. If a party intends to offer the report described in subsection (B) as evidence at trial, the party’s attorney or party, if not represented by an attorney, shall provide the opposing party’s attorney or party, if not represented by an attorney, with notice of that fact in writing. If the prosecuting attorney intends to offer the report as evidence at trial, notice to the defendant’s attorney or the defendant, if not represented by an attorney, shall be included with the report. If the defendant intends to offer the report as evidence at trial, notice to the prosecuting attorney shall be provided within 14 days after receipt of the report. Except as provided in subrule (C)(2), the report and certification, if applicable, is admissible in evidence to the same effect as if the person who performed the analysis or examination had personally testified.
 
     (2) Demand. Upon receipt of a copy of the laboratory report and certificate, if applicable, the opposing party’s attorney or party, if not represented by an attorney, may file a written objection to the use of the laboratory report and certificate. The written objection shall be filed with the court in which the matter is pending, and shall be served on the opposing party’s attorney or party, if not represented by an attorney, within 14 days of receipt of the notice. If a written objection is filed, the report and certificate are not admissible under subrule (C)(1). If no objection is made to the use of the laboratory report and certificate within the time allowed by this section, the report and certificate are admissible in evidence as provided in subrule (C)(1).
 
@@ -17740,9 +17596,7 @@ Before ordering a mistrial, the court must, on the record, give each defendant a
 
 (C) Several Counts. If a defendant is charged with two or more counts, and the court determines that the jury is deadlocked so that a mistrial must be declared, the court may inquire of the jury whether it has reached a unanimous verdict on any of the counts charged, and, if so, may accept the jury's verdict on that count or counts.
 
-(D) Poll of Jury. Before the jury is discharged, the court on its own initiative may, or on the motion of a party must, have each juror polled in open court as to whether the verdict announced is that juror's verdict. If polling discloses the jurors are not in agreement, the court may (1) discontinue the poll and order the jury to retire for further deliberations, or
-
-    (2) either (a) with the defendant's consent, or (b) after determining that the jury is deadlocked or that some other manifest necessity exists, declare a mistrial and discharge the jury.
+(D) Poll of Jury. Before the jury is discharged, the court on its own initiative may, or on the motion of a party must, have each juror polled in open court as to whether the verdict announced is that juror's verdict. If polling discloses the jurors are not in agreement, the court may (1) discontinue the poll and order the jury to retire for further deliberations, or (2) either (a) with the defendant's consent, or (b) after determining that the jury is deadlocked or that some other manifest necessity exists, declare a mistrial and discharge the jury.
 
 ### Rule 6.425 Sentencing; Appointment of Appellate Counsel
 
@@ -18192,13 +18046,11 @@ Unless otherwise specified by these rules, a judgment of conviction and sentence
 
     (14) Whether any of the grounds for the relief requested were raised before; if so, at what stage of the case, and, if not, the reasons they were not raised;
 
-    (15)Whether the defendant requests the appointment of counsel, and, if so, information necessary for the court to determine whether the defendant is entitled to appointment of counsel at public expense.
+    (15) Whether the defendant requests the appointment of counsel, and, if so, information necessary for the court to determine whether the defendant is entitled to appointment of counsel at public expense.
 
     Upon request, the clerk of each court with trial level jurisdiction over felony cases shall make available blank motion forms without charge to any person desiring to file such a motion.
 
-(D) Return of Insufficient Motion. If a motion is not submitted on a form approved by the State Court Administrative Office, or does not substantially comply with the requirements of these rules, the court shall either direct that it be returned to the defendant with a statement of the reasons for its return, along with the appropriate form, or adjudicate the motion under the provisions of these rules. When a pro se defendant files his or her first motion effectively seeking to set aside or modify the judgment but styles the motion as something other than a motion for relief from judgment, the court shall promptly notify the defendant of its intention to recharacterize the pleading as a motion for relief from judgment; inform the defendant of any effects this might have on subsequent motions for relief, see MCR 6.502(B), (G); and provide the defendant 90 days to withdraw or amend his or her motion before the court recharacterizes the motion. If the court fails to provide this notice and opportunity for withdrawal or amendment, or the defendant establishes that notice was not actually received, the defendant’s motion cannot be considered a motion for relief from judgment for purposes of MCR 6.502(B),
-
-    (G). The clerk of the court shall retain a copy of the motion.
+(D) Return of Insufficient Motion. If a motion is not submitted on a form approved by the State Court Administrative Office, or does not substantially comply with the requirements of these rules, the court shall either direct that it be returned to the defendant with a statement of the reasons for its return, along with the appropriate form, or adjudicate the motion under the provisions of these rules. When a pro se defendant files his or her first motion effectively seeking to set aside or modify the judgment but styles the motion as something other than a motion for relief from judgment, the court shall promptly notify the defendant of its intention to recharacterize the pleading as a motion for relief from judgment; inform the defendant of any effects this might have on subsequent motions for relief, see MCR 6.502(B), (G); and provide the defendant 90 days to withdraw or amend his or her motion before the court recharacterizes the motion. If the court fails to provide this notice and opportunity for withdrawal or amendment, or the defendant establishes that notice was not actually received, the defendant’s motion cannot be considered a motion for relief from judgment for purposes of MCR 6.502(B), (G). The clerk of the court shall retain a copy of the motion.
 
 (E) Attachments to Motion. The defendant may attach to the motion any affidavit, document, or evidence to support the relief requested.
 
@@ -18406,9 +18258,7 @@ Unless otherwise specified by these rules, a judgment of conviction and sentence
 
         (c) in a writing referred to on the record.
 
-        Except as provided in subrule (F)(7), if the court uses a writing pursuant to subrule
-
-        (F)(4)(b) or (c), the court shall address the defendant and obtain from the defendant orally on the record a statement that the rights were read and understood and a waiver of those rights. The waiver may be obtained without repeating the individual rights.
+        Except as provided in subrule (F)(7), if the court uses a writing pursuant to subrule (F)(4)(b) or (c), the court shall address the defendant and obtain from the defendant orally on the record a statement that the rights were read and understood and a waiver of those rights. The waiver may be obtained without repeating the individual rights.
 
     (5) The court shall make the plea agreement a part of the record and determine that the parties agree on all the terms of that agreement. The court shall accept, reject or indicate on what basis it accepts the plea.
 
@@ -18424,9 +18274,7 @@ Unless otherwise specified by these rules, a judgment of conviction and sentence
 
         (a) the court decides that the combination of the circumstances and the range of possible sentences makes the situation proper for a plea of guilty or nolo contendere;
 
-        (b) the defendant acknowledges guilt or nolo contendere, in a writing to be placed in the district court file, and waives in writing the rights enumerated in subrule
-
-            (3)(b); and
+        (b) the defendant acknowledges guilt or nolo contendere, in a writing to be placed in the district court file, and waives in writing the rights enumerated in subrule (3)(b); and
 
         (c) the court is satisfied that the waiver is voluntary.
 
@@ -18616,7 +18464,7 @@ When used in this subchapter, unless the context otherwise indicates:
 
     (16) possession of [MCL 333.7403(2)(a)(i)] or manufacture, delivery, or possession with intent to manufacture or deliver of 650 grams(1,000 grams beginning March 1, 2003) or more of a schedule 1 or 2 controlled substance [MCL 333.7401(2)(a)(i)];
 
-    (17)any attempt, MCL 750.92; solicitation, MCL 750.157b; or conspiracy, MCL 750.157a; to commit any of the offenses listed in subrules (1)-(16);
+    (17) any attempt, MCL 750.92; solicitation, MCL 750.157b; or conspiracy, MCL 750.157a; to commit any of the offenses listed in subrules (1)-(16);
 
     (18) any lesser-included offense of an offense listed in subrules (1)-(17) if the juvenile is charged with a specified juvenile violation;
 
@@ -18956,7 +18804,7 @@ When used in this subchapter, unless the context otherwise indicates:
 
     (10) other information the prosecuting attorney or juvenile may submit.
 
-(E) Credit for Time Served on Probation. If a sentence is imposed, the juvenile must receive credit for the period of time served on probation and committed to a state agency or institution. MICHIGAN COURT RULES OF 1985
+(E) Credit for Time Served on Probation. If a sentence is imposed, the juvenile must receive credit for the period of time served on probation and committed to a state agency or institution.
 
 # Chapter 7. Appellate Rules
 
@@ -19400,11 +19248,7 @@ Motion practice in a circuit court appeal is governed by MCR 2.119. Motions may 
 
         (a) Within 28 days after the circuit court provides written notice under MCR 7.109(G)(3) that the record on appeal is filed with the circuit court, the appellant must file a brief conforming to MCR 7.212(C) and serve it on all other parties to the appeal. The time may be extended for 14 days by stipulation and order. The circuit court may extend the time on motion. The filing of a motion does not stay the time for filing a brief.
 
-        (b) If an appellant does not file a brief within the time provided by subrule
-
-            (A)(1)(a), the appeal may be considered abandoned, and the circuit court may dismiss the appeal on 14 days’ notice to the parties. Compliance with subrule
-
-            (A)(1)(a) after notice is sent does not preclude a dismissal of the appeal unless the appellant shows a reasonable excuse for the late filing.
+        (b) If an appellant does not file a brief within the time provided by subrule (A)(1)(a), the appeal may be considered abandoned, and the circuit court may dismiss the appeal on 14 days’ notice to the parties. Compliance with subrule (A)(1)(a) after notice is sent does not preclude a dismissal of the appeal unless the appellant shows a reasonable excuse for the late filing.
 
     (2) Appellee’s Brief. Within 21 days after the appellant’s brief is served on the appellee, the appellee may file a brief. The brief must conform to MCR 7.212(D) and must be served on all other parties to the appeal. The time may be extended for 14 days by stipulation and order. The circuit court may extend the time on motion. The filing of the motion does not stay the time for filing a brief.
 
@@ -19416,9 +19260,7 @@ Motion practice in a circuit court appeal is governed by MCR 2.119. Motions may 
 
     (6) Late Filing. Any party failing to timely file and serve a brief under these rules forfeits oral argument. For good cause shown, the court may grant a motion to reinstate oral argument.
 
-(B) Length and Form of Briefs. The appellant’s brief must comply with MCR 7.212(B) and
-
-    (C), and the appellee’s brief must comply with MCR 7.212(B) and (D).
+(B) Length and Form of Briefs. The appellant’s brief must comply with MCR 7.212(B) and (C), and the appellee’s brief must comply with MCR 7.212(B) and (D).
 
 (C) Request for Oral Argument. A party filing a timely brief is entitled to oral argument by writing “ORAL ARGUMENT REQUESTED” in capital letters or boldface type on the title page of the brief.
 
@@ -20134,9 +19976,7 @@ For purposes of this subchapter:
 
     (2) The appellant or plaintiff may file a motion for reconsideration within 21 days after the date of the order of dismissal. The motion will be submitted to a panel of three judges. No entry fee is required for a motion filed under this subrule.
 
-    (3) The clerk will not accept for filing a motion for reconsideration of an order issued by a three-judge panel that denies a motion for reconsideration filed under subrule
-
-        (2).
+    (3) The clerk will not accept for filing a motion for reconsideration of an order issued by a three-judge panel that denies a motion for reconsideration filed under subrule (2).
 
 ### Rule 7.204 Filing Appeal of Right; Appearance
 
@@ -20162,9 +20002,7 @@ For purposes of this subchapter:
 
         (d) within 42 days after the entry of an order denying a motion for a new trial, for directed verdict of acquittal, or to correct an invalid sentence, if the motion was filed within the time provided in MCR 6.419(C), 6.429(B), or 6.431(A), as the case may be.
 
-        A motion for rehearing or reconsideration of a motion mentioned in subrules
-
-        (A)(1)(d) or (A)(2)(d) does not extend the time for filing a claim of appeal, unless the motion for rehearing or reconsideration was itself filed within the 21- or 42-day period.
+        A motion for rehearing or reconsideration of a motion mentioned in subrules (A)(1)(d) or (A)(2)(d) does not extend the time for filing a claim of appeal, unless the motion for rehearing or reconsideration was itself filed within the 21- or 42-day period.
 
     (3) When service of the judgment or order on appellant was delayed beyond the time stated in MCR 2.602, the claim of appeal must be accompanied by an affidavit setting forth facts showing that the service was beyond the time stated in MCR 2.602. Appellee may file an opposing affidavit within 14 days after being served with the claim of appeal and affidavit. If the Court of Appeals finds that service of the judgment or order was delayed beyond the time stated in MCR 2.602 and the claim of appeal was filed within 14 days after service of the judgment or order, the claim of appeal will be deemed timely.
 
@@ -20282,9 +20120,7 @@ For purposes of this subchapter:
 
             (i) the delayed application is taken from the same lower court judgment or order as the claim of appeal, and
 
-            (ii) the claim of appeal was filed within the applicable time period in subrule
-
-                (A)(1) or (2).
+            (ii) the claim of appeal was filed within the applicable time period in subrule (A)(1) or (2).
 
         A delayed application under this rule must contain a statement of facts explaining the reasons for delay. The appellee may challenge the claimed reasons in the answer. The court may consider the length of and the reasons for delay in deciding whether to grant the delayed application.
 
@@ -20292,9 +20128,7 @@ For purposes of this subchapter:
 
 (B) Manner of Filing. To apply for leave to appeal, the appellant must file with the clerk:
 
-    (1) an application for leave to appeal stating the date and nature of the judgment or order appealed from; concisely reciting the appellant’s allegations of error and the relief sought; setting forth a concise argument, conforming to MCR 7.212(B) and
-
-        (C), in support of the appellant’s position on each issue; and, if the order appealed from is interlocutory, setting forth facts showing how the appellant would suffer substantial harm by awaiting final judgment before taking an appeal;
+    (1) an application for leave to appeal stating the date and nature of the judgment or order appealed from; concisely reciting the appellant’s allegations of error and the relief sought; setting forth a concise argument, conforming to MCR 7.212(B) and (C), in support of the appellant’s position on each issue; and, if the order appealed from is interlocutory, setting forth facts showing how the appellant would suffer substantial harm by awaiting final judgment before taking an appeal;
 
     (2) the judgment or order appealed from; the register of actions of the lower court, tribunal, or agency, of the opinion or findings of the lower court, tribunal, or agency; and any opinion or findings reviewed by the lower court, tribunal, or agency;
 
@@ -20762,9 +20596,7 @@ For purposes of this subchapter:
 
         Instead of a brief in support of a motion to affirm in such a circumstance, the movant may append those portions of the transcript that are pertinent to the issues raised in the motion; in that case, the motion must include a summary of the movant’s position;
 
-    (4) a motion for immediate consideration under subrule (C)(6) if the party wants a decision on the motion on a date earlier than the answer date set forth in subrules
-
-        (B)(2)(a)-(e);
+    (4) a motion for immediate consideration under subrule (C)(6) if the party wants a decision on the motion on a date earlier than the answer date set forth in subrules (B)(2)(a)-(e);
 
     (5) proof that the motion, the motion for immediate consideration if one has been filed, and any supporting documents were served on all other parties to the appeal.
 
@@ -21524,9 +21356,7 @@ For purposes of this subchapter:
 
         (d) the Court of Appeals grants a request to publish an opinion that was originally released as unpublished.
 
-    (3) Interlocutory Application from the Court of Appeals. Except as provided in subrules
-
-        (C)(1) and (C)(2), the application must be filed within 28 days after a Court of Appeals order that does not resolve the appeal or original action, including an order granting an application for leave to appeal.
+    (3) Interlocutory Application from the Court of Appeals. Except as provided in subrules (C)(1) and (C)(2), the application must be filed within 28 days after a Court of Appeals order that does not resolve the appeal or original action, including an order granting an application for leave to appeal.
 
     (4) Attorney Discipline Board Decision. In an appeal from an order of discipline or dismissal entered by the Attorney Discipline Board, the application must be filed within the time provided in MCR 9.122(A)(1).
 
@@ -21932,7 +21762,7 @@ __________________________
 
     (6) An amicus curiae may not participate in oral argument except by Court order.
 
-    Supplemental Authority. A party may file 1 signed copy of a supplemental authority in (I) conformity with MCR 7.212(F).
+(I) Supplemental Authority. A party may file 1 signed copy of a supplemental authority in conformity with MCR 7.212(F).
 
 (J) Extending or Shortening Time; Failure to File; Forfeiture of Oral Argument.
 
@@ -21954,9 +21784,7 @@ __________________________
 
     (2) Except on order of the Court, a party who has not specifically requested oral argument on the title page of its brief or has forfeited argument by not timely filing its brief is not entitled to oral argument unless it files a motion for oral argument at least 21 days before the first day of the monthly session. If neither party is entitled to oral argument, the clerk will list the case as submitted on briefs. The Court may direct that a case be submitted on briefs without oral argument even when a party would otherwise be entitled to oral argument.
 
-(C) Arrangement of Calendar. At least 21 days before the first day of the monthly session, the clerk will place cases on the session calendar and arrange the order in which they are to be heard. The cases will be called and heard in that order except as provided in subrule
-
-    (D).
+(C) Arrangement of Calendar. At least 21 days before the first day of the monthly session, the clerk will place cases on the session calendar and arrange the order in which they are to be heard. The cases will be called and heard in that order except as provided in subrule (D).
 
 (D) Rearrangement of Calendar; Adjournment. At least 21 days before the first day of a session, the parties may stipulate to have a case specially placed on the calendar, grouped to suit the convenience of the attorneys, or placed at the beginning or end of the call. After that time, changes to the session calendar may be requested only by motion, not by stipulation of the parties. A motion to adjourn a case from the call after the schedule is released will be granted only by order upon a showing of good cause with an explanation of why the motion could not have been filed sooner. Costs payable to the Court may be imposed on the moving party for a late-filed motion to adjourn.
 
@@ -22080,7 +21908,7 @@ The parties may file with the clerk a stipulation agreeing to the administrative
 
     A party who is unable to pay a filing fee may ask the Court to waive the fee by filing a motion and an affidavit disclosing the reason for that inability. There is no fee for filing the motion but, if the motion is denied, the party must pay the fee for the underlying filing.
 
-(E) Violation of Rules. The Supreme Court may impose costs on a party or an attorney when in its discretion they should be assessed for violation of these rules. MICHIGAN COURT RULES OF 1985
+(E) Violation of Rules. The Supreme Court may impose costs on a party or an attorney when in its discretion they should be assessed for violation of these rules.
 
 # Chapter 8. Administrative Rules of Court
 
@@ -22114,7 +21942,7 @@ The state court administrator, under the Supreme Court’s supervision and direc
 
     (9) approve and publish forms as required by these rules, and such other recommended forms as the administrator deems advisable; and
 
-    (10)attend to other matters assigned by the Supreme Court.
+    (10) attend to other matters assigned by the Supreme Court.
 
 ### Rule 8.104 Judicial Meetings
 
@@ -22656,23 +22484,15 @@ Use of Case-Type Code. As required by MCR 1.109(D)(1)(b)(iii), the person filing
 
     (6) The court may provide access to any case record that is not available in paper or digital image, as defined by MCR 1.109(B), if it can reasonably accommodate the request.   Any materials filed with the court pursuant to MCR 1.109(D), in a medium for which the court does not have the means to readily access and reproduce those materials, may be made available for public inspection using court equipment only. The court is not required to provide the means to access or reproduce the contents of those materials if the means is not already available.
 
-    (7) Unless access to a case record or information contained in a record as defined in subrule (D) is restricted by statute, court rule, or an order entered pursuant to subrule
-
-        (I), any person may inspect that record and may obtain copies as provided in subrule
-
-        (J). In accordance with subrule (J), the court may collect a fee for the cost of providing copies.
+    (7) Unless access to a case record or information contained in a record as defined in subrule (D) is restricted by statute, court rule, or an order entered pursuant to subrule (I), any person may inspect that record and may obtain copies as provided in subrule (J). In accordance with subrule (J), the court may collect a fee for the cost of providing copies.
 
     (8) Every court shall adopt an administrative order pursuant to MCR 8.112(B) to
 
         (a) make reasonable regulations necessary to protect its public records and prevent excessive and unreasonable interference with the discharge of its functions;
 
-        (b) establish a policy for whether to provide access for records defined in subrule
+        (b) establish a policy for whether to provide access for records defined in subrule (F) and if access is to be provided, outline the procedure for accessing those records;
 
-            (F) and if access is to be provided, outline the procedure for accessing those records;
-
-        (c) specify the reasonable cost of reproduction of records provided under subrule
-
-            (J); and
+        (c) specify the reasonable cost of reproduction of records provided under subrule (J); and
 
         (d) specify the process for determining costs under subrule (J).
 
@@ -22754,9 +22574,7 @@ Use of Case-Type Code. As required by MCR 1.109(D)(1)(b)(iii), the person filing
 
 (B) Legal Training Programs. Law students and recent law graduates may participate in legal training programs organized in the offices of county prosecuting attorneys, county corporation counsel, city attorneys, municipal/township attorneys, the Attorney Grievance Commission, and the Attorney General.
 
-(C) Eligible Students. A student in a law school approved by the American Bar Association who has received a passing grade in law school courses and has completed the first year is eligible to participate in a clinic or program listed in subrules (A) and (B) if the student meets the academic and moral standards established by the dean of that school. For the purpose of this rule, a “recent law graduate” is a person who has graduated from law school within the last year. The student or graduate must certify in writing that he or she has read and is familiar with the Michigan Rules of Professional Conduct and the Michigan Court Rules, and shall take an oath which is reasonably equivalent to the Michigan Lawyer’s Oath in requiring at a minimum the promise to: (a) support the Constitution of the United States; (b) support the Constitution of the State of Michigan;
-
-    (c) maintain the respect due to courts of justice and judicial officers; (d) never seek to mislead a judge or jury by any artifice or false statement of fact or law; (e) maintain the confidence and preserve inviolate the secrets of the client; (f) abstain from all offensive personality; (g) advance no fact prejudicial to the honor or reputation of a party or witness, unless required by the justice of the cause; and (h) in all other respects conduct himself or herself personally and professionally in conformity with the high standards of conduct imposed upon members of the state bar of Michigan.
+(C) Eligible Students. A student in a law school approved by the American Bar Association who has received a passing grade in law school courses and has completed the first year is eligible to participate in a clinic or program listed in subrules (A) and (B) if the student meets the academic and moral standards established by the dean of that school. For the purpose of this rule, a “recent law graduate” is a person who has graduated from law school within the last year. The student or graduate must certify in writing that he or she has read and is familiar with the Michigan Rules of Professional Conduct and the Michigan Court Rules, and shall take an oath which is reasonably equivalent to the Michigan Lawyer’s Oath in requiring at a minimum the promise to: (a) support the Constitution of the United States; (b) support the Constitution of the State of Michigan; (c) maintain the respect due to courts of justice and judicial officers; (d) never seek to mislead a judge or jury by any artifice or false statement of fact or law; (e) maintain the confidence and preserve inviolate the secrets of the client; (f) abstain from all offensive personality; (g) advance no fact prejudicial to the honor or reputation of a party or witness, unless required by the justice of the cause; and (h) in all other respects conduct himself or herself personally and professionally in conformity with the high standards of conduct imposed upon members of the state bar of Michigan.
 
 (D) Scope; Procedure.
 
@@ -22802,9 +22620,7 @@ Use of Case-Type Code. As required by MCR 1.109(D)(1)(b)(iii), the person filing
 
     (1) The amount referred to in subrule (B) shall be computed on the net sum recovered after deducting from the amount recovered all disbursements properly chargeable to the enforcement of the claim or prosecution of the action. In computing the fee, the costs as taxed and any interest included in or upon the amount of a judgment shall be deemed part of the amount recovered.
 
-    (2) In the case of a settlement payable in installments, the amount referred to in subrule
-
-        (B) shall be computed using the present value of the future payments.
+    (2) In the case of a settlement payable in installments, the amount referred to in subrule (B) shall be computed using the present value of the future payments.
 
         (a) If an annuity contract will be used to fund the future payments, “present value” is the actual cost of purchasing the annuity contract. The attorney for the defendant must disclose to the court and the parties the amount paid for the annuity contract, after any rebates or other discounts.
 
@@ -23028,7 +22844,7 @@ Attorneys are officers of Michigan’s one court of justice and are subject to t
 
     (9) The State Court Administrative Office shall make complaint forms readily available and shall also provide complaint forms in such languages as determined by the State Court Administrative Office.
 
-    (10)Entities that employ interpreters are subject to the same requirements and procedures established by this subrule.
+    (10) Entities that employ interpreters are subject to the same requirements and procedures established by this subrule.
 
 ### Rule 8.128 Michigan Judicial Council
 
@@ -23070,9 +22886,7 @@ Attorneys are officers of Michigan’s one court of justice and are subject to t
 
         (o) Two members of the public who are not attorneys.
 
-    (2) All members shall be appointed by the Supreme Court. Members serving on the Judicial Council by nature of their positions designated in subparagraphs (C)(1)(a),
-
-        (c) and (d) shall serve on the Judicial Council so long as they hold that position. Of the remaining members appointed by the Supreme Court, one-third shall initially be appointed to a two-year term, one-third appointed to a three-year term and one-third appointed to a four-year term. All members appointed or reappointed following these inaugural terms shall serve three-year terms. Terms commence January 1st of each calendar year. Unless otherwise specified in MCR 8.128(H) or the member is required or nominated to serve under MCR 8.128(C)(1)(a), (b), (c), or (d), no member may consecutively serve more than two full terms.
+    (2) All members shall be appointed by the Supreme Court. Members serving on the Judicial Council by nature of their positions designated in subparagraphs (C)(1)(a), (c) and (d) shall serve on the Judicial Council so long as they hold that position. Of the remaining members appointed by the Supreme Court, one-third shall initially be appointed to a two-year term, one-third appointed to a three-year term and one-third appointed to a four-year term. All members appointed or reappointed following these inaugural terms shall serve three-year terms. Terms commence January 1st of each calendar year. Unless otherwise specified in MCR 8.128(H) or the member is required or nominated to serve under MCR 8.128(C)(1)(a), (b), (c), or (d), no member may consecutively serve more than two full terms.
 
 (D) Other Committees, Task Forces, and Work Groups. The Judicial Council will establish such other committees, task forces, and work groups as are necessary to further the work of the Judicial Council.
 
@@ -23166,7 +22980,7 @@ The court shall provide the name, address, and telephone number of each magistra
 
 ### Rule 8.302 Records and Entries Kept by Clerk
 
-The clerk of every probate court shall maintain court records and make reports as prescribed by MCR 8.119. In addition, any unsealed testamentary document filed with the probate court must be safeguarded by reproducing the document in a format authorized by the Records Reproduction Act (MCL 24.401 et seq.) and maintaining it in accordance with the Michigan Trial Court Case File Management Standards. MICHIGAN COURT RULES OF 1985
+The clerk of every probate court shall maintain court records and make reports as prescribed by MCR 8.119. In addition, any unsealed testamentary document filed with the probate court must be safeguarded by reproducing the document in a format authorized by the Records Reproduction Act (MCL 24.401 et seq.) and maintaining it in accordance with the Michigan Trial Court Case File Management Standards.
 
 # Chapter 9. Professional Disciplinary Proceedings
 
@@ -23208,7 +23022,7 @@ As used in subchapter 9.100:
 
     (15) “disability inactive status” means inactive status to which a lawyer has been transferred pursuant to MCR 9.121 or a similar rule of another jurisdiction.
 
-    (16)”disciplinary proceeding” means a proceeding commenced under this subchapter seeking the imposition of discipline for misconduct.
+    (16) ”disciplinary proceeding” means a proceeding commenced under this subchapter seeking the imposition of discipline for misconduct.
 
 ### Rule 9.102 Construction; Severability
 

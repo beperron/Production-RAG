@@ -40,6 +40,7 @@ import sys
 import fitz
 
 FOOTER_Y = 730.0
+BANNER = "MICHIGAN COURT RULES OF 1985"   # chapter title-page running head
 GAP_BREAK = 17.0          # 14.0 within a paragraph, 20.0 between
 HEAD_WRAP_GAP = 18.5      # headings lead at 17.0; a wrap sits within this
 SAME_LINE = 3.0           # fragments within this many points share a line
@@ -56,7 +57,7 @@ INDENT_TOL = 1.5
 # markers in this document have none. Requiring one silently demotes those
 # items to body text and mis-cites everything beneath them. The vocabulary is
 # tightened instead, so a parenthetical like "(see below)" cannot match.
-RE_MARKER = re.compile(r"^\((?P<m>\d{1,3}|[A-Za-z]|[ivxlIVXL]{2,5})\)")
+RE_MARKER = re.compile(r"^\((?P<m>\d{1,3}|[A-Za-z]|([a-z])\2{1,2}|[ivxlIVXL]{2,5})\)")
 RE_RULE = re.compile(r"^Rule\s+(?P<num>\d+\.\d+[A-Za-z]?)\.?\s*(?P<title>.*)$")
 RE_SUBCH = re.compile(r"^Subchapter\s+(?P<num>[\d.]+)\s*(?P<title>.*)$")
 RE_CHAPTER = re.compile(r"^Chapter\s+(?P<num>\d+[A-Za-z]?)\.\s*(?P<title>.*)$")
@@ -70,24 +71,35 @@ ROMAN = ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi",
 def successors(prev):
     """Every marker that could legitimately follow `prev`.
 
-    A glyph alone cannot say whether (i) is the letter after (h) or roman one,
-    so both readings are accepted and the SEQUENCE is what gets checked. That
-    catches the defects worth catching -- a skipped or invented item -- without
-    inventing violations wherever the alphabet meets roman numerals."""
-    out = set()
+    A glyph alone cannot say whether (i) is the letter after (h), roman one,
+    or the start of a doubled run -- and "ii" is simultaneously roman two and
+    a doubled 'i'. So every reading that applies contributes a candidate and
+    the SEQUENCE is what gets checked. That catches the defects worth catching
+    -- a skipped or invented item -- without manufacturing violations wherever
+    the alphabet meets roman numerals.
+    """
     if prev.isdigit():
         return {str(int(prev) + 1)}
-    if len(prev) == 1 and prev.isalpha():
-        nxt = chr(ord(prev) + 1)
-        out.add(nxt)
-        if prev.lower() == "h":       # (h) -> (i), which may start romans
-            out.add("ii" if prev.islower() else "II")
+
+    out = set()
     low = prev.lower()
+    upper = prev.isupper()
+
+    # single letter: (a) -> (b), and (z) -> (aa)
+    if len(prev) == 1 and prev.isalpha():
+        out.add("aa" if low == "z" else chr(ord(prev) + 1))
+
+    # roman numeral: (ii) -> (iii)
     if low in ROMAN:
         i = ROMAN.index(low)
         if i + 1 < len(ROMAN):
             r = ROMAN[i + 1]
-            out.add(r if prev.islower() else r.upper())
+            out.add(r.upper() if upper else r)
+
+    # doubled run: (aa) -> (bb)
+    if len(prev) > 1 and prev.isalpha() and len(set(low)) == 1 and low[0] != "z":
+        out.add(chr(ord(prev[0]) + 1) * len(prev))
+
     return out
 
 
@@ -108,7 +120,7 @@ def snap(x):
 
 def extract_lines(doc):
     """Every non-footer line, in reading order, with geometry and style."""
-    out = []
+    out, dropped_banner = [], []
     for pno in range(doc.page_count):
         raw = []
         for block in doc[pno].get_text("dict")["blocks"]:
@@ -117,6 +129,12 @@ def extract_lines(doc):
                     continue
                 text = "".join(s["text"] for s in line["spans"])
                 if not text.strip():
+                    continue
+                # The chapter title-page banner sits in the body band and was
+                # being welded onto the last provision of the preceding
+                # chapter. Text-anchored so the filter cannot silently widen.
+                if text.strip() == BANNER:
+                    dropped_banner.append(pno)
                     continue
                 span = max(line["spans"], key=lambda s: len(s["text"]))
                 raw.append({
@@ -130,17 +148,25 @@ def extract_lines(doc):
                 })
         raw.sort(key=lambda r: (r["y"], r["x"]))
 
-        # fragments printed at the same y are one visual line
-        merged = []
+        # Fragments printed at the same y are one visual line. They must be
+        # grouped FIRST and then ordered by x: a global (y, x) sort puts a
+        # fragment at (100.5, 158) after one at (100.0, 180), reversing them
+        # and burying the item's own label inside its sentence.
+        groups = []
         for r in raw:
-            if merged and abs(r["y"] - merged[-1]["y"]) <= SAME_LINE:
-                prev = merged[-1]
-                joiner = "" if prev["text"].endswith(" ") else " "
-                prev["text"] += joiner + r["text"]
+            if groups and abs(r["y"] - groups[-1][0]["y"]) <= SAME_LINE:
+                groups[-1].append(r)
             else:
-                merged.append(r)
-        out.extend(merged)
-    return out
+                groups.append([r])
+        for g in groups:
+            g.sort(key=lambda r: r["x"])
+            head = dict(g[0])
+            for r in g[1:]:
+                joiner = "" if head["text"].endswith(" ") else " "
+                head["text"] += joiner + r["text"]
+            head["x"] = min(r["x"] for r in g)      # leftmost, not first-seen
+            out.append(head)
+    return out, dropped_banner
 
 
 # --------------------------------------------------------------------------
@@ -180,10 +206,23 @@ def build_blocks(lines):
         text = ln["text"].strip()
         prev = blocks[-1] if blocks else None
         snapped = snap(ln["x"])
-        marker = None
-        m = RE_MARKER.match(text)
-        if m and snapped is not None and INDENT_DEPTH[snapped] >= 1:
-            marker = m.group("m")
+        marker, chain = None, []
+        if snapped is not None and INDENT_DEPTH[snapped] >= 1:
+            # The source sometimes prints two levels on one line -- "(1)(a)" --
+            # so reading only the outer marker loses a whole level and the
+            # inner subrule never exists in the corpus.
+            rest, guard = text, 0
+            while guard < 3:
+                mm = RE_MARKER.match(rest)
+                if not mm:
+                    break
+                chain.append(mm.group("m"))
+                rest = rest[mm.end():]
+                guard += 1
+                if rest[:1] != "(":
+                    break
+            if chain:
+                marker = chain[-1]
 
         same_page = prev is not None and prev["page_end"] == ln["page"]
         gap = ln["y"] - prev["y_end"] if same_page else None
@@ -238,10 +277,17 @@ def build_blocks(lines):
             blocks.append(_new(ln, "front_matter", text, snapped, None))
             continue
 
+        # A marker alone must NOT force a break. A wrapped line that happens to
+        # begin with a cross-reference ("(A)(2).", "(c) maintain the respect
+        # due...") is running prose, not a new item. Measured across all
+        # marker-bearing body blocks: every genuine successor item sits at a
+        # gap >= 19.0pt, every wrapped continuation at 14.0-16.0pt. The two
+        # populations do not overlap, so the gap is an exact discriminator and
+        # the marker is only believed when the spacing agrees.
         starts_new = (
             prev is None
             or prev["kind"] in ("chapter", "subchapter", "rule")
-            or marker is not None                       # an explicit item
+            or (marker is not None and (gap is None or gap >= GAP_BREAK))
             or gap is None                              # page turn: see below
             or gap >= GAP_BREAK
         )
@@ -254,14 +300,44 @@ def build_blocks(lines):
                 starts_new = False
 
         if starts_new:
-            blocks.append(_new(ln, "body", text, snapped, marker))
+            nb = _new(ln, "body", text, snapped, marker)
+            if len(chain) > 1 and nb["depth"] is not None:
+                nb["chain"] = chain
+                nb["depth"] += len(chain) - 1     # the inner level is deeper
+            blocks.append(nb)
         else:
             prev["text"] = join(prev["text"], text)
             prev["y_end"], prev["page_end"] = ln["y"], ln["page"]
     return blocks, warnings
 
 
+def normalise_marker(text, marker):
+    """Restore the space after an item label.
+
+    FrameMaker sets the label in a fixed-width slot and positions the text
+    after it, so where the label is wide the separating space is not emitted
+    as a character. It is present visually, so writing it is faithful --
+    leaving it out welds the label to the first word ("(10)Except")."""
+    if marker is None:
+        return text
+    # Skip the whole leading run of labels, so a compound "(1)(a)" gets its
+    # space after the inner marker rather than between the two labels.
+    i, guard = 0, 0
+    while guard < 3:
+        m = RE_MARKER.match(text[i:])
+        if not m:
+            break
+        i += m.end()
+        guard += 1
+        if text[i:i + 1] != "(":
+            break
+    if i and len(text) > i and text[i] not in " \t":
+        return text[:i] + " " + text[i:]
+    return text
+
+
 def _new(ln, kind, text, snapped, marker):
+    text = normalise_marker(text, marker)
     return {"kind": kind, "text": text, "page": ln["page"],
             "page_end": ln["page"], "y": ln["y"], "y_end": ln["y"],
             "x": ln["x"], "indent": snapped, "marker": marker,
@@ -303,6 +379,24 @@ def assign_paths(blocks):
             stack = []
         elif b["marker"] is not None:
             depth, mk = b["depth"], b["marker"]
+            # Four rules typeset a numbered child at its lettered parent's own
+            # indent. Following the geometry pops the letter off the stack and
+            # cites MCR 2.201(2) where the document means MCR 2.201(E)(2).
+            # The marker VOCABULARY contradicts the indent, and vocabulary is
+            # the more reliable witness: a digit cannot be a sibling of (E).
+            open_here = next((m for d, m in reversed(stack) if d == depth), None)
+            if (open_here is not None and open_here.isalpha() and mk.isdigit()
+                    and mk not in successors(open_here)):
+                depth += 1
+                b["depth"] = depth
+                problems.append(
+                    f"p{b['page']} MCR {rule}: ({mk}) measured at depth "
+                    f"{depth-1} but ({open_here}) is open there -- re-parented "
+                    f"to depth {depth} [indent override]")
+            for n, outer in enumerate(b.get("chain", [])[:-1]):
+                od = depth - (len(b["chain"]) - 1 - n)
+                stack = [(d, m) for d, m in stack if d < od]
+                stack.append((od, outer))
             sibling = next((m for d, m in reversed(stack) if d == depth), None)
             if sibling is None:
                 if mk not in FIRST and not mk.isdigit():
@@ -318,7 +412,15 @@ def assign_paths(blocks):
             stack.append((depth, mk))
 
         b["chapter"], b["subchapter"], b["rule"] = chapter, subchapter, rule
-        b["subpath"] = "".join(f"({mk})" for _, mk in stack)
+        # An UNMARKED paragraph sitting at depth d is a closing paragraph of
+        # its parent, not a continuation of the last enumerated sibling at
+        # that depth. Citing it to the sibling attributes text to a provision
+        # that does not contain it. The running stack is left intact -- the
+        # next real sibling still needs it.
+        eff = stack
+        if b["kind"] == "body" and b["marker"] is None and b["depth"] is not None:
+            eff = [(d, m) for d, m in stack if d < b["depth"]]
+        b["subpath"] = "".join(f"({mk})" for _, mk in eff)
         b["citation"] = (f"MCR {rule}{b['subpath']}" if rule else
                          (f"Subchapter {subchapter}" if subchapter else
                           (f"Chapter {chapter}" if chapter else None)))
@@ -358,7 +460,8 @@ def main():
     outdir.mkdir(parents=True, exist_ok=True)
 
     doc = fitz.open(args.pdf)
-    lines = [l for l in extract_lines(doc) if l["page"] >= args.body_start]
+    all_lines, banner_pages = extract_lines(doc)
+    lines = [l for l in all_lines if l["page"] >= args.body_start]
     blocks, warnings = build_blocks(lines)
     problems = assign_paths(blocks)
 
@@ -388,6 +491,7 @@ def main():
         "rules": len(rules),
         "body_blocks": len(body),
         "blocks_with_rule": sum(1 for b in body if b["rule"]),
+        "banner_lines_dropped": len(banner_pages),
         "off_ladder_warnings": len(warnings),
         "path_problems": len(problems),
     }

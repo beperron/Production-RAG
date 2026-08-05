@@ -1,0 +1,625 @@
+{"rule": "1.101", "title": "Rule 1.101 Title; Citation", "chapter": "1", "subchapter": "1.100", "page": 19, "blocks": 1, "chars": 218, "max_depth": 0}
+{"rule": "1.102", "title": "Rule 1.102 Effective Date", "chapter": "1", "subchapter": "1.100", "page": 19, "blocks": 1, "chars": 344, "max_depth": 0}
+{"rule": "1.103", "title": "Rule 1.103 Applicability", "chapter": "1", "subchapter": "1.100", "page": 19, "blocks": 1, "chars": 318, "max_depth": 0}
+{"rule": "1.104", "title": "Rule 1.104 Statutory Practice Provisions", "chapter": "1", "subchapter": "1.100", "page": 19, "blocks": 1, "chars": 157, "max_depth": 0}
+{"rule": "1.105", "title": "Rule 1.105 Construction", "chapter": "1", "subchapter": "1.100", "page": 19, "blocks": 1, "chars": 260, "max_depth": 0}
+{"rule": "1.106", "title": "Rule 1.106 Catch Lines", "chapter": "1", "subchapter": "1.100", "page": 19, "blocks": 1, "chars": 146, "max_depth": 0}
+{"rule": "1.107", "title": "Rule 1.107 Number", "chapter": "1", "subchapter": "1.100", "page": 20, "blocks": 1, "chars": 71, "max_depth": 0}
+{"rule": "1.108", "title": "Rule 1.108 Computation of Time", "chapter": "1", "subchapter": "1.100", "page": 20, "blocks": 4, "chars": 1066, "max_depth": 1}
+{"rule": "1.109", "title": "Rule 1.109 Court Records Defined; Document Defined; Filing Standards; Signatures; Electronic Filing and Service; Access", "chapter": "1", "subchapter": "1.100", "page": 20, "blocks": 188, "chars": 43596, "max_depth": 6}
+{"rule": "1.110", "title": "Rule 1.110 Collection of Fines and Costs", "chapter": "1", "subchapter": "1.100", "page": 36, "blocks": 1, "chars": 168, "max_depth": 0}
+{"rule": "1.111", "title": "Rule 1.111 Foreign Language Interpreters", "chapter": "1", "subchapter": "1.100", "page": 36, "blocks": 58, "chars": 11442, "max_depth": 3}
+{"rule": "1.112", "title": "Rule 1.112 Filings by Incarcerated Individuals", "chapter": "1", "subchapter": "1.100", "page": 41, "blocks": 1, "chars": 500, "max_depth": 0}
+{"rule": "1.201", "title": "Rule 1.201 Amendment Procedure", "chapter": "1", "subchapter": "1.200", "page": 41, "blocks": 5, "chars": 1595, "max_depth": 1}
+{"rule": "2.001", "title": "Rule 2.001 Applicability", "chapter": "2", "subchapter": "2.000", "page": 42, "blocks": 1, "chars": 346, "max_depth": 0}
+{"rule": "2.002", "title": "Rule 2.002 Waiver of Fees for Indigent Persons", "chapter": "2", "subchapter": "2.000", "page": 42, "blocks": 39, "chars": 9901, "max_depth": 4}
+{"rule": "2.003", "title": "Rule 2.003 Disqualification of Judge", "chapter": "2", "subchapter": "2.000", "page": 45, "blocks": 36, "chars": 7137, "max_depth": 4}
+{"rule": "2.004", "title": "Rule 2.004 Incarcerated Parties", "chapter": "2", "subchapter": "2.000", "page": 48, "blocks": 17, "chars": 3965, "max_depth": 2}
+{"rule": "2.101", "title": "Rule 2.101 Form and Commencement of Action", "chapter": "2", "subchapter": "2.100", "page": 49, "blocks": 2, "chars": 165, "max_depth": 1}
+{"rule": "2.102", "title": "Rule 2.102 Summons; Expiration of Summons; Dismissal of Action for Failure to Serve", "chapter": "2", "subchapter": "2.100", "page": 50, "blocks": 24, "chars": 4363, "max_depth": 2}
+{"rule": "2.103", "title": "Rule 2.103 Process; Who May Serve", "chapter": "2", "subchapter": "2.100", "page": 51, "blocks": 8, "chars": 1151, "max_depth": 2}
+{"rule": "2.104", "title": "Rule 2.104 Process; Proof of Service", "chapter": "2", "subchapter": "2.100", "page": 52, "blocks": 11, "chars": 1457, "max_depth": 3}
+{"rule": "2.105", "title": "Rule 2.105 Process; Manner of Service", "chapter": "2", "subchapter": "2.100", "page": 52, "blocks": 56, "chars": 9359, "max_depth": 3}
+{"rule": "2.106", "title": "Rule 2.106 Notice by Posting or Publication", "chapter": "2", "subchapter": "2.100", "page": 56, "blocks": 35, "chars": 5308, "max_depth": 4}
+{"rule": "2.107", "title": "Rule 2.107 Service and Filing of Pleadings and Other Documents", "chapter": "2", "subchapter": "2.100", "page": 58, "blocks": 54, "chars": 10852, "max_depth": 4}
+{"rule": "2.108", "title": "Rule 2.108 Time", "chapter": "2", "subchapter": "2.100", "page": 62, "blocks": 16, "chars": 4324, "max_depth": 2}
+{"rule": "2.109", "title": "Rule 2.109 Security for Costs", "chapter": "2", "subchapter": "2.100", "page": 63, "blocks": 11, "chars": 1659, "max_depth": 3}
+{"rule": "2.110", "title": "Rule 2.110 Pleadings", "chapter": "2", "subchapter": "2.100", "page": 64, "blocks": 18, "chars": 1327, "max_depth": 2}
+{"rule": "2.111", "title": "Rule 2.111 General Rules of Pleading", "chapter": "2", "subchapter": "2.100", "page": 65, "blocks": 27, "chars": 4701, "max_depth": 3}
+{"rule": "2.112", "title": "Rule 2.112 Pleading Special Matters", "chapter": "2", "subchapter": "2.100", "page": 67, "blocks": 61, "chars": 9163, "max_depth": 3}
+{"rule": "2.113", "title": "Rule 2.113 Form, Captioning, Signing, and Verifying of Documents", "chapter": "2", "subchapter": "2.100", "page": 70, "blocks": 13, "chars": 1601, "max_depth": 3}
+{"rule": "2.114", "title": "Rule 2.114 Special Motions Under the Uniform Public Expression Protection Act", "chapter": "2", "subchapter": "2.100", "page": 71, "blocks": 28, "chars": 4904, "max_depth": 4}
+{"rule": "2.115", "title": "Rule 2.115 Motion to Correct or to Strike Pleadings", "chapter": "2", "subchapter": "2.100", "page": 73, "blocks": 2, "chars": 807, "max_depth": 1}
+{"rule": "2.116", "title": "Rule 2.116 Summary Disposition", "chapter": "2", "subchapter": "2.100", "page": 73, "blocks": 65, "chars": 10413, "max_depth": 4}
+{"rule": "2.117", "title": "Rule 2.117 Appearances", "chapter": "2", "subchapter": "2.100", "page": 77, "blocks": 26, "chars": 6559, "max_depth": 4}
+{"rule": "2.118", "title": "Rule 2.118 Amended and Supplemental Pleadings", "chapter": "2", "subchapter": "2.100", "page": 80, "blocks": 13, "chars": 3162, "max_depth": 2}
+{"rule": "2.119", "title": "Rule 2.119 Motion Practice", "chapter": "2", "subchapter": "2.100", "page": 81, "blocks": 65, "chars": 9038, "max_depth": 4}
+{"rule": "2.201", "title": "Rule 2.201 Parties Plaintiff and Defendant; Capacity", "chapter": "2", "subchapter": "2.200", "page": 85, "blocks": 40, "chars": 7342, "max_depth": 3}
+{"rule": "2.202", "title": "Rule 2.202 Substitution of Parties", "chapter": "2", "subchapter": "2.200", "page": 88, "blocks": 10, "chars": 2099, "max_depth": 3}
+{"rule": "2.203", "title": "Rule 2.203 Joinder of Claims, Counterclaims, and Cross-Claims", "chapter": "2", "subchapter": "2.200", "page": 88, "blocks": 9, "chars": 2824, "max_depth": 2}
+{"rule": "2.204", "title": "Rule 2.204 Third-Party Practice", "chapter": "2", "subchapter": "2.200", "page": 89, "blocks": 8, "chars": 2585, "max_depth": 2}
+{"rule": "2.205", "title": "Rule 2.205 Necessary Joinder of Parties", "chapter": "2", "subchapter": "2.200", "page": 90, "blocks": 8, "chars": 1890, "max_depth": 2}
+{"rule": "2.206", "title": "Rule 2.206 Permissive Joinder of Parties", "chapter": "2", "subchapter": "2.200", "page": 91, "blocks": 9, "chars": 1464, "max_depth": 3}
+{"rule": "2.207", "title": "Rule 2.207 Misjoinder and Nonjoinder of Parties", "chapter": "2", "subchapter": "2.200", "page": 92, "blocks": 1, "chars": 575, "max_depth": 0}
+{"rule": "2.209", "title": "Rule 2.209 Intervention", "chapter": "2", "subchapter": "2.200", "page": 92, "blocks": 12, "chars": 1659, "max_depth": 2}
+{"rule": "2.221", "title": "Rule 2.221 Motion for Change of Venue", "chapter": "2", "subchapter": "2.200", "page": 92, "blocks": 3, "chars": 514, "max_depth": 1}
+{"rule": "2.222", "title": "Rule 2.222 Change of Venue; Venue Proper", "chapter": "2", "subchapter": "2.200", "page": 93, "blocks": 13, "chars": 2729, "max_depth": 2}
+{"rule": "2.223", "title": "Rule 2.223 Change of Venue; Venue Improper", "chapter": "2", "subchapter": "2.200", "page": 94, "blocks": 12, "chars": 2241, "max_depth": 2}
+{"rule": "2.224", "title": "Rule 2.224 Change of Venue in Tort Actions", "chapter": "2", "subchapter": "2.200", "page": 95, "blocks": 1, "chars": 65, "max_depth": 0}
+{"rule": "2.225", "title": "Rule 2.225 Joinder of Party to Control Venue", "chapter": "2", "subchapter": "2.200", "page": 95, "blocks": 8, "chars": 1856, "max_depth": 2}
+{"rule": "2.226", "title": "Rule 2.226 Change of Venue; Transfer of Jurisdiction; Orders", "chapter": "2", "subchapter": "2.200", "page": 95, "blocks": 3, "chars": 1022, "max_depth": 1}
+{"rule": "2.227", "title": "Rule 2.227 Transfer of Actions on Finding of Lack of Jurisdiction", "chapter": "2", "subchapter": "2.200", "page": 96, "blocks": 17, "chars": 4020, "max_depth": 3}
+{"rule": "2.228", "title": "Rule 2.228 Transfer to the Court of Claims", "chapter": "2", "subchapter": "2.200", "page": 97, "blocks": 4, "chars": 740, "max_depth": 2}
+{"rule": "2.301", "title": "Rule 2.301 Availability and Timing of Discovery", "chapter": "2", "subchapter": "2.300", "page": 98, "blocks": 11, "chars": 2077, "max_depth": 2}
+{"rule": "2.302", "title": "Rule 2.302 Duty to Disclose; General Rules Governing Discovery", "chapter": "2", "subchapter": "2.300", "page": 98, "blocks": 113, "chars": 21045, "max_depth": 5}
+{"rule": "2.303", "title": "Rule 2.303 Depositions Before Action or Pending Appeal", "chapter": "2", "subchapter": "2.300", "page": 106, "blocks": 17, "chars": 4343, "max_depth": 3}
+{"rule": "2.304", "title": "Rule 2.304 Persons Before Whom Depositions May Be Taken", "chapter": "2", "subchapter": "2.300", "page": 108, "blocks": 14, "chars": 2222, "max_depth": 2}
+{"rule": "2.305", "title": "Rule 2.305 Discovery Subpoena to a Non-Party", "chapter": "2", "subchapter": "2.300", "page": 109, "blocks": 19, "chars": 5514, "max_depth": 3}
+{"rule": "2.306", "title": "Rule 2.306 Depositions on Oral Examination of a party", "chapter": "2", "subchapter": "2.300", "page": 110, "blocks": 59, "chars": 12193, "max_depth": 4}
+{"rule": "2.307", "title": "Rule 2.307 Depositions on Written Questions", "chapter": "2", "subchapter": "2.300", "page": 115, "blocks": 7, "chars": 2078, "max_depth": 3}
+{"rule": "2.308", "title": "Rule 2.308 Use of Depositions in Court Proceedings", "chapter": "2", "subchapter": "2.300", "page": 116, "blocks": 13, "chars": 2750, "max_depth": 3}
+{"rule": "2.309", "title": "Rule 2.309 Interrogatories to Parties", "chapter": "2", "subchapter": "2.300", "page": 117, "blocks": 19, "chars": 3763, "max_depth": 3}
+{"rule": "2.310", "title": "Rule 2.310 Requests for Production of Documents and Other Things; Entry on Land for Inspection and Other Purposes", "chapter": "2", "subchapter": "2.300", "page": 118, "blocks": 20, "chars": 4075, "max_depth": 4}
+{"rule": "2.311", "title": "Rule 2.311 Physical and Mental Examination of Persons", "chapter": "2", "subchapter": "2.300", "page": 120, "blocks": 14, "chars": 3049, "max_depth": 2}
+{"rule": "2.312", "title": "Rule 2.312 Request for Admission", "chapter": "2", "subchapter": "2.300", "page": 121, "blocks": 16, "chars": 4528, "max_depth": 3}
+{"rule": "2.313", "title": "Rule 2.313 Failure to Serve Disclosure or to Provide or to Permit Discovery; Sanctions", "chapter": "2", "subchapter": "2.300", "page": 122, "blocks": 45, "chars": 8516, "max_depth": 5}
+{"rule": "2.314", "title": "Rule 2.314 Discovery of Medical Information Concerning Party", "chapter": "2", "subchapter": "2.300", "page": 126, "blocks": 27, "chars": 5125, "max_depth": 3}
+{"rule": "2.315", "title": "Rule 2.315 Video Depositions", "chapter": "2", "subchapter": "2.300", "page": 127, "blocks": 28, "chars": 4238, "max_depth": 3}
+{"rule": "2.316", "title": "Rule 2.316 Removal of Disclosure and Discovery Materials From File", "chapter": "2", "subchapter": "2.300", "page": 129, "blocks": 12, "chars": 2290, "max_depth": 4}
+{"rule": "2.401", "title": "Rule 2.401 Pretrial Procedures; Conferences; Scheduling Orders", "chapter": "2", "subchapter": "2.400", "page": 130, "blocks": 115, "chars": 14616, "max_depth": 4}
+{"rule": "2.402", "title": "Rule 2.402 Use of Communication Equipment", "chapter": "2", "subchapter": "2.400", "page": 136, "blocks": 3, "chars": 1473, "max_depth": 1}
+{"rule": "2.403", "title": "Rule 2.403 Case Evaluation", "chapter": "2", "subchapter": "2.400", "page": 137, "blocks": 96, "chars": 15583, "max_depth": 4}
+{"rule": "2.404", "title": "Rule 2.404 Selection of Case Evaluation Panels", "chapter": "2", "subchapter": "2.400", "page": 143, "blocks": 38, "chars": 8362, "max_depth": 4}
+{"rule": "2.405", "title": "Rule 2.405 Offers to Stipulate to Entry of Judgment", "chapter": "2", "subchapter": "2.400", "page": 146, "blocks": 31, "chars": 3764, "max_depth": 3}
+{"rule": "2.406", "title": "Rule 2.406 Use of Facsimile Communication Equipment", "chapter": "2", "subchapter": "2.400", "page": 147, "blocks": 8, "chars": 1888, "max_depth": 1}
+{"rule": "2.407", "title": "Rule 2.407 Videoconferencing", "chapter": "2", "subchapter": "2.400", "page": 148, "blocks": 35, "chars": 6725, "max_depth": 3}
+{"rule": "2.408", "title": "Rule 2.408 Use of Videoconferencing Technology in Civil Cases", "chapter": "2", "subchapter": "2.400", "page": 151, "blocks": 22, "chars": 1884, "max_depth": 2}
+{"rule": "2.410", "title": "Rule 2.410 Alternative Dispute Resolution", "chapter": "2", "subchapter": "2.400", "page": 152, "blocks": 32, "chars": 5371, "max_depth": 4}
+{"rule": "2.411", "title": "Rule 2.411 Mediation", "chapter": "2", "subchapter": "2.400", "page": 154, "blocks": 57, "chars": 11718, "max_depth": 4}
+{"rule": "2.412", "title": "Rule 2.412   Mediation Communications; Confidentiality and Disclosure", "chapter": "2", "subchapter": "2.400", "page": 158, "blocks": 35, "chars": 4195, "max_depth": 4}
+{"rule": "2.420", "title": "Rule 2.420 Settlements and Judgments for Minors and Legally Incapacitated Individuals", "chapter": "2", "subchapter": "2.400", "page": 160, "blocks": 11, "chars": 3602, "max_depth": 3}
+{"rule": "2.421", "title": "Rule 2.421 Notice of Bankruptcy Proceedings", "chapter": "2", "subchapter": "2.400", "page": 161, "blocks": 13, "chars": 2132, "max_depth": 2}
+{"rule": "2.501", "title": "Rule 2.501 Scheduling Trials; Court Calendars", "chapter": "2", "subchapter": "2.500", "page": 162, "blocks": 19, "chars": 2281, "max_depth": 3}
+{"rule": "2.502", "title": "Rule 2.502 Dismissal for Lack of Progress", "chapter": "2", "subchapter": "2.500", "page": 163, "blocks": 10, "chars": 1675, "max_depth": 3}
+{"rule": "2.503", "title": "Rule 2.503 Adjournments", "chapter": "2", "subchapter": "2.500", "page": 164, "blocks": 24, "chars": 3062, "max_depth": 3}
+{"rule": "2.504", "title": "Rule 2.504 Dismissal of Actions", "chapter": "2", "subchapter": "2.500", "page": 165, "blocks": 15, "chars": 3380, "max_depth": 3}
+{"rule": "2.505", "title": "Rule 2.505 Consolidation; Separate Trials", "chapter": "2", "subchapter": "2.500", "page": 166, "blocks": 5, "chars": 591, "max_depth": 2}
+{"rule": "2.506", "title": "Rule 2.506 Subpoena; Order to Attend", "chapter": "2", "subchapter": "2.500", "page": 167, "blocks": 53, "chars": 11426, "max_depth": 3}
+{"rule": "2.507", "title": "Rule 2.507 Conduct of Trials", "chapter": "2", "subchapter": "2.500", "page": 171, "blocks": 9, "chars": 2427, "max_depth": 2}
+{"rule": "2.508", "title": "Rule 2.508 Jury Trial of Right", "chapter": "2", "subchapter": "2.500", "page": 171, "blocks": 16, "chars": 4115, "max_depth": 3}
+{"rule": "2.509", "title": "Rule 2.509 Trial by Jury or by Court", "chapter": "2", "subchapter": "2.500", "page": 173, "blocks": 8, "chars": 1596, "max_depth": 2}
+{"rule": "2.510", "title": "Rule 2.510 Juror Personal History Questionnaire", "chapter": "2", "subchapter": "2.500", "page": 173, "blocks": 17, "chars": 3180, "max_depth": 3}
+{"rule": "2.511", "title": "Rule 2.511 Impaneling the Jury", "chapter": "2", "subchapter": "2.500", "page": 175, "blocks": 47, "chars": 7304, "max_depth": 4}
+{"rule": "2.512", "title": "Rule 2.512 Instructions to Jury", "chapter": "2", "subchapter": "2.500", "page": 177, "blocks": 20, "chars": 4371, "max_depth": 3}
+{"rule": "2.513", "title": "Rule 2.513 Conduct of Jury Trial", "chapter": "2", "subchapter": "2.500", "page": 179, "blocks": 23, "chars": 9974, "max_depth": 2}
+{"rule": "2.514", "title": "Rule 2.514 Rendering Verdict", "chapter": "2", "subchapter": "2.500", "page": 182, "blocks": 18, "chars": 1724, "max_depth": 2}
+{"rule": "2.515", "title": "Rule 2.515 Special Verdicts", "chapter": "2", "subchapter": "2.500", "page": 183, "blocks": 7, "chars": 1494, "max_depth": 2}
+{"rule": "2.516", "title": "Rule 2.516 Motion for Directed Verdict", "chapter": "2", "subchapter": "2.500", "page": 183, "blocks": 1, "chars": 461, "max_depth": 0}
+{"rule": "2.517", "title": "Rule 2.517 Findings by Court", "chapter": "2", "subchapter": "2.500", "page": 184, "blocks": 9, "chars": 1402, "max_depth": 2}
+{"rule": "2.518", "title": "Rule 2.518 Receipt and Return or Disposal of Exhibits", "chapter": "2", "subchapter": "2.500", "page": 184, "blocks": 3, "chars": 1363, "max_depth": 1}
+{"rule": "2.601", "title": "Rule 2.601 Judgments", "chapter": "2", "subchapter": "2.600", "page": 185, "blocks": 2, "chars": 427, "max_depth": 1}
+{"rule": "2.602", "title": "Rule 2.602 Entry of Judgments and Orders", "chapter": "2", "subchapter": "2.600", "page": 185, "blocks": 31, "chars": 5993, "max_depth": 4}
+{"rule": "2.603", "title": "Rule 2.603 Default and Default Judgment", "chapter": "2", "subchapter": "2.600", "page": 187, "blocks": 39, "chars": 5346, "max_depth": 4}
+{"rule": "2.604", "title": "Rule 2.604 Judgment in Actions Involving Multiple Claims or Multiple Parties", "chapter": "2", "subchapter": "2.600", "page": 189, "blocks": 2, "chars": 825, "max_depth": 1}
+{"rule": "2.605", "title": "Rule 2.605 Declaratory Judgments", "chapter": "2", "subchapter": "2.600", "page": 190, "blocks": 8, "chars": 1393, "max_depth": 2}
+{"rule": "2.610", "title": "Rule 2.610 Motion for Judgment Notwithstanding the Verdict", "chapter": "2", "subchapter": "2.600", "page": 190, "blocks": 18, "chars": 2955, "max_depth": 3}
+{"rule": "2.611", "title": "Rule 2.611 New Trials; Amendment of Judgments", "chapter": "2", "subchapter": "2.600", "page": 191, "blocks": 26, "chars": 3278, "max_depth": 3}
+{"rule": "2.612", "title": "Rule 2.612 Relief From Judgment or Order", "chapter": "2", "subchapter": "2.600", "page": 193, "blocks": 15, "chars": 2678, "max_depth": 3}
+{"rule": "2.613", "title": "Rule 2.613 Limitations on Corrections of Error", "chapter": "2", "subchapter": "2.600", "page": 194, "blocks": 3, "chars": 1215, "max_depth": 1}
+{"rule": "2.614", "title": "Rule 2.614 Stay of Proceedings to Enforce Judgment", "chapter": "2", "subchapter": "2.600", "page": 194, "blocks": 20, "chars": 3601, "max_depth": 3}
+{"rule": "2.615", "title": "Rule 2.615 Enforcement of Tribal Judgments", "chapter": "2", "subchapter": "2.600", "page": 196, "blocks": 13, "chars": 1743, "max_depth": 3}
+{"rule": "2.620", "title": "Rule 2.620 Satisfaction of Judgment", "chapter": "2", "subchapter": "2.600", "page": 196, "blocks": 6, "chars": 595, "max_depth": 1}
+{"rule": "2.621", "title": "Rule 2.621 Proceedings Supplementary to Judgment", "chapter": "2", "subchapter": "2.600", "page": 197, "blocks": 27, "chars": 5250, "max_depth": 3}
+{"rule": "2.622", "title": "Rule 2.622 Receivers", "chapter": "2", "subchapter": "2.600", "page": 199, "blocks": 78, "chars": 12025, "max_depth": 4}
+{"rule": "2.625", "title": "Rule 2.625 Taxation of Costs", "chapter": "2", "subchapter": "2.600", "page": 203, "blocks": 48, "chars": 10076, "max_depth": 3}
+{"rule": "2.626", "title": "Rule 2.626 Attorney Fees", "chapter": "2", "subchapter": "2.600", "page": 207, "blocks": 1, "chars": 293, "max_depth": 0}
+{"rule": "2.630", "title": "Rule 2.630 Disability of Judge", "chapter": "2", "subchapter": "2.600", "page": 207, "blocks": 1, "chars": 503, "max_depth": 0}
+{"rule": "3.001", "title": "Rule 3.001 Applicability and Scope", "chapter": "3", "subchapter": "3.000", "page": 208, "blocks": 1, "chars": 233, "max_depth": 0}
+{"rule": "3.002", "title": "Rule 3.002 Indian Children", "chapter": "3", "subchapter": "3.000", "page": 208, "blocks": 49, "chars": 11413, "max_depth": 2}
+{"rule": "3.101", "title": "Rule 3.101 Garnishment After Judgment", "chapter": "3", "subchapter": "3.100", "page": 212, "blocks": 155, "chars": 30021, "max_depth": 4}
+{"rule": "3.102", "title": "Rule 3.102 Garnishment Before Judgment", "chapter": "3", "subchapter": "3.100", "page": 223, "blocks": 42, "chars": 4723, "max_depth": 5}
+{"rule": "3.103", "title": "Rule 3.103 Attachment", "chapter": "3", "subchapter": "3.100", "page": 225, "blocks": 39, "chars": 6881, "max_depth": 3}
+{"rule": "3.104", "title": "Rule 3.104 Installment Payment Orders", "chapter": "3", "subchapter": "3.100", "page": 228, "blocks": 4, "chars": 1549, "max_depth": 1}
+{"rule": "3.105", "title": "Rule 3.105 Claim and Delivery", "chapter": "3", "subchapter": "3.100", "page": 229, "blocks": 64, "chars": 7887, "max_depth": 4}
+{"rule": "3.106", "title": "Rule 3.106 Procedures Regarding Orders for the Seizure of Property and Orders of Eviction", "chapter": "3", "subchapter": "3.100", "page": 232, "blocks": 40, "chars": 4826, "max_depth": 4}
+{"rule": "3.110", "title": "Rule 3.110 Stockholders' Liability Proceedings", "chapter": "3", "subchapter": "3.100", "page": 234, "blocks": 18, "chars": 3907, "max_depth": 2}
+{"rule": "3.201", "title": "Rule 3.201 Applicability of Rules", "chapter": "3", "subchapter": "3.200", "page": 236, "blocks": 21, "chars": 2421, "max_depth": 3}
+{"rule": "3.202", "title": "Rule 3.202 Capacity to Sue", "chapter": "3", "subchapter": "3.200", "page": 237, "blocks": 2, "chars": 269, "max_depth": 1}
+{"rule": "3.203", "title": "Rule 3.203 Service of Notice and Court Documents in Domestic Relations Cases", "chapter": "3", "subchapter": "3.200", "page": 237, "blocks": 23, "chars": 4781, "max_depth": 2}
+{"rule": "3.204", "title": "Rule 3.204 Proceedings Affecting Children", "chapter": "3", "subchapter": "3.200", "page": 239, "blocks": 14, "chars": 3846, "max_depth": 3}
+{"rule": "3.205", "title": "Rule 3.205 Prior and Subsequent Orders and Judgments Affecting Minors", "chapter": "3", "subchapter": "3.200", "page": 240, "blocks": 20, "chars": 2964, "max_depth": 3}
+{"rule": "3.206", "title": "Rule 3.206 Initiating a Case", "chapter": "3", "subchapter": "3.200", "page": 241, "blocks": 30, "chars": 7205, "max_depth": 3}
+{"rule": "3.207", "title": "Rule 3.207 Ex Parte, Temporary, and Protective Orders", "chapter": "3", "subchapter": "3.200", "page": 244, "blocks": 31, "chars": 6903, "max_depth": 4}
+{"rule": "3.208", "title": "Rule 3.208 Friend of the Court", "chapter": "3", "subchapter": "3.200", "page": 246, "blocks": 22, "chars": 4416, "max_depth": 3}
+{"rule": "3.209", "title": "Rule 3.209 Suspension of Enforcement and Dismissal", "chapter": "3", "subchapter": "3.200", "page": 248, "blocks": 4, "chars": 532, "max_depth": 2}
+{"rule": "3.210", "title": "Rule 3.210 Hearings and Trials", "chapter": "3", "subchapter": "3.200", "page": 248, "blocks": 54, "chars": 10940, "max_depth": 4}
+{"rule": "3.211", "title": "Rule 3.211 Judgments and Orders", "chapter": "3", "subchapter": "3.200", "page": 252, "blocks": 31, "chars": 5170, "max_depth": 3}
+{"rule": "3.212", "title": "Rule 3.212 Postjudgment Transfer of Domestic Relations Cases", "chapter": "3", "subchapter": "3.200", "page": 254, "blocks": 23, "chars": 5339, "max_depth": 3}
+{"rule": "3.213", "title": "Rule 3.213 Postjudgment Motions and Enforcement", "chapter": "3", "subchapter": "3.200", "page": 256, "blocks": 1, "chars": 77, "max_depth": 0}
+{"rule": "3.214", "title": "Rule 3.214 Actions Under Uniform Acts", "chapter": "3", "subchapter": "3.200", "page": 256, "blocks": 10, "chars": 2507, "max_depth": 3}
+{"rule": "3.215", "title": "Rule 3.215 Domestic Relations Referees", "chapter": "3", "subchapter": "3.200", "page": 257, "blocks": 63, "chars": 11154, "max_depth": 4}
+{"rule": "3.216", "title": "Rule 3.216 Domestic Relations Mediation", "chapter": "3", "subchapter": "3.200", "page": 261, "blocks": 89, "chars": 15891, "max_depth": 4}
+{"rule": "3.217", "title": "Rule 3.217 Actions Under the Paternity Act", "chapter": "3", "subchapter": "3.200", "page": 267, "blocks": 11, "chars": 1950, "max_depth": 3}
+{"rule": "3.218", "title": "Rule 3.218 Friend of the Court Records; Access", "chapter": "3", "subchapter": "3.200", "page": 268, "blocks": 33, "chars": 5748, "max_depth": 3}
+{"rule": "3.219", "title": "Rule 3.219 Dissemination of a Professional Report", "chapter": "3", "subchapter": "3.200", "page": 270, "blocks": 1, "chars": 528, "max_depth": 0}
+{"rule": "3.221", "title": "Rule 3.221 Hearings on Support and Parenting Time Enforcement Act Bench Warrants", "chapter": "3", "subchapter": "3.200", "page": 271, "blocks": 42, "chars": 8145, "max_depth": 3}
+{"rule": "3.222", "title": "Rule 3.222 Uniform Collaborative Law Act Process and Agreements", "chapter": "3", "subchapter": "3.200", "page": 274, "blocks": 52, "chars": 9825, "max_depth": 4}
+{"rule": "3.223", "title": "Rule 3.223 Summary Proceeding for Entry of Consent Judgment or Order", "chapter": "3", "subchapter": "3.200", "page": 277, "blocks": 31, "chars": 4632, "max_depth": 4}
+{"rule": "3.224", "title": "Rule 3.224 Friend of the Court Alternative Dispute Resolution", "chapter": "3", "subchapter": "3.200", "page": 279, "blocks": 103, "chars": 19087, "max_depth": 5}
+{"rule": "3.229", "title": "Rule 3.229 Filing Confidential Materials", "chapter": "3", "subchapter": "3.200", "page": 286, "blocks": 10, "chars": 1053, "max_depth": 2}
+{"rule": "3.230", "title": "Rule 3.230 Actions Under the Summary Support and Paternity Act", "chapter": "3", "subchapter": "3.200", "page": 287, "blocks": 81, "chars": 11628, "max_depth": 4}
+{"rule": "3.301", "title": "Rule 3.301 Extraordinary Writs in General", "chapter": "3", "subchapter": "3.300", "page": 292, "blocks": 17, "chars": 2138, "max_depth": 3}
+{"rule": "3.302", "title": "Rule 3.302 Superintending Control", "chapter": "3", "subchapter": "3.300", "page": 293, "blocks": 17, "chars": 2174, "max_depth": 4}
+{"rule": "3.303", "title": "Rule 3.303 Habeas Corpus to Inquire Into Cause of Detention", "chapter": "3", "subchapter": "3.300", "page": 294, "blocks": 61, "chars": 10520, "max_depth": 3}
+{"rule": "3.304", "title": "Rule 3.304 Habeas Corpus to Bring Prisoner to Testify or for Prosecution", "chapter": "3", "subchapter": "3.300", "page": 298, "blocks": 12, "chars": 1720, "max_depth": 2}
+{"rule": "3.305", "title": "Rule 3.305 Mandamus", "chapter": "3", "subchapter": "3.300", "page": 298, "blocks": 11, "chars": 1552, "max_depth": 2}
+{"rule": "3.306", "title": "Rule 3.306 Quo Warranto", "chapter": "3", "subchapter": "3.300", "page": 299, "blocks": 19, "chars": 2835, "max_depth": 3}
+{"rule": "3.310", "title": "Rule 3.310 Injunctions", "chapter": "3", "subchapter": "3.300", "page": 300, "blocks": 35, "chars": 7512, "max_depth": 3}
+{"rule": "3.401", "title": "Rule 3.401 Partition", "chapter": "3", "subchapter": "3.400", "page": 303, "blocks": 6, "chars": 1049, "max_depth": 2}
+{"rule": "3.402", "title": "Rule 3.402 Partition Procedure", "chapter": "3", "subchapter": "3.400", "page": 303, "blocks": 30, "chars": 5147, "max_depth": 4}
+{"rule": "3.403", "title": "Rule 3.403 Sale of Premises and Division of Proceeds as Substitute for Partition", "chapter": "3", "subchapter": "3.400", "page": 305, "blocks": 49, "chars": 9541, "max_depth": 4}
+{"rule": "3.410", "title": "Rule 3.410 Foreclosure of Mortgages and Land Contracts", "chapter": "3", "subchapter": "3.400", "page": 309, "blocks": 11, "chars": 2235, "max_depth": 2}
+{"rule": "3.411", "title": "Rule 3.411 Civil Action to Determine Interests in Land", "chapter": "3", "subchapter": "3.400", "page": 310, "blocks": 34, "chars": 6002, "max_depth": 3}
+{"rule": "3.412", "title": "Rule 3.412 Construction Liens", "chapter": "3", "subchapter": "3.400", "page": 312, "blocks": 1, "chars": 739, "max_depth": 0}
+{"rule": "3.501", "title": "Rule 3.501 Class Actions", "chapter": "3", "subchapter": "3.500", "page": 312, "blocks": 90, "chars": 14220, "max_depth": 4}
+{"rule": "3.502", "title": "Rule 3.502 Secondary Action by Shareholders", "chapter": "3", "subchapter": "3.500", "page": 318, "blocks": 9, "chars": 1481, "max_depth": 2}
+{"rule": "3.503", "title": "Rule 3.503 Action by Fiduciary", "chapter": "3", "subchapter": "3.500", "page": 319, "blocks": 4, "chars": 701, "max_depth": 2}
+{"rule": "3.601", "title": "Rule 3.601 Public Nuisances", "chapter": "3", "subchapter": "3.600", "page": 319, "blocks": 10, "chars": 2647, "max_depth": 2}
+{"rule": "3.602", "title": "Rule 3.602 Arbitration", "chapter": "3", "subchapter": "3.600", "page": 320, "blocks": 42, "chars": 8811, "max_depth": 3}
+{"rule": "3.603", "title": "Rule 3.603 Interpleader", "chapter": "3", "subchapter": "3.600", "page": 323, "blocks": 18, "chars": 3161, "max_depth": 2}
+{"rule": "3.604", "title": "Rule 3.604 Bonds", "chapter": "3", "subchapter": "3.600", "page": 324, "blocks": 24, "chars": 5185, "max_depth": 2}
+{"rule": "3.605", "title": "Rule 3.605 Collection of Penalties, Fines, Forfeitures, and Forfeited Recognizances", "chapter": "3", "subchapter": "3.600", "page": 326, "blocks": 5, "chars": 1898, "max_depth": 1}
+{"rule": "3.606", "title": "Rule 3.606 Contempts Outside Immediate Presence of Court", "chapter": "3", "subchapter": "3.600", "page": 327, "blocks": 14, "chars": 2646, "max_depth": 3}
+{"rule": "3.607", "title": "Rule 3.607 Proceedings to Restore Lost Records or Documents in Courts of Record", "chapter": "3", "subchapter": "3.600", "page": 328, "blocks": 4, "chars": 1502, "max_depth": 1}
+{"rule": "3.611", "title": "Rule 3.611 Voluntary Dissolution of Corporations", "chapter": "3", "subchapter": "3.600", "page": 328, "blocks": 14, "chars": 2883, "max_depth": 3}
+{"rule": "3.612", "title": "Rule 3.612 Winding Up of Corporation Whose Term or Charter Has Expired", "chapter": "3", "subchapter": "3.600", "page": 329, "blocks": 29, "chars": 4355, "max_depth": 3}
+{"rule": "3.613", "title": "Rule 3.613 Change of Name", "chapter": "3", "subchapter": "3.600", "page": 331, "blocks": 27, "chars": 7432, "max_depth": 3}
+{"rule": "3.614", "title": "Rule 3.614 Health Threats to Others", "chapter": "3", "subchapter": "3.600", "page": 334, "blocks": 10, "chars": 2805, "max_depth": 2}
+{"rule": "3.615", "title": "Rule 3.615 Parental Rights Restoration Act Proceedings", "chapter": "3", "subchapter": "3.600", "page": 335, "blocks": 47, "chars": 9456, "max_depth": 4}
+{"rule": "3.616", "title": "Rule 3.616 Proceeding to Determine Continuation of Voluntary Foster Care Services.", "chapter": "3", "subchapter": "3.600", "page": 338, "blocks": 23, "chars": 3228, "max_depth": 3}
+{"rule": "3.617", "title": "Rule 3.617 Delayed Registration of Birth", "chapter": "3", "subchapter": "3.600", "page": 339, "blocks": 1, "chars": 333, "max_depth": 0}
+{"rule": "3.618", "title": "Rule 3.618 Emancipation of Minor", "chapter": "3", "subchapter": "3.600", "page": 340, "blocks": 27, "chars": 4903, "max_depth": 3}
+{"rule": "3.701", "title": "Rule 3.701 Applicability of Rules; Forms", "chapter": "3", "subchapter": "3.700", "page": 342, "blocks": 2, "chars": 871, "max_depth": 1}
+{"rule": "3.702", "title": "Rule 3.702 Definitions", "chapter": "3", "subchapter": "3.700", "page": 342, "blocks": 8, "chars": 930, "max_depth": 1}
+{"rule": "3.703", "title": "Rule 3.703 Commencing a Personal Protection Action", "chapter": "3", "subchapter": "3.700", "page": 342, "blocks": 23, "chars": 4251, "max_depth": 3}
+{"rule": "3.704", "title": "Rule 3.704 Dismissal", "chapter": "3", "subchapter": "3.700", "page": 344, "blocks": 1, "chars": 211, "max_depth": 0}
+{"rule": "3.705", "title": "Rule 3.705 Issuance of Personal Protection Orders", "chapter": "3", "subchapter": "3.700", "page": 344, "blocks": 17, "chars": 4101, "max_depth": 3}
+{"rule": "3.706", "title": "Rule 3.706 Orders", "chapter": "3", "subchapter": "3.700", "page": 346, "blocks": 19, "chars": 4406, "max_depth": 3}
+{"rule": "3.707", "title": "Rule 3.707 Modification, Termination, or Extension of Order", "chapter": "3", "subchapter": "3.700", "page": 347, "blocks": 12, "chars": 3426, "max_depth": 3}
+{"rule": "3.708", "title": "Rule 3.708 Contempt Proceedings for Violation of Personal Protection Orders", "chapter": "3", "subchapter": "3.700", "page": 348, "blocks": 43, "chars": 7911, "max_depth": 3}
+{"rule": "3.709", "title": "Rule 3.709 Appeals", "chapter": "3", "subchapter": "3.700", "page": 351, "blocks": 9, "chars": 854, "max_depth": 3}
+{"rule": "3.715", "title": "Rule 3.715 Definitions", "chapter": "3", "subchapter": "3.700", "page": 352, "blocks": 10, "chars": 1529, "max_depth": 1}
+{"rule": "3.716", "title": "Rule 3.716 Commencing an Extreme Risk Protection Action", "chapter": "3", "subchapter": "3.700", "page": 353, "blocks": 45, "chars": 6521, "max_depth": 4}
+{"rule": "3.717", "title": "Rule 3.717 Dismissals", "chapter": "3", "subchapter": "3.700", "page": 355, "blocks": 1, "chars": 305, "max_depth": 0}
+{"rule": "3.718", "title": "Rule 3.718 Issuing Extreme Risk Protection Orders", "chapter": "3", "subchapter": "3.700", "page": 355, "blocks": 37, "chars": 9457, "max_depth": 4}
+{"rule": "3.719", "title": "Rule 3.719 Orders", "chapter": "3", "subchapter": "3.700", "page": 359, "blocks": 38, "chars": 8419, "max_depth": 4}
+{"rule": "3.720", "title": "Rule 3.720 Modification, Termination, or Extension of Order", "chapter": "3", "subchapter": "3.700", "page": 362, "blocks": 17, "chars": 5167, "max_depth": 3}
+{"rule": "3.721", "title": "Rule 3.721 Contempt Proceedings for Violation of Extreme Risk Protection Order", "chapter": "3", "subchapter": "3.700", "page": 363, "blocks": 37, "chars": 6206, "max_depth": 3}
+{"rule": "3.722", "title": "Rule 3.722 Appeals", "chapter": "3", "subchapter": "3.700", "page": 366, "blocks": 7, "chars": 676, "max_depth": 3}
+{"rule": "3.800", "title": "Rule 3.800 Applicable Rules; Interested Parties; Indian Child", "chapter": "3", "subchapter": "3.800", "page": 366, "blocks": 9, "chars": 1097, "max_depth": 3}
+{"rule": "3.801", "title": "Rule 3.801 Documents, Execution", "chapter": "3", "subchapter": "3.800", "page": 367, "blocks": 2, "chars": 374, "max_depth": 1}
+{"rule": "3.802", "title": "Rule 3.802 Manner and Method of Service", "chapter": "3", "subchapter": "3.800", "page": 367, "blocks": 21, "chars": 4808, "max_depth": 3}
+{"rule": "3.803", "title": "Rule 3.803 Financial Reports, Subsequent Orders", "chapter": "3", "subchapter": "3.800", "page": 369, "blocks": 7, "chars": 817, "max_depth": 2}
+{"rule": "3.804", "title": "Rule 3.804 Consent and Release", "chapter": "3", "subchapter": "3.800", "page": 369, "blocks": 16, "chars": 3530, "max_depth": 2}
+{"rule": "3.805", "title": "Rule 3.805 Temporary Placements, Time for Service of Notice of Hearing to Determine Disposition of Child", "chapter": "3", "subchapter": "3.800", "page": 370, "blocks": 5, "chars": 960, "max_depth": 2}
+{"rule": "3.806", "title": "Rule 3.806 Rehearings", "chapter": "3", "subchapter": "3.800", "page": 371, "blocks": 4, "chars": 1128, "max_depth": 1}
+{"rule": "3.807", "title": "Rule 3.807 Indian Child", "chapter": "3", "subchapter": "3.800", "page": 371, "blocks": 12, "chars": 2624, "max_depth": 4}
+{"rule": "3.808", "title": "Rule 3.808 Finalizing Adoption; Findings of Court", "chapter": "3", "subchapter": "3.800", "page": 372, "blocks": 2, "chars": 559, "max_depth": 0}
+{"rule": "3.809", "title": "Rule 3.809 Notice Following Involuntary Termination of Parental Rights", "chapter": "3", "subchapter": "3.800", "page": 373, "blocks": 3, "chars": 732, "max_depth": 1}
+{"rule": "3.810", "title": "Rule 3.810 Transcripts for Purposes of Appeal", "chapter": "3", "subchapter": "3.800", "page": 373, "blocks": 1, "chars": 246, "max_depth": 0}
+{"rule": "3.811", "title": "Rule 3.811 Use of Videoconferencing Technology", "chapter": "3", "subchapter": "3.800", "page": 373, "blocks": 1, "chars": 157, "max_depth": 0}
+{"rule": "3.901", "title": "Rule 3.901 Applicability of Rules", "chapter": "3", "subchapter": "3.900", "page": 373, "blocks": 11, "chars": 1106, "max_depth": 2}
+{"rule": "3.902", "title": "Rule 3.902 Construction", "chapter": "3", "subchapter": "3.900", "page": 374, "blocks": 4, "chars": 786, "max_depth": 2}
+{"rule": "3.903", "title": "Rule 3.903 Definitions", "chapter": "3", "subchapter": "3.900", "page": 374, "blocks": 131, "chars": 17422, "max_depth": 4}
+{"rule": "3.904", "title": "Rule 3.904 Use of Videoconferencing Technology.", "chapter": "3", "subchapter": "3.900", "page": 381, "blocks": 10, "chars": 2402, "max_depth": 3}
+{"rule": "3.905", "title": "Rule 3.905 Indian Children; Jurisdiction, Notice, Transfer, Intervention", "chapter": "3", "subchapter": "3.900", "page": 382, "blocks": 10, "chars": 2740, "max_depth": 3}
+{"rule": "3.906", "title": "Rule 3.906 Use of Restraints on a Juvenile", "chapter": "3", "subchapter": "3.900", "page": 383, "blocks": 6, "chars": 1434, "max_depth": 2}
+{"rule": "3.907", "title": "Rule 3.907 Screening Tools and Risk and Needs Assessments", "chapter": "3", "subchapter": "3.900", "page": 384, "blocks": 31, "chars": 4435, "max_depth": 3}
+{"rule": "3.911", "title": "Rule 3.911 Jury", "chapter": "3", "subchapter": "3.900", "page": 385, "blocks": 16, "chars": 1587, "max_depth": 3}
+{"rule": "3.912", "title": "Rule 3.912 Judge", "chapter": "3", "subchapter": "3.900", "page": 386, "blocks": 13, "chars": 1378, "max_depth": 2}
+{"rule": "3.913", "title": "Rule 3.913 Referees", "chapter": "3", "subchapter": "3.900", "page": 387, "blocks": 11, "chars": 2291, "max_depth": 3}
+{"rule": "3.914", "title": "Rule 3.914 Prosecuting Attorney", "chapter": "3", "subchapter": "3.900", "page": 388, "blocks": 11, "chars": 1754, "max_depth": 2}
+{"rule": "3.915", "title": "Rule 3.915 Assistance of Attorney", "chapter": "3", "subchapter": "3.900", "page": 389, "blocks": 26, "chars": 4838, "max_depth": 4}
+{"rule": "3.916", "title": "Rule 3.916 Guardian Ad Litem", "chapter": "3", "subchapter": "3.900", "page": 390, "blocks": 4, "chars": 1016, "max_depth": 1}
+{"rule": "3.917", "title": "Rule 3.917 Court Appointed Special Advocate", "chapter": "3", "subchapter": "3.900", "page": 391, "blocks": 5, "chars": 1022, "max_depth": 1}
+{"rule": "3.920", "title": "Rule 3.920 Service of Process", "chapter": "3", "subchapter": "3.900", "page": 391, "blocks": 52, "chars": 8808, "max_depth": 4}
+{"rule": "3.921", "title": "Rule 3.921 Persons Entitled to Notice", "chapter": "3", "subchapter": "3.900", "page": 395, "blocks": 68, "chars": 7887, "max_depth": 4}
+{"rule": "3.922", "title": "Rule 3.922 Pretrial Procedures in Delinquency and Child Protection Proceedings", "chapter": "3", "subchapter": "3.900", "page": 398, "blocks": 51, "chars": 9587, "max_depth": 4}
+{"rule": "3.923", "title": "Rule 3.923 Miscellaneous Procedures", "chapter": "3", "subchapter": "3.900", "page": 402, "blocks": 15, "chars": 2551, "max_depth": 3}
+{"rule": "3.924", "title": "Rule 3.924 Information Furnished on Request by Court", "chapter": "3", "subchapter": "3.900", "page": 403, "blocks": 1, "chars": 355, "max_depth": 0}
+{"rule": "3.925", "title": "Rule 3.925 Open Proceedings; Judgments and Orders; Records Confidentiality; Destruction of Court Records; Setting Aside Adjudications", "chapter": "3", "subchapter": "3.900", "page": 403, "blocks": 14, "chars": 3732, "max_depth": 2}
+{"rule": "3.926", "title": "Rule 3.926 Transfer of Jurisdiction; Change of Venue", "chapter": "3", "subchapter": "3.900", "page": 404, "blocks": 24, "chars": 4239, "max_depth": 3}
+{"rule": "3.927", "title": "Rule 3.927 Prior Court Orders", "chapter": "3", "subchapter": "3.900", "page": 406, "blocks": 1, "chars": 241, "max_depth": 0}
+{"rule": "3.928", "title": "Rule 3.928 Contempt of Court", "chapter": "3", "subchapter": "3.900", "page": 406, "blocks": 4, "chars": 1300, "max_depth": 1}
+{"rule": "3.929", "title": "Rule 3.929 Use of Facsimile Communication Equipment", "chapter": "3", "subchapter": "3.900", "page": 406, "blocks": 1, "chars": 226, "max_depth": 0}
+{"rule": "3.930", "title": "Rule 3.930 Receipt and Return or Disposal of Exhibits in Juvenile Proceedings", "chapter": "3", "subchapter": "3.900", "page": 407, "blocks": 3, "chars": 1375, "max_depth": 1}
+{"rule": "3.931", "title": "Rule 3.931 Initiating Delinquency Proceedings", "chapter": "3", "subchapter": "3.900", "page": 407, "blocks": 19, "chars": 2576, "max_depth": 3}
+{"rule": "3.932", "title": "Rule 3.932 Summary Initial Proceedings", "chapter": "3", "subchapter": "3.900", "page": 408, "blocks": 27, "chars": 6590, "max_depth": 4}
+{"rule": "3.933", "title": "Rule 3.933 Acquiring Physical Control of Juvenile", "chapter": "3", "subchapter": "3.900", "page": 410, "blocks": 15, "chars": 2380, "max_depth": 3}
+{"rule": "3.934", "title": "Rule 3.934 Arranging Court Appearance; Detained Juvenile", "chapter": "3", "subchapter": "3.900", "page": 411, "blocks": 12, "chars": 1589, "max_depth": 3}
+{"rule": "3.935", "title": "Rule 3.935 Preliminary Hearing", "chapter": "3", "subchapter": "3.900", "page": 412, "blocks": 77, "chars": 11694, "max_depth": 4}
+{"rule": "3.936", "title": "Rule 3.936 Biometric Data", "chapter": "3", "subchapter": "3.900", "page": 417, "blocks": 8, "chars": 2093, "max_depth": 2}
+{"rule": "3.937", "title": "Rule 3.937 Advice of Appellate Rights", "chapter": "3", "subchapter": "3.900", "page": 418, "blocks": 8, "chars": 1325, "max_depth": 3}
+{"rule": "3.939", "title": "Rule 3.939 Case Transferred From District Court Pursuant to Subchapter 6.900", "chapter": "3", "subchapter": "3.900", "page": 418, "blocks": 2, "chars": 525, "max_depth": 1}
+{"rule": "3.941", "title": "Rule 3.941 Pleas of Admission or No Contest", "chapter": "3", "subchapter": "3.900", "page": 418, "blocks": 24, "chars": 2563, "max_depth": 4}
+{"rule": "3.942", "title": "Rule 3.942 Trial", "chapter": "3", "subchapter": "3.900", "page": 419, "blocks": 11, "chars": 1953, "max_depth": 3}
+{"rule": "3.943", "title": "Rule 3.943 Dispositional Hearing", "chapter": "3", "subchapter": "3.900", "page": 420, "blocks": 27, "chars": 4687, "max_depth": 4}
+{"rule": "3.944", "title": "Rule 3.944 Probation Violation", "chapter": "3", "subchapter": "3.900", "page": 422, "blocks": 55, "chars": 8452, "max_depth": 4}
+{"rule": "3.945", "title": "Rule 3.945 Dispositional Review", "chapter": "3", "subchapter": "3.900", "page": 425, "blocks": 24, "chars": 5433, "max_depth": 3}
+{"rule": "3.946", "title": "Rule 3.946 Post-Dispositional Secure Detention Pending Return to Placement", "chapter": "3", "subchapter": "3.900", "page": 427, "blocks": 6, "chars": 1116, "max_depth": 2}
+{"rule": "3.947", "title": "Rule 3.947 Other Placement Review Proceedings", "chapter": "3", "subchapter": "3.900", "page": 428, "blocks": 9, "chars": 1413, "max_depth": 3}
+{"rule": "3.950", "title": "Rule 3.950 Waiver of Jurisdiction", "chapter": "3", "subchapter": "3.900", "page": 428, "blocks": 45, "chars": 8946, "max_depth": 4}
+{"rule": "3.951", "title": "Rule 3.951 Initiating Designated Proceedings", "chapter": "3", "subchapter": "3.900", "page": 432, "blocks": 43, "chars": 7597, "max_depth": 4}
+{"rule": "3.952", "title": "Rule 3.952 Designation Hearing", "chapter": "3", "subchapter": "3.900", "page": 435, "blocks": 24, "chars": 3813, "max_depth": 4}
+{"rule": "3.953", "title": "Rule 3.953 Preliminary Examination in Designated Cases", "chapter": "3", "subchapter": "3.900", "page": 436, "blocks": 10, "chars": 2799, "max_depth": 2}
+{"rule": "3.954", "title": "Rule 3.954 Trial of Designated Cases", "chapter": "3", "subchapter": "3.900", "page": 437, "blocks": 1, "chars": 279, "max_depth": 0}
+{"rule": "3.955", "title": "Rule 3.955 Sentencing or Disposition in Designated Cases", "chapter": "3", "subchapter": "3.900", "page": 437, "blocks": 12, "chars": 3389, "max_depth": 2}
+{"rule": "3.956", "title": "Rule 3.956 Review Hearings; Probation Violation", "chapter": "3", "subchapter": "3.900", "page": 438, "blocks": 42, "chars": 6819, "max_depth": 4}
+{"rule": "3.961", "title": "Rule 3.961 Initiating Child Protective Proceedings", "chapter": "3", "subchapter": "3.900", "page": 441, "blocks": 17, "chars": 3476, "max_depth": 3}
+{"rule": "3.962", "title": "Rule 3.962 Preliminary Inquiry", "chapter": "3", "subchapter": "3.900", "page": 442, "blocks": 5, "chars": 799, "max_depth": 2}
+{"rule": "3.963", "title": "Rule 3.963 Acquiring Physical Custody of Child", "chapter": "3", "subchapter": "3.900", "page": 443, "blocks": 28, "chars": 5809, "max_depth": 4}
+{"rule": "3.965", "title": "Rule 3.965 Preliminary Hearing", "chapter": "3", "subchapter": "3.900", "page": 445, "blocks": 64, "chars": 13202, "max_depth": 4}
+{"rule": "3.966", "title": "Rule 3.966 Other Placement Review Proceedings", "chapter": "3", "subchapter": "3.900", "page": 450, "blocks": 28, "chars": 4350, "max_depth": 3}
+{"rule": "3.967", "title": "Rule 3.967 Removal Hearing for Indian Child", "chapter": "3", "subchapter": "3.900", "page": 451, "blocks": 12, "chars": 3256, "max_depth": 2}
+{"rule": "3.970", "title": "Rule 3.970 Child Protection Mediation", "chapter": "3", "subchapter": "3.900", "page": 453, "blocks": 48, "chars": 8303, "max_depth": 4}
+{"rule": "3.971", "title": "Rule 3.971 Pleas of Admission or No Contest", "chapter": "3", "subchapter": "3.900", "page": 456, "blocks": 19, "chars": 3503, "max_depth": 3}
+{"rule": "3.972", "title": "Rule 3.972 Trial", "chapter": "3", "subchapter": "3.900", "page": 457, "blocks": 22, "chars": 4597, "max_depth": 3}
+{"rule": "3.973", "title": "Rule 3.973 Dispositional Hearing", "chapter": "3", "subchapter": "3.900", "page": 459, "blocks": 36, "chars": 7782, "max_depth": 3}
+{"rule": "3.974", "title": "Rule 3.974 Procedures for Child at Home; Petition Authorized", "chapter": "3", "subchapter": "3.900", "page": 462, "blocks": 21, "chars": 6552, "max_depth": 4}
+{"rule": "3.975", "title": "Rule 3.975 Post-dispositional Procedures: Child in Foster Care", "chapter": "3", "subchapter": "3.900", "page": 464, "blocks": 32, "chars": 7160, "max_depth": 3}
+{"rule": "3.976", "title": "Rule 3.976 Permanency Planning Hearings", "chapter": "3", "subchapter": "3.900", "page": 466, "blocks": 56, "chars": 10551, "max_depth": 4}
+{"rule": "3.977", "title": "Rule 3.977 Termination of Parental Rights", "chapter": "3", "subchapter": "3.900", "page": 470, "blocks": 63, "chars": 10546, "max_depth": 5}
+{"rule": "3.978", "title": "Rule 3.978 Post-Termination Review Hearings", "chapter": "3", "subchapter": "3.900", "page": 474, "blocks": 6, "chars": 1862, "max_depth": 2}
+{"rule": "3.979", "title": "Rule 3.979 Juvenile Guardianships", "chapter": "3", "subchapter": "3.900", "page": 475, "blocks": 51, "chars": 15746, "max_depth": 4}
+{"rule": "3.981", "title": "Rule 3.981 Minor Personal Protection Orders; Issuance; Modification; Recision; Appeal", "chapter": "3", "subchapter": "3.900", "page": 480, "blocks": 1, "chars": 238, "max_depth": 0}
+{"rule": "3.982", "title": "Rule 3.982 Enforcement of Minor Personal Protection Orders", "chapter": "3", "subchapter": "3.900", "page": 480, "blocks": 4, "chars": 859, "max_depth": 2}
+{"rule": "3.983", "title": "Rule 3.983 Initiation of Contempt Proceedings by Supplemental Petition", "chapter": "3", "subchapter": "3.900", "page": 481, "blocks": 10, "chars": 1609, "max_depth": 3}
+{"rule": "3.984", "title": "Rule 3.984 Apprehension of Alleged Violator", "chapter": "3", "subchapter": "3.900", "page": 481, "blocks": 13, "chars": 2886, "max_depth": 3}
+{"rule": "3.985", "title": "Rule 3.985 Preliminary Hearing", "chapter": "3", "subchapter": "3.900", "page": 482, "blocks": 51, "chars": 7770, "max_depth": 4}
+{"rule": "3.986", "title": "Rule 3.986 Pleas of Admission or No Contest", "chapter": "3", "subchapter": "3.900", "page": 485, "blocks": 4, "chars": 1112, "max_depth": 1}
+{"rule": "3.987", "title": "Rule 3.987 Violation Hearing", "chapter": "3", "subchapter": "3.900", "page": 486, "blocks": 13, "chars": 2940, "max_depth": 3}
+{"rule": "3.988", "title": "Rule 3.988 Dispositional Hearing", "chapter": "3", "subchapter": "3.900", "page": 487, "blocks": 14, "chars": 2082, "max_depth": 3}
+{"rule": "3.989", "title": "Rule 3.989 Supplemental Dispositions", "chapter": "3", "subchapter": "3.900", "page": 488, "blocks": 1, "chars": 238, "max_depth": 0}
+{"rule": "3.991", "title": "Rule 3.991 Review of Referee Recommendations", "chapter": "3", "subchapter": "3.900", "page": 488, "blocks": 19, "chars": 2327, "max_depth": 3}
+{"rule": "3.992", "title": "Rule 3.992 Rehearings; New Trial", "chapter": "3", "subchapter": "3.900", "page": 489, "blocks": 6, "chars": 1871, "max_depth": 1}
+{"rule": "3.993", "title": "Rule 3.993 Appeals", "chapter": "3", "subchapter": "3.900", "page": 489, "blocks": 47, "chars": 9594, "max_depth": 3}
+{"rule": "4.001", "title": "Rule 4.001 Applicability", "chapter": "4", "subchapter": "4.000", "page": 494, "blocks": 1, "chars": 245, "max_depth": 0}
+{"rule": "4.002", "title": "Rule 4.002 Transfer of Actions From District Court to Circuit Court", "chapter": "4", "subchapter": "4.000", "page": 494, "blocks": 18, "chars": 4571, "max_depth": 3}
+{"rule": "4.003", "title": "Rule 4.003 Removal of Actions From Circuit Court to District Court.", "chapter": "4", "subchapter": "4.000", "page": 495, "blocks": 1, "chars": 58, "max_depth": 0}
+{"rule": "4.101", "title": "Rule 4.101 Civil Infraction Actions", "chapter": "4", "subchapter": "4.100", "page": 496, "blocks": 70, "chars": 9418, "max_depth": 3}
+{"rule": "4.201", "title": "Rule 4.201 Summary Proceedings to Recover Possession of Premises", "chapter": "4", "subchapter": "4.200", "page": 500, "blocks": 190, "chars": 31170, "max_depth": 4}
+{"rule": "4.202", "title": "Rule 4.202 Summary Proceedings; Land Contract Forfeiture", "chapter": "4", "subchapter": "4.200", "page": 512, "blocks": 55, "chars": 6275, "max_depth": 4}
+{"rule": "4.301", "title": "Rule 4.301 Applicability of Rules", "chapter": "4", "subchapter": "4.300", "page": 515, "blocks": 1, "chars": 295, "max_depth": 0}
+{"rule": "4.302", "title": "Rule 4.302 Statement of Claim", "chapter": "4", "subchapter": "4.300", "page": 515, "blocks": 9, "chars": 1611, "max_depth": 2}
+{"rule": "4.303", "title": "Rule 4.303 Notice", "chapter": "4", "subchapter": "4.300", "page": 516, "blocks": 7, "chars": 1356, "max_depth": 2}
+{"rule": "4.304", "title": "Rule 4.304 Conduct of Trial", "chapter": "4", "subchapter": "4.300", "page": 517, "blocks": 5, "chars": 831, "max_depth": 2}
+{"rule": "4.305", "title": "Rule 4.305 Judgments", "chapter": "4", "subchapter": "4.300", "page": 517, "blocks": 3, "chars": 675, "max_depth": 1}
+{"rule": "4.306", "title": "Rule 4.306 Removal to Trial Court", "chapter": "4", "subchapter": "4.300", "page": 517, "blocks": 15, "chars": 2029, "max_depth": 3}
+{"rule": "4.401", "title": "Rule 4.401 District Court Magistrates", "chapter": "4", "subchapter": "4.400", "page": 518, "blocks": 5, "chars": 1108, "max_depth": 1}
+{"rule": "5.001", "title": "Rule 5.001 Applicability", "chapter": "5", "subchapter": "5.000", "page": 520, "blocks": 4, "chars": 507, "max_depth": 2}
+{"rule": "5.101", "title": "Rule 5.101 Form and Commencement of Action; Confidential Records", "chapter": "5", "subchapter": "5.100", "page": 520, "blocks": 6, "chars": 635, "max_depth": 2}
+{"rule": "5.102", "title": "Rule 5.102 Notice of Hearing", "chapter": "5", "subchapter": "5.100", "page": 520, "blocks": 1, "chars": 330, "max_depth": 0}
+{"rule": "5.103", "title": "Rule 5.103 Who May Serve", "chapter": "5", "subchapter": "5.100", "page": 521, "blocks": 2, "chars": 321, "max_depth": 1}
+{"rule": "5.104", "title": "Rule 5.104 Proof of Service; Waiver and Consent; Unopposed Petition", "chapter": "5", "subchapter": "5.100", "page": 521, "blocks": 21, "chars": 3211, "max_depth": 3}
+{"rule": "5.105", "title": "Rule 5.105 Manner and Method of Service", "chapter": "5", "subchapter": "5.100", "page": 522, "blocks": 41, "chars": 7504, "max_depth": 4}
+{"rule": "5.106", "title": "Rule 5.106 Publication of Notice of Hearing", "chapter": "5", "subchapter": "5.100", "page": 525, "blocks": 9, "chars": 1568, "max_depth": 2}
+{"rule": "5.107", "title": "Rule 5.107 Other Documents Required to be Served", "chapter": "5", "subchapter": "5.100", "page": 526, "blocks": 4, "chars": 882, "max_depth": 2}
+{"rule": "5.108", "title": "Rule 5.108 Time of Service", "chapter": "5", "subchapter": "5.100", "page": 526, "blocks": 10, "chars": 1398, "max_depth": 3}
+{"rule": "5.109", "title": "Rule 5.109 Notice of Guardianship Proceedings Concerning Indian Child", "chapter": "5", "subchapter": "5.100", "page": 527, "blocks": 3, "chars": 1428, "max_depth": 1}
+{"rule": "5.112", "title": "Rule 5.112 Prior Proceedings Affecting the Person of a Minor", "chapter": "5", "subchapter": "5.100", "page": 527, "blocks": 1, "chars": 267, "max_depth": 0}
+{"rule": "5.113", "title": "Rule 5.113 Form, Captioning, Signing, and Verifying of Documents", "chapter": "5", "subchapter": "5.100", "page": 527, "blocks": 11, "chars": 1896, "max_depth": 3}
+{"rule": "5.117", "title": "Rule 5.117 Appearance by Attorneys", "chapter": "5", "subchapter": "5.100", "page": 528, "blocks": 15, "chars": 3842, "max_depth": 3}
+{"rule": "5.118", "title": "Rule 5.118 Amending or Supplementing Papers", "chapter": "5", "subchapter": "5.100", "page": 529, "blocks": 4, "chars": 584, "max_depth": 2}
+{"rule": "5.119", "title": "Rule 5.119 Additional Petitions; Objections; Hearing Practices", "chapter": "5", "subchapter": "5.100", "page": 530, "blocks": 4, "chars": 1057, "max_depth": 1}
+{"rule": "5.120", "title": "Rule 5.120 Action by Fiduciary in Contested Matter; Notice to Interested Persons; Failure to Intervene", "chapter": "5", "subchapter": "5.100", "page": 530, "blocks": 1, "chars": 811, "max_depth": 0}
+{"rule": "5.121", "title": "Rule 5.121 Guardian Ad Litem; Visitor", "chapter": "5", "subchapter": "5.100", "page": 530, "blocks": 14, "chars": 2781, "max_depth": 3}
+{"rule": "5.125", "title": "Rule 5.125 Interested Persons Defined", "chapter": "5", "subchapter": "5.100", "page": 531, "blocks": 196, "chars": 17993, "max_depth": 3}
+{"rule": "5.126", "title": "Rule 5.126 Demand or Request for Notice", "chapter": "5", "subchapter": "5.100", "page": 540, "blocks": 10, "chars": 2352, "max_depth": 3}
+{"rule": "5.127", "title": "Rule 5.127 Venue of Certain Actions", "chapter": "5", "subchapter": "5.100", "page": 541, "blocks": 5, "chars": 1458, "max_depth": 2}
+{"rule": "5.128", "title": "Rule 5.128 Change of Venue", "chapter": "5", "subchapter": "5.100", "page": 542, "blocks": 1, "chars": 513, "max_depth": 0}
+{"rule": "5.131", "title": "Rule 5.131 Discovery Generally", "chapter": "5", "subchapter": "5.100", "page": 542, "blocks": 15, "chars": 2314, "max_depth": 4}
+{"rule": "5.132", "title": "Rule 5.132 Proof of Wills", "chapter": "5", "subchapter": "5.100", "page": 543, "blocks": 2, "chars": 807, "max_depth": 1}
+{"rule": "5.133", "title": "Rule 5.133 Opening Wills Originally Filed for Safekeeping", "chapter": "5", "subchapter": "5.100", "page": 543, "blocks": 1, "chars": 431, "max_depth": 0}
+{"rule": "5.140", "title": "Rule 5.140 Use of Videoconferencing Technology", "chapter": "5", "subchapter": "5.100", "page": 543, "blocks": 4, "chars": 1377, "max_depth": 1}
+{"rule": "5.141", "title": "Rule 5.141 Pretrial Procedures; Conferences; Scheduling Orders", "chapter": "5", "subchapter": "5.100", "page": 544, "blocks": 1, "chars": 66, "max_depth": 0}
+{"rule": "5.142", "title": "Rule 5.142 Pretrial Motions in Contested Proceedings", "chapter": "5", "subchapter": "5.100", "page": 544, "blocks": 1, "chars": 124, "max_depth": 0}
+{"rule": "5.143", "title": "Rule 5.143 Alternative Dispute Resolution", "chapter": "5", "subchapter": "5.100", "page": 544, "blocks": 2, "chars": 311, "max_depth": 1}
+{"rule": "5.144", "title": "Rule 5.144 Administratively Closed File", "chapter": "5", "subchapter": "5.100", "page": 544, "blocks": 5, "chars": 1066, "max_depth": 2}
+{"rule": "5.151", "title": "Rule 5.151 Jury Trial, Applicable Rules", "chapter": "5", "subchapter": "5.100", "page": 545, "blocks": 1, "chars": 161, "max_depth": 0}
+{"rule": "5.158", "title": "Rule 5.158 Jury Trial of Right in Contested Proceedings", "chapter": "5", "subchapter": "5.100", "page": 545, "blocks": 2, "chars": 975, "max_depth": 1}
+{"rule": "5.162", "title": "Rule 5.162 Form and Signing of Judgments and Orders", "chapter": "5", "subchapter": "5.100", "page": 545, "blocks": 2, "chars": 283, "max_depth": 1}
+{"rule": "5.201", "title": "Rule 5.201 Applicability", "chapter": "5", "subchapter": "5.200", "page": 545, "blocks": 1, "chars": 211, "max_depth": 0}
+{"rule": "5.202", "title": "Rule 5.202 Letters of Authority", "chapter": "5", "subchapter": "5.200", "page": 545, "blocks": 3, "chars": 805, "max_depth": 1}
+{"rule": "5.203", "title": "Rule 5.203 Follow-Up Procedures", "chapter": "5", "subchapter": "5.200", "page": 546, "blocks": 6, "chars": 2795, "max_depth": 1}
+{"rule": "5.204", "title": "Rule 5.204 Appointment of Special Fiduciary", "chapter": "5", "subchapter": "5.200", "page": 547, "blocks": 2, "chars": 657, "max_depth": 1}
+{"rule": "5.205", "title": "Rule 5.205 Address of Fiduciary", "chapter": "5", "subchapter": "5.200", "page": 547, "blocks": 1, "chars": 348, "max_depth": 0}
+{"rule": "5.206", "title": "Rule 5.206 Duty to Complete Administration", "chapter": "5", "subchapter": "5.200", "page": 547, "blocks": 1, "chars": 331, "max_depth": 0}
+{"rule": "5.207", "title": "Rule 5.207 Sale of Real Estate", "chapter": "5", "subchapter": "5.200", "page": 547, "blocks": 6, "chars": 597, "max_depth": 2}
+{"rule": "5.208", "title": "Rule 5.208 Notice to Creditors, Presentment of Claims", "chapter": "5", "subchapter": "5.200", "page": 547, "blocks": 26, "chars": 3690, "max_depth": 3}
+{"rule": "5.301", "title": "Rule 5.301 Applicability", "chapter": "5", "subchapter": "5.300", "page": 549, "blocks": 1, "chars": 142, "max_depth": 0}
+{"rule": "5.302", "title": "Rule 5.302 Commencement of Decedent Estates", "chapter": "5", "subchapter": "5.300", "page": 549, "blocks": 8, "chars": 2738, "max_depth": 2}
+{"rule": "5.304", "title": "Rule 5.304 Notice of Appointment", "chapter": "5", "subchapter": "5.300", "page": 550, "blocks": 6, "chars": 1718, "max_depth": 2}
+{"rule": "5.305", "title": "Rule 5.305 Notice to Spouse; Election", "chapter": "5", "subchapter": "5.300", "page": 551, "blocks": 9, "chars": 2139, "max_depth": 2}
+{"rule": "5.307", "title": "Rule 5.307 Requirements Applicable to All Decedent Estates", "chapter": "5", "subchapter": "5.300", "page": 551, "blocks": 9, "chars": 3226, "max_depth": 1}
+{"rule": "5.308", "title": "Rule 5.308 Formal Proceedings", "chapter": "5", "subchapter": "5.300", "page": 552, "blocks": 8, "chars": 1972, "max_depth": 3}
+{"rule": "5.309", "title": "Rule 5.309 Informal Proceedings", "chapter": "5", "subchapter": "5.300", "page": 553, "blocks": 7, "chars": 2071, "max_depth": 2}
+{"rule": "5.310", "title": "Rule 5.310 Supervised Administration", "chapter": "5", "subchapter": "5.300", "page": 554, "blocks": 29, "chars": 7658, "max_depth": 3}
+{"rule": "5.311", "title": "Rule 5.311 Closing Estate", "chapter": "5", "subchapter": "5.300", "page": 557, "blocks": 8, "chars": 2566, "max_depth": 2}
+{"rule": "5.312", "title": "Rule 5.312 Reopening Decedent Estate", "chapter": "5", "subchapter": "5.300", "page": 558, "blocks": 3, "chars": 995, "max_depth": 1}
+{"rule": "5.313", "title": "Rule 5.313 Compensation of Attorneys", "chapter": "5", "subchapter": "5.300", "page": 558, "blocks": 16, "chars": 3382, "max_depth": 2}
+{"rule": "5.401", "title": "Rule 5.401 General Provisions", "chapter": "5", "subchapter": "5.400", "page": 559, "blocks": 1, "chars": 609, "max_depth": 0}
+{"rule": "5.402", "title": "Rule 5.402 Common Provisions", "chapter": "5", "subchapter": "5.400", "page": 559, "blocks": 21, "chars": 4480, "max_depth": 4}
+{"rule": "5.403", "title": "Rule 5.403 Proceedings on Temporary Guardianship", "chapter": "5", "subchapter": "5.400", "page": 561, "blocks": 6, "chars": 3516, "max_depth": 2}
+{"rule": "5.404", "title": "Rule 5.404 Guardianship of Minor", "chapter": "5", "subchapter": "5.400", "page": 562, "blocks": 68, "chars": 15561, "max_depth": 4}
+{"rule": "5.405", "title": "Rule 5.405 Proceedings on Guardianship of Incapacitated Individual", "chapter": "5", "subchapter": "5.400", "page": 568, "blocks": 8, "chars": 2659, "max_depth": 2}
+{"rule": "5.406", "title": "Rule 5.406 Testamentary Guardian of Individual With Developmental Disabilities", "chapter": "5", "subchapter": "5.400", "page": 568, "blocks": 2, "chars": 1076, "max_depth": 1}
+{"rule": "5.407", "title": "Rule 5.407 Conservatorship; Settlements", "chapter": "5", "subchapter": "5.400", "page": 569, "blocks": 1, "chars": 353, "max_depth": 0}
+{"rule": "5.408", "title": "Rule 5.408 Review and Modification of Guardianships of Legally Incapacitated Individuals", "chapter": "5", "subchapter": "5.400", "page": 569, "blocks": 8, "chars": 2003, "max_depth": 2}
+{"rule": "5.409", "title": "Rule 5.409 Report of Guardian; Inventories and Accounts of Conservators", "chapter": "5", "subchapter": "5.400", "page": 570, "blocks": 16, "chars": 4946, "max_depth": 3}
+{"rule": "5.411", "title": "Rule 5.411 Bond of Conservator", "chapter": "5", "subchapter": "5.400", "page": 571, "blocks": 1, "chars": 342, "max_depth": 0}
+{"rule": "5.501", "title": "Rule 5.501 Trust Proceedings in General", "chapter": "5", "subchapter": "5.500", "page": 572, "blocks": 6, "chars": 2663, "max_depth": 1}
+{"rule": "5.502", "title": "Rule 5.502 Supervision of Trusts", "chapter": "5", "subchapter": "5.500", "page": 572, "blocks": 1, "chars": 127, "max_depth": 0}
+{"rule": "5.730", "title": "Rule 5.730 Mental Health Code; Application", "chapter": "5", "subchapter": "5.730", "page": 573, "blocks": 1, "chars": 174, "max_depth": 0}
+{"rule": "5.731", "title": "Rule 5.731 Access to Records", "chapter": "5", "subchapter": "5.730", "page": 573, "blocks": 1, "chars": 129, "max_depth": 0}
+{"rule": "5.732", "title": "Rule 5.732 Attorneys", "chapter": "5", "subchapter": "5.730", "page": 573, "blocks": 3, "chars": 864, "max_depth": 1}
+{"rule": "5.733", "title": "Rule 5.733 Appointment of Independent Examiner; Determination of Fees and Expenses", "chapter": "5", "subchapter": "5.730", "page": 573, "blocks": 5, "chars": 714, "max_depth": 2}
+{"rule": "5.734", "title": "Rule 5.734 Service of Papers; Notice of Subsequent Petitions; Time for Service", "chapter": "5", "subchapter": "5.730", "page": 574, "blocks": 10, "chars": 1335, "max_depth": 3}
+{"rule": "5.735", "title": "Rule 5.735 Adjournment", "chapter": "5", "subchapter": "5.730", "page": 574, "blocks": 1, "chars": 173, "max_depth": 0}
+{"rule": "5.737", "title": "Rule 5.737 Waiver of Rights", "chapter": "5", "subchapter": "5.730", "page": 574, "blocks": 1, "chars": 228, "max_depth": 0}
+{"rule": "5.738", "title": "Rule 5.738 Conditions at Hearings", "chapter": "5", "subchapter": "5.730", "page": 574, "blocks": 5, "chars": 840, "max_depth": 2}
+{"rule": "5.740", "title": "Rule 5.740 Jury Trial", "chapter": "5", "subchapter": "5.730", "page": 575, "blocks": 4, "chars": 789, "max_depth": 1}
+{"rule": "5.741", "title": "Rule 5.741 Inquiry Into Adequacy of Treatment", "chapter": "5", "subchapter": "5.730", "page": 575, "blocks": 2, "chars": 727, "max_depth": 1}
+{"rule": "5.743", "title": "Rule 5.743 Appeal by Individual Receiving Involuntary Mental Health Treatment Who is Returned to Hospital After Authorized Leave", "chapter": "5", "subchapter": "5.730", "page": 575, "blocks": 10, "chars": 2488, "max_depth": 3}
+{"rule": "5.743a", "title": "Rule 5.743a Appeal by Administratively Admitted Individual Returned to Center After Authorized Leave", "chapter": "5", "subchapter": "5.730", "page": 576, "blocks": 10, "chars": 2202, "max_depth": 2}
+{"rule": "5.743b", "title": "Rule 5.743b Appeal by Judicially Admitted Individual Returned to Center After Authorized Leave", "chapter": "5", "subchapter": "5.730", "page": 577, "blocks": 12, "chars": 2371, "max_depth": 2}
+{"rule": "5.744", "title": "Rule 5.744 Proceedings Regarding Hospitalization Without a Hearing", "chapter": "5", "subchapter": "5.730", "page": 578, "blocks": 5, "chars": 1259, "max_depth": 1}
+{"rule": "5.744a", "title": "Rule 5.744a Proceedings Regarding an Individual Subject to Judicial Admission who is Transferred to a Center from Alternative Setting", "chapter": "5", "subchapter": "5.730", "page": 578, "blocks": 15, "chars": 2819, "max_depth": 3}
+{"rule": "5.745", "title": "Rule 5.745 Multiple Proceedings", "chapter": "5", "subchapter": "5.730", "page": 580, "blocks": 5, "chars": 1242, "max_depth": 2}
+{"rule": "5.746", "title": "Rule 5.746 Placement of Individual with a Developmental Disability in a Facility", "chapter": "5", "subchapter": "5.730", "page": 580, "blocks": 6, "chars": 1043, "max_depth": 2}
+{"rule": "5.747", "title": "Rule 5.747 Petition for Discharge of Individual", "chapter": "5", "subchapter": "5.730", "page": 580, "blocks": 1, "chars": 178, "max_depth": 0}
+{"rule": "5.748", "title": "Rule 5.748 Transitional Provision on Termination of Indefinite Orders of Hospitalization", "chapter": "5", "subchapter": "5.730", "page": 581, "blocks": 1, "chars": 479, "max_depth": 0}
+{"rule": "5.784", "title": "Rule 5.784 Proceedings on a Durable Power of Attorney for Health Care or Mental Health Treatment", "chapter": "5", "subchapter": "5.780", "page": 581, "blocks": 12, "chars": 3214, "max_depth": 2}
+{"rule": "5.801", "title": "Rule 5.801 Appeals to Court of Appeals", "chapter": "5", "subchapter": "5.800", "page": 582, "blocks": 40, "chars": 3812, "max_depth": 3}
+{"rule": "5.802", "title": "Rule 5.802 Appellate Procedure; Stays Pending Appeal", "chapter": "5", "subchapter": "5.800", "page": 584, "blocks": 5, "chars": 1028, "max_depth": 2}
+{"rule": "5.900", "title": "Rule 5.900 Note:", "chapter": "5", "subchapter": "5.900", "page": 584, "blocks": 1, "chars": 138, "max_depth": 0}
+{"rule": "6.001", "title": "Rule 6.001 Scope; Applicability of Civil Rules; Superseded Rules and Statutes", "chapter": "6", "subchapter": "6.000", "page": 585, "blocks": 10, "chars": 1722, "max_depth": 2}
+{"rule": "6.002", "title": "Rule 6.002 Purpose and Construction", "chapter": "6", "subchapter": "6.000", "page": 585, "blocks": 1, "chars": 230, "max_depth": 0}
+{"rule": "6.003", "title": "Rule 6.003 Definitions", "chapter": "6", "subchapter": "6.000", "page": 586, "blocks": 12, "chars": 1293, "max_depth": 2}
+{"rule": "6.004", "title": "Rule 6.004 Speedy Trial", "chapter": "6", "subchapter": "6.000", "page": 586, "blocks": 16, "chars": 4075, "max_depth": 3}
+{"rule": "6.005", "title": "Rule 6.005 Right to Assistance of Lawyer; Advice; Appointment for Indigents; Waiver; Joint Representation; Grand Jury Proceedings", "chapter": "6", "subchapter": "6.000", "page": 588, "blocks": 39, "chars": 8340, "max_depth": 4}
+{"rule": "6.006", "title": "Rule 6.006 Video and Audio Proceedings", "chapter": "6", "subchapter": "6.000", "page": 591, "blocks": 23, "chars": 4336, "max_depth": 3}
+{"rule": "6.007", "title": "Rule 6.007 Confidential Records", "chapter": "6", "subchapter": "6.000", "page": 592, "blocks": 1, "chars": 74, "max_depth": 0}
+{"rule": "6.008", "title": "Rule 6.008 Criminal Jurisdiction", "chapter": "6", "subchapter": "6.000", "page": 592, "blocks": 5, "chars": 1406, "max_depth": 1}
+{"rule": "6.009", "title": "Rule 6.009 Use of Restraints on a Defendant", "chapter": "6", "subchapter": "6.000", "page": 593, "blocks": 7, "chars": 1844, "max_depth": 2}
+{"rule": "6.101", "title": "Rule 6.101 Complaint", "chapter": "6", "subchapter": "6.100", "page": 594, "blocks": 3, "chars": 830, "max_depth": 1}
+{"rule": "6.102", "title": "Rule 6.102 Warrants and Summonses", "chapter": "6", "subchapter": "6.100", "page": 594, "blocks": 27, "chars": 3988, "max_depth": 3}
+{"rule": "6.103", "title": "Rule 6.103 Failure to Appear", "chapter": "6", "subchapter": "6.100", "page": 596, "blocks": 11, "chars": 1535, "max_depth": 3}
+{"rule": "6.104", "title": "Rule 6.104 Arraignment on the Warrant or Complaint", "chapter": "6", "subchapter": "6.100", "page": 596, "blocks": 25, "chars": 5243, "max_depth": 3}
+{"rule": "6.105", "title": "Rule 6.105  Voluntary Appearance", "chapter": "6", "subchapter": "6.100", "page": 598, "blocks": 5, "chars": 772, "max_depth": 2}
+{"rule": "6.106", "title": "Rule 6.106 Pretrial Release", "chapter": "6", "subchapter": "6.100", "page": 599, "blocks": 83, "chars": 14985, "max_depth": 5}
+{"rule": "6.107", "title": "Rule 6.107 Grand Jury Proceedings", "chapter": "6", "subchapter": "6.100", "page": 604, "blocks": 7, "chars": 1809, "max_depth": 2}
+{"rule": "6.108", "title": "Rule 6.108 The Probable Cause Conference", "chapter": "6", "subchapter": "6.100", "page": 605, "blocks": 5, "chars": 1433, "max_depth": 1}
+{"rule": "6.110", "title": "Rule 6.110 The Preliminary Examination", "chapter": "6", "subchapter": "6.100", "page": 605, "blocks": 22, "chars": 6105, "max_depth": 3}
+{"rule": "6.111", "title": "Rule 6.111 Circuit Court Arraignment in District Court", "chapter": "6", "subchapter": "6.100", "page": 608, "blocks": 3, "chars": 811, "max_depth": 1}
+{"rule": "6.112", "title": "Rule 6.112 The Information or Indictment", "chapter": "6", "subchapter": "6.100", "page": 608, "blocks": 8, "chars": 3199, "max_depth": 1}
+{"rule": "6.113", "title": "Rule 6.113 The Arraignment on the Indictment or Information", "chapter": "6", "subchapter": "6.100", "page": 609, "blocks": 5, "chars": 2232, "max_depth": 1}
+{"rule": "6.120", "title": "Rule 6.120 Joinder and Severance; Single Defendant", "chapter": "6", "subchapter": "6.100", "page": 610, "blocks": 9, "chars": 1662, "max_depth": 3}
+{"rule": "6.121", "title": "Rule 6.121 Joinder and Severance; Multiple Defendants", "chapter": "6", "subchapter": "6.100", "page": 610, "blocks": 7, "chars": 1528, "max_depth": 2}
+{"rule": "6.125", "title": "Rule 6.125 Mental Competency Hearing", "chapter": "6", "subchapter": "6.100", "page": 611, "blocks": 13, "chars": 2650, "max_depth": 2}
+{"rule": "6.126", "title": "Rule 6.126 Decision on Admissibility of Evidence", "chapter": "6", "subchapter": "6.100", "page": 612, "blocks": 1, "chars": 648, "max_depth": 0}
+{"rule": "6.201", "title": "Rule 6.201 Discovery", "chapter": "6", "subchapter": "6.200", "page": 612, "blocks": 35, "chars": 8412, "max_depth": 4}
+{"rule": "6.202", "title": "Rule 6.202. Disclosure of Forensic Laboratory Report and Certificate; Applicability; Admissibility of Report and Certificate; Extension of Time; Adjournment", "chapter": "6", "subchapter": "6.200", "page": 615, "blocks": 9, "chars": 3405, "max_depth": 3}
+{"rule": "6.301", "title": "Rule 6.301 Available Pleas", "chapter": "6", "subchapter": "6.300", "page": 616, "blocks": 6, "chars": 1757, "max_depth": 2}
+{"rule": "6.302", "title": "Rule 6.302 Pleas of Guilty and Nolo Contendere", "chapter": "6", "subchapter": "6.300", "page": 617, "blocks": 43, "chars": 7064, "max_depth": 3}
+{"rule": "6.303", "title": "Rule 6.303 Plea of Guilty but Mentally Ill", "chapter": "6", "subchapter": "6.300", "page": 620, "blocks": 1, "chars": 463, "max_depth": 0}
+{"rule": "6.304", "title": "Rule 6.304 Plea of Not Guilty by Reason of Insanity", "chapter": "6", "subchapter": "6.300", "page": 620, "blocks": 6, "chars": 1352, "max_depth": 2}
+{"rule": "6.310", "title": "Rule 6.310 Withdrawal or Vacation of Plea", "chapter": "6", "subchapter": "6.300", "page": 620, "blocks": 14, "chars": 3514, "max_depth": 3}
+{"rule": "6.312", "title": "Rule 6.312 Effect of Withdrawal or Vacation of Plea", "chapter": "6", "subchapter": "6.300", "page": 622, "blocks": 1, "chars": 247, "max_depth": 0}
+{"rule": "6.401", "title": "Rule 6.401 Right to Trial by Jury or by the Court", "chapter": "6", "subchapter": "6.400", "page": 622, "blocks": 1, "chars": 192, "max_depth": 0}
+{"rule": "6.402", "title": "Rule 6.402 Waiver of Jury Trial by the Defendant", "chapter": "6", "subchapter": "6.400", "page": 622, "blocks": 2, "chars": 820, "max_depth": 1}
+{"rule": "6.403", "title": "Rule 6.403 Trial by the Judge in Waiver Cases", "chapter": "6", "subchapter": "6.400", "page": 622, "blocks": 1, "chars": 335, "max_depth": 0}
+{"rule": "6.410", "title": "Rule 6.410 Jury Trial; Number of Jurors; Unanimous Verdict", "chapter": "6", "subchapter": "6.400", "page": 622, "blocks": 2, "chars": 1172, "max_depth": 1}
+{"rule": "6.411", "title": "Rule 6.411 Additional Jurors", "chapter": "6", "subchapter": "6.400", "page": 623, "blocks": 1, "chars": 699, "max_depth": 0}
+{"rule": "6.412", "title": "Rule 6.412 Selection of the Jury", "chapter": "6", "subchapter": "6.400", "page": 623, "blocks": 15, "chars": 2902, "max_depth": 3}
+{"rule": "6.416", "title": "Rule 6.416 Presentation of Evidence", "chapter": "6", "subchapter": "6.400", "page": 624, "blocks": 1, "chars": 153, "max_depth": 0}
+{"rule": "6.417", "title": "Rule 6.417 Mistrial", "chapter": "6", "subchapter": "6.400", "page": 624, "blocks": 1, "chars": 232, "max_depth": 0}
+{"rule": "6.419", "title": "Rule 6.419 Motion for Directed Verdict of Acquittal", "chapter": "6", "subchapter": "6.400", "page": 624, "blocks": 6, "chars": 2333, "max_depth": 1}
+{"rule": "6.420", "title": "Rule 6.420 Verdict", "chapter": "6", "subchapter": "6.400", "page": 625, "blocks": 5, "chars": 1269, "max_depth": 2}
+{"rule": "6.425", "title": "Rule 6.425 Sentencing; Appointment of Appellate Counsel", "chapter": "6", "subchapter": "6.400", "page": 625, "blocks": 70, "chars": 15016, "max_depth": 4}
+{"rule": "6.427", "title": "Rule 6.427 Judgment", "chapter": "6", "subchapter": "6.400", "page": 631, "blocks": 13, "chars": 879, "max_depth": 1}
+{"rule": "6.428", "title": "Rule 6.428 Restoration of Appellate Rights.", "chapter": "6", "subchapter": "6.400", "page": 632, "blocks": 6, "chars": 2032, "max_depth": 1}
+{"rule": "6.429", "title": "Rule 6.429 Correction and Appeal of Sentence", "chapter": "6", "subchapter": "6.400", "page": 632, "blocks": 7, "chars": 2160, "max_depth": 2}
+{"rule": "6.430", "title": "Rule 6.430 Postjudgment Motion to Amend Restitution", "chapter": "6", "subchapter": "6.400", "page": 633, "blocks": 6, "chars": 2283, "max_depth": 1}
+{"rule": "6.431", "title": "Rule 6.431 New Trial", "chapter": "6", "subchapter": "6.400", "page": 634, "blocks": 8, "chars": 1577, "max_depth": 2}
+{"rule": "6.433", "title": "Rule 6.433 Documents for Postconviction Proceedings; Indigent Defendant", "chapter": "6", "subchapter": "6.400", "page": 634, "blocks": 10, "chars": 2613, "max_depth": 2}
+{"rule": "6.435", "title": "Rule 6.435 Correcting Mistakes", "chapter": "6", "subchapter": "6.400", "page": 635, "blocks": 4, "chars": 935, "max_depth": 1}
+{"rule": "6.440", "title": "Rule 6.440 Disability of Judge", "chapter": "6", "subchapter": "6.400", "page": 636, "blocks": 5, "chars": 1190, "max_depth": 2}
+{"rule": "6.441", "title": "Rule 6.441  Early Probation Discharge", "chapter": "6", "subchapter": "6.400", "page": 636, "blocks": 19, "chars": 4036, "max_depth": 2}
+{"rule": "6.445", "title": "Rule 6.445 Probation Violation and Revocation", "chapter": "6", "subchapter": "6.400", "page": 637, "blocks": 30, "chars": 5677, "max_depth": 3}
+{"rule": "6.450", "title": "Rule 6.450 Technical Probation Violation Acknowledgment", "chapter": "6", "subchapter": "6.400", "page": 640, "blocks": 7, "chars": 1755, "max_depth": 2}
+{"rule": "6.451", "title": "Rule 6.451 Reinstatement of Convictions Set Aside Without Application", "chapter": "6", "subchapter": "6.400", "page": 640, "blocks": 5, "chars": 896, "max_depth": 1}
+{"rule": "6.501", "title": "Rule 6.501 Scope of Subchapter", "chapter": "6", "subchapter": "6.500", "page": 641, "blocks": 1, "chars": 249, "max_depth": 0}
+{"rule": "6.502", "title": "Rule 6.502 Motion for Relief From Judgment", "chapter": "6", "subchapter": "6.500", "page": 641, "blocks": 35, "chars": 6272, "max_depth": 3}
+{"rule": "6.503", "title": "Rule 6.503 Filing and Service of Motion", "chapter": "6", "subchapter": "6.500", "page": 643, "blocks": 4, "chars": 559, "max_depth": 2}
+{"rule": "6.504", "title": "Rule 6.504 Assignment; Preliminary Consideration by Judge; Summary Denial", "chapter": "6", "subchapter": "6.500", "page": 643, "blocks": 6, "chars": 1883, "max_depth": 2}
+{"rule": "6.505", "title": "Rule 6.505 Right to Legal Assistance", "chapter": "6", "subchapter": "6.500", "page": 644, "blocks": 2, "chars": 626, "max_depth": 1}
+{"rule": "6.506", "title": "Rule 6.506 Response by Prosecutor", "chapter": "6", "subchapter": "6.500", "page": 644, "blocks": 2, "chars": 656, "max_depth": 1}
+{"rule": "6.507", "title": "Rule 6.507 Expansion of Record", "chapter": "6", "subchapter": "6.500", "page": 645, "blocks": 3, "chars": 737, "max_depth": 1}
+{"rule": "6.508", "title": "Rule 6.508 Procedure; Evidentiary Hearing; Determination", "chapter": "6", "subchapter": "6.500", "page": 645, "blocks": 21, "chars": 4122, "max_depth": 6}
+{"rule": "6.509", "title": "Rule 6.509 Appeal", "chapter": "6", "subchapter": "6.500", "page": 646, "blocks": 4, "chars": 1664, "max_depth": 1}
+{"rule": "6.610", "title": "Rule 6.610 Criminal Procedure Generally", "chapter": "6", "subchapter": "6.600", "page": 647, "blocks": 81, "chars": 12856, "max_depth": 4}
+{"rule": "6.615", "title": "Rule 6.615 Misdemeanor Cases", "chapter": "6", "subchapter": "6.600", "page": 652, "blocks": 18, "chars": 2246, "max_depth": 3}
+{"rule": "6.620", "title": "Rule 6.620 Impaneling the Jury", "chapter": "6", "subchapter": "6.600", "page": 653, "blocks": 4, "chars": 1254, "max_depth": 2}
+{"rule": "6.625", "title": "Rule 6.625 Appeal; Appointment of Appellate Counsel", "chapter": "6", "subchapter": "6.600", "page": 654, "blocks": 4, "chars": 1848, "max_depth": 1}
+{"rule": "6.901", "title": "Rule 6.901 Applicability", "chapter": "6", "subchapter": "6.900", "page": 654, "blocks": 3, "chars": 800, "max_depth": 1}
+{"rule": "6.903", "title": "Rule 6.903 Definitions", "chapter": "6", "subchapter": "6.900", "page": 655, "blocks": 39, "chars": 5232, "max_depth": 2}
+{"rule": "6.905", "title": "Rule 6.905 Assistance of Attorney", "chapter": "6", "subchapter": "6.900", "page": 657, "blocks": 9, "chars": 1735, "max_depth": 2}
+{"rule": "6.907", "title": "Rule 6.907 Arraignment on Complaint and Warrant", "chapter": "6", "subchapter": "6.900", "page": 657, "blocks": 11, "chars": 2776, "max_depth": 2}
+{"rule": "6.909", "title": "Rule 6.909 Releasing or Detaining Juveniles Before Trial or Sentencing", "chapter": "6", "subchapter": "6.900", "page": 658, "blocks": 15, "chars": 2346, "max_depth": 4}
+{"rule": "6.911", "title": "Rule 6.911 Preliminary Examination", "chapter": "6", "subchapter": "6.900", "page": 659, "blocks": 2, "chars": 1117, "max_depth": 1}
+{"rule": "6.931", "title": "Rule 6.931 Juvenile Sentencing Hearing", "chapter": "6", "subchapter": "6.900", "page": 660, "blocks": 32, "chars": 7559, "max_depth": 3}
+{"rule": "6.933", "title": "Rule 6.933 Juvenile Probation Revocation", "chapter": "6", "subchapter": "6.900", "page": 662, "blocks": 42, "chars": 6740, "max_depth": 3}
+{"rule": "6.935", "title": "Rule 6.935 Progress Review of Court-Committed Juveniles", "chapter": "6", "subchapter": "6.900", "page": 665, "blocks": 6, "chars": 1910, "max_depth": 2}
+{"rule": "6.937", "title": "Rule 6.937 Commitment Review Hearing", "chapter": "6", "subchapter": "6.900", "page": 666, "blocks": 18, "chars": 3860, "max_depth": 3}
+{"rule": "6.938", "title": "Rule 6.938 Final Review Hearings", "chapter": "6", "subchapter": "6.900", "page": 667, "blocks": 15, "chars": 2414, "max_depth": 2}
+{"rule": "7.101", "title": "Rule 7.101 Scope of Rules", "chapter": "7", "subchapter": "7.100", "page": 669, "blocks": 2, "chars": 210, "max_depth": 1}
+{"rule": "7.102", "title": "Rule 7.102 Definitions", "chapter": "7", "subchapter": "7.100", "page": 669, "blocks": 10, "chars": 1161, "max_depth": 1}
+{"rule": "7.103", "title": "Rule 7.103 Appellate Jurisdiction of the Circuit Court and Judicial Authority", "chapter": "7", "subchapter": "7.100", "page": 669, "blocks": 13, "chars": 1307, "max_depth": 3}
+{"rule": "7.104", "title": "Rule 7.104 Filing Appeal of Right", "chapter": "7", "subchapter": "7.100", "page": 670, "blocks": 35, "chars": 3903, "max_depth": 3}
+{"rule": "7.105", "title": "Rule 7.105 Application for Leave to Appeal", "chapter": "7", "subchapter": "7.100", "page": 672, "blocks": 47, "chars": 6043, "max_depth": 3}
+{"rule": "7.106", "title": "Rule 7.106 Cross Appeals", "chapter": "7", "subchapter": "7.100", "page": 674, "blocks": 14, "chars": 1983, "max_depth": 3}
+{"rule": "7.107", "title": "Rule 7.107 Authority of Trial Court or Agency", "chapter": "7", "subchapter": "7.100", "page": 675, "blocks": 1, "chars": 369, "max_depth": 0}
+{"rule": "7.108", "title": "Rule 7.108 Stay of Proceedings; Bond; Review", "chapter": "7", "subchapter": "7.100", "page": 675, "blocks": 38, "chars": 5917, "max_depth": 4}
+{"rule": "7.109", "title": "Rule 7.109 Record on Appeal", "chapter": "7", "subchapter": "7.100", "page": 678, "blocks": 43, "chars": 7561, "max_depth": 5}
+{"rule": "7.110", "title": "Rule 7.110 Motions in Circuit Court Appeals", "chapter": "7", "subchapter": "7.100", "page": 681, "blocks": 1, "chars": 220, "max_depth": 0}
+{"rule": "7.111", "title": "Rule 7.111 Briefs", "chapter": "7", "subchapter": "7.100", "page": 681, "blocks": 15, "chars": 2592, "max_depth": 4}
+{"rule": "7.112", "title": "Rule 7.112 Miscellaneous Relief", "chapter": "7", "subchapter": "7.100", "page": 682, "blocks": 1, "chars": 105, "max_depth": 0}
+{"rule": "7.113", "title": "Rule 7.113 Dismissal", "chapter": "7", "subchapter": "7.100", "page": 682, "blocks": 5, "chars": 823, "max_depth": 2}
+{"rule": "7.114", "title": "Rule 7.114 Oral Argument; Decision and Effect of Judgment, Reconsideration", "chapter": "7", "subchapter": "7.100", "page": 682, "blocks": 4, "chars": 891, "max_depth": 1}
+{"rule": "7.115", "title": "Rule 7.115 Taxation of Costs; Fees.", "chapter": "7", "subchapter": "7.100", "page": 683, "blocks": 15, "chars": 2262, "max_depth": 2}
+{"rule": "7.116", "title": "Rule 7.116 Appeals Under the Michigan Employment Security Act", "chapter": "7", "subchapter": "7.100", "page": 683, "blocks": 7, "chars": 1918, "max_depth": 1}
+{"rule": "7.117", "title": "Rule 7.117 Appeals from the Michigan Civil Service Commission", "chapter": "7", "subchapter": "7.100", "page": 684, "blocks": 3, "chars": 533, "max_depth": 1}
+{"rule": "7.118", "title": "Rule 7.118 Appeals from the Michigan Parole Board", "chapter": "7", "subchapter": "7.100", "page": 684, "blocks": 43, "chars": 6580, "max_depth": 4}
+{"rule": "7.119", "title": "Rule 7.119 Appeals from Agencies Governed by the Administrative Procedures Act", "chapter": "7", "subchapter": "7.100", "page": 687, "blocks": 59, "chars": 7682, "max_depth": 5}
+{"rule": "7.120", "title": "Rule 7.120 Licensing Appeals Under the Michigan Vehicle Code", "chapter": "7", "subchapter": "7.100", "page": 690, "blocks": 41, "chars": 5624, "max_depth": 5}
+{"rule": "7.121", "title": "Rule 7.121 Concealed Pistol License Appeals", "chapter": "7", "subchapter": "7.100", "page": 693, "blocks": 16, "chars": 1924, "max_depth": 4}
+{"rule": "7.122", "title": "Rule 7.122 Appeals From Zoning Ordinance Determinations", "chapter": "7", "subchapter": "7.100", "page": 694, "blocks": 37, "chars": 5979, "max_depth": 4}
+{"rule": "7.123", "title": "Rule 7.123 Appeals From Agencies not Governed by Another Rule", "chapter": "7", "subchapter": "7.100", "page": 696, "blocks": 50, "chars": 5561, "max_depth": 5}
+{"rule": "7.201", "title": "Rule 7.201 Organization and Operation of Court of Appeals", "chapter": "7", "subchapter": "7.200", "page": 698, "blocks": 14, "chars": 4234, "max_depth": 2}
+{"rule": "7.202", "title": "Rule 7.202 Definitions", "chapter": "7", "subchapter": "7.200", "page": 700, "blocks": 20, "chars": 2321, "max_depth": 3}
+{"rule": "7.203", "title": "Rule 7.203 Jurisdiction of the Court of Appeals", "chapter": "7", "subchapter": "7.200", "page": 701, "blocks": 26, "chars": 2987, "max_depth": 3}
+{"rule": "7.204", "title": "Rule 7.204 Filing Appeal of Right; Appearance", "chapter": "7", "subchapter": "7.200", "page": 702, "blocks": 52, "chars": 8303, "max_depth": 3}
+{"rule": "7.205", "title": "Rule 7.205 Application for Leave to Appeal", "chapter": "7", "subchapter": "7.200", "page": 705, "blocks": 48, "chars": 8403, "max_depth": 5}
+{"rule": "7.206", "title": "Rule 7.206 Extraordinary Writs, Original Actions, and Enforcement Actions", "chapter": "7", "subchapter": "7.200", "page": 709, "blocks": 59, "chars": 10214, "max_depth": 3}
+{"rule": "7.207", "title": "Rule 7.207 Cross-Appeals", "chapter": "7", "subchapter": "7.200", "page": 712, "blocks": 10, "chars": 2388, "max_depth": 2}
+{"rule": "7.208", "title": "Rule 7.208 Authority of Court or Tribunal Appealed From", "chapter": "7", "subchapter": "7.200", "page": 713, "blocks": 25, "chars": 4951, "max_depth": 3}
+{"rule": "7.209", "title": "Rule 7.209 Bond; Stay of Proceedings", "chapter": "7", "subchapter": "7.200", "page": 715, "blocks": 52, "chars": 9961, "max_depth": 4}
+{"rule": "7.210", "title": "Rule 7.210 Record on Appeal", "chapter": "7", "subchapter": "7.200", "page": 719, "blocks": 49, "chars": 13270, "max_depth": 4}
+{"rule": "7.211", "title": "Rule 7.211 Motions in Court of Appeals", "chapter": "7", "subchapter": "7.200", "page": 723, "blocks": 81, "chars": 13871, "max_depth": 4}
+{"rule": "7.212", "title": "Rule 7.212 Briefs", "chapter": "7", "subchapter": "7.200", "page": 729, "blocks": 93, "chars": 19795, "max_depth": 4}
+{"rule": "7.213", "title": "Rule 7.213 Calendar Cases", "chapter": "7", "subchapter": "7.200", "page": 736, "blocks": 28, "chars": 5708, "max_depth": 3}
+{"rule": "7.214", "title": "Rule 7.214 Argument of Calendar Cases", "chapter": "7", "subchapter": "7.200", "page": 738, "blocks": 10, "chars": 1911, "max_depth": 3}
+{"rule": "7.215", "title": "Rule 7.215 Opinions, Orders, Judgments, and Final Process for Court of Appeals", "chapter": "7", "subchapter": "7.200", "page": 739, "blocks": 56, "chars": 14105, "max_depth": 3}
+{"rule": "7.216", "title": "Rule 7.216 Miscellaneous Relief", "chapter": "7", "subchapter": "7.200", "page": 744, "blocks": 18, "chars": 3099, "max_depth": 3}
+{"rule": "7.217", "title": "Rule 7.217 Involuntary Dismissal of Cases", "chapter": "7", "subchapter": "7.200", "page": 745, "blocks": 6, "chars": 1211, "max_depth": 2}
+{"rule": "7.218", "title": "Rule 7.218 Voluntary Dismissal", "chapter": "7", "subchapter": "7.200", "page": 745, "blocks": 2, "chars": 632, "max_depth": 1}
+{"rule": "7.219", "title": "Rule 7.219 Taxation of Costs; Fees", "chapter": "7", "subchapter": "7.200", "page": 745, "blocks": 23, "chars": 3426, "max_depth": 2}
+{"rule": "7.301", "title": "Rule 7.301 Organization and Operation of Supreme Court", "chapter": "7", "subchapter": "7.300", "page": 747, "blocks": 21, "chars": 3247, "max_depth": 3}
+{"rule": "7.303", "title": "Rule 7.303 Jurisdiction of the Supreme Court", "chapter": "7", "subchapter": "7.300", "page": 748, "blocks": 8, "chars": 710, "max_depth": 2}
+{"rule": "7.305", "title": "Rule 7.305 Application for Leave to Appeal", "chapter": "7", "subchapter": "7.300", "page": 748, "blocks": 59, "chars": 9230, "max_depth": 3}
+{"rule": "7.306", "title": "Rule 7.306 Original Proceedings", "chapter": "7", "subchapter": "7.300", "page": 752, "blocks": 56, "chars": 9329, "max_depth": 4}
+{"rule": "7.307", "title": "Rule 7.307 Cross-Appeal", "chapter": "7", "subchapter": "7.300", "page": 756, "blocks": 2, "chars": 596, "max_depth": 1}
+{"rule": "7.308", "title": "Rule 7.308 Certified Questions and Advisory Opinions", "chapter": "7", "subchapter": "7.300", "page": 756, "blocks": 26, "chars": 4759, "max_depth": 4}
+{"rule": "7.310", "title": "Rule 7.310 Record on Appeals", "chapter": "7", "subchapter": "7.300", "page": 758, "blocks": 3, "chars": 1520, "max_depth": 1}
+{"rule": "7.311", "title": "Rule 7.311 Motions in Supreme Court", "chapter": "7", "subchapter": "7.300", "page": 758, "blocks": 21, "chars": 4351, "max_depth": 3}
+{"rule": "7.312", "title": "Rule 7.312 Briefs, Responses to Adverse Amicus Briefs, and Appendixes in Calendar Cases and Cases Argued on the Application", "chapter": "7", "subchapter": "7.300", "page": 760, "blocks": 69, "chars": 8719, "max_depth": 3}
+{"rule": "7.313", "title": "Rule 7.313 Supreme Court Calendar", "chapter": "7", "subchapter": "7.300", "page": 764, "blocks": 8, "chars": 2776, "max_depth": 2}
+{"rule": "7.314", "title": "Rule 7.314 Call and Argument of Cases", "chapter": "7", "subchapter": "7.300", "page": 765, "blocks": 5, "chars": 996, "max_depth": 2}
+{"rule": "7.315", "title": "Rule 7.315 Opinions, Orders, and Judgments", "chapter": "7", "subchapter": "7.300", "page": 765, "blocks": 10, "chars": 2572, "max_depth": 3}
+{"rule": "7.316", "title": "Rule 7.316 Miscellaneous Relief", "chapter": "7", "subchapter": "7.300", "page": 766, "blocks": 22, "chars": 4561, "max_depth": 3}
+{"rule": "7.317", "title": "Rule 7.317 Involuntary Dismissal; No Progress", "chapter": "7", "subchapter": "7.300", "page": 768, "blocks": 4, "chars": 1337, "max_depth": 1}
+{"rule": "7.318", "title": "Rule 7.318 Voluntary Dismissal", "chapter": "7", "subchapter": "7.300", "page": 768, "blocks": 1, "chars": 704, "max_depth": 0}
+{"rule": "7.319", "title": "Rule 7.319 Taxation of Costs; Fees", "chapter": "7", "subchapter": "7.300", "page": 768, "blocks": 12, "chars": 1886, "max_depth": 2}
+{"rule": "8.101", "title": "Rule 8.101 Applicability of Administrative Rules", "chapter": "8", "subchapter": "8.100", "page": 770, "blocks": 1, "chars": 152, "max_depth": 0}
+{"rule": "8.103", "title": "Rule 8.103 State Court Administrator", "chapter": "8", "subchapter": "8.100", "page": 770, "blocks": 11, "chars": 1852, "max_depth": 1}
+{"rule": "8.104", "title": "Rule 8.104 Judicial Meetings", "chapter": "8", "subchapter": "8.100", "page": 771, "blocks": 14, "chars": 1199, "max_depth": 3}
+{"rule": "8.105", "title": "Rule 8.105 General Duties of Clerks", "chapter": "8", "subchapter": "8.100", "page": 771, "blocks": 4, "chars": 1204, "max_depth": 1}
+{"rule": "8.106", "title": "Rule 8.106 Money Paid Into Court", "chapter": "8", "subchapter": "8.100", "page": 772, "blocks": 5, "chars": 1337, "max_depth": 1}
+{"rule": "8.107", "title": "Rule 8.107 Statement by Trial Judge as to Matters Undecided", "chapter": "8", "subchapter": "8.100", "page": 772, "blocks": 2, "chars": 1261, "max_depth": 1}
+{"rule": "8.108", "title": "Rule 8.108 Court Reporters and Recorders", "chapter": "8", "subchapter": "8.100", "page": 773, "blocks": 65, "chars": 12094, "max_depth": 4}
+{"rule": "8.109", "title": "Rule 8.109 Mechanical Recording of Court Proceedings", "chapter": "8", "subchapter": "8.100", "page": 777, "blocks": 3, "chars": 1282, "max_depth": 1}
+{"rule": "8.110", "title": "Rule 8.110 Chief Judge Rule", "chapter": "8", "subchapter": "8.100", "page": 778, "blocks": 70, "chars": 12696, "max_depth": 4}
+{"rule": "8.111", "title": "Rule 8.111 Assignment of Cases", "chapter": "8", "subchapter": "8.100", "page": 783, "blocks": 10, "chars": 2521, "max_depth": 2}
+{"rule": "8.112", "title": "Rule 8.112 Local Court Rules; Administrative Orders", "chapter": "8", "subchapter": "8.100", "page": 784, "blocks": 11, "chars": 1760, "max_depth": 3}
+{"rule": "8.113", "title": "Rule 8.113 Requests for Investigation of Courts", "chapter": "8", "subchapter": "8.100", "page": 784, "blocks": 10, "chars": 1316, "max_depth": 2}
+{"rule": "8.115", "title": "Rule 8.115 Courthouse Decorum; Policy Regarding Use of Cell Phones or Other Portable Electronic Communication Devices; Civil Arrests", "chapter": "8", "subchapter": "8.100", "page": 785, "blocks": 29, "chars": 7510, "max_depth": 3}
+{"rule": "8.116", "title": "Rule 8.116 Sessions of Court", "chapter": "8", "subchapter": "8.100", "page": 788, "blocks": 10, "chars": 1900, "max_depth": 3}
+{"rule": "8.117", "title": "Rule 8.117 Case Classification Codes", "chapter": "8", "subchapter": "8.100", "page": 788, "blocks": 1, "chars": 469, "max_depth": 0}
+{"rule": "8.119", "title": "Rule 8.119 Court Records and Reports; Duties of Clerks", "chapter": "8", "subchapter": "8.100", "page": 789, "blocks": 68, "chars": 19098, "max_depth": 4}
+{"rule": "8.120", "title": "Rule 8.120 Law Students and Recent Graduates; Participation in Legal Aid Clinics, Defender Offices, and Legal Training Programs", "chapter": "8", "subchapter": "8.100", "page": 795, "blocks": 21, "chars": 5408, "max_depth": 4}
+{"rule": "8.121", "title": "Rule 8.121 Contingent Fees in Claims or Actions for Personal Injury, Wrongful Death, and No-Fault Benefits", "chapter": "8", "subchapter": "8.100", "page": 797, "blocks": 12, "chars": 3397, "max_depth": 3}
+{"rule": "8.122", "title": "Rule 8.122 Claims by Clients Against Attorneys", "chapter": "8", "subchapter": "8.100", "page": 798, "blocks": 1, "chars": 557, "max_depth": 0}
+{"rule": "8.126", "title": "Rule 8.126 Temporary Admission to the Bar", "chapter": "8", "subchapter": "8.100", "page": 798, "blocks": 61, "chars": 9623, "max_depth": 4}
+{"rule": "8.127", "title": "Rule 8.127 Foreign Language Board of Review and Regulation of Foreign Language Interpreters", "chapter": "8", "subchapter": "8.100", "page": 802, "blocks": 41, "chars": 7911, "max_depth": 3}
+{"rule": "8.128", "title": "Rule 8.128 Michigan Judicial Council", "chapter": "8", "subchapter": "8.100", "page": 805, "blocks": 29, "chars": 3722, "max_depth": 3}
+{"rule": "8.201", "title": "Rule 8.201 Allocation of Costs in Third-Class Districts", "chapter": "8", "subchapter": "8.200", "page": 806, "blocks": 14, "chars": 3493, "max_depth": 3}
+{"rule": "8.202", "title": "Rule 8.202 Payment of Assigned Attorneys and Transcript Costs", "chapter": "8", "subchapter": "8.200", "page": 808, "blocks": 2, "chars": 922, "max_depth": 1}
+{"rule": "8.203", "title": "Rule 8.203 Records and Entries Kept by Clerk", "chapter": "8", "subchapter": "8.200", "page": 808, "blocks": 1, "chars": 107, "max_depth": 0}
+{"rule": "8.204", "title": "Rule 8.204 Bonds for Clerks, Deputies, Magistrates, and Official Process Servers", "chapter": "8", "subchapter": "8.200", "page": 808, "blocks": 4, "chars": 518, "max_depth": 1}
+{"rule": "8.205", "title": "Rule 8.205 Magistrates", "chapter": "8", "subchapter": "8.200", "page": 808, "blocks": 1, "chars": 166, "max_depth": 0}
+{"rule": "8.301", "title": "Rule 8.301 Powers of Register of Probate, Deputy Registers, and Clerks", "chapter": "8", "subchapter": "8.300", "page": 809, "blocks": 7, "chars": 1568, "max_depth": 3}
+{"rule": "8.302", "title": "Rule 8.302 Records and Entries Kept by Clerk", "chapter": "8", "subchapter": "8.300", "page": 809, "blocks": 1, "chars": 431, "max_depth": 0}
+{"rule": "9.101", "title": "Rule 9.101 Definitions", "chapter": "9", "subchapter": "9.100", "page": 810, "blocks": 17, "chars": 1909, "max_depth": 1}
+{"rule": "9.102", "title": "Rule 9.102 Construction; Severability", "chapter": "9", "subchapter": "9.100", "page": 811, "blocks": 2, "chars": 605, "max_depth": 1}
+{"rule": "9.103", "title": "Rule 9.103 Standards of Conduct for Attorneys", "chapter": "9", "subchapter": "9.100", "page": 811, "blocks": 3, "chars": 1346, "max_depth": 1}
+{"rule": "9.104", "title": "Rule 9.104 Grounds for Discipline in General", "chapter": "9", "subchapter": "9.100", "page": 811, "blocks": 14, "chars": 1478, "max_depth": 2}
+{"rule": "9.105", "title": "Rule 9.105 Purpose and Funding of Disciplinary Proceedings", "chapter": "9", "subchapter": "9.100", "page": 812, "blocks": 2, "chars": 569, "max_depth": 1}
+{"rule": "9.106", "title": "Rule 9.106 Types of Discipline; Minimum Discipline", "chapter": "9", "subchapter": "9.100", "page": 812, "blocks": 6, "chars": 813, "max_depth": 1}
+{"rule": "9.107", "title": "Rule 9.107 Rules Exclusive on Discipline", "chapter": "9", "subchapter": "9.100", "page": 813, "blocks": 2, "chars": 461, "max_depth": 1}
+{"rule": "9.108", "title": "Rule 9.108 Attorney Grievance Commission", "chapter": "9", "subchapter": "9.100", "page": 813, "blocks": 16, "chars": 2707, "max_depth": 2}
+{"rule": "9.109", "title": "Rule 9.109 Grievance Administrator", "chapter": "9", "subchapter": "9.100", "page": 814, "blocks": 19, "chars": 1785, "max_depth": 3}
+{"rule": "9.110", "title": "Rule 9.110 Attorney Discipline Board", "chapter": "9", "subchapter": "9.100", "page": 815, "blocks": 19, "chars": 2972, "max_depth": 2}
+{"rule": "9.111", "title": "Rule 9.111 Hearing Panels", "chapter": "9", "subchapter": "9.100", "page": 816, "blocks": 12, "chars": 2691, "max_depth": 3}
+{"rule": "9.112", "title": "Rule 9.112 Requests for Investigation", "chapter": "9", "subchapter": "9.100", "page": 817, "blocks": 21, "chars": 5466, "max_depth": 3}
+{"rule": "9.113", "title": "Rule 9.113 Answer by Respondent", "chapter": "9", "subchapter": "9.100", "page": 819, "blocks": 7, "chars": 1981, "max_depth": 2}
+{"rule": "9.114", "title": "Rule 9.114 Action by Administrator or Commission After Answer", "chapter": "9", "subchapter": "9.100", "page": 820, "blocks": 29, "chars": 5771, "max_depth": 3}
+{"rule": "9.115", "title": "Rule 9.115 Hearing Panel Procedure", "chapter": "9", "subchapter": "9.100", "page": 822, "blocks": 57, "chars": 16902, "max_depth": 4}
+{"rule": "9.116", "title": "Rule 9.116 Judges; Former Judges", "chapter": "9", "subchapter": "9.100", "page": 827, "blocks": 5, "chars": 1743, "max_depth": 2}
+{"rule": "9.117", "title": "Rule 9.117 Hearing Procedure Before Neutral", "chapter": "9", "subchapter": "9.100", "page": 828, "blocks": 5, "chars": 811, "max_depth": 1}
+{"rule": "9.118", "title": "Rule 9.118 Review of Order of Hearing Panel", "chapter": "9", "subchapter": "9.100", "page": 828, "blocks": 11, "chars": 4299, "max_depth": 2}
+{"rule": "9.119", "title": "Rule 9.119 Conduct of Disbarred, Suspended, or Inactive Attorneys", "chapter": "9", "subchapter": "9.100", "page": 830, "blocks": 16, "chars": 5043, "max_depth": 2}
+{"rule": "9.120", "title": "Rule 9.120 Conviction of Criminal Offense; Reciprocal Discipline", "chapter": "9", "subchapter": "9.100", "page": 831, "blocks": 18, "chars": 6576, "max_depth": 3}
+{"rule": "9.121", "title": "Rule 9.121 Attorney Declared to be Incompetent or Alleged to be Incapacitated or Asserting Impaired Ability", "chapter": "9", "subchapter": "9.100", "page": 834, "blocks": 34, "chars": 8403, "max_depth": 4}
+{"rule": "9.122", "title": "Rule 9.122 Review by Supreme Court", "chapter": "9", "subchapter": "9.100", "page": 837, "blocks": 7, "chars": 1915, "max_depth": 2}
+{"rule": "9.123", "title": "Rule 9.123 Eligibility for Reinstatement", "chapter": "9", "subchapter": "9.100", "page": 837, "blocks": 20, "chars": 5715, "max_depth": 3}
+{"rule": "9.124", "title": "Rule 9.124 Procedure for Reinstatement", "chapter": "9", "subchapter": "9.100", "page": 839, "blocks": 32, "chars": 7814, "max_depth": 4}
+{"rule": "9.125", "title": "Rule 9.125 Immunity", "chapter": "9", "subchapter": "9.100", "page": 842, "blocks": 2, "chars": 857, "max_depth": 0}
+{"rule": "9.126", "title": "Rule 9.126 Open Hearings; Privileged, Confidential Files and Records", "chapter": "9", "subchapter": "9.100", "page": 842, "blocks": 25, "chars": 2942, "max_depth": 3}
+{"rule": "9.127", "title": "Rule 9.127 Enforcement", "chapter": "9", "subchapter": "9.100", "page": 844, "blocks": 2, "chars": 1267, "max_depth": 1}
+{"rule": "9.128", "title": "Rule 9.128 Costs", "chapter": "9", "subchapter": "9.100", "page": 844, "blocks": 10, "chars": 3126, "max_depth": 3}
+{"rule": "9.129", "title": "Rule 9.129 Expenses; Reimbursement", "chapter": "9", "subchapter": "9.100", "page": 845, "blocks": 1, "chars": 257, "max_depth": 0}
+{"rule": "9.130", "title": "Rule 9.130 Cases; Arbitration; Discipline; Filing Complaint by Administrator", "chapter": "9", "subchapter": "9.100", "page": 845, "blocks": 2, "chars": 860, "max_depth": 1}
+{"rule": "9.131", "title": "Rule 9.131 Investigation of Member or Employee of Board or Commission, or Relative of Member or Employee of Board or Commission; Investigation of Attorney Representing Respondent or Witness; Other Investigations Creating the Possible Appearance of Impropriety; Representation by Member or Employee of Board or Commission", "chapter": "9", "subchapter": "9.100", "page": 846, "blocks": 20, "chars": 6454, "max_depth": 2}
+{"rule": "9.200", "title": "Rule 9.200 Construction", "chapter": "9", "subchapter": "9.200", "page": 848, "blocks": 1, "chars": 377, "max_depth": 0}
+{"rule": "9.201", "title": "Rule 9.201 Definitions", "chapter": "9", "subchapter": "9.200", "page": 848, "blocks": 13, "chars": 2279, "max_depth": 2}
+{"rule": "9.202", "title": "Rule 9.202 Standards of Judicial Conduct", "chapter": "9", "subchapter": "9.200", "page": 849, "blocks": 11, "chars": 1918, "max_depth": 3}
+{"rule": "9.210", "title": "Rule 9.210 Judicial Tenure Commission; Organization", "chapter": "9", "subchapter": "9.200", "page": 850, "blocks": 32, "chars": 4815, "max_depth": 3}
+{"rule": "9.211", "title": "Rule 9.211 Judicial Tenure Commission; Powers; Review", "chapter": "9", "subchapter": "9.200", "page": 851, "blocks": 5, "chars": 1766, "max_depth": 1}
+{"rule": "9.212", "title": "Rule 9.212 Disqualification of Commission Member or Employee", "chapter": "9", "subchapter": "9.200", "page": 852, "blocks": 5, "chars": 1048, "max_depth": 2}
+{"rule": "9.220", "title": "Rule 9.220 Preliminary Investigation", "chapter": "9", "subchapter": "9.200", "page": 853, "blocks": 5, "chars": 1711, "max_depth": 1}
+{"rule": "9.221", "title": "Rule 9.221 Evidence", "chapter": "9", "subchapter": "9.200", "page": 853, "blocks": 7, "chars": 2589, "max_depth": 2}
+{"rule": "9.222", "title": "Rule 9.222 Further Investigation; the “28-day letter”", "chapter": "9", "subchapter": "9.200", "page": 854, "blocks": 6, "chars": 1699, "max_depth": 2}
+{"rule": "9.223", "title": "Rule 9.223 Conclusion of Investigation; Notice", "chapter": "9", "subchapter": "9.200", "page": 855, "blocks": 8, "chars": 1289, "max_depth": 2}
+{"rule": "9.224", "title": "Rule 9.224 Complaint", "chapter": "9", "subchapter": "9.200", "page": 855, "blocks": 3, "chars": 706, "max_depth": 1}
+{"rule": "9.225", "title": "Rule 9.225 Interim Suspension", "chapter": "9", "subchapter": "9.200", "page": 855, "blocks": 8, "chars": 2460, "max_depth": 2}
+{"rule": "9.230", "title": "Rule 9.230 Pleadings", "chapter": "9", "subchapter": "9.200", "page": 856, "blocks": 13, "chars": 1446, "max_depth": 3}
+{"rule": "9.231", "title": "Rule 9.231 Appointment of Neutral", "chapter": "9", "subchapter": "9.200", "page": 857, "blocks": 5, "chars": 1251, "max_depth": 1}
+{"rule": "9.232", "title": "Rule 9.232 Discovery", "chapter": "9", "subchapter": "9.200", "page": 857, "blocks": 7, "chars": 1127, "max_depth": 3}
+{"rule": "9.233", "title": "Rule 9.233 Public Hearing", "chapter": "9", "subchapter": "9.200", "page": 858, "blocks": 5, "chars": 1673, "max_depth": 2}
+{"rule": "9.234", "title": "Rule 9.234 Subpoenas", "chapter": "9", "subchapter": "9.200", "page": 859, "blocks": 4, "chars": 798, "max_depth": 2}
+{"rule": "9.235", "title": "Rule 9.235 Amendments of Complaint or Answer", "chapter": "9", "subchapter": "9.200", "page": 859, "blocks": 1, "chars": 547, "max_depth": 0}
+{"rule": "9.236", "title": "Rule 9.236 Report of Neutral", "chapter": "9", "subchapter": "9.200", "page": 859, "blocks": 1, "chars": 710, "max_depth": 0}
+{"rule": "9.240", "title": "Rule 9.240 Objections to Report of Neutral", "chapter": "9", "subchapter": "9.200", "page": 859, "blocks": 1, "chars": 486, "max_depth": 0}
+{"rule": "9.241", "title": "Rule 9.241 Appearance Before Commission", "chapter": "9", "subchapter": "9.200", "page": 860, "blocks": 1, "chars": 233, "max_depth": 0}
+{"rule": "9.242", "title": "Rule 9.242 Extension of Time", "chapter": "9", "subchapter": "9.200", "page": 860, "blocks": 1, "chars": 311, "max_depth": 0}
+{"rule": "9.243", "title": "Rule 9.243 Hearing Additional Evidence", "chapter": "9", "subchapter": "9.200", "page": 860, "blocks": 1, "chars": 354, "max_depth": 0}
+{"rule": "9.244", "title": "Rule 9.244 Commission Decision", "chapter": "9", "subchapter": "9.200", "page": 860, "blocks": 6, "chars": 1681, "max_depth": 2}
+{"rule": "9.245", "title": "Rule 9.245 Consent Agreements", "chapter": "9", "subchapter": "9.200", "page": 861, "blocks": 8, "chars": 3582, "max_depth": 2}
+{"rule": "9.250", "title": "Rule 9.250 Filing and Service of Documents after Commission’s Decision", "chapter": "9", "subchapter": "9.200", "page": 862, "blocks": 10, "chars": 653, "max_depth": 2}
+{"rule": "9.251", "title": "Rule 9.251 Review by Supreme Court", "chapter": "9", "subchapter": "9.200", "page": 862, "blocks": 17, "chars": 2322, "max_depth": 3}
+{"rule": "9.252", "title": "Rule 9.252 Decision by Supreme Court", "chapter": "9", "subchapter": "9.200", "page": 863, "blocks": 2, "chars": 763, "max_depth": 1}
+{"rule": "9.253", "title": "Rule 9.253 Motion for Rehearing", "chapter": "9", "subchapter": "9.200", "page": 864, "blocks": 1, "chars": 263, "max_depth": 0}
+{"rule": "9.260", "title": "Rule 9.260 Service", "chapter": "9", "subchapter": "9.200", "page": 864, "blocks": 4, "chars": 1141, "max_depth": 1}
+{"rule": "9.261", "title": "Rule 9.261 Confidentiality; Disclosure", "chapter": "9", "subchapter": "9.200", "page": 864, "blocks": 30, "chars": 6774, "max_depth": 3}
+{"rule": "9.262", "title": "Rule 9.262 Record Retention", "chapter": "9", "subchapter": "9.200", "page": 867, "blocks": 1, "chars": 241, "max_depth": 0}
+{"rule": "9.263", "title": "Rule 9.263 Immunity", "chapter": "9", "subchapter": "9.200", "page": 867, "blocks": 1, "chars": 577, "max_depth": 0}
+{"rule": "9.264", "title": "Rule 9.264 Ethics Materials and Programs", "chapter": "9", "subchapter": "9.200", "page": 867, "blocks": 1, "chars": 256, "max_depth": 0}
+{"rule": "9.301", "title": "Rule 9.301 Definitions", "chapter": "9", "subchapter": "9.300", "page": 867, "blocks": 16, "chars": 1842, "max_depth": 2}
+{"rule": "9.303", "title": "Rule 9.303 Affected Attorney with a Firm", "chapter": "9", "subchapter": "9.300", "page": 868, "blocks": 4, "chars": 559, "max_depth": 1}
+{"rule": "9.305", "title": "Rule 9.305 Appointment of Interim Administrator", "chapter": "9", "subchapter": "9.300", "page": 868, "blocks": 18, "chars": 4917, "max_depth": 3}
+{"rule": "9.307", "title": "Rule 9.307 Duties and Powers of the Interim Administrator", "chapter": "9", "subchapter": "9.300", "page": 870, "blocks": 18, "chars": 3205, "max_depth": 2}
+{"rule": "9.309", "title": "Rule 9.309 Protection of Client Information and Privilege", "chapter": "9", "subchapter": "9.300", "page": 871, "blocks": 1, "chars": 737, "max_depth": 0}
+{"rule": "9.311", "title": "Rule 9.311 Protection of Client Files and Property", "chapter": "9", "subchapter": "9.300", "page": 871, "blocks": 2, "chars": 787, "max_depth": 0}
+{"rule": "9.313", "title": "Rule 9.313 Compensation and Reimbursable Expenses of Interim Administrator", "chapter": "9", "subchapter": "9.300", "page": 872, "blocks": 5, "chars": 2363, "max_depth": 2}
+{"rule": "9.315", "title": "Rule 9.315 Liability", "chapter": "9", "subchapter": "9.300", "page": 872, "blocks": 1, "chars": 254, "max_depth": 0}
+{"rule": "9.317", "title": "Rule 9.317 Employment of the Interim Administrator as Attorney for an Affected Client", "chapter": "9", "subchapter": "9.300", "page": 873, "blocks": 1, "chars": 505, "max_depth": 0}
