@@ -78,6 +78,23 @@ def build(blocks):
     return [rules[r] for r in order]
 
 
+def chunk_fixed(rules, budget):
+    """Structure-blind control: pack provisions by size across rule
+    boundaries. This is the arm the CPS factorial measured at 0.37 R@1 against
+    0.65 for heading-aware, and the one this corpus's 40.2% crossing rate
+    predicts should lose badly here too."""
+    flat = [(r, b) for r in rules for b in r["body"]]
+    out, cur, n = [], [], 0
+    for r, b in flat:
+        t = toks(b["text"])
+        if cur and n + t > budget:
+            out.append(cur); cur, n = [], 0
+        cur.append((r, b)); n += t
+    if cur:
+        out.append(cur)
+    return out
+
+
 def chunk_rule(rule):
     """Pack one rule's provisions into <=BUDGET chunks, splitting only at the
     shallowest available boundary so a subrule is never cut in half.
@@ -132,7 +149,7 @@ def render(rule, group, with_prefix=True):
     lines = []
     # the parent stem, when this chunk starts below the top of the rule
     par = parent_of(first)
-    if par:
+    if par and globals().get("CARRY_STEM", True):
         stem = next((b["text"] for b in rule["body"]
                      if b["subpath"] == par), None)
         if stem and stem not in (g["text"] for g in group):
@@ -148,14 +165,34 @@ def main():
     ap.add_argument("-o", "--out", default="3_chunks/chunks.jsonl")
     ap.add_argument("--no-prefix", action="store_true",
                     help="ablation: embed the body without the citation path")
+    ap.add_argument("--no-stem", action="store_true",
+                    help="ablation: do not carry the parent stem")
+    ap.add_argument("--budget", type=int, default=BUDGET_TOKENS)
+    ap.add_argument("--strategy", default="rule",
+                    choices=["rule", "provision", "whole", "fixed"])
     args = ap.parse_args()
+    globals()["BUDGET_TOKENS"] = args.budget
+    globals()["CARRY_STEM"] = not args.no_stem
 
     blocks = [json.loads(l) for l in open(args.blocks) if l.strip()]
     rules = build(blocks)
 
     out, n = [], 0
-    for r in rules:
-        for g in chunk_rule(r):
+    if args.strategy == "fixed":
+        groups = []
+        for grp in chunk_fixed(rules, args.budget):
+            # a structure-blind chunk has no single owning rule; attribute it
+            # to the rule of its first provision, as the control does
+            groups.append((grp[0][0], [b for _, b in grp]))
+    elif args.strategy == "provision":
+        groups = [(r, [b]) for r in rules for b in r["body"]]
+    elif args.strategy == "whole":
+        groups = [(r, r["body"]) for r in rules if r["body"]]
+    else:
+        groups = [(r, g) for r in rules for g in chunk_rule(r)]
+
+    for r, g in groups:
+        if True:
             embed_text, path = render(r, g, not args.no_prefix)
             cits = [b["citation"] for b in g if b.get("citation")]
             out.append({
