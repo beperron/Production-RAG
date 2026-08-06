@@ -242,9 +242,18 @@ border:1px solid var(--line2);border-radius:8px;cursor:pointer}
 padding:16px 18px;margin:0 0 12px;scroll-margin-top:16px;
 transition:border-color .3s,box-shadow .3s}
 .card:target{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
-.cite-link{color:var(--teal-hover);text-decoration:underline;
-text-underline-offset:2px;font-weight:600}
+.cite-link{color:var(--teal-hover);text-decoration:underline dotted;
+text-underline-offset:3px;font-weight:600}
 .cite-link:hover{background:var(--teal-soft)}
+.cite-chip{display:inline-flex;align-items:center;gap:7px;background:var(--paper);
+border:1.5px solid var(--teal);border-radius:9px;padding:1px 7px 1px 10px;
+font:600 12.5px var(--mono);color:var(--teal-hover);text-decoration:none;
+white-space:nowrap;margin:0 2px;vertical-align:2px}
+.cite-chip:hover{background:var(--teal-soft)}
+.refnum{display:inline-block;min-width:17px;height:17px;border-radius:50%;
+background:var(--accent);color:#fff;font:600 10.5px/17px var(--mono);
+text-align:center;padding:0 2px}
+.cite-link .refnum{margin-left:5px;vertical-align:2px}
 .cardhead{display:flex;align-items:baseline;gap:10px}
 .num{flex:0 0 auto;width:22px;height:22px;border-radius:50%;
 background:var(--accent);color:#fff;font:600 12px/22px var(--mono);
@@ -572,20 +581,78 @@ def md_min(text):
 from mcr_search import RE_CITE as _RC, resolve_cite as _rc
 
 
+RE_PAR_OPEN = __import__("re").compile(r"\(\s*(?:see\s+)?$",
+                                       __import__("re").IGNORECASE)
+
+
 def link_citations(escaped_answer, citemap, valid):
     """Every citation the answer emits becomes a link to the passage card it
-    came from. Runs on already-escaped text; citations contain no characters
-    that html.escape rewrites, so the match is safe. Citations that were not
-    retrieved (reported from inside a passage) get no link -- the audit table
-    below explains those."""
-    def sub(m):
+    came from -- but with two distinct presentations, so a rule *mentioned in
+    the prose* and the *source citation for the sentence* stop looking like
+    the same thing said twice:
+
+    * a citation standing alone in parentheses -- "(MCR 2.108(A)(1))", the
+      generator's source parenthetical -- is rendered as a chip that points
+      down at the provision card; the parentheses come off, the chip itself
+      is the indicator;
+    * a citation inside running prose keeps a quiet dotted-underline link;
+    * "MCR X (MCR X)" -- the same citation restated as its own source --
+      collapses to a single chip.
+
+    Runs on already-escaped text; citations contain no characters that
+    html.escape rewrites, so the match is safe. Citations that were not
+    retrieved (reported from inside a passage) get no link -- the audit
+    table below explains those."""
+    s = escaped_answer
+    matches = list(_RC.finditer(s))
+    out, pos, i = [], 0, 0
+
+    def chip(n, label):
+        # a boxed button carrying the number of the provision card below --
+        # the same numbered bubble the cards themselves wear
+        return (f'<a class="cite-chip" href="#card-{n}" '
+                f'title="Go to provision {n} below">{label}'
+                f'<span class="refnum" aria-hidden="true">{n}</span>'
+                f'<span class="vh"> — provision {n} below</span></a>')
+
+    while i < len(matches):
+        m = matches[i]
         cit = _rc(m.group(1), m.group(2), valid)
         n = citemap.get(cit)
+        parenthetical = (n is not None
+                         and RE_PAR_OPEN.search(s[max(0, m.start() - 8):m.start()])
+                         and s[m.end():m.end() + 1] == ")")
+        # "MCR X (MCR X)": same citation restated as its own source
+        dup = None
+        if n is not None and not parenthetical and i + 1 < len(matches):
+            m2 = matches[i + 1]
+            if (_rc(m2.group(1), m2.group(2), valid) == cit
+                    and RE_PAR_OPEN.fullmatch(s[m.end():m2.start()].lstrip())
+                    and s[m2.end():m2.end() + 1] == ")"):
+                dup = m2
         if n is None:
-            return m.group(0)
-        return (f'<a class="cite-link" href="#card-{n}" '
-                f'title="Go to this provision below">{m.group(0)}</a>')
-    return _RC.sub(sub, escaped_answer)
+            out.append(s[pos:m.end()])
+            pos = m.end()
+        elif dup is not None:
+            out.append(s[pos:m.start()])
+            out.append(chip(n, m.group(0)))
+            pos = dup.end() + 1                       # swallow "(MCR X)"
+            i += 1
+        elif parenthetical:
+            open_at = s.rindex("(", 0, m.start())
+            out.append(s[pos:open_at])
+            out.append(chip(n, m.group(0)))
+            pos = m.end() + 1                         # swallow closing paren
+        else:
+            out.append(s[pos:m.start()])
+            out.append(f'<a class="cite-link" href="#card-{n}" '
+                       f'title="Go to provision {n} below">{m.group(0)}'
+                       f'<span class="refnum" aria-hidden="true">{n}</span>'
+                       f'<span class="vh"> — provision {n} below</span></a>')
+            pos = m.end()
+        i += 1
+    out.append(s[pos:])
+    return "".join(out)
 
 
 def feedback_widget(aid):
