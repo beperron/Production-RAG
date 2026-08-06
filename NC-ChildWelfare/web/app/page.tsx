@@ -80,6 +80,27 @@ export default function Home() {
         <a className="home" href="https://parallel42.ai" target="_blank" rel="noopener">parallel42.ai ↗</a>
       </div>
 
+      <div className="lawline">
+        <div className="in">
+          <b>Not legal advice.</b> Answers are generated and may be wrong — verify
+          against the official statutes and policy before relying on them.{" "}
+          <details>
+            <summary>Full notice</summary>
+            <p className="more">
+              This is an independent search tool over public North Carolina
+              child-welfare law and policy; it is <b>not</b> a product of,
+              affiliated with, or endorsed by the State of North Carolina, the
+              North Carolina courts, or NCDHHS. It does not create an
+              attorney–client relationship and must not be relied on in any
+              filing or decision. Answers are produced automatically from the
+              public source documents and may be incomplete, out of date, or
+              wrong. Always verify against the official sources linked on this
+              page before acting.
+            </p>
+          </details>
+        </div>
+      </div>
+
       <header className="hero">
         <p className="eyebrow">Public NC child-welfare law &amp; policy</p>
         <h1>Ask North Carolina&apos;s child-welfare rulebook.</h1>
@@ -96,6 +117,17 @@ export default function Home() {
           <span><b>Every result</b> source-traceable</span>
           <span>No confidential data</span>
         </div>
+        <p className="sources">
+          Original sources:{" "}
+          <a href="https://www.ncleg.gov/Laws/GeneralStatuteSections/Chapter7B"
+            target="_blank" rel="noopener noreferrer">NC General Statutes, Chapter 7B</a>
+          {" · "}
+          <a href="http://reports.oah.state.nc.us/ncac.asp"
+            target="_blank" rel="noopener noreferrer">NC Administrative Code</a>
+          {" · "}
+          <a href="https://policies.ncdhhs.gov/divisional-n-z/social-services/child-welfare-services/cws-policies-manuals/"
+            target="_blank" rel="noopener noreferrer">NCDHHS child-welfare policy manuals</a>
+        </p>
       </header>
 
       <form className="search" onSubmit={(e) => { e.preventDefault(); run(q); }}>
