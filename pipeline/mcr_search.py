@@ -41,6 +41,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 # (p=7.7e-36); bge-reranker-base costs 8.9 (p=1.3e-16); the citation-path
 # prefix and the parent stem are worth 0.000; rule-level dedup costs 12-14.
 CHUNKS = ROOT / "3_chunks" / "v_rule256.jsonl"
+XREFS = ROOT / "1_parsed" / "xrefs.jsonl"
 VECTORS = ROOT / "4_eval" / "cache" / "rule256.v_rule256.3580.npy"
 KEY_PATH = pathlib.Path(os.path.expanduser("~/.config/ollama/cloud.key"))
 
@@ -113,6 +114,18 @@ class Engine:
             for cit in c["citations"]:
                 self.by_citation.setdefault(cit, i)
         self._bm25 = None
+        # materialised cross-reference graph, both directions, ranked by
+        # legal force (overrides > excepts > conditions > defines > refers)
+        self.out_edges = {}
+        self.in_edges = {}
+        if XREFS.exists():
+            for line in open(XREFS):
+                if not line.strip():
+                    continue
+                e = json.loads(line)
+                self.out_edges.setdefault(e["from"], []).append(e)
+                if e["relation"] in ("overrides", "excepts"):
+                    self.in_edges.setdefault(e["to_rule"], []).append(e)
         self._model = None
         self._vecs = None
         self.embedder_name = embedder
@@ -222,40 +235,45 @@ class Engine:
                 "n_tokens": c["n_tokens"]}
 
     # -- graph ------------------------------------------------------------
-    def binding_refs(self, text, limit=3):
-        """Citations this passage makes a condition on itself."""
-        out = []
-        for m in RE_CITE.finditer(text):
-            before = text[:m.start()]
-            if not RE_BINDING.search(before[-140:]):
+    def expand(self, hits, limit=3):
+        """Attach provisions the retrieved passages depend on (outbound), and
+        provisions that MODIFY a retrieved rule from elsewhere (inbound
+        overrides/excepts). Edges come from the materialised graph, ranked by
+        legal force, not from first-match regex at answer time."""
+        have = {h["chunk_id"] for h in hits}
+        have_cits = {c for h in hits for c in h.get("citations", [])}
+        cand = []
+        for h in hits:
+            for c in h.get("citations", []):
+                for e in self.out_edges.get(c, []):
+                    if e["relation"] == "refers":
+                        continue
+                    cand.append((e["force"], e["to"], h["citation"],
+                                 f"{h['citation']} is {e['relation']
+                                 .replace('conditions','conditioned')} by it"))
+            rule = h.get("rule")
+            for e in self.in_edges.get(rule, []):
+                cand.append((e["force"] - 0.5, e["from"], h["citation"],
+                             f"it {e['relation']} MCR {rule}"))
+        cand.sort(key=lambda x: x[0])
+        extra = []
+        for _, cit, because, why in cand:
+            if cit in have_cits:
                 continue
-            cit = _norm_cite(m.group(1), m.group(2))
             idx = self.by_citation.get(cit)
             if idx is None:
-                bare = f"MCR {m.group(1)}"
-                idx = self.by_citation.get(bare)
-                cit = bare if idx is not None else cit
-            if idx is not None and cit not in [o[0] for o in out]:
-                out.append((cit, idx))
-            if len(out) >= limit:
+                continue
+            c = self.chunks[idx]
+            if c["chunk_id"] in have:
+                continue
+            have.add(c["chunk_id"])
+            have_cits |= set(c["citations"])
+            e = self._hit(idx, 0.0, "cross-reference", cit)
+            e["because_of"] = because
+            e["why"] = why
+            extra.append(e)
+            if len(extra) >= limit:
                 break
-        return out
-
-    def expand(self, hits, limit=3):
-        """Attach the provisions the retrieved passages depend on."""
-        have = {h["chunk_id"] for h in hits}
-        extra = []
-        for h in hits:
-            for cit, idx in self.binding_refs(h["text"], limit):
-                c = self.chunks[idx]
-                if c["chunk_id"] in have:
-                    continue
-                have.add(c["chunk_id"])
-                e = self._hit(idx, 0.0, "cross-reference", cit)
-                e["because_of"] = h["citation"]
-                extra.append(e)
-                if len(extra) >= limit:
-                    return extra
         return extra
 
     # -- generation -------------------------------------------------------
