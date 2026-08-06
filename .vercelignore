@@ -1,0 +1,7 @@
+knowledge-base/
+src/
+scripts/
+evals/
+supabase/
+docs/
+*.md
