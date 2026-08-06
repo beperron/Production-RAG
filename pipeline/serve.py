@@ -32,11 +32,13 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from mcr_search import Engine, GEN_MODEL, EMBEDDER      # noqa: E402
 from provenance import Ledger                          # noqa: E402
+from querylog import QueryLog                          # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 STATIC = ROOT / "static"
 ENGINE: Engine | None = None
 LEDGER: Ledger | None = None
+QLOG: QueryLog | None = None
 
 EXAMPLES = [
     "How long does a defendant served in Michigan have to answer a complaint?",
@@ -99,6 +101,7 @@ font-display:swap;src:url(/static/fonts/montserrat-1.woff2) format('woff2')}
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
+html{scroll-behavior:smooth}
 html,body{margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:15.5px/1.6 var(--sans);
 -webkit-font-smoothing:antialiased}
@@ -196,7 +199,12 @@ tbody tr:last-child td{border-bottom:none}
 padding-top:16px;border-top:1px solid var(--line)}
 
 .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;
-padding:16px 18px;margin:0 0 12px}
+padding:16px 18px;margin:0 0 12px;scroll-margin-top:16px;
+transition:border-color .3s,box-shadow .3s}
+.card:target{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.cite-link{color:var(--teal-hover);text-decoration:underline;
+text-underline-offset:2px;font-weight:600}
+.cite-link:hover{background:var(--teal-soft)}
 .cardhead{display:flex;align-items:baseline;gap:10px}
 .num{flex:0 0 auto;width:22px;height:22px;border-radius:50%;
 background:var(--accent);color:#fff;font:600 12px/22px var(--mono);
@@ -328,6 +336,9 @@ answer cites the provisions behind it and the printed page to verify against.">
   <p>An independent research prototype, University of Michigan. Not
   affiliated with or endorsed by the Michigan courts. Report errors:
   <a href="mailto:beperron@umich.edu">beperron@umich.edu</a>.</p>
+  <p>Searches are recorded on this machine (question, answer, retrieved
+  provisions) to improve the tool; nothing is sent elsewhere except the
+  generation request.</p>
   <p>{html.escape(st['source']['edition'])} &middot;
   <a href="/source.pdf" target="_blank" rel="noopener">open this tool's copy
   of the rules PDF</a> (printed page numbers and PDF sheet numbers differ; both
@@ -421,7 +432,7 @@ def hit_card(h, n, cited=frozenset()):
                if h.get("because_of") else "")
     score = ("" if h["how"] == "citation-router"
              else f"match strength {h['score']:.2f} (cosine) · ")
-    return f"""<article class="card" aria-labelledby="h{n}">
+    return f"""<article class="card" id="card-{n}" aria-labelledby="h{n}">
   <div class="cardhead">
     <span class="num" aria-hidden="true">{n}</span>
     <h3 class="sec" id="h{n}">{html.escape(h['citation'] or h['rule'])}</h3>
@@ -453,6 +464,25 @@ def md_min(text):
     return RE_BOLD.sub(r"<strong>\1</strong>", out)
 
 
+from mcr_search import RE_CITE as _RC, resolve_cite as _rc
+
+
+def link_citations(escaped_answer, citemap, valid):
+    """Every citation the answer emits becomes a link to the passage card it
+    came from. Runs on already-escaped text; citations contain no characters
+    that html.escape rewrites, so the match is safe. Citations that were not
+    retrieved (reported from inside a passage) get no link -- the audit table
+    below explains those."""
+    def sub(m):
+        cit = _rc(m.group(1), m.group(2), valid)
+        n = citemap.get(cit)
+        if n is None:
+            return m.group(0)
+        return (f'<a class="cite-link" href="#card-{n}" '
+                f'title="Go to this provision below">{m.group(0)}</a>')
+    return _RC.sub(sub, escaped_answer)
+
+
 def render(q):
     if not q.strip():
         return "", ""
@@ -462,6 +492,10 @@ def render(q):
     hits, ans = r["hits"], r["answer"]
     v = LEDGER.verify_answer(ans, hits)
     cited = {r["citation"] for r in v["citations"] if r["was_retrieved"]}
+    citemap = {}
+    for n, h in enumerate(hits):
+        for c in h.get("citations", []):
+            citemap.setdefault(c, n + 1)
     low = ans.lower()
     refused = any(t in low for t in
                   ("do not answer", "does not answer", "not answered",
@@ -472,10 +506,15 @@ def render(q):
                    "outside the michigan court rules", "governed by statute",
                    "would be found in", "passages do not"))
     head = "The court rules do not answer this" if refused else "Answer"
+    if QLOG is not None:
+        try:
+            QLOG.record(q, r, v, dt * 1000, refused)
+        except Exception:                               # logging never breaks answering
+            pass
     body = "".join([
         f'<section class="answer{" refused" if refused else ""}" '
         f'aria-labelledby="ans"><h2 id="ans">{head}</h2>'
-        f'<div class="body">{md_min(ans)}</div></section>',
+        f'<div class="body">{link_citations(md_min(ans), citemap, LEDGER.valid_citations)}</div></section>',
         verify_block(v, ans),
         (f'<p class="meta">{len(hits)} provisions reviewed — none directly '
          f'answers the question · {dt:.1f}s</p>' if refused else
@@ -525,7 +564,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
-    global ENGINE, LEDGER
+    global ENGINE, LEDGER, QLOG
     ap = argparse.ArgumentParser()
     ap.add_argument("--port", type=int, default=8788)
     args = ap.parse_args()
@@ -535,6 +574,7 @@ def main():
     ENGINE.model.encode(["warm"], normalize_embeddings=True,
                         prompt_name="query", show_progress_bar=False)
     LEDGER = Ledger()
+    QLOG = QueryLog()
     print(f"ready · {len(ENGINE.chunks):,} passages · "
           f"http://127.0.0.1:{args.port}", flush=True)
     ThreadingHTTPServer(("127.0.0.1", args.port), Handler).serve_forever()
