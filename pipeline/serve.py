@@ -360,6 +360,8 @@ answer cites the provisions behind it and the printed page to verify against.">
   are shown on every link) &middot;
   <a href="https://www.courts.michigan.gov/rules-administrative-orders-and-jury-instructions/court-rules/"
   target="_blank" rel="noopener">official rules at courts.michigan.gov</a></p>
+  <p><a href="/architecture">How this system works</a> &mdash; the pipeline,
+  the audit, the measured performance, and what was tested and rejected.</p>
   <details>
     <summary>Technical details</summary>
     <p style="margin:10px 0 0;color:var(--muted)">In plain terms: this tool's
@@ -536,6 +538,138 @@ def finish_html(q, r, dt):
     return answer_html, below, refused, head, v
 
 
+ARCH_CSS = """
+.arch{max-width:920px;margin:0 auto;padding:28px 24px 70px}
+.arch h1{margin-top:6px}
+.arch h2{font:600 13px var(--mono);letter-spacing:.09em;text-transform:uppercase;
+color:var(--teal-hover);margin:34px 0 10px}
+.arch p,.arch li{max-width:72ch;color:var(--ink2)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:14px 0}
+.stage{flex:1 1 150px;background:var(--paper);border:1px solid var(--line2);
+border-radius:10px;padding:10px 12px}
+.stage b{display:block;font-size:13.5px;color:var(--secondary)}
+.stage span{font:11.5px var(--mono);color:var(--muted)}
+.arrow{align-self:center;color:var(--muted);font-size:18px}
+.arch table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--paper);
+border:1px solid var(--line);border-radius:8px;margin:10px 0}
+.arch th,.arch td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:left}
+.arch th{font:600 10.5px var(--mono);text-transform:uppercase;color:var(--muted)}
+.arch tbody tr:last-child td{border-bottom:none}
+.dead{color:var(--muted)}
+.dead b{color:var(--warn)}
+.backlink{display:inline-block;margin:14px 0 0;color:var(--teal-hover)}
+"""
+
+
+def architecture_page():
+    st = LEDGER.stats()
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#142D3E">
+<title>How it works — Michigan Court Rules Bench Book</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>{CSS}{ARCH_CSS}</style></head>
+<body>
+<div class="topbar">
+  <div class="brand">
+    <img src="/favicon.svg" alt="" width="30" height="30">
+    <b>Michigan Court Rules</b>
+    <span>Bench Book &middot; how it works</span>
+  </div>
+  <span class="betachip">Beta</span>
+</div>
+<main class="arch">
+<p class="eyebrow">Bench Book &middot; Architecture</p>
+<h1>How this system works</h1>
+<p>The Bench Book answers questions about the Michigan Court Rules by finding
+the governing provisions first and writing from them second. It never answers
+from general knowledge: every sentence is composed from retrieved rule text,
+every citation is checked against the parsed rules before the page renders,
+and every passage can be traced to the printed page of the source PDF.</p>
+
+<h2>The pipeline</h2>
+<div class="flow">
+  <div class="stage"><b>1 &middot; Parse</b><span>874-page official PDF &rarr;
+    {st['rules']} rules, {st['citable_provisions']:,} citable provisions.
+    Verified three ways against the document itself.</span></div>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+  <div class="stage"><b>2 &middot; Chunk</b><span>{st['chunks']:,} passages,
+    each scoped to a single rule (never crossing one), ~256 tokens.</span></div>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+  <div class="stage"><b>3 &middot; Retrieve</b><span>Meaning-based search
+    (Qwen3-Embedding-4B). Exact citations bypass search entirely via a
+    deterministic router.</span></div>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+  <div class="stage"><b>4 &middot; Expand</b><span>A cross-reference graph
+    (943 classified edges) supplies provisions the retrieved rules are
+    expressly subject to &mdash; or overridden by.</span></div>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+  <div class="stage"><b>5 &middot; Compose</b><span>glm-5.2 writes from the
+    retrieved passages only, within a 4,096-token reading window.</span></div>
+  <span class="arrow" aria-hidden="true">&rarr;</span>
+  <div class="stage"><b>6 &middot; Audit</b><span>Every citation in the answer
+    is checked: does it exist, and was it actually retrieved? Only then does
+    the page render.</span></div>
+</div>
+
+<h2>Why you can check it</h2>
+<ul>
+<li><b>Citations link to their passages</b>, and passages link to the printed
+page of the source PDF (both numbering systems shown).</li>
+<li><b>The audit is visible.</b> A citation the model repeated from inside a
+passage &mdash; rather than one it was shown &mdash; is labelled exactly that.</li>
+<li><b>Refusal is a feature.</b> When the rules do not answer a question, the
+system says so in amber and names where the answer lives instead. On a
+32-question test of genuinely unanswerable questions it refused all 32.</li>
+<li><b>Every search is recorded on this machine</b> (question, answer,
+retrieved provisions) and nothing leaves it except the generation request.</li>
+</ul>
+
+<h2>Measured performance</h2>
+<table>
+<thead><tr><th>property</th><th>result</th><th>how measured</th></tr></thead>
+<tbody>
+<tr><td>parse completeness</td><td>384,507 = 384,507 words</td>
+<td>word-for-word identity with the source PDF</td></tr>
+<tr><td>structure</td><td>625/625 rules</td>
+<td>reconciled against the document's own table of contents</td></tr>
+<tr><td>right provision in the reading window</td><td>94%</td>
+<td>1,060-question benchmark, gold = citation strings</td></tr>
+<tr><td>exact-citation lookups</td><td>125/125</td><td>deterministic router</td></tr>
+<tr><td>answer cites the correct provision</td><td>0.91</td>
+<td>paired evaluation, independent judge model</td></tr>
+<tr><td>fabricated citations</td><td>0</td>
+<td>every emitted citation checked against the corpus</td></tr>
+<tr><td>refuses genuinely unanswerable questions</td><td>32/32</td>
+<td>negative test set</td></tr>
+</tbody></table>
+
+<h2>What was tested and rejected</h2>
+<p class="dead">Each of these was measured on paired benchmarks and made the
+system <b>worse</b>: keyword-search fusion (BM25), a reranking model, query
+rewriting (HyDE), heading prefixes in passages, merged-rule context assembly,
+and larger passage sizes. The system is deliberately simple because the
+simpler configuration measured better at every step &mdash; the full record
+is in the project repository (<code>docs/TESTING-AND-LESSONS.md</code>).</p>
+
+<h2>Limits</h2>
+<p>This is a research prototype, not legal advice. It covers the Michigan
+Court Rules as amended through July 31, 2026 &mdash; not statutes (MCL), case
+law, the Rules of Evidence, or local administrative orders; when an answer
+depends on those, the system says so rather than guessing. It is an
+independent University of Michigan project, not a product of the Michigan
+courts.</p>
+
+<a class="backlink" href="/">&larr; Back to search</a>
+</main>
+<footer><div class="in">
+<p>An independent research prototype, University of Michigan. Report errors:
+<a href="mailto:beperron@umich.edu">beperron@umich.edu</a>.</p>
+</div></footer>
+</body></html>"""
+
+
 def render_shell(q):
     """Streaming path: retrieval happens now, the answer streams in via SSE,
     and the audit + cards arrive in the final event -- citations become links
@@ -648,6 +782,9 @@ class Handler(BaseHTTPRequestHandler):
                 "announce": f"{head}. {len(prep['hits'])} supporting "
                             f"provisions, {v['n']} citations audited."}))
             return
+        if p in ("/architecture", "/about", "/how-it-works"):
+            return self._send(architecture_page().encode(),
+                              "text/html; charset=utf-8")
         if p == "/favicon.svg":
             f = STATIC / "favicon.svg"
             if f.exists():
