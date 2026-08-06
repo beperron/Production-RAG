@@ -53,6 +53,63 @@ MODE = os.environ.get("MCR_MODE", "dense")
 RE_CITE = re.compile(r"\bMCR\s*(\d+\.\d+[A-Za-z]?)((?:\s*\([A-Za-z0-9]{1,4}\))*)",
                      re.I)
 
+# What court staff actually type: "2.116(C)(10)" without MCR, "Rule 2.116",
+# "mcr 2.116c10" mashed. Normalised BEFORE the router so a sloppy citation
+# either resolves to the RIGHT provision or does not route at all -- the
+# audit found mashed forms silently routing to the wrong subrule at score
+# 1.0, the worst failure shape this system can have.
+RE_CITE_LOOSE = re.compile(
+    r"(?:\b(?:MCR|rule)\s*)?(\d\.\d{3})([A-Za-z])?"
+    r"((?:\s*\([A-Za-z0-9]{1,4}\))*)"
+    r"((?:[A-Za-z]\d{0,2}|\d{1,2})+)?", re.I)
+
+
+def normalise_citation(query, known_rules=None):
+    """Rewrite recognisable citation shapes to canonical 'MCR d.ddd(X)(n)'.
+
+    Subtleties learned the hard way: a trailing \b fails after ')' and
+    silently truncates the subrule capture; an optional prefix with backslash-s-star
+    glues the preceding word to the insertion; and a letter suffix is
+    AMBIGUOUS -- rule 5.743b exists, so '2.116c' is only a mashed subrule if
+    no rule '2.116c' exists. The corpus decides, never the regex.
+    """
+    m = RE_CITE.search(query)
+    if m:
+        # RE_CITE itself absorbs a mashed letter into the rule ("2.116C").
+        # Trust it only when the rule it read actually exists.
+        r = m.group(1)
+        if known_rules is None or r.lower() in known_rules or r[-1].isdigit():
+            if r[-1].isdigit() or (known_rules and r.lower() in known_rules):
+                return query
+    lm = RE_CITE_LOOSE.search(query)
+    if not lm or not lm.group(1):
+        return query
+    rule, suffix = lm.group(1), (lm.group(2) or "")
+    subs = re.sub(r"\s+", "", lm.group(3) or "")
+    tail = lm.group(4) or ""
+    if suffix and known_rules is not None and (rule + suffix.lower()) not in known_rules:
+        tail = suffix + tail           # not a real lettered rule: it's a subrule
+        suffix = ""
+    extra = ""
+    t = tail
+    while t:
+        mm = re.match(r"([A-Za-z])(\d{1,2})?|(\d{1,2})", t)
+        if not mm:
+            break
+        if mm.group(3):
+            extra += f"({mm.group(3)})"
+            t = t[mm.end():]
+            continue
+        extra += f"({mm.group(1).upper()})"
+        if mm.group(2):
+            extra += f"({mm.group(2)})"
+        t = t[mm.end():]
+    canon = f"MCR {rule}{suffix.lower()}{subs}{extra}"
+    pre = query[:lm.start()]
+    if pre and not pre.endswith(" "):
+        pre += " "
+    return pre + canon + query[lm.end():]
+
 # A cross-reference is LOAD-BEARING when the sentence makes the target a
 # condition on the source. 690 of the corpus's 1,629 edges read this way, and
 # an answer that quotes the source without the target is not merely
@@ -114,6 +171,7 @@ class Engine:
             for cit in c["citations"]:
                 self.by_citation.setdefault(cit, i)
         self._bm25 = None
+        self._rules = {c["rule"] for c in self.chunks if c.get("rule")}
         # materialised cross-reference graph, both directions, ranked by
         # legal force (overrides > excepts > conditions > defines > refers)
         self.out_edges = {}
@@ -174,6 +232,7 @@ class Engine:
     # -- routing ----------------------------------------------------------
     def route_citation(self, query):
         """Exact-citation queries never reach the vector index."""
+        query = normalise_citation(query, self._rules)
         m = RE_CITE.search(query)
         if not m:
             return None
@@ -277,10 +336,53 @@ class Engine:
         return extra
 
     # -- generation -------------------------------------------------------
-    def answer(self, question, k=8, mode=MODE, timeout=180, expand=True):
-        hits = self.search(question, k=k, mode=mode)
+    def assemble_by_rule(self, hits):
+        """Merge same-rule chunks into one passage, in document order, title
+        once. 900 of 1,060 eval pools carry 2+ chunks of the same rule,
+        usually interleaved with other rules and out of document order --
+        measured to sit behind sub-provision misattribution. Costs zero
+        tokens (it deletes repeated headers); per-chunk citation labels are
+        preserved because the grounding audit keys on them."""
+        by_rule, order = {}, []
+        for h in hits:
+            r = h["rule"]
+            if r not in by_rule:
+                by_rule[r] = []
+                order.append(r)
+            by_rule[r].append(h)
+        merged = []
+        for r in order:
+            grp = sorted(by_rule[r], key=lambda h: h["chunk_id"])
+            head = grp[0]
+            m = dict(head)
+            m["citations"] = [c for h in grp for c in h["citations"]]
+            m["merged_from"] = [h["chunk_id"] for h in grp]
+            m["text"] = "\n\n".join(
+                (f"[{h['citation']}] " if len(grp) > 1 else "") + h["text"]
+                for h in grp)
+            m["n_tokens"] = sum(h["n_tokens"] for h in grp)
+            merged.append(m)
+        return merged
+
+    def answer(self, question, k=8, mode=MODE, timeout=180, expand=True,
+               token_budget=None, by_rule=False):
+        # token_budget: fill the window to ~N tokens instead of a fixed k.
+        # The k=8 default holds ~1,400 median tokens; 4096 holds ~k=16, which
+        # the roadmap measured as the best gain/effort in the system.
+        pool = self.search(question, k=(24 if token_budget else k), mode=mode)
+        if token_budget:
+            hits, spent = [], 0
+            for h in pool:
+                if spent + h["n_tokens"] > token_budget and hits:
+                    break
+                hits.append(h)
+                spent += h["n_tokens"]
+        else:
+            hits = pool[:k]
         if expand:
             hits = hits + self.expand(hits)
+        if by_rule:
+            hits = self.assemble_by_rule(hits)
         def fmt(n, h):
             # Say WHY a cross-referenced passage is present. Unlabelled, the
             # model treats it as another search result and reports the

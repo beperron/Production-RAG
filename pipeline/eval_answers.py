@@ -118,6 +118,8 @@ def main():
     ap.add_argument("--no-judge", action="store_true")
     ap.add_argument("--judge", default=None)
     ap.add_argument("--no-expand", action="store_true")
+    ap.add_argument("--token-budget", type=int, default=None)
+    ap.add_argument("--by-rule", action="store_true")
     ap.add_argument("--out", default="4_eval/answers.jsonl")
     ap.add_argument("--seed", type=int, default=20260805)
     args = ap.parse_args()
@@ -164,7 +166,9 @@ def main():
     def work(q):
         t_ans = time.time()
         try:
-            r = eng.answer(q["query"], k=8, expand=not args.no_expand)
+            r = eng.answer(q["query"], k=8, expand=not args.no_expand,
+                           token_budget=args.token_budget,
+                           by_rule=args.by_rule)
         except Exception as exc:                        # noqa: BLE001
             print(f"  FAIL {q['query_id']}: {exc}", flush=True)
             return
