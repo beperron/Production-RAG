@@ -366,11 +366,13 @@ answer cites the provisions behind it and the printed page to verify against.">
   provisions) to improve the tool; nothing is sent elsewhere except the
   generation request.</p>
   <p>{html.escape(st['source']['edition'])} &middot;
-  <a href="/source.pdf" target="_blank" rel="noopener">open this tool's copy
-  of the rules PDF</a> (printed page numbers and PDF sheet numbers differ; both
-  are shown on every link) &middot;
-  <a href="https://www.courts.michigan.gov/rules-administrative-orders-and-jury-instructions/court-rules/"
-  target="_blank" rel="noopener">official rules at courts.michigan.gov</a></p>
+  <a href="https://www.courts.michigan.gov/siteassets/rules-instructions-administrative-orders/michigan-court-rules/michigan-court-rules.pdf"
+  target="_blank" rel="noopener">the official Michigan Court Rules PDF</a>
+  (printed page numbers and PDF sheet numbers differ; both are shown on every
+  link) &middot;
+  <a href="https://www.courts.michigan.gov/rules-administrative-orders-and-jury-instructions/"
+  target="_blank" rel="noopener">rules &amp; administrative orders at
+  courts.michigan.gov</a></p>
   <p><a href="/architecture">About this system</a> &mdash; the pipeline, the
   audit, the measured performance, and what was tested and rejected.</p>
   <details>
@@ -432,7 +434,8 @@ answer cites the provisions behind it and the printed page to verify against.">
     <details style="margin:4px 0 0">
       <summary style="cursor:pointer;font:600 12px var(--mono);color:var(--muted)">Reference identifiers (for technical staff)</summary>
       <div class="prov">
-source        {html.escape(st['source']['file'])}<br>
+source        {html.escape(st['source']['file'])}
+              (<a href="/source.pdf">this tool's verified local copy</a>)<br>
 sha-256       {st['source']['sha256']}<br>
 provisions    {st['citable_provisions']:,} citable, from {st['blocks']:,} parsed blocks<br>
 passages      {st['chunks']:,} (rule-scoped, 256-token budget)<br>
@@ -450,7 +453,7 @@ verification  parse reconciled against the document's own contents
 def _page_cell(r):
     tr = LEDGER.trace(r["citation"]) if r.get("printed_page") else None
     if tr and tr.get("pdf_pages"):
-        return (f"<td><a href='/source.pdf#page={tr['pdf_pages'][0] + 1}' "
+        return (f"<td><a href='https://www.courts.michigan.gov/siteassets/rules-instructions-administrative-orders/michigan-court-rules/michigan-court-rules.pdf#page={tr['pdf_pages'][0] + 1}' "
                 f"target='_blank' rel='noopener'>p.{r['printed_page'][0]}</a></td>")
     return "<td>—</td>"
 
@@ -508,7 +511,7 @@ def hit_card(h, n, cited=frozenset()):
     tr = LEDGER.trace(h["citation"]) if h.get("citation") else None
     pages = ", ".join(str(p) for p in (tr or {}).get("printed_pages", []))
     pdf1 = ((tr or {}).get("pdf_pages") or [None])[0]
-    pdf_href = f"/source.pdf#page={pdf1 + 1}" if pdf1 is not None else None
+    pdf_href = f"https://www.courts.michigan.gov/siteassets/rules-instructions-administrative-orders/michigan-court-rules/michigan-court-rules.pdf#page={pdf1 + 1}" if pdf1 is not None else None
     blocks = " ".join((tr or {}).get("block_ids", [])[:6])
     because = (f' — required by {html.escape(h["because_of"])}'
                if h.get("because_of") else "")
