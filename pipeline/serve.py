@@ -98,6 +98,19 @@ WORKING_JS = """<script>
     });
   });
 })();
+function fbVote(aid, v){
+  var el=document.getElementById('fb-'+aid);
+  fetch('/api/feedback',{method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({answer_id:aid, vote:v})})
+  .then(function(r){
+    if(el) el.innerHTML = r.ok
+      ? '<span>Thank you — your feedback was recorded.</span>'
+      : '<span>Could not record feedback.</span>';
+  }).catch(function(){
+    if(el) el.innerHTML='<span>Could not record feedback.</span>';
+  });
+}
 </script>"""
 
 CSS = """
@@ -219,6 +232,11 @@ tbody tr:last-child td{border-bottom:none}
 
 .meta{color:var(--muted);font:12px var(--mono);margin:22px 0 12px;
 padding-top:16px;border-top:1px solid var(--line)}
+.fb{display:flex;gap:10px;align-items:center;margin:2px 0 6px;
+font-size:13.5px;color:var(--muted)}
+.fb button{min-height:40px;min-width:44px;font-size:17px;background:var(--paper);
+border:1px solid var(--line2);border-radius:8px;cursor:pointer}
+.fb button:hover{border-color:var(--teal);background:var(--teal-soft)}
 
 .card{background:var(--paper);border:1px solid var(--line);border-radius:12px;
 padding:16px 18px;margin:0 0 12px;scroll-margin-top:16px;
@@ -568,6 +586,17 @@ def link_citations(escaped_answer, citemap, valid):
     return _RC.sub(sub, escaped_answer)
 
 
+def feedback_widget(aid):
+    return f"""<div class="fb" id="fb-{aid}" role="group"
+  aria-label="Was this answer helpful?">
+  <span>Was this answer helpful?</span>
+  <button type="button" onclick="fbVote('{aid}',1)"
+    aria-label="Yes, helpful">&#128077;</button>
+  <button type="button" onclick="fbVote('{aid}',-1)"
+    aria-label="No, not helpful">&#128078;</button>
+</div>"""
+
+
 REFUSAL_TERMS = ("do not answer", "does not answer", "not answered",
                  "no provision", "cannot be answered", "do not state",
                  "do not specify", "passages provided do not",
@@ -589,9 +618,10 @@ def finish_html(q, r, dt):
         for c in h.get("citations", []):
             citemap.setdefault(c, n + 1)
     refused = any(t in ans.lower() for t in REFUSAL_TERMS)
+    aid = None
     if QLOG is not None:
         try:
-            QLOG.record(q, r, v, dt * 1000, refused)
+            aid = QLOG.record(q, r, v, dt * 1000, refused)
         except Exception:
             pass
     answer_html = link_citations(md_min(ans), citemap, LEDGER.valid_citations)
@@ -603,6 +633,8 @@ def finish_html(q, r, dt):
          f'<p class="meta">{len(hits)} provisions reviewed · {dt:.1f}s · '
          f'other provisions may also bear on this question</p>'),
         *[hit_card(h, n + 1, cited) for n, h in enumerate(hits)]])
+    if aid:
+        below = feedback_widget(aid) + below
     return answer_html, below, refused, head, v
 
 
@@ -821,6 +853,20 @@ class Handler(BaseHTTPRequestHandler):
     def sse(self, event, data):
         self.wfile.write(f"event: {event}\ndata: {data}\n\n".encode())
         self.wfile.flush()
+
+    def do_POST(self):
+        u = urllib.parse.urlparse(self.path)
+        if u.path != "/api/feedback":
+            return self._send(b"Not found", "text/plain; charset=utf-8", 404)
+        try:
+            n = int(self.headers.get("Content-Length", 0))
+            d = json.loads(self.rfile.read(n) or b"{}")
+            ok = QLOG is not None and QLOG.set_feedback(
+                str(d.get("answer_id", ""))[:32], int(d.get("vote", 0)))
+        except Exception:
+            ok = False
+        self._send(json.dumps({"ok": bool(ok)}).encode(),
+                   "application/json", 200 if ok else 400)
 
     def do_GET(self):
         u = urllib.parse.urlparse(self.path)

@@ -71,6 +71,11 @@ class QueryLog:
         path.parent.mkdir(parents=True, exist_ok=True)
         self._conn = sqlite3.connect(str(path), check_same_thread=False)
         self._conn.executescript("pragma journal_mode=WAL;" + SCHEMA)
+        for col in ("feedback integer", "feedback_at text"):
+            try:
+                self._conn.execute(f"alter table answers add column {col}")
+            except sqlite3.OperationalError:
+                pass                                    # already migrated
         self._lock = threading.Lock()
 
     def record(self, question, result, verify, latency_ms, refused):
@@ -99,11 +104,24 @@ class QueryLog:
             c.commit()
         return aid
 
+    def set_feedback(self, answer_id, vote):
+        """vote: +1 thumbs up, -1 thumbs down. Idempotent per answer."""
+        if vote not in (1, -1):
+            return False
+        with self._lock:
+            cur = self._conn.execute(
+                "update answers set feedback=?, feedback_at=datetime('now')"
+                " where answer_id=?", (vote, answer_id))
+            self._conn.commit()
+            return cur.rowcount == 1
+
     def stats(self):
         c = self._conn
         n = c.execute("select count(*) from answers").fetchone()[0]
         r = c.execute("select count(*) from answers where refused=1").fetchone()[0]
-        return {"answers": n, "refusals": r}
+        up = c.execute("select count(*) from answers where feedback=1").fetchone()[0]
+        dn = c.execute("select count(*) from answers where feedback=-1").fetchone()[0]
+        return {"answers": n, "refusals": r, "thumbs_up": up, "thumbs_down": dn}
 
 
 if __name__ == "__main__":
