@@ -394,6 +394,15 @@ class Engine:
             hits = hits + self.expand(hits)
         if by_rule:
             hits = self.assemble_by_rule(hits)
+        user = self._user_prompt(question, hits)
+        try:
+            text = self._generate(SYSTEM, user, timeout)
+        except Exception as exc:                        # noqa: BLE001
+            text = f"(generation unavailable: {exc})"
+        return {"question": question, "answer": text, "hits": hits,
+                "model": GEN_MODEL}
+
+    def _user_prompt(self, question, hits):
         def fmt(n, h):
             # Say WHY a cross-referenced passage is present. Unlabelled, the
             # model treats it as another search result and reports the
@@ -406,16 +415,53 @@ class Engine:
                     f"(page {h['pages'][0] + 1 - 18})\n{why}"
                     f"{h['text'][:2400]}")
         passages = "\n\n".join(fmt(n, h) for n, h in enumerate(hits))
-        user = (f"QUESTION\n{question}\n\n"
+        return (f"QUESTION\n{question}\n\n"
                 f"PASSAGES FROM THE MICHIGAN COURT RULES\n{passages}\n\n"
                 f"Answer the question using only these passages, with inline "
                 f"citations. If they do not answer it, say so.")
-        try:
-            text = self._generate(SYSTEM, user, timeout)
-        except Exception as exc:                        # noqa: BLE001
-            text = f"(generation unavailable: {exc})"
-        return {"question": question, "answer": text, "hits": hits,
+
+    def prepare(self, question, k=8, mode=MODE, expand=True,
+                token_budget=4096, by_rule=False):
+        """Retrieval + prompt assembly without generation, so a streaming
+        caller can send the passages first and generate afterwards."""
+        pool = self.search(question, k=(24 if token_budget else k), mode=mode)
+        if token_budget:
+            hits, spent = [], 0
+            for h in pool:
+                if spent + h["n_tokens"] > token_budget and hits:
+                    break
+                hits.append(h)
+                spent += h["n_tokens"]
+        else:
+            hits = pool[:k]
+        if expand:
+            hits = hits + self.expand(hits)
+        if by_rule:
+            hits = self.assemble_by_rule(hits)
+        user = self._user_prompt(question, hits)
+        return {"question": question, "hits": hits, "user": user,
                 "model": GEN_MODEL}
+
+    def stream_generate(self, user, timeout=60):
+        """Yield answer text deltas from the generator."""
+        key = KEY_PATH.read_text().strip()
+        body = {"model": GEN_MODEL, "prompt": user, "system": SYSTEM,
+                "stream": True, "think": False,
+                "options": {"temperature": 0.1}}
+        req = urllib.request.Request(
+            "https://ollama.com/api/generate", json.dumps(body).encode(),
+            {"Content-Type": "application/json",
+             "Authorization": f"Bearer {key}"})
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            for line in r:
+                if not line.strip():
+                    continue
+                d = json.loads(line)
+                t = d.get("response")
+                if t:
+                    yield t
+                if d.get("done"):
+                    return
 
     def _generate(self, system, user, timeout):
         key = KEY_PATH.read_text().strip()

@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import json
 import pathlib
 import sys
 import time
@@ -39,6 +40,19 @@ STATIC = ROOT / "static"
 ENGINE: Engine | None = None
 LEDGER: Ledger | None = None
 QLOG: QueryLog | None = None
+PENDING: dict = {}
+PENDING_LOCK = __import__("threading").Lock()
+
+
+def stash(prep, q, t0):
+    import uuid
+    qid = uuid.uuid4().hex[:12]
+    with PENDING_LOCK:
+        if len(PENDING) > 60:
+            for k in list(PENDING)[:20]:
+                PENDING.pop(k, None)
+        PENDING[qid] = (q, prep, t0)
+    return qid
 
 EXAMPLES = [
     "How long does a defendant served in Michigan have to answer a complaint?",
@@ -484,45 +498,100 @@ def link_citations(escaped_answer, citemap, valid):
     return _RC.sub(sub, escaped_answer)
 
 
-def render(q):
-    if not q.strip():
-        return "", ""
-    t0 = time.time()
-    r = ENGINE.answer(q, k=6)
-    dt = time.time() - t0
+REFUSAL_TERMS = ("do not answer", "does not answer", "not answered",
+                 "no provision", "cannot be answered", "do not state",
+                 "do not specify", "passages provided do not",
+                 "do not establish", "do not set", "do not address",
+                 "do not contain", "is not addressed", "not found in the",
+                 "outside the michigan court rules", "governed by statute",
+                 "would be found in", "passages do not")
+
+
+def finish_html(q, r, dt):
+    """Answer HTML + everything below it (verify line, cards). Shared by the
+    synchronous path and the stream's final event, so both render and log
+    identically."""
     hits, ans = r["hits"], r["answer"]
     v = LEDGER.verify_answer(ans, hits)
-    cited = {r["citation"] for r in v["citations"] if r["was_retrieved"]}
+    cited = {x["citation"] for x in v["citations"] if x["was_retrieved"]}
     citemap = {}
     for n, h in enumerate(hits):
         for c in h.get("citations", []):
             citemap.setdefault(c, n + 1)
-    low = ans.lower()
-    refused = any(t in low for t in
-                  ("do not answer", "does not answer", "not answered",
-                   "no provision", "cannot be answered", "do not state",
-                   "do not specify", "passages provided do not",
-                   "do not establish", "do not set", "do not address",
-                   "do not contain", "is not addressed", "not found in the",
-                   "outside the michigan court rules", "governed by statute",
-                   "would be found in", "passages do not"))
-    head = "The court rules do not answer this" if refused else "Answer"
+    refused = any(t in ans.lower() for t in REFUSAL_TERMS)
     if QLOG is not None:
         try:
             QLOG.record(q, r, v, dt * 1000, refused)
-        except Exception:                               # logging never breaks answering
+        except Exception:
             pass
-    body = "".join([
-        f'<section class="answer{" refused" if refused else ""}" '
-        f'aria-labelledby="ans"><h2 id="ans">{head}</h2>'
-        f'<div class="body">{link_citations(md_min(ans), citemap, LEDGER.valid_citations)}</div></section>',
+    answer_html = link_citations(md_min(ans), citemap, LEDGER.valid_citations)
+    head = "The court rules do not answer this" if refused else "Answer"
+    below = "".join([
         verify_block(v, ans),
         (f'<p class="meta">{len(hits)} provisions reviewed — none directly '
          f'answers the question · {dt:.1f}s</p>' if refused else
          f'<p class="meta">{len(hits)} provisions reviewed · {dt:.1f}s · '
          f'other provisions may also bear on this question</p>'),
         *[hit_card(h, n + 1, cited) for n, h in enumerate(hits)]])
-    return body, (f"{head}. {len(hits)} supporting provisions, "
+    return answer_html, below, refused, head, v
+
+
+def render_shell(q):
+    """Streaming path: retrieval happens now, the answer streams in via SSE,
+    and the audit + cards arrive in the final event -- citations become links
+    only after verification."""
+    t0 = time.time()
+    prep = ENGINE.prepare(q)
+    qid = stash(prep, q, t0)
+    return f"""
+<section class="answer" id="ansblock" aria-labelledby="ans">
+  <h2 id="ans">Answer</h2>
+  <div class="body" id="anstext"><span class="spinner" aria-hidden="true"></span>
+  <em style="color:var(--muted)"> Composing a cited answer&hellip;</em></div>
+</section>
+<div id="below"></div>
+<script>
+(function(){{
+  var box=document.getElementById('anstext'),
+      below=document.getElementById('below'), started=false,
+      live=document.getElementById('live'),
+      es=new EventSource('/api/stream?qid={qid}');
+  es.addEventListener('token',function(e){{
+    if(!started){{box.textContent='';started=true;}}
+    box.textContent+=JSON.parse(e.data);
+  }});
+  es.addEventListener('final',function(e){{
+    var d=JSON.parse(e.data);
+    box.innerHTML=d.answer_html;
+    below.innerHTML=d.below;
+    if(d.refused){{
+      document.getElementById('ansblock').classList.add('refused');
+      document.getElementById('ans').textContent=d.head;
+    }}
+    if(live) live.textContent=d.announce;
+    es.close();
+  }});
+  es.addEventListener('gone',function(){{es.close();
+    window.location='/?q='+encodeURIComponent({q!r})+'&nojs=1';}});
+  es.onerror=function(){{es.close();}};
+}})();
+</script>
+<noscript><meta http-equiv="refresh"
+  content="0;url=/?q={urllib.parse.quote(q)}&nojs=1"></noscript>"""
+
+
+def render(q):
+    """Synchronous fallback (no-JS, and the EventSource 'gone' redirect)."""
+    if not q.strip():
+        return "", ""
+    t0 = time.time()
+    r = ENGINE.answer(q)
+    dt = time.time() - t0
+    answer_html, below, refused, head, v = finish_html(q, r, dt)
+    body = (f'<section class="answer{" refused" if refused else ""}" '
+            f'aria-labelledby="ans"><h2 id="ans">{head}</h2>'
+            f'<div class="body">{answer_html}</div></section>' + below)
+    return body, (f"{head}. {len(r['hits'])} supporting provisions, "
                   f"{v['n']} citations audited.")
 
 
@@ -541,9 +610,44 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def sse(self, event, data):
+        self.wfile.write(f"event: {event}\ndata: {data}\n\n".encode())
+        self.wfile.flush()
+
     def do_GET(self):
         u = urllib.parse.urlparse(self.path)
         p = u.path
+        if p == "/api/stream":
+            qid = (urllib.parse.parse_qs(u.query).get("qid") or [""])[0]
+            with PENDING_LOCK:
+                item = PENDING.pop(qid, None)
+            self.send_response(200)
+            self.send_header("Content-Type", "text/event-stream")
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("Connection", "close")
+            self.end_headers()
+            if item is None:
+                self.sse("gone", "{}")
+                return
+            q, prep, t0 = item
+            parts = []
+            try:
+                for tok in ENGINE.stream_generate(prep["user"]):
+                    parts.append(tok)
+                    self.sse("token", json.dumps(tok))
+            except Exception as exc:                    # noqa: BLE001
+                parts.append(f"(generation unavailable: {exc})")
+            ans = "".join(parts)
+            r = {"question": q, "answer": ans, "hits": prep["hits"],
+                 "model": prep["model"]}
+            dt = time.time() - t0
+            answer_html, below, refused, head, v = finish_html(q, r, dt)
+            self.sse("final", json.dumps({
+                "answer_html": answer_html, "below": below,
+                "refused": refused, "head": head,
+                "announce": f"{head}. {len(prep['hits'])} supporting "
+                            f"provisions, {v['n']} citations audited."}))
+            return
         if p == "/favicon.svg":
             f = STATIC / "favicon.svg"
             if f.exists():
@@ -558,8 +662,12 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(f.read_bytes(), "application/pdf")
         if p not in ("/", "/index.html"):
             return self._send(b"Not found", "text/plain; charset=utf-8", 404)
-        q = (urllib.parse.parse_qs(u.query).get("q") or [""])[0]
-        body, announce = render(q)
+        qs = urllib.parse.parse_qs(u.query)
+        q = (qs.get("q") or [""])[0]
+        if q.strip() and not qs.get("nojs"):
+            body, announce = render_shell(q), ""
+        else:
+            body, announce = render(q)
         self._send(page(q, body, announce).encode(),
                    "text/html; charset=utf-8")
 
