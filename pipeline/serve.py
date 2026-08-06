@@ -251,10 +251,10 @@ def page(q, body, announce=""):
     hero = "" if q else f"""
 <header class="hero">
   <p class="eyebrow">Michigan Court Rules &middot; Research edition</p>
-  <h1>Search the Michigan Court Rules</h1>
-  <p class="lede">Ask a question in plain language or enter a citation.
-  Every answer shows the provisions it rests on and the printed page to
-  verify against.</p>
+  <h1>The Michigan Court Rules Bench&nbsp;Book</h1>
+  <p class="lede">A searchable bench book for the Michigan Court Rules. Ask a
+  question in plain language or enter a citation; every answer shows the
+  provisions it rests on and the printed page to verify against.</p>
   <p class="facts"><span><b>{st['rules']}</b> rules</span>
   <span><b>{st['citable_provisions']:,}</b> citable provisions</span>
   <span>as amended through <b>July 31, 2026</b></span></p>
@@ -263,9 +263,9 @@ def page(q, body, announce=""):
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#142D3E">
-<meta name="description" content="Search the Michigan Court Rules. Every
+<meta name="description" content="The Michigan Court Rules Bench Book. Every
 answer cites the provisions behind it and the printed page to verify against.">
-<title>{html.escape(q) + ' — ' if q else ''}Michigan Court Rules search (Beta)</title>
+<title>{html.escape(q) + ' — ' if q else ''}The Michigan Court Rules Bench Book (Beta)</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>{CSS}</style></head>
 <body>
@@ -274,8 +274,8 @@ answer cites the provisions behind it and the printed page to verify against.">
 <div class="topbar">
   <div class="brand">
     <img src="/favicon.svg" alt="" width="30" height="30">
-    <b>Michigan Court Rules</b>
-    <span>search with provenance</span>
+    <b>The Bench Book</b>
+    <span>Michigan Court Rules &middot; search with provenance</span>
   </div>
   <span class="betachip">Beta</span>
 </div>
@@ -315,7 +315,7 @@ answer cites the provisions behind it and the printed page to verify against.">
 </nav>
 
 <main id="results" tabindex="-1">
-  {'<h1 class="vh">Search results: ' + html.escape(q) + '</h1>' if q else ''}
+  {'<h1 class="vh">Bench Book search results: ' + html.escape(q) + '</h1>' if q else ''}
   <p class="vh" role="status" aria-live="polite" id="live">{html.escape(announce)}</p>
   {body}
 </main>
