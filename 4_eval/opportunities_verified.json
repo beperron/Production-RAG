@@ -1,0 +1,359 @@
+[
+ {
+  "title": "Listwise rerank of top-20 by the already-running generator (rerank-then-truncate to k=8)",
+  "failure_population": "304 queries with gold at rank 2-10 (28.7%) plus 49 with gold at rank 9-20 (4.6%); R@20 is 0.977. Evidence: /private/tmp/claude-503/-Users-beperron/6c71876c-2fd4-4494-b606-be5d9b9c80f4/scratchpad/rank_analysis.py output over /Users/beperron/mcr-poc/4_eval/cache/{rule256.v_rule256.3580,queries.1060}.npy and /Users/beperron/mcr-poc/2_eval/mcr_eval_v1.jsonl",
+  "mechanism": "One extra deepseek/glm call before answering: present the top-20 chunks (with rule numbers and subrule headings, since 37.8% of interlopers are sibling subrules) and ask for an ordered pick of the 8 relevant ones; keep citation-router pins fixed. This is NOT the dead cross-encoder: bge-reranker-base is a 110M model that lost to Qwen3-4B's own ordering; the measured proxy shows the generator performs this exact discrimination at 0.979 accuracy (cites-gold-when-in-context, 95/97 in /Users/beperron/mcr-poc/4_eval/gen_deepseek-v4-flash_0731.jsonl; 10/10 on disambiguation), a fundamentally stronger model class than what died.",
+  "expected_gain": "R@1 0.660 -> ~0.88-0.93: 125 routed + 0.95x911 gold-in-top-20 non-routed = ~0.93 optimistic, ~0.88 at 0.90 selection accuracy; +22 to +27 pts, largest single lever available. Also feeds the answer layer: up to 49x0.95 = ~46 queries (4.4%) get gold INTO the k=8 context that currently miss it, directly attacking the measured '2.116(D)(4) unretrieved' overreach class. Median rerank-call latency well under the 1777ms median answer call (10-token output, ~5-6k prefill).",
+  "cost": "days",
+  "risk": "Demotes some of the 700 currently-rank-1 golds (proxy implies ~2-5%, netted into the estimate); mitigate by only reranking when the dense top1-top8 margin is small (median margin among misses is 0.031). Doubles LLM calls per query; adds ~1-2s latency.",
+  "how_to_test": "Cached top-20 for all 1060 queries already exists (dot products from the two .npy files); one generator pass (~1060 calls) + McNemar against baseline ranks, same protocol as /Users/beperron/mcr-poc/4_eval/sweep_final.json. Population of 304+ makes +20 pts trivially distinguishable from noise (SE 1.5 pts).",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "All counts reproduce exactly from ranks_dense.jsonl (304 rank 2-10, 49 rank 9-20, R@20 0.9774, 125 routed, 911 non-routed in top-20) and the 0.979 proxy reproduces (95/97); the mechanism is a frontier-LLM listwise pick, not the dead 110M pointwise cross-encoder, so the only tempering is that the proxy measures an easier task (citing gold in a k=8 answer, position-biased toward rank-1 golds) than first-place selection among 20 with 37.8% sibling interlopers, and 287 of the 304 mid-rank golds already reach the k=8 context, so end-to-end answer gain concentrates in the ~49 rank-9-20 queries.",
+   "gain_estimate_r_at_1": "+19 to +27 pts (0.660 -> 0.85-0.93; 0.85-0.95 selection accuracy band), plus ~46 queries (4.4%) newly getting gold into the k=8 answer context"
+  },
+  "dimension": "ranking"
+ },
+ {
+  "title": "Margin-triggered window expansion k=8 -> 16 (no extra LLM call)",
+  "failure_population": "73 queries (6.9%) where gold is outside the k=8 answering window (28 at rank 9-12, 13 at 13-16, 8 at 17-20, 24 beyond) \u2014 the population behind the measured 'the rule is silent on timing' overreach errors; disambiguation is overrepresented (18/111 vs 30/442 known_item). Evidence: trigger sweep in this session over cache .npy files (output in transcript).",
+  "mechanism": "When the dense score gap top1-top8 falls in the bottom 20% of its distribution (a flat score profile = uncertain ranking), feed k=16 instead of k=8. Measured: this trigger fires on 211/1060 queries (19.9%) and captures 36/73 window misses (bottom-30% variant: fires 316, captures 48). Selection inside the larger window is safe: cites-gold-when-in-context is 0.979.",
+  "expected_gain": "~36 x 0.979 = ~35 answers flip from wrong-rule/rule-is-silent overreach to gold-grounded, i.e. +3.3 pts absolute on the answer layer, concentrated in the ~15% overreach population (roughly a fifth of it removed). Zero R@1 change, zero extra calls; cost is ~2k extra prefill tokens on 20% of queries.",
+  "cost": "hours",
+  "risk": "Threshold chosen on the same 1060 queries \u2014 hold out or cross-validate the 20% percentile; doubling context could distract the generator, though 0.979 cites-gold at k=8 and glm-5.2's 1.000 correct-refusal suggest robustness. Strictly dominated by opportunity 1 if the extra call is accepted \u2014 this is the fallback.",
+  "how_to_test": "Pure offline change to the retrieval order feed + rerun eval_answers.py on the 140-query answer set (or full 1060 for retrieval-side R@window); paired comparison on the 211 triggered queries.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Population (73 misses, bands 28/13/8/24, disambig 18/111) and trigger stats (fires 214, 36 fired-on-misses at bottom-20%) reproduce from the cache .npy files, and the mechanism is not a graveyard resident, but the gain is inflated ~1.7x: 15 of the 36 'captured' misses have gold beyond rank 16 and are unrescuable by k=16, so the true ceiling is 21 x 0.979 ~ +1.9 pts (27 ~ +2.5 pts for the bottom-30% variant), further softened by cross-reference expansion possibly already covering some and 0.979 being a k=8 measurement.",
+   "gain_estimate_r_at_1": "answer-quality (~+1.9 pts, not the claimed +3.3)"
+  },
+  "dimension": "ranking"
+ },
+ {
+  "title": "Sibling-scoped micro-rerank: generator picks the subrule when one rule dominates the top ranks",
+  "failure_population": "81 queries (7.6% of all, 26.6% of rank-2-10 misses) where every chunk above gold is a sibling chunk from gold's OWN rule \u2014 the system already found the right rule and only misorders subrules. Measured oracle ceiling: R@1 0.660 -> 0.737 (+7.6 pts). Evidence: oracle run in this session (transcript) over cache .npy files.",
+  "mechanism": "Cheap trigger: top-3 chunks share one rule and none contains a routed citation -> one small generator call listing only that rule's retrieved chunks with their subrule labels ('(D)(4) Timing', etc.), asking which subrule answers the query. Tiny prompt (one rule, ~1-2k tokens), tiny output; the 0.979 in-context selection proxy applies directly and disambiguation-style subrule discrimination measured 10/10.",
+  "expected_gain": "+7.4 pts R@1 at proxy accuracy (81 x 0.979), on far less latency than the full top-20 rerank; fires on well under 20% of queries. Minimal answer-layer effect (these golds are already inside k=8) \u2014 this is the R@1/citation-ordering play if opportunity 1's latency is rejected. Subsumed by opportunity 1; do not stack the estimates.",
+  "cost": "day",
+  "risk": "Overlaps opportunity 1 entirely \u2014 build this only as its scoped-down fallback. Trigger definition (top-3 single-rule dominance) needs a false-positive check on the 700 already-correct queries where the same dominance pattern may occur with gold at rank 1 (call must retain it there; proxy says ~98% retention).",
+  "how_to_test": "Trigger firing set is computable offline from cached embeddings in minutes; then ~150-250 small generator calls + McNemar on the 81-query population vs baseline.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Reproduced exactly from cached embeddings (dense+router R@1 0.6604; 81/1060 sibling-only misses; oracle 0.7368), and the mechanism (generator picks among one rule's labeled subrules) is not the dead cross-encoder rerank \u2014 but the proposed top-3 trigger only catches 69 of the 81 and also fires on 118 of 700 already-correct queries, so realistic net gain is ~+6.2 pts, modestly below the claimed +7.4.",
+   "gain_estimate_r_at_1": "+6.2 pts net (trigger catches 69/81 at 0.979 accuracy minus ~0.2 pts FP losses on 118 correct-query firings; oracle ceiling +7.6)"
+  },
+  "dimension": "ranking"
+ },
+ {
+  "title": "Refusal-triggered second-pass retrieval (read ranks 11-20 + HyDE re-query, union)",
+  "failure_population": "All 56 absent-from-top-10 queries (5.3% of 1060; scratchpad/absent.json), plus the measured answer-layer overreach cases that answer 'the rule is silent' when gold was unretrieved (4_eval/answers.jsonl: 14 gold-unretrieved answers)",
+  "mechanism": "When the generator refuses or declares the context insufficient (measured trigger rate on gold-missing answers: 10/14 = 71%, answers.jsonl), run a second pass: (a) feed ranks 11-20 from the already-computed ranking, and (b) have the generator write a hypothetical rule provision (HyDE) and re-retrieve, then union. Measured on the 56 with cached hyde.1060.npy: ranks 11-20 alone covers 32/56, HyDE-only covers 21/56, union covers 39/56 (70%). This revives HyDE WITHOUT reversing the graveyard result: the -6.7 was HyDE replacing the base query for all 1060; here it runs only after a refusal, so the 1004 already-hit queries are never touched.",
+  "expected_gain": "56 x 0.71 trigger x 0.70 second-pass coverage x 0.957 cites-gold-when-retrieved ~ 26 queries ~ +2.5 pts end-to-end; conservative +1.5-2.0 pts (trigger rate measured on only n=14). Also converts part of the ~15% overreach into correct answers. glm-5.2's correct-refusal 1.000 / false-refusal 0.102 makes the trigger cleaner than deepseek's",
+  "cost": "days",
+  "risk": "False triggers add a second retrieval+generation round on ~10% of gold-retrieved queries (9/94 refused with gold present); latency doubles on triggered queries; HyDE text generation adds one LLM call. No quality risk to untriggered queries by construction",
+  "how_to_test": "Wire the loop in pipeline/serve.py behind a flag; rerun eval_answers.py over the 56 absent + a 100-query hit sample; success = >=15 of the 56 newly answered with gold cited, zero regressions on the hit sample",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "All claimed measurements reproduce exactly (56 absent in ranks_dense.jsonl; 32 covered by ranks 11-20; HyDE top-10 21/56 and union 39/56 recomputed from hyde.1060.npy; 10/14 refusal trigger and 9/94 false triggers in answers.jsonl); the HyDE graveyard result was global query replacement and does not transfer to this refusal-gated second pass, 32/39 of whose coverage comes from graveyard-free rank-depth reading anyway \u2014 only soft spots are the n=14 trigger sample and the independence assumption between trigger and coverage, so the conservative +1.5-2.0 band is the defensible figure rather than +2.5.",
+   "gain_estimate_r_at_1": "+1.5-2.0 pts end-to-end answer accuracy (not R@1; first-pass retrieval unchanged by construction)"
+  },
+  "dimension": "recall"
+ },
+ {
+  "title": "Within-rule subrule fetch: rule outline in context + generator-directed fetch through the existing citation router",
+  "failure_population": "The 28/56 right-rule-wrong-chunk queries (2.6% of eval; IDs in scratchpad output \u2014 e.g. 2.625(F)(2)(c), 3.993(B), 7.212(A)(5), 9.115(J)(1)), 17 of which have fragment golds <50 words; same failure shape as the measured retrieval-window overreach example (2.116(D)(4) unretrieved while 2.116 chunks were read)",
+  "mechanism": "The retriever already lands the right rule (gold rule = top-1 chunk's rule for 14/56, within top-3 distinct rules for 20/56) but the gold sub-provision is in a sibling chunk that loses the embedding contest \u2014 a 16-word fragment can never outrank its topical siblings. Full-text expansion of top-3 rules is unaffordable (measured median 5,442 tok, p90 10,294 vs 2,048 budget). Instead: append each retrieved rule's subrule-heading outline (~100-200 tok, buildable from 1_parsed/blocks.jsonl heading tree) and let the generator request specific subrule citations, resolved by the existing citation router (route() in eval_retrieval.py already resolves 'MCR 2.625(F)(2)(c)' to a chunk; cross-reference expansion infra already exists in the answer layer)",
+  "expected_gain": "Ceiling 28 queries (+2.6 pts); plausible ~60% resolution where the outline names the concept (headings like 'Immunity', 'No Right to Bail', 'Motions' directly carry the missing vocabulary) ~ 17 queries ~ +1.6 pts end-to-end; additionally attacks the ranking problem's sibling-confusion share beyond these 56",
+  "cost": "days",
+  "risk": "Outline tokens dilute the 2,048 budget (~10%); generator may fetch wrong subrules (bounded: fetches are additive, gold chunks already in context stay); one extra round-trip when a fetch is issued",
+  "how_to_test": "Build outlines from blocks.jsonl; rerun answer eval on the 28 with outline+fetch enabled vs baseline; success = >=14/28 newly cite gold, cites-gold-when-retrieved on control sample stays >=0.95",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Refutation fails: independent recomputation from cache/rule256 vectors reproduces every count (56 absent-from-top10, 28 right-rule-in-top10, 14 top-1/20 top-3-distinct, named IDs present; only trivial drift: 15 not 17 fragment golds <50w, absent-set median echo 0.136), the mechanism (generator-directed additive fetch via existing route()) is not any graveyard resident, and the arithmetic is sound \u2014 the sole soft spot is the untested ~60% resolution rate on the hardest register-gap queries, and the gain is answer-layer/R@2048tok, not retriever R@1.",
+   "gain_estimate_r_at_1": "0 pts on retriever R@1 (answer-layer fix); ~+1.6 pts end-to-end citation accuracy, ceiling +2.6 (28/1060)"
+  },
+  "dimension": "recall"
+ },
+ {
+  "title": "Raise the read window to k=20 (~2x token budget) under glm-5.2",
+  "failure_population": "The 32/56 queries whose gold sits at rank 11-20 (3.0% of eval; measured R@20 = 0.9774 vs R@10 0.9472 on the recomputed ranks)",
+  "mechanism": "Pure window extension: the ranking already places gold at 11-20 for 32 queries; the generator just never sees it. No retrieval change at all \u2014 read deeper. The chunking sweep showed 256-token chunks win at fixed budget, so doubling the budget while keeping rule256 granularity is the un-confounded way to spend more context; the glm-5.2 swap (already planned) is the natural moment since its refusal behavior differs anyway",
+  "expected_gain": "Ceiling 32 x 0.957 ~ +2.9 pts retrieved-and-cited; realistic +2.0-2.5 pts after rank-11-20 dilution (gold deeper in context is cited less reliably \u2014 unmeasured at k=20). Overlaps with the second-pass opportunity: this is the always-pay-tokens variant, that one is the pay-latency-on-trigger variant; adopting both yields little more than the better one alone, so A/B them against each other",
+  "cost": "hours",
+  "risk": "2x inference tokens on every query; cites-gold-when-retrieved measured only at k=8 (0.957) and may degrade with 20 chunks of distractors; overreach could rise if more near-miss siblings are in view",
+  "how_to_test": "Rerun eval_answers.py with k=20 on the full answers sample plus the 56; compare cites-gold, false refusal, and overreach vs k=8; success = net answered-with-gold-cited up >=2 pts with cites-gold-when-retrieved >=0.94",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Recomputed dense+router ranks on rule256 reproduce the claim exactly (R@10 0.9472, R@20 0.9774, 32/56 misses at rank 11-20); the mechanism is untested budget extension, not a graveyard idea, and since production reads k=8 the reachable population is actually 49 queries (rank 9-20), making the +2.0-2.5 pt estimate conservative pending the flagged k=20 cites-gold dilution check.",
+   "gain_estimate_r_at_1": "answer-quality (+2.0-2.5 pts answered-with-gold-cited; ceiling +2.9 at rank 11-20, up to +4.4 counting the k=8 boundary; R@1 unchanged)"
+  },
+  "dimension": "recall"
+ },
+ {
+  "title": "Term-of-art rewrite folded into the second pass (lay-register bridge, not the ALIASES table)",
+  "failure_population": "The 12/56 vocabulary-gulf queries (1.1%): 9.262, 6.903(M), 6.008(B), 3.965(C)(6), 2.112(K)(3)(c), 9.263, 9.105(A), 2.402(A), 9.125, 1.107, 7.202(6)(a)(iii), 9.101(5) \u2014 lay phrasing systematically avoids the rule's controlling term (bindover, bail, immunity, state wardship, nonparty at fault, communication equipment)",
+  "mechanism": "Measured: 0/56 absent queries contain any token from the existing ALIASES table \u2014 the shorthand-expansion A/B would address none of this population, so skip it. What the population needs is the reverse mapping: lay description -> term of art. Generic HyDE already recovers 5/12 (cached measurement); a targeted instruction in the second-pass rewrite prompt ('name the Michigan procedural term of art for what the user describes') should beat generic hypothetical-drafting because the gap is a single missing vocabulary item, not register-wide. Implement as a prompt line inside the refusal-triggered second pass, not a standalone stage",
+  "expected_gain": "+3-5 queries beyond generic HyDE's 5/12 within this class ~ +0.3-0.5 pts; small but nearly free once the second pass exists, and the same rewrite helps the 16 cross-domain-attractor queries by naming the correct chapter context (e.g. 'juvenile delinquency plea' vs adult plea)",
+  "cost": "hours",
+  "risk": "Rewrite may hallucinate the wrong term of art and steer retrieval to an attractor \u2014 bounded because it runs only inside the second pass where the first-pass result was already a miss, and results are unioned, never replaced",
+  "how_to_test": "Prompt variant A/B inside the second-pass harness on the 12 vocab-gulf + 16 attractor queries; success = >=8/28 recovered into the second-pass union vs 5-6 for generic HyDE",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Reproduced from cached embeddings (ranks.jsonl absent): baseline matches at R@1 0.6604/R@10 0.9472, all 12 named citations are in the 56-query absent set, 0/56 absent queries contain ALIASES tokens, and cached HyDE recovers exactly 5/12 (4 at rank 1); the mechanism is a miss-gated, unioned rewrite, so the global HyDE -6.7 graveyard result does not apply, though the gain is contingent on the second pass being built and the upper bound (+5) assumes an unproven 8-10/12 recovery rate.",
+   "gain_estimate_r_at_1": "+0.3-0.5 pts (conditional on second-pass existence; measured HyDE floor supports ~+0.45 pts on this population alone at 5/12 recovery, targeted prompt must beat that for the incremental claim)"
+  },
+  "dimension": "recall"
+ },
+ {
+  "title": "Deepen the generator window from k=8 chunks to a 4096-token flat budget (~k=16)",
+  "failure_population": "49/1060 queries (4.6%) whose gold sits at rank 9-16-ish, i.e. inside the ranked list but outside the current k=8 window; includes 14/111 disambiguation queries (window-hit 0.838 -> 0.964, simulated from cached embeddings reproducing 4_eval/results.jsonl baseline; per-query detail in scratchpad records.json/disamb_fail.json). This is also the exact class of the known '2.116(D)(4) unretrieved' overreach failure.",
+  "mechanism": "The answer layer already picks the right provision from siblings and near-rule distractors when gold is in context (cites-gold-when-retrieved 0.947-0.968 in 4_eval/answers*.jsonl; 9/9 on disambiguation sample), so every query whose gold moves into the window converts at ~0.957. Simulation: build context greedily down the existing dense+router order until 4096 tokens instead of stopping at 8 chunks (median 1407 tok). Window gold-hit: overall 0.931 -> 0.977, disambiguation 0.838 -> 0.964. Saturates at 4096 (6144 identical). Beats both rule-vote aggregation (kills overall R@1 0.660 -> 0.543) and whole-rule sibling-fill (0.910 vs 0.928 disamb at equal budget) \u2014 do not spend the extra tokens on structure, spend them on depth.",
+  "expected_gain": "Overall correct-citation +4.4 pts (49 queries x 0.957 conversion \u2248 47); disambiguation +12 pts (14 x 0.957 \u2248 13), taking disambiguation from weakest type to parity. Prompt cost roughly 2.8x tokens per query on a flash-class model.",
+  "cost": "hours",
+  "risk": "More context could raise the ~15% overreach rate or trigger lost-in-the-middle on the flash generator; interacts with the planned glm-5.2 swap (its higher refusal discipline should be evaluated at the new depth, not the old).",
+  "how_to_test": "Change k=8 to a 4096-token budget in pipeline/eval_answers.py's eng.answer call (serve.py), rerun the 140-query judged sample for both deepseek-v4-flash and glm-5.2, compare cites_gold, refusal rate, and judge overreach verdicts against answers.jsonl; retrieval-side gain is already confirmed by simulation.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Independent re-simulation from cached embeddings reproduces every number: baseline R@1 0.660/R@10 0.947/k=8 window-hit 0.931 (median 1407 tok), 50 queries (15 disambiguation) convert at a 4096-token budget (0.931->0.978, disamb 0.838->0.973), and cites-gold-when-retrieved 0.947-0.968 checks out in answers*.jsonl; mechanism is orthogonal to all graveyard entries (the 512/1024 result was chunk granularity at fixed budget, not budget depth), with the only soft spots being the unmeasured conversion rate for gold at context positions 9-22 (lost-in-the-middle, which the proposed test covers) and a slightly overstated saturation claim (6144 tok adds ~7 more hits, not zero).",
+   "gain_estimate_r_at_1": "answer-quality (+~4.5 pts correct-citation overall, +~13 pts disambiguation; retrieval R@1 unchanged)"
+  },
+  "dimension": "disambiguation"
+ },
+ {
+  "title": "Raise answer-time k from 8 to 16 (or 24) \u2014 retrieval eval already proves the headroom",
+  "failure_population": "11/108 answerable queries in 4_eval/gen_glm-5_2.jsonl have gold_retrieved=false; recomputed ranks (cached queries.1060.npy x rule256 vectors) show gold at ranks 11,21,9,16,22,16,49,14,63,15,37 \u2014 6 of 11 within k=16, 8 of 11 within k=24. Across the full 1060-query eval: 41 queries have gold at rank 9-16 and 11 more at 17-24 (R@8 0.931 -> R@16 0.970 -> R@24 0.980). These misses drive 8 of glm's 11 false refusals plus wrong-rule answers like mcr-q-B-MCR7.212(A)(2)(b) (answered a COA-brief question with Supreme Court rule 7.312, judged 'supported').",
+  "mechanism": "k is an answer-layer config knob, not a chunking change (the 512/1024-chunk graveyard entries compared chunk SIZE at a fixed 2048-token retrieval budget; the generator's real context window is far larger). Mean rule256 chunk is 172 tokens, so k=16 costs ~2.7k tokens, k=24 ~4.1k \u2014 trivial for deepseek/glm. Gold-in-context converts to gold-cited at the measured 0.957 rate.",
+  "expected_gain": "6-8 of the 11 window misses get gold in context; at 0.957 cites-gold-when-retrieved, ~5-7 of 11 answer-layer failures fixed: false refusal 0.102 -> ~0.05-0.06, plus 1-2 wrong-rule non-refusal answers corrected. Roughly +4-6 pts end-to-end correct-answer rate on answerable queries.",
+  "cost": "hours",
+  "risk": "More marginally-relevant context could raise overreach or distract the generator (glm's correct refusal is 32/32 now \u2014 watch it). Purely additive context has no graveyard conflict, but the effect on the 5 existing overreach cases must be measured, not assumed.",
+  "how_to_test": "Rerun the answer eval harness (pipeline/eval_answers.py path used for gen_glm-5_2.jsonl) at k=16 and k=24 on the same 140 queries; McNemar on per-query correct/refusal flips; confirm overreach count does not rise among the 97 currently-judged answers.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Every count reproduces exactly (11/108 gold-absent, ranks [9,11,14,15,16,16,21,22,37,49,63], R@8 0.931 -> R@16 0.970 -> R@24 0.980, 8/11 refusal overlap); k=8 is confirmed at eval_answers.py:167 and no graveyard entry covers raising k at fixed rule256 chunking \u2014 the only caveats are that the refusal gain saturates at k=16 (the k=24 increment only reaches two non-refused wrong-rule cases, refusal ranks 37/49/63 stay out) and the 0.957 cites-gold rate was measured on rank-1-8 gold so is an upper bound for rank-9-16 gold.",
+   "gain_estimate_r_at_1": "answer-quality (retrieval R@k unchanged at k=1; plausible false-refusal 0.102 -> ~0.06 and ~4-6 pts end-to-end correct-answer on answerable queries, slightly below the analyst's upper range)"
+  },
+  "dimension": "answer-layer"
+ },
+ {
+  "title": "Refusal-triggered one-hop agentic retrieval (draft names the gap, system re-retrieves, regenerate)",
+  "failure_population": "glm-5.2's 11 false refusals (4_eval/gen_glm-5_2.jsonl): 8 have gold outside the k=8 window, 3 have gold in-window but refused anyway. The 8 include deep-rank cases k-bumps cannot reach: MCR 7.305(C)(7) at rank 49, 6.425(G)(2)(c) at 63, 3.210(C)(1) at 37. Validated on the actual refusal texts with the real embedder (scratch test /private/tmp/claude-503/-Users-beperron/6c71876c-2fd4-4494-b606-be5d9b9c80f4/scratchpad/hop_test.py): embedding 'original question + refusal text' as a pass-2 query lands gold in a fresh top-8 (excluding pass-1 chunks) for 8/11 misses \u2014 6.008(B) rank 16->1, 7.305(C)(7) 49->3, 3.993(B) 16->5, 7.311(G) 15->5, 2.404(A)(2)(c) 9->3, 2.111(F)(3)(a) 11->6. Failures: 6.425(G)(2)(c) (pass-2 rank 24), 3.210(C)(1) (163).",
+  "mechanism": "The refusal already names what would answer it (the system prompt demands this), and that statement is grounded in real retrieved passages \u2014 unlike HyDE, which fabricated a provision from the bare question and lost 6.7 pts. Trigger on refused=true or silence-language in the draft; append pass-2 top-8 to context and regenerate. The 3 gold-in-window refusals also get a second-look regeneration for free. In 6/11 cases the refusal even names a sibling provision of the same rule (e.g. cites 3.993(A) when gold is 3.993(B); 7.305(C)(5) when gold is 7.305(C)(7)), so a deterministic same-rule-completion fetch covers most of it with zero extra embedding.",
+  "expected_gain": "6 of 8 refused window-misses get gold into the regen context; at 0.957 cite-when-present, ~5-6 refusals convert to correct answers, plus 0-2 of the 3 in-window refusals on second look: false refusal 0.102 -> ~0.04-0.05 (roughly halved). Marginal gain over the k=16 fix alone is the deep-rank cases (7.305(C)(7) at 49) plus the second-look effect \u2014 implement after measuring k=16 to know the true residual.",
+  "cost": "days",
+  "risk": "Regenerating with near-miss context can convert honest refusals into overreach (the failure mode that killed prompt-v2 was refusal-side; this is the mirror image). Mitigate: keep the refusal if pass 2 also lacks support; never loop more than one hop. Latency doubles for the ~30% of queries that refuse.",
+  "how_to_test": "Add the hop to the answer harness behind a flag; rerun the 140-query eval; score false refusal, overreach, and correct-refusal (must stay 32/32 on unanswerable \u2014 the hop will fire on all 32 correct refusals and must not un-refuse them; that is the critical cell of the McNemar table).",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Refutation fails: all counts reproduce (11 false refusals = 8 window-miss + 3 in-window, pass-1 ranks match), rerunning hop_test.py with the real embedder reproduces 6/8 refused-miss rescues at the exact claimed pass-2 ranks, and the mechanism is distinct from HyDE (grounded refusal text, refusal-gated, empirically works where HyDE lost) \u2014 though 5 of 6 rescues sit at pass-1 rank 9-16 so the marginal gain over a plain k=16 bump is only ~1-2 queries, a sequencing caveat the proposal already concedes, and the untested risk is un-refusing the 32 correct refusals.",
+   "gain_estimate_r_at_1": "answer-quality: false refusal 0.102 -> ~0.05 on glm-5.2 (5-6 of 11 refusals convert; ~1-2 queries marginal over k=16)"
+  },
+  "dimension": "answer-layer"
+ },
+ {
+  "title": "Pre-display verifier pass using the existing mistral judge, with note-conditioned regeneration (the citation audit alone is measured insufficient)",
+  "failure_population": "5/97 judged glm answers are overreach+unsupported (100% overlap; 4_eval/gen_glm-5_2.jsonl), 14/93 for the current deepseek champion (answers.jsonl). Measured coverage of the existing citation audit over these: 0/5 flagged for glm, 4/14 for deepseek \u2014 ungrounded_citations and invalid_citations are empty for the semantic misapplications (e.g. applying MCR 5.158(A) outside its established scope; omitting 2.302(B)(3)(a)'s 'substantial need' requirement; the 3.947(A)(2) on-the-record claim). So 'feed the citation audit back' as originally conceived addresses at most 29% of overreach under deepseek and 0% under glm.",
+  "mechanism": "Run the mistral judge (already implemented in pipeline/eval_answers.py) on the draft before display; when supported=false or overreach=true, regenerate once with the judge note appended as a targeted objection. Mechanically viable because 4/5 glm overreach cases have gold retrieved AND cited \u2014 the corrective text is already in the context window; the judge notes name the exact defect (measured: every note identifies the specific missing condition or misapplied scope). Regenerate-only policy: never convert an answer to a refusal on the verifier's word, avoiding the prompt-v2 survivorship trap.",
+  "expected_gain": "Overreach/unsupported 5/97 (5.2%) -> ~1-2/97 if regeneration fixes the 3-4 cases whose correction is in-context. Under the deepseek champion the same mechanism targets 14/93 (15.1%). Small absolute population under glm but it is the entire residual unsupported-answer mass \u2014 the highest-severity failure class for a court-facing tool.",
+  "cost": "days",
+  "risk": "Judge false positives triggering unnecessary regens (cost/latency, and a regen can be worse than the original); judge itself is imperfect \u2014 it passed the wrong-court 7.312-for-7.212 answer as supported, so this fixes overreach, not wrong-rule substitution. Verifier precision on non-flagged answers is unmeasured; hand-audit a sample of flags before trusting it.",
+  "how_to_test": "Wire judge-then-regen into the harness; rerun the 140-query eval twice (deepseek and glm); compare overreach/unsupported counts and check no new false refusals; hand-review every regen diff (expect ~5-14 per run, cheap to audit).",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "All counts reproduce exactly (glm 5/97 overreach=unsupported with 0/5 citation-audit coverage and 4/5 gold-in-context; deepseek 14/93 with 4/14 flagged), the regenerate-only design genuinely avoids the prompt-v2 refusal trap, and the only weakness is evaluation circularity \u2014 the proposed re-run scores with the same mistral judge that gates regeneration, so the hand-review of regen diffs, not the judge counts, must be the acceptance evidence.",
+   "gain_estimate_r_at_1": "answer-quality"
+  },
+  "dimension": "answer-layer"
+ },
+ {
+  "title": "Assemble context BY RULE: merge same-rule chunks into one passage, in rule order, title once",
+  "failure_population": "900/1060 queries (85%) have 2+ chunks of the same rule in top-8; 743 interleaved with other rules, 773 out of rule order (recomputed from 4_eval/cache/*.npy). Answer-layer targets: 14/93 judged overreach and 17/93 judged unsupported in 4_eval/answers.jsonl, of which the judge notes identify at least 4 as sub-provision misattribution within a shown rule (3.101(T) applied to a notice, 4.002(B) conditions misstated, 7.122 vs 7.123 confusion, 6.610 scope); plus 9/108 false refusals that occurred WITH gold retrieved.",
+  "mechanism": "The generator currently reads same-rule fragments scattered across the numbered passage list, each with its own header, out of textual order. Merging all retrieved chunks of one rule into a single passage (rule title once, chunks in corpus order, sub-citations labeled inline) presents the rule the way it reads in the rulebook, removing the ordering/attribution burden that produces sub-rule misattribution and refusals-despite-gold. Zero token cost \u2014 it deletes repeated headers. Change is ~20 lines in Engine.answer()'s fmt/passages block in pipeline/mcr_search.py.",
+  "expected_gain": "Targets the sub-rule-confusion share of overreach (>=4/14 identified cases) and part of the 9 false-refusals-with-gold-shown: plausibly overreach 15%->10% and false refusal -2 to -4 pts on the 108-answerable harness, at zero token cost. Even null on those, it strictly cleans the prompt.",
+  "cost": "hours",
+  "risk": "Merged passages blur per-chunk citation headers the citation_grounded checker keys on \u2014 the shown-citation set must be preserved when merging. Prompt-v2 graveyard shows answer-layer edits can backfire (false refusal 0.176->0.556), so this must be measured, not assumed.",
+  "how_to_test": "Re-run pipeline/eval_answers.py (same seed 20260805, same 140-query sample incl. 32 negatives, mistral-large-3 judge) with the merged formatter; paired comparison of overreach/supported/false-refusal/cites_gold vs 4_eval/answers.jsonl; McNemar on the paired flips.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "All counts reproduce exactly (900/1060 multi-chunk top-8 from cache npy; 14/93 overreach, 17/93 unsupported, 9 gold-shown false refusals, all four cited judge-note cases verbatim); mechanism is prompt-assembly only, distinct from retrieval-side rule-dedup and from prompt-v2's scope-check, though the false-refusal share of the gain is asserted rather than evidenced and needs the proposed paired test.",
+   "gain_estimate_r_at_1": "answer-quality (0 pts R@1; retrieval unchanged \u2014 plausible overreach 15%->10% and false refusal -2 to -4 pts on the 108-answerable harness)"
+  },
+  "dimension": "context-assembly"
+ },
+ {
+  "title": "Raise generation-time k from 8 to 16 (retrieval unchanged)",
+  "failure_population": "73/1060 answerable queries (6.9%) have gold absent from the top-8 the generator reads; 41 of them have gold at ranks 9-16 (gold-shown 987->1028, recomputed from cached embeddings). At the answer layer this is the gold_retrieved=False population: 14/108 in 4_eval/answers.jsonl, producing wrong 'the rule is silent' answers like the 2.116(D)(4) case.",
+  "mechanism": "The 2048-token budget metric that governed chunking decisions is a retrieval-comparison control, not a generation constraint: median top-8 context is only 1,407 tokens and deepseek-v4-flash/glm-5.2 read 128k. Passing k=16 to Engine.answer() puts gold in front of the generator for 41 more queries at median 2,825 tokens (still under the old 2048x1.4 envelope). One-line change; R@1/R@10 untouched.",
+  "expected_gain": "Gold-shown 0.931->0.970 (+3.9 pts, 41/1060 queries). With cites-gold-when-retrieved at 0.957, expected cites_gold gain ~ +3.7 pts (~39 queries). Should also cut the 'answered silent while rule addresses it' class, which requires gold-absent context.",
+  "cost": "hours",
+  "risk": "Context dilution: 8 extra mostly-irrelevant passages could raise false refusal or lower judged-supported (glm-5.2's correct refusal 1.000 on 32 negatives must hold). This is the main thing the paired harness must check; the bge-reranker graveyard entry does not apply because nothing is reordered.",
+  "how_to_test": "eval_answers.py with k=16 (add a --k flag), same 140-query seed, paired against answers.jsonl on cites_gold, false refusal, correct refusal on the 32 negatives, and judge metrics; McNemar.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Reproduced exactly from cached embeddings: 73/1060 gold absent from top-8, 41 at ranks 9-16 (gold-shown 0.931->0.970, median top-16 context 2,825 tok), 14/108 gold_retrieved=False in answers.jsonl; the mechanism (generation-time k, no reordering, chunking unchanged) is outside every graveyard entry and the 41x0.957~+3.7pt cites_gold arithmetic is sound, contingent on the proposed paired refusal-rate check.",
+   "gain_estimate_r_at_1": "answer-quality (R@1 unchanged; ~+3.9 pts gold-shown, ~+3.7 pts cites_gold)"
+  },
+  "dimension": "context-assembly"
+ },
+ {
+  "title": "Complete partially-retrieved rules: when a rule has a chunk in the pool, supply the whole rule",
+  "failure_population": "38/1060 queries (3.6%) where the gold RULE is in top-8 but the gold chunk is not \u2014 52% of all top-8 misses; population is worst exactly where the system is weak: 7 disambiguation, 18 known_item, 9 procedural, 4 cross_reference (qids in scratchpad rulehit_goldmiss_qids.json). Answer-layer confirmation: 10/14 gold_retrieved=False answers in answers.jsonl had the gold rule partially shown. Secondary population: 26/35 ungrounded citations (17/108 answers) cite a rule that was partially shown \u2014 the most dangerous failure mode (real-but-unretrieved citation) per eval_answers.py's own docs.",
+  "mechanism": "Generation-side only: after search, replace each retrieved rule's chunks with all chunks of that rule, merged in rule order (subsumes opportunity 1). Measured rescue rates: full completion 36/38 at median 7,843 tok (p90 16.5k); complete only the rules of the top-3 hits: 26/38 at median 4,073; +-1 sibling chunks: 18/38 at 2,878. 453/625 rules are <=1,200 tokens so most completions are small; the fat tail is a few 12k rules. Because the gold text is then literally present, the 26 sibling ungrounded citations become grounded (checkable claims instead of training-data recall).",
+  "expected_gain": "At k=8: gold-shown 0.931->0.965 (+3.4 pts, 36 queries); stacked on k=16 the residual rulehit-goldmiss population shrinks further (k=16 alone reaches 0.970; completion covers the within-rule remainder of the 32 still missing). Cites_gold expected +~3.2 pts (36 x 0.957). Ungrounded-citation answers should drop from 17/108 toward the 9 whose cited rules were truly unshown.",
+  "cost": "days",
+  "risk": "Token cost 5.6x median (7.8k) with p90 16.5k \u2014 latency and possible distraction on long rules; cap or top-3-rule variant trades 10 rescues for half the tokens. Rule-dedup graveyard (-12 to -14) is not contradicted: that removed same-rule chunks from the retrieval ranking; this adds them at generation. Must verify correct refusal on 32 negatives survives richer context.",
+  "how_to_test": "Implement as an Engine.answer() assembly step behind a flag; rerun the 140-query paired harness (seed 20260805, mistral judge) in three arms: baseline / complete-top3 / complete-all; score cites_gold, gold_retrieved, ungrounded_citations count, false+correct refusal, judge overreach; McNemar on cites_gold flips. Retrieval eval needs no rerun \u2014 coverage numbers here are already exact over all 1,060.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Population reproduces (36 strict + 2 via secondary gold rules = 38/1060; 49-52% of top-8 misses), gold-shown arithmetic 0.931->0.965 is exact, and rule-dedup graveyard is a retrieval-ranking result that does not cover this generation-side assembly mechanism; only the secondary ungrounded-citation counts (26/35, 17/108) fail to reproduce against answers.jsonl (actual: 13 answers, 20 unique ungrounded cites of 93 non-refused).",
+   "gain_estimate_r_at_1": "answer-quality (+3.4 pts gold-shown at k=8, ~+3.2 pts cites_gold; R@1 unchanged)"
+  },
+  "dimension": "context-assembly"
+ },
+ {
+  "title": "Progressive render: hit cards immediately, stream the answer, append the audit",
+  "failure_population": "100% of answered queries (all 1,060; every non-empty query in serve.py). render() at pipeline/serve.py:459 blocks on ENGINE.answer() with stream:false (mcr_search.py:292) before emitting any HTML, so the user waits the full generation time \u2014 p50 1,774ms, p90 2,797ms, max 6,862ms (4_eval/gen_deepseek-v4-flash_0731.jsonl) \u2014 behind a spinner, while the retrieval hits are complete at ~90ms (embed 73ms + search 12ms + expand 0.1ms, measured).",
+  "mechanism": "Emit the page shell and the k retrieved provision cards as soon as search+expand returns (~90ms), stream generation tokens into the answer box (stream:true; measured TTFT 0.67\u20131.32s over 3 live trials with a real k=8+expand prompt), then run the citation audit and refusal classification after the stream completes \u2014 verify_answer measures <1ms and Ledger.stats 2ms, so the post-stream audit adds nothing. Chunked transfer or SSE from the existing ThreadingHTTPServer; the refusal-styled header moves below or restyles on completion.",
+  "expected_gain": "Time-to-first-content drops from 1,774ms p50 / 2,797ms p90 to ~100ms for all queries (~18x/28x); time-to-first-answer-word drops to ~700\u20131,300ms (roughly halves p50, cuts p90 by ~2s). No accuracy change \u2014 same retrieval, same prompt, same audit.",
+  "cost": "day",
+  "risk": "Refusal detection (serve.py:465) currently inspects the finished answer to pick the header and card styling; with streaming this must be applied at stream end, so a refusal briefly renders under a neutral header. Audit table appears ~1\u20133s after the answer, which must be visually signposted so a judge doesn't act before verification lands.",
+  "how_to_test": "Instrument the streaming endpoint and log t_first_byte, t_first_token, t_done for the 140 bake-off queries; verify t_first_content p50 \u2264 150ms and t_first_token p50 \u2264 1s; re-run eval_answers.py on the streamed path to confirm answer text is byte-identical (same prompt, temperature 0.1).",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Verified: serve.py:459 blocks on ENGINE.answer (k=6, not k=8 as stated) with stream:false at mcr_search.py:292, latency percentiles reproduce exactly from gen_deepseek-v4-flash_0731.jsonl (p50 1774 / p90 2797 / max 6862, n=140), refusal detection at serve.py:464 is post-hoc string matching as claimed, and no graveyard entry touches delivery/streaming \u2014 this is a legitimate UX-only opportunity with zero accuracy impact.",
+   "gain_estimate_r_at_1": "ux"
+  },
+  "dimension": "latency-arch"
+ },
+ {
+  "title": "Cut the generation timeout from 180s to 15s and fail over to retrieval-only mode",
+  "failure_population": "Every query issued while the cloud endpoint is slow or unreachable \u2014 the exact courtroom-deployment scenario the tool's own docstring targets ('air-gapped courtroom machine', serve.py:11). answer() at mcr_search.py:262 passes timeout=180 to urlopen; the except clause that degrades to '(generation unavailable)' only fires after that, so one dropped network makes the page hang up to 180s. Baseline for the bound: max observed generation across 140 calls is 6.9s (deepseek), p99 5.4s.",
+  "mechanism": "Lower the urlopen timeout to ~15s (2x the observed max) and on failure render the already-computed hit cards with provenance and page links plus an explicit 'generation unavailable \u2014 showing the retrieved provisions' banner. Retrieval, the citation router, xref expansion, the audit ledger, and the PDF links are all local and measured at <100ms total, so the degraded page is fully functional offline; citation_lookup queries (125/1,092 = 11.4% of the eval mix) lose nothing at all since the router is exact.",
+  "expected_gain": "Worst-case time-to-failure drops 180s -> 15s (12x); during an outage the tool goes from unusable (3-minute hangs) to serving the retrieval+audit layer at ~100ms for 100% of queries. Zero effect on the happy path (15s > 2x observed max of 6.9s).",
+  "cost": "hours",
+  "risk": "A transient slow generation (>15s) that would have succeeded gets cut off \u2014 observed frequency 0/140 for deepseek and glm (nemotron hit 59.7s, but it lost the bake-off). Add one retry at 15s if paranoid.",
+  "how_to_test": "Replay the 140 bake-off queries with the 15s timeout and confirm 0 induced failures; then blackhole ollama.com (pf rule or /etc/hosts) and confirm the page returns the degraded retrieval view in ~15s, and that citation-router queries render instantly.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Refutation failed: every count reproduces (timeout=180 at mcr_search.py:262/298 with no override in serve.py:459, remote-only generation vs fully local retrieval, deepseek max 6.9s/p99 5.4s over 140 calls, citation_lookup 125/1092=11.4%), the mechanism has no graveyard analogue, and the only caveat is that the 180s hang applies to silently-dropped/slow connections rather than clean DNS/connection failures, which narrows but does not invalidate the outage population.",
+   "gain_estimate_r_at_1": "ux (0 R@1 points; 12x worst-case time-to-degraded, retrieval layer stays available during outages)"
+  },
+  "dimension": "latency-arch"
+ },
+ {
+  "title": "launchd KeepAlive service with HF_HUB_OFFLINE=1 to eliminate cold start and the hub check",
+  "failure_population": "Every server-process start (reboot, crash, first morning launch). Measured: model load is 5.32s with warm page cache and network, 3.33s with HF_HUB_OFFLINE=1 \u2014 the HF hub freshness check costs ~2.0s even when online, and on the air-gapped machine the tool is designed for (serve.py:11) that check blocks on socket timeouts instead, which is a large share of the reported ~30s and unbounded on some network configs. The 7.5GB fp16 weight file explains the cold-page-cache ~30s figure. serve.py already warms the encoder at startup (serve.py:533-535), so cold start is purely a process-start event today \u2014 but nothing restarts the process.",
+  "mechanism": "Ship a launchd plist (RunAtLoad + KeepAlive) so the server starts at boot, loads and warms before anyone queries, and auto-restarts on crash; set HF_HUB_OFFLINE=1 (or local_files_only=True in the SentenceTransformer call) so load never touches the network. Optionally mmap-touch the weight file at boot to pull it into page cache before the first human query.",
+  "expected_gain": "First-query-of-the-day latency drops from ~30s (cold) to the normal ~1.9s; removes the failure mode where an air-gapped machine hangs indefinitely on the hub check at load; ~2.0s faster restart even online (measured 5.32s -> 3.33s). Population: every session's first query plus every crash recovery.",
+  "cost": "hours",
+  "risk": "HF_HUB_OFFLINE=1 means model updates require manually unsetting it once \u2014 irrelevant here since the embedder is fixed by owner decision. KeepAlive holds ~8GB of MPS memory permanently; acceptable on the deployment machine but should be checked against its RAM.",
+  "how_to_test": "Reboot the machine, issue a query 60s after login without any manual start, confirm ~2s response; yank the network cable and restart the service, confirm load completes in ~3.3s with no hang; kill -9 the process and confirm launchd restarts and re-warms it.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Claims reproduce on-machine (5.05s online vs 2.97s with HF_HUB_OFFLINE=1, 7.5GB weights, no local_files_only in mcr_search.py:136, air-gapped intent at serve.py:11, no launchd unit exists); mechanism is operational and untouched by the graveyard, though 'unbounded' hang is a mild overstatement (hub falls back to cache after ~10s-per-call timeouts) and it moves zero eval metrics.",
+   "gain_estimate_r_at_1": "ux"
+  },
+  "dimension": "latency-arch"
+ },
+ {
+  "title": "Pre-render answers for the four homepage example chips (and skip building an embedding cache)",
+  "failure_population": "Every click on the 4 example chips hard-coded in serve.py:41-46 \u2014 the guaranteed-repeat query population and most first-time users' entry point. Each click today re-runs the full ~1,850ms pipeline including a paid cloud generation. Conversely, the measured data kills the general query-embedding cache from the brief: embedding is 73ms of a ~1,850ms budget (~4%) and the eval query stream is 99.7% unique (1,089/1,092), so an embedding cache would hit almost never and save almost nothing when it did.",
+  "mechanism": "At server startup (or build time), run answer() once for each chip query and cache the full rendered result (answer + audit + cards) keyed on the exact chip string; serve chip clicks from the cache with a 'generated at startup' timestamp. Four generations at startup costs ~8s once. A small LRU keyed on normalized query text catches any organic repeats for free, but the chips are the only population with a measured repeat guarantee.",
+  "expected_gain": "Chip-click latency 1,774ms p50 -> ~5ms (350x) for 100% of chip clicks; the demo/first-impression path becomes instant. Organic-repeat gain unquantified (no production logs yet \u2014 eval-set dupe rate 3/1,092 suggests low).",
+  "cost": "hours",
+  "risk": "Cached answers go stale if the corpus or generator changes \u2014 invalidate on chunk-file hash + GEN_MODEL string, both already available in the Ledger. Do not generalize to a broad answer cache without production repeat-rate logs; the eval data gives no basis for it.",
+  "how_to_test": "Click each chip and measure server-side render time (expect <10ms, from the existing dt instrumentation at serve.py:458-460); diff the cached answer against a fresh generation to confirm staleness invalidation fires when the chunk hash or model string changes; add query-normalization logging to measure the organic repeat rate before extending the cache.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "All counts reproduce (chips at serve.py:41-46, 1,089/1,092 unique eval queries, deepseek p50 1,774ms in gen_deepseek-v4-flash_0731.jsonl) and the mechanism is honest memoization, not a graveyard resident \u2014 but chip-click volume itself is unmeasured (zero production logs) and the gain is purely latency/cost with exactly 0 points on any eval metric, so it is a valid low-cost ops win that must not displace the measured retrieval/answer failure populations.",
+   "gain_estimate_r_at_1": "ux"
+  },
+  "dimension": "latency-arch"
+ },
+ {
+  "title": "Refusal-triggered second pass: deepen to ranks 9-20 and fetch generator-named unretrieved rules, regenerate once (pattern b)",
+  "failure_population": "73/1060 queries (6.9%) where gold is absent from the top-8 pool (scratchpad/ranks_dense.jsonl, recomputed from /Users/beperron/mcr-poc/4_eval/cache embeddings), which after the glm-5.2 swap dominates answer failures: 8 of glm's 11 false refusals are gold-miss cases (/Users/beperron/mcr-poc/4_eval/gen_glm-5_2.jsonl, 11/108 gold_retrieved=false). Trigger coverage measured: 8/11 gold-miss answers refuse; 6/11 name the gold rule number in the answer text anyway.",
+  "mechanism": "When the generator refuses, run one second pass whose context is (i) all chunks of any real-but-unretrieved MCR rule the first answer named (resolved by the existing citation router; e.g. glm's refusals named MCR 3.993, 7.311(F), 3.210 \u2014 the gold rules \u2014 while saying the passages don't answer) and (ii) the next dense tier, ranks 9-20. Measured coverage: gold sits at rank 9-16 for 41/73 misses (56%), 9-20 for 49/73 (67%); citation-fetch adds deeper cases (e.g. 3.210(C)(1) at rank 37 but named in the refusal), giving 8/11 of the sampled gold-misses a second window that contains gold. This directly fixes the known overreach class ('the rule is silent on timing' while 2.116(D)(4) sat unretrieved) whenever the model refuses or names the provision.",
+  "expected_gain": "6.9% gold-miss population x ~73% refusal trigger x ~73% gold-in-second-window x ~0.8 conversion (cites-gold-when-retrieved is 0.957) = +3 to +4 pts absolute end-to-end answer accuracy (~35-45 of 1060 queries). Also converts up to 3/108 pure false refusals (gold retrieved but refused) if the second pass re-reads the same evidence.",
+  "cost": "day",
+  "risk": "The second pass could erode glm's measured 1.000 correct refusal on unanswerables: the deepen-on-refusal trigger fires on every correct refusal too (all 32 unanswerables refuse), so the model gets a second chance to overreach \u2014 this is the same survivorship trap that killed prompt-v2, in mirror image. Measured mitigant: the citation-guard variant (only fire when the refusal names a real unretrieved MCR provision) triggers on 0/32 glm unanswerables (scratchpad/trig.py). Latency doubles (~+2.3s median) for the ~13% of traffic that refuses.",
+  "how_to_test": "Wire the loop into Engine.answer (pipeline/mcr_search.py) behind a flag; rerun the existing 140-query bake-off harness (pipeline/eval_answers.py inputs) with glm-5.2, scoring (1) gold-miss conversions, (2) correct refusal on all 32 unanswerables \u2014 abort if correct refusal drops below 31/32, (3) added latency. The 11 gold-miss query_ids to watch are enumerated in scratchpad output; success = >=5 of 11 converted with unanswerables intact.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "All counts reproduce (73/1060 top-8 misses, 11/108 glm gold-misses, 8/11 refuse, 7/8 refusers get gold in the proposed second window at ranks 9-20 or via citation-fetch of rules named at true ranks 37/49); the only discrepancy is the citation-guard fires on 1/32 unanswerables, not the claimed 0/32, so the plain refusal trigger (fires on all 32 unanswerables) carries real correct-refusal risk that the proposed 31/32 abort criterion just barely accommodates, and the +3-4 pt claim rests on n=11 trigger/coverage rates so +2.5-3.5 pts is the defensible range.",
+   "gain_estimate_r_at_1": "answer-quality: +2.5 to +3.5 pts end-to-end answer accuracy (~27-37/1060); no R@1 change (second pass is post-retrieval)"
+  },
+  "dimension": "agentic"
+ },
+ {
+  "title": "Do NOT build multi-hop cross-reference retrieval (pattern c) \u2014 measured population is 2/1060",
+  "failure_population": "Of 73 queries whose gold is absent from the top-8 pool, exactly 2 (1 procedural, 1 cross_reference) become reachable via one binding-edge hop beyond what production already ships, and 0 more at two hops (scratchpad/hop.py, using the RE_BINDING edge logic from pipeline/mcr_search.py over v_rule256 chunks; 284 chunks carry 320 binding edges at chunk level). Cross_reference queries are not even the weak type at retrieval: R@1 0.670 vs 0.514 for disambiguation, and only 8 of the 56 absent-from-top-10 queries are cross_reference.",
+  "mechanism": "The existing deterministic one-hop expansion in Engine.expand already harvests essentially all the value in the 690-edge binding graph: cross-reference chains in the MCR are shallow, and gold for a cross_reference query is usually co-located with or directly cited by the surface rule, which dense retrieval already finds. An agentic hop-follower would iterate a graph whose second hop resolves zero additional eval queries.",
+  "expected_gain": "Ceiling +0.2% (2/1060) before any conversion loss; realistically less, since those 2 chunks must also survive the token budget and be used by the generator.",
+  "cost": "days",
+  "risk": "Pure downside: added latency per hop, context dilution from pulled-in neighbors (the same mechanism that made rule-dedup cost 12-14 pts), and complexity in the provenance ledger.",
+  "how_to_test": "Already tested offline: scratchpad/hop.py enumerates the rescued query_ids. Re-run only if the corpus is re-parsed with materially more binding edges per chunk (current chunk-level extraction finds 320 of the 690 block-level edges; even the uncapped variant rescues the same 2).",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "Counts reproduce exactly (73 absent-from-top-8, 2 rescued at one hop, 0 at two hops, 320 edges on 284 chunks) and production mcr_search.py Engine.expand already ships the one-hop expansion that captures both, so multi-hop retrieval has an incremental population of 0/1060 \u2014 the do-not-build recommendation is sound.",
+   "gain_estimate_r_at_1": "+0.0 pts beyond production (family ceiling +0.19 pts = 2/1060, already captured by shipped one-hop expansion)"
+  },
+  "dimension": "agentic"
+ },
+ {
+  "title": "Do NOT build query decomposition (pattern d) \u2014 compound-looking queries already retrieve better than average",
+  "failure_population": "Zero measurable. Every one of the 1060 answerable eval queries has exactly one gold citation (2_eval/mcr_eval_v1.jsonl); 10 queries contain two question marks and 253 match conjunctive second-ask patterns ('and does/what/when...', 'as well as'), and that 253-query slice retrieves BETTER than the remainder: R@1 0.680 vs 0.654, R@10 0.957 vs 0.944 (scratchpad/compound2.py).",
+  "mechanism": "The MCR's structure explains the null: a practitioner's 'two asks' (deadline + which-law-controls, ground + procedure) are typically answered by one provision, so the extra clause adds discriminative signal to the embedding rather than splitting the target. Decomposition would replace one well-signed query with two weaker sub-queries and double retrieval latency on 24% of traffic for a population whose failure rate is below the corpus average.",
+  "expected_gain": "None measurable on this eval; plausibly negative (sub-queries lose the conjunction signal that currently helps).",
+  "cost": "days",
+  "risk": "Latency doubles on every query the decomposer fires on; a misfiring decomposer on the 76% of simple queries is pure regression surface. The eval cannot detect any gain, so the pattern would ship unmeasurable.",
+  "how_to_test": "If real user logs (not this eval) later show genuinely multi-provision questions, first add multi-gold queries to the eval set; decomposition is untestable until the eval can represent the failure it claims to fix.",
+  "verdict": {
+   "real": true,
+   "population_verified": true,
+   "graveyard": false,
+   "note": "All counts reproduce exactly (1060 answerable queries all single-gold, 10 double-?, 253 compound-pattern at R@1 0.680/R@10 0.957 vs 0.654/0.944 for the rest via the analyst's own compound2.py), so the do-not-build conclusion stands: query decomposition has a zero-size failure population on this eval and is untestable until multi-gold queries exist.",
+   "gain_estimate_r_at_1": "0 pts (plausibly negative; no multi-gold queries exist to gain on)"
+  },
+  "dimension": "agentic"
+ }
+]
