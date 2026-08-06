@@ -384,9 +384,7 @@ answer cites the provisions behind it and the printed page to verify against.">
   Social Work. Not affiliated with or endorsed by the Michigan courts.
   Report errors:
   <a href="mailto:beperron@umich.edu">beperron@umich.edu</a>.</p>
-  <p>Searches are recorded on this machine (question, answer, retrieved
-  provisions) to improve the tool; nothing is sent elsewhere except the
-  generation request.</p>
+  <p>Searches are retained for quality improvement.</p>
   <p>{html.escape(st['source']['edition'])} &middot;
   <a href="https://www.courts.michigan.gov/siteassets/rules-instructions-administrative-orders/michigan-court-rules/michigan-court-rules.pdf"
   target="_blank" rel="noopener">the official Michigan Court Rules PDF</a>
