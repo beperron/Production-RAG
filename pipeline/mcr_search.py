@@ -256,7 +256,7 @@ class Engine:
         return extra
 
     # -- generation -------------------------------------------------------
-    def answer(self, question, k=6, mode=MODE, timeout=180, expand=True):
+    def answer(self, question, k=8, mode=MODE, timeout=180, expand=True):
         hits = self.search(question, k=k, mode=mode)
         if expand:
             hits = hits + self.expand(hits)

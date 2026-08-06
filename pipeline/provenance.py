@@ -86,7 +86,7 @@ class Ledger:
             "text": "\n\n".join(b["text"] for b in blocks),
             "block_ids": [b["id"] for b in blocks],
             "pdf_pages": pages,
-            "printed_pages": [p + 1 - PAGE_OFFSET for p in pages],
+            "printed_pages": [p - PAGE_OFFSET for p in pages],
             "chunk_id": chunk["chunk_id"] if chunk else None,
             "chunk_tokens": chunk["n_tokens"] if chunk else None,
             "chunk_sha256": chunk["sha256"] if chunk else None,

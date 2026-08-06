@@ -39,7 +39,7 @@ ENGINE: Engine | None = None
 LEDGER: Ledger | None = None
 
 EXAMPLES = [
-    "How long does a defendant have to answer a complaint?",
+    "How long does a defendant served in Michigan have to answer a complaint?",
     "MCR 2.116(C)(10)",
     "Serving process on someone in a psychiatric facility",
     "When must the court appoint a guardian ad litem?",
@@ -53,6 +53,20 @@ ROUTE = {
     "cross-reference": ("Included as a related condition",
                         "A provision above is expressly subject to this one."),
 }
+
+WORKING_JS = """<script>
+(function(){
+  var f=document.querySelector('form.search');
+  if(!f) return;
+  f.addEventListener('submit',function(){
+    var b=f.querySelector('button.go'), w=document.getElementById('working'),
+        st=document.getElementById('live');
+    if(b){b.disabled=true;b.textContent='Searching\\u2026';}
+    if(w){w.hidden=false;}
+    if(st){st.textContent='Searching the court rules. This usually takes a few seconds.';}
+  });
+})();
+</script>"""
 
 CSS = """
 @font-face{font-family:Montserrat;font-style:normal;font-weight:400 700;
@@ -198,7 +212,16 @@ footer summary:hover{color:var(--teal-hover)}
 footer .prov{margin-top:10px;font:12px/1.8 var(--mono);background:var(--paper);
 border:1px solid var(--line);border-radius:8px;padding:12px 14px;
 overflow-x:auto;color:var(--muted)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.working{max-width:920px;margin:12px auto 0;padding:0 24px;display:flex;
+gap:10px;align-items:center;color:var(--muted);font:13px var(--mono)}
+.spinner{width:14px;height:14px;border:2px solid var(--line2);
+border-top-color:var(--teal);border-radius:50%;display:inline-block;
+animation:spin .7s linear infinite;flex:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.card .pg,a.pg{margin-left:auto;font:12px var(--mono);color:var(--teal-hover);
+white-space:nowrap;text-decoration:underline;text-underline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;
+animation:none!important}.spinner{border-top-color:var(--line2)}}
 """
 
 
@@ -259,6 +282,12 @@ answer cites the provisions behind it and the printed page to verify against.">
     autocomplete="off" {'autofocus' if not q else ''}>
   <button class="go" type="submit">Search</button>
 </form>
+<div class="working" id="working" hidden>
+  <span class="spinner" aria-hidden="true"></span>
+  <span>Searching the court rules and composing a cited answer&hellip;
+  usually a few seconds.</span>
+</div>
+{WORKING_JS}
 
 <nav class="samples" aria-label="Example searches">
   <p class="lbl">Try</p>
@@ -267,7 +296,7 @@ answer cites the provisions behind it and the printed page to verify against.">
 
 <main id="results" tabindex="-1">
   {'<h1 class="vh">Search results: ' + html.escape(q) + '</h1>' if q else ''}
-  <p class="vh" role="status" aria-live="polite">{html.escape(announce)}</p>
+  <p class="vh" role="status" aria-live="polite" id="live">{html.escape(announce)}</p>
   {body}
 </main>
 
@@ -276,8 +305,11 @@ answer cites the provisions behind it and the printed page to verify against.">
   it is not a substitute for the official Michigan Court Rules or for advice
   from a licensed attorney. Verify every citation against the official text
   before relying on it.</p>
-  <p>{html.escape(st['source']['edition'])}. Source:
-  courts.michigan.gov.</p>
+  <p>{html.escape(st['source']['edition'])} &middot;
+  <a href="/source.pdf" target="_blank" rel="noopener">open the full PDF used
+  by this tool</a> &middot;
+  <a href="https://www.courts.michigan.gov/rules-administrative-orders-and-jury-instructions/court-rules/"
+  target="_blank" rel="noopener">official rules at courts.michigan.gov</a></p>
   <details>
     <summary>Technical details</summary>
     <div class="prov">
@@ -292,6 +324,14 @@ verification  parse reconciled against the document's own contents
   </details>
 </footer>
 </body></html>"""
+
+
+def _page_cell(r):
+    tr = LEDGER.trace(r["citation"]) if r.get("printed_page") else None
+    if tr and tr.get("pdf_pages"):
+        return (f"<td><a href='/source.pdf#page={tr['pdf_pages'][0] + 1}' "
+                f"target='_blank' rel='noopener'>p.{r['printed_page'][0]}</a></td>")
+    return "<td>—</td>"
 
 
 def verify_block(v):
@@ -317,8 +357,7 @@ def verify_block(v):
         f"{'Yes' if r['exists'] else 'No'}</td>"
         f"<td class='{'okc' if r['was_retrieved'] else 'midc'}'>"
         f"{'Yes' if r['was_retrieved'] else 'Via cross-reference'}</td>"
-        f"<td>{('p.' + str(r['printed_page'][0])) if r.get('printed_page') else '—'}</td>"
-        "</tr>" for r in v["citations"])
+        + _page_cell(r) + "</tr>" for r in v["citations"])
     return f"""<div class="verify">{line}
   <details><summary>citation audit</summary>
   <table><caption>Audit of every citation in the answer</caption>
@@ -331,6 +370,8 @@ def hit_card(h, n):
     label, why = ROUTE.get(h["how"], ("Found by meaning", ""))
     tr = LEDGER.trace(h["citation"]) if h.get("citation") else None
     pages = ", ".join(str(p) for p in (tr or {}).get("printed_pages", []))
+    pdf1 = ((tr or {}).get("pdf_pages") or [None])[0]
+    pdf_href = f"/source.pdf#page={pdf1 + 1}" if pdf1 is not None else None
     blocks = " ".join((tr or {}).get("block_ids", [])[:6])
     because = (f' — required by {html.escape(h["because_of"])}'
                if h.get("because_of") else "")
@@ -340,7 +381,7 @@ def hit_card(h, n):
   <div class="cardhead">
     <span class="num" aria-hidden="true">{n}</span>
     <h3 class="sec" id="h{n}">{html.escape(h['citation'] or h['rule'])}</h3>
-    <span class="pg">p.{pages or '—'}</span>
+    {f'<a class="pg" href="{pdf_href}" target="_blank" rel="noopener">p.{pages} — open the official PDF<span class="vh"> for {html.escape(h["citation"] or h["rule"])} (opens in a new tab)</span></a>' if pdf_href else f'<span class="pg">p.{pages or "—"}</span>'}
   </div>
   <p class="title">{html.escape(h['rule_title'])}</p>
   <p class="how">{html.escape(label)}{because}</p>
@@ -404,6 +445,10 @@ class Handler(BaseHTTPRequestHandler):
             f = STATIC / "fonts" / pathlib.Path(p).name
             if f.exists():
                 return self._send(f.read_bytes(), "font/woff2")
+        if p == "/source.pdf":
+            f = ROOT / "0_source" / "michigan-court-rules.pdf"
+            if f.exists():
+                return self._send(f.read_bytes(), "application/pdf")
         if p not in ("/", "/index.html"):
             return self._send(b"Not found", "text/plain; charset=utf-8", 404)
         q = (urllib.parse.parse_qs(u.query).get("q") or [""])[0]
