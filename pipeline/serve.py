@@ -98,6 +98,7 @@ font-display:swap;src:url(/static/fonts/montserrat-1.woff2) format('woff2')}
   --mono:ui-monospace,'SF Mono',Menlo,monospace;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;padding:0}
 body{background:var(--bg);color:var(--ink);font:15.5px/1.6 var(--sans);
 -webkit-font-smoothing:antialiased}
