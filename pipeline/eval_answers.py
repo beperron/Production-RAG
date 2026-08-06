@@ -174,6 +174,7 @@ def main():
         gold = set(q["gold"]) | set(q.get("also_answered_by") or [])
 
         rec = {
+            "judge_model": None if args.no_judge else JUDGE,
             "latency_ms": int((time.time() - t_ans) * 1000),
             "generator": os.environ.get("MCR_GEN_MODEL", "deepseek-v4-flash:0731"),
             "query_id": q["query_id"], "query": q["query"],

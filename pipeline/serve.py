@@ -57,14 +57,29 @@ ROUTE = {
 
 WORKING_JS = """<script>
 (function(){
-  var f=document.querySelector('form.search');
-  if(!f) return;
-  f.addEventListener('submit',function(){
-    var b=f.querySelector('button.go'), w=document.getElementById('working'),
-        st=document.getElementById('live');
-    if(b){b.disabled=true;b.textContent='Searching\\u2026';}
+  var w=document.getElementById('working'),
+      st=document.getElementById('live');
+  function working(msg){
     if(w){w.hidden=false;}
-    if(st){st.textContent='Searching the court rules. This usually takes a few seconds.';}
+    if(st){st.textContent=msg;}
+  }
+  var f=document.querySelector('form.search');
+  if(f){
+    var submitted=false;
+    f.addEventListener('submit',function(e){
+      if(submitted){e.preventDefault();return;}
+      submitted=true;
+      var b=f.querySelector('button.go');
+      if(b){b.disabled=true;b.textContent='Searching\u2026';}
+      working('Searching the court rules. This usually takes a few seconds.');
+    });
+  }
+  // example chips and any same-site search link get the same feedback
+  document.querySelectorAll('a.chip').forEach(function(a){
+    a.addEventListener('click',function(){
+      working('Searching the court rules for the example you chose. This '
+              +'usually takes a few seconds.');
+    });
   });
 })();
 </script>"""

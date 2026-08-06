@@ -44,7 +44,9 @@ def main():
         name = next(iter(recs.values()))["generator"]
         runs[name] = recs
     ids = sorted(set.intersection(*[set(r) for r in runs.values()]))
-    print(f"paired on {len(ids)} queries · judge kimi-k3 · retrieval identical\n")
+    judges = {r.get("judge_model") for recs in runs.values() for r in recs.values() if r.get("judge_model")}
+    print(f"paired on {len(ids)} queries · judge "
+          f"{', '.join(sorted(judges)) or 'recorded per-run'} · retrieval identical\n")
 
     def rate(recs, f, sel=lambda r: True):
         v = [f(recs[i]) for i in ids if sel(recs[i])]
