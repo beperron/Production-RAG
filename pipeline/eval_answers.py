@@ -47,7 +47,7 @@ from mcr_search import Engine, RE_CITE, resolve_cite    # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 KEY_PATH = pathlib.Path(os.path.expanduser("~/.config/ollama/cloud.key"))
-JUDGE = "glm-5.2"
+JUDGE = "mistral-large-3:675b"   # neutral family: not glm, deepseek, nemotron, or qwen
 LOCK = threading.Lock()
 
 REFUSAL = re.compile(
@@ -116,10 +116,14 @@ def main():
     ap.add_argument("--n", type=int, default=150)
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--no-judge", action="store_true")
+    ap.add_argument("--judge", default=None)
     ap.add_argument("--no-expand", action="store_true")
     ap.add_argument("--out", default="4_eval/answers.jsonl")
     ap.add_argument("--seed", type=int, default=20260805)
     args = ap.parse_args()
+    global JUDGE
+    if args.judge:
+        JUDGE = args.judge
 
     qs = [json.loads(l) for l in open(ROOT / args.eval) if l.strip()]
     valid = {json.loads(l)["citation"] for l in open(ROOT / args.blocks)
@@ -158,8 +162,9 @@ def main():
     n_done = [0]
 
     def work(q):
+        t_ans = time.time()
         try:
-            r = eng.answer(q["query"], k=6, expand=not args.no_expand)
+            r = eng.answer(q["query"], k=8, expand=not args.no_expand)
         except Exception as exc:                        # noqa: BLE001
             print(f"  FAIL {q['query_id']}: {exc}", flush=True)
             return
@@ -169,6 +174,8 @@ def main():
         gold = set(q["gold"]) | set(q.get("also_answered_by") or [])
 
         rec = {
+            "latency_ms": int((time.time() - t_ans) * 1000),
+            "generator": os.environ.get("MCR_GEN_MODEL", "deepseek-v4-flash:0731"),
             "query_id": q["query_id"], "query": q["query"],
             "query_type": q["query_type"], "gold": q["gold"],
             "answer": ans,
