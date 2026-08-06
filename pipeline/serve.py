@@ -375,30 +375,60 @@ answer cites the provisions behind it and the printed page to verify against.">
   audit, the measured performance, and what was tested and rejected.</p>
   <details>
     <summary>Technical details</summary>
-    <div style="max-width:76ch;color:var(--ink2);font-size:13px;line-height:1.65">
-    <p style="margin:10px 0 8px"><b>Where the text comes from.</b> This tool
-    works from a single source: the official Michigan Court Rules PDF
-    published by the Michigan Supreme Court, as amended through July 31,
-    2026. Our copy was checked against that document word by word — all 625
-    rules, and every word of all {st['blocks']:,} parsed passages, are accounted
-    for. Nothing has been added, summarised, or paraphrased in the stored
-    text.</p>
-    <p style="margin:0 0 8px"><b>How an answer is produced.</b> When you ask
-    a question, the system first finds the provisions most related to it —
-    it does not write from memory. A language model then composes an answer
-    using only those provisions, and before anything is shown to you, every
-    citation in the answer is checked against the rules. If you enter a
-    citation directly, it is looked up exactly, with no interpretation
-    involved.</p>
-    <p style="margin:0 0 8px"><b>What is checked, continuously.</b> Each
-    answer's citations are verified to exist and to come from the passages
-    shown beneath it. Questions the rules do not answer are declined rather
-    than guessed at. In testing across more than a thousand benchmark
-    questions, the system produced no fabricated citations and declined all
-    32 questions designed to have no answer in the rules.</p>
-    <p style="margin:0 0 10px"><b>What runs where.</b> Search runs entirely
-    on this computer. Only the final composition step is sent to an external
-    language-model service; no search logs or documents leave this machine.</p>
+    <div style="max-width:76ch;color:var(--ink2);font-size:13.5px;line-height:1.7">
+
+    <p style="margin:12px 0 8px"><b>What kind of system this is.</b> The
+    Bench Book is a retrieval-augmented generation ("RAG") system. The term
+    describes a specific architecture: rather than asking an artificial
+    intelligence model to answer from whatever it absorbed during training,
+    the system first <i>retrieves</i> the governing text — here, the
+    provisions of the Michigan Court Rules relevant to your question — and
+    then instructs the model to compose its answer from that text alone. The
+    model functions less like an expert reciting from memory and more like a
+    clerk directed to answer only from the record placed in front of them.</p>
+
+    <p style="margin:0 0 8px"><b>Why the architecture matters.</b>
+    General-purpose AI systems generate language by statistical prediction,
+    and when asked about law they can produce authority that does not exist —
+    confident, well-formatted, and wrong. The professional consequences of
+    relying on such fabrications are by now well documented. This system is
+    built to foreclose that failure mode structurally rather than by
+    instruction: the model is never asked what it remembers about Michigan
+    procedure. It is shown the pertinent rule text, retrieved verbatim from
+    the official publication, and confined to it.</p>
+
+    <p style="margin:0 0 8px"><b>The verification layer.</b> Confinement is
+    then checked rather than assumed. Before any answer reaches you, every
+    citation it contains is tested against the parsed rules: does the cited
+    provision exist, and was it among the passages the model was actually
+    given? The results of that audit are displayed with the answer, and each
+    cited provision links to its verbatim text and to the page of the source
+    PDF, so the answer can be verified against the rule itself rather than
+    taken on trust. Where the rules do not address a question, the system is
+    designed to say so and to indicate where the answer likely resides —
+    a statute, court precedent, or local order — rather than to guess.</p>
+
+    <p style="margin:0 0 8px"><b>The measured record.</b> In evaluation
+    against more than a thousand benchmark questions written from the rules
+    themselves, the system produced no fabricated citations, and it declined
+    all thirty-two questions deliberately designed to have no answer in the
+    court rules. Its stored copy of the rules was verified word for word
+    against the official PDF — all 625 rules accounted for, nothing added or
+    paraphrased.</p>
+
+    <p style="margin:0 0 8px"><b>What this does not claim.</b> The
+    architecture minimises fabrication; it does not abolish error. Retrieval
+    can miss a pertinent provision, and composed language can state a rule
+    more broadly than its text supports. That is why every answer carries its
+    sources, why the audit is shown rather than merely performed, and why the
+    banner above asks you to verify against the official rules before
+    relying on anything here.</p>
+
+    <p style="margin:0 0 10px"><b>Where the work happens.</b> Search and
+    verification run entirely on this computer. Only the final composition
+    step is sent to an external language-model service; your searches and the
+    documents never leave this machine.</p>
+
     <details style="margin:4px 0 0">
       <summary style="cursor:pointer;font:600 12px var(--mono);color:var(--muted)">Reference identifiers (for technical staff)</summary>
       <div class="prov">
