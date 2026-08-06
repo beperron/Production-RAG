@@ -46,7 +46,12 @@ VECTORS = ROOT / "4_eval" / "cache" / "rule256.v_rule256.3580.npy"
 KEY_PATH = pathlib.Path(os.path.expanduser("~/.config/ollama/cloud.key"))
 
 EMBEDDER = os.environ.get("MCR_EMBEDDER", "Qwen/Qwen3-Embedding-4B")
-GEN_MODEL = os.environ.get("MCR_GEN_MODEL", "deepseek-v4-flash:0731")
+# glm-5.2, from a five-way paired bake-off (mistral-large judge, 140 queries):
+# ties the best cites-gold (0.880), best refusal calibration in BOTH
+# directions (false 0.102, correct 1.000), supported 0.948 at n=97, p50 2.3s.
+# nemotron-super's 0.028 false-refusal was bought with the only significant
+# cites-gold loss in the table (0.778, p=0.001) and 4 answered negatives.
+GEN_MODEL = os.environ.get("MCR_GEN_MODEL", "glm-5.2")
 RRF_K = 60
 MODE = os.environ.get("MCR_MODE", "dense")
 
