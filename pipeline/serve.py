@@ -795,7 +795,7 @@ def render_shell(q):
   var box=document.getElementById('anstext'),
       below=document.getElementById('below'), started=false,
       live=document.getElementById('live'),
-      es=new EventSource('/api/stream?qid={qid}');
+      es=new EventSource('/api/stream?qid={qid}&q='+encodeURIComponent({q!r}));
   es.addEventListener('token',function(e){{
     if(!started){{box.textContent='';started=true;}}
     box.textContent+=JSON.parse(e.data);
@@ -872,7 +872,8 @@ class Handler(BaseHTTPRequestHandler):
         u = urllib.parse.urlparse(self.path)
         p = u.path
         if p == "/api/stream":
-            qid = (urllib.parse.parse_qs(u.query).get("qid") or [""])[0]
+            qs = urllib.parse.parse_qs(u.query)
+            qid = (qs.get("qid") or [""])[0]
             with PENDING_LOCK:
                 item = PENDING.pop(qid, None)
             self.send_response(200)
@@ -881,8 +882,14 @@ class Handler(BaseHTTPRequestHandler):
             self.send_header("Connection", "close")
             self.end_headers()
             if item is None:
-                self.sse("gone", "{}")
-                return
+                # qid unknown (restart, or a different serverless instance):
+                # redo retrieval from the query itself rather than bouncing
+                # the reader to the synchronous path
+                fq = (qs.get("q") or [""])[0]
+                if not fq.strip():
+                    self.sse("gone", "{}")
+                    return
+                item = (fq, ENGINE.prepare(fq), time.time())
             q, prep, t0 = item
             parts = []
             try:

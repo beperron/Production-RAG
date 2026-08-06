@@ -444,7 +444,7 @@ class Engine:
 
     def stream_generate(self, user, timeout=60):
         """Yield answer text deltas from the generator."""
-        key = KEY_PATH.read_text().strip()
+        key = os.environ.get("OLLAMA_API_KEY") or KEY_PATH.read_text().strip()
         body = {"model": GEN_MODEL, "prompt": user, "system": SYSTEM,
                 "stream": True, "think": False,
                 "options": {"temperature": 0.1}}
@@ -464,7 +464,7 @@ class Engine:
                     return
 
     def _generate(self, system, user, timeout):
-        key = KEY_PATH.read_text().strip()
+        key = os.environ.get("OLLAMA_API_KEY") or KEY_PATH.read_text().strip()
         body = {"model": GEN_MODEL, "prompt": user, "system": system,
                 "stream": False, "think": False,
                 "options": {"temperature": 0.1}}

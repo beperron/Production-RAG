@@ -63,7 +63,9 @@ class Ledger:
         self.source = {
             "file": pdf.name,
             "sha256": (hashlib.sha256(pdf.read_bytes()).hexdigest()
-                       if pdf.exists() else None),
+                       if pdf.exists() else
+                       (pdf.with_suffix(".pdf.sha256").read_text().strip()
+                        if pdf.with_suffix(".pdf.sha256").exists() else None)),
             "pages": 874,
             "edition": "Michigan Court Rules, as amended through July 31, 2026",
         }

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "regions": ["cle1"],
+  "rewrites": [{ "source": "/(.*)", "destination": "/api/index?x_path=$1" }],
+  "functions": {
+    "api/index.py": {
+      "memory": 1024,
+      "maxDuration": 120
+    }
+  }
+}

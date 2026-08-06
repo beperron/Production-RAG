@@ -90,6 +90,7 @@ frame.**
 |---|---|---|
 | BM25 hybrid (1:1) | −15.6 pts (p=8e-36) | destroys a strong dense signal; weight sweep climbs monotonically back to dense-only, exactly as the CPS bake-off said |
 | bge-reranker-base | −8.9 pts (p=1e-16) | a 110M cross-encoder reordering a 4B embedder's output; a reranker helps when it is *stronger* than the retriever, not when there is merely room at the top |
+| jina-reranker-v2 (API) | −1.3 pts (p=0.50, n=300) | a far stronger reranker than bge fights the embedder to a draw — confirming the mechanism: nothing available out-ranks a 4B instruction-tuned embedder here, and a draw plus latency plus a dependency is a loss. (First run was void: 300/300 API calls 403'd on Python's user-agent and the harness silently fell back to dense order — the `api failures` counter is why the fake zero was caught.) |
 | HyDE | −6.7 pts (p=1e-11) | the instruction-tuned embedder already bridges the query↔statute register gap; embedding a pseudo-document discards that asymmetric training |
 | citation-path prefix | 0.000 (p=0.78) | resolves to the *rule*; gold is a *provision* one level below — 342 rules split across chunks, zero pairs share a path |
 | parent-stem carry | 0.000 | shared by every sibling, distinguishes none |
