@@ -370,7 +370,13 @@ class Engine:
         return merged
 
     def answer(self, question, k=8, mode=MODE, timeout=180, expand=True,
-               token_budget=None, by_rule=False):
+               token_budget=4096, by_rule=False):
+        # token_budget=4096 shipped from the paired A/B (glm-5.2, mistral
+        # judge, 140 queries): cites-gold 0.880 -> 0.907, false refusal
+        # 0.102 -> 0.074, supported 0.948 -> 0.970, overreach halved, both
+        # gates held. by_rule stays OFF: it regressed significantly
+        # (cites-gold -0.093 p=0.021, overreach 0.052 -> 0.221) -- the
+        # swarm's population was real but its mechanism prediction was wrong.
         # token_budget: fill the window to ~N tokens instead of a fixed k.
         # The k=8 default holds ~1,400 median tokens; 4096 holds ~k=16, which
         # the roadmap measured as the best gain/effort in the system.
