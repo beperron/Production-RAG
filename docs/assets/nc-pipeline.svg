@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 470" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+<rect x="1" y="1" width="1058" height="468" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="30" y="40" font-size="21" font-weight="700" fill="#0f172a">NC-ChildWelfare — how the data are processed</text>
+<text x="30" y="62" font-size="12.5" fill="#64748b">Public documents become contextualized, hybrid-searchable passages; every answer is drawn <tspan font-weight="600" fill="#0f172a">only</tspan> from what was retrieved.</text>
+
+<text x="30" y="92" font-size="11.5" font-weight="700" fill="#334155" letter-spacing="0.6">① BUILD THE CORPUS</text>
+<rect x="30" y="104" width="235" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="30" y="104" width="235" height="5" rx="2.5" fill="#0e7490"/>
+<circle cx="56" cy="138" r="15" fill="#ecfeff" stroke="#0e7490"/><text x="56" y="143" font-size="14" font-weight="700" fill="#0e7490" text-anchor="middle">1</text>
+<text x="80" y="134" font-size="13.5" font-weight="700" fill="#0f172a">Convert &amp; index</text>
+<text x="80" y="151" font-size="10.5" font-weight="600" fill="#0e7490">530 documents → markdown</text>
+<circle cx="48" cy="172" r="2.3" fill="#0e7490"/><text x="57" y="176" font-size="10.5" fill="#334155">GS 7B + Admin Code (7,449 chunks)</text>
+<circle cx="48" cy="190" r="2.3" fill="#0e7490"/><text x="57" y="194" font-size="10.5" fill="#334155">NCDHHS manuals (10,851 chunks)</text>
+<circle cx="48" cy="208" r="2.3" fill="#0e7490"/><text x="57" y="212" font-size="10.5" fill="#334155">docindex.json: headings · pages · sha256</text>
+
+<rect x="288" y="104" width="235" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="288" y="104" width="235" height="5" rx="2.5" fill="#7c3aed"/>
+<circle cx="314" cy="138" r="15" fill="#f5f3ff" stroke="#7c3aed"/><text x="314" y="143" font-size="14" font-weight="700" fill="#7c3aed" text-anchor="middle">2</text>
+<text x="338" y="134" font-size="13.5" font-weight="700" fill="#0f172a">Contextualize</text>
+<text x="338" y="151" font-size="10.5" font-weight="600" fill="#7c3aed">Anthropic contextual retrieval</text>
+<rect x="462" y="116" width="43" height="18" rx="9" fill="#7c3aed"/><text x="483.5" y="128.5" font-size="9" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.3">LLM</text>
+<circle cx="306" cy="172" r="2.3" fill="#7c3aed"/><text x="315" y="176" font-size="10.5" fill="#334155">one situating sentence per chunk</text>
+<circle cx="306" cy="190" r="2.3" fill="#7c3aed"/><text x="315" y="194" font-size="10.5" fill="#334155">feeds the vector AND the keyword lane</text>
+<circle cx="306" cy="208" r="2.3" fill="#7c3aed"/><text x="315" y="212" font-size="10.5" fill="#334155">committed: context.jsonl (18,300)</text>
+
+<rect x="546" y="104" width="235" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="546" y="104" width="235" height="5" rx="2.5" fill="#6366f1"/>
+<circle cx="572" cy="138" r="15" fill="#eef2ff" stroke="#6366f1"/><text x="572" y="143" font-size="14" font-weight="700" fill="#6366f1" text-anchor="middle">3</text>
+<text x="596" y="134" font-size="13.5" font-weight="700" fill="#0f172a">Embed</text>
+<text x="596" y="151" font-size="10.5" font-weight="600" fill="#6366f1">Jina v3 · 1024-dim</text>
+<circle cx="564" cy="172" r="2.3" fill="#6366f1"/><text x="573" y="176" font-size="10.5" fill="#334155">context + content embedded together</text>
+<circle cx="564" cy="190" r="2.3" fill="#6366f1"/><text x="573" y="194" font-size="10.5" fill="#334155">retrieval.passage task type</text>
+<circle cx="564" cy="208" r="2.3" fill="#6366f1"/><text x="573" y="212" font-size="10.5" fill="#334155">idempotent, resumable ingest</text>
+
+<rect x="804" y="104" width="226" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="804" y="104" width="226" height="5" rx="2.5" fill="#059669"/>
+<circle cx="830" cy="138" r="15" fill="#ecfdf5" stroke="#059669"/><text x="830" y="143" font-size="14" font-weight="700" fill="#059669" text-anchor="middle">4</text>
+<text x="854" y="134" font-size="13.5" font-weight="700" fill="#0f172a">Load</text>
+<text x="854" y="151" font-size="10.5" font-weight="600" fill="#059669">Supabase · schema public</text>
+<circle cx="822" cy="172" r="2.3" fill="#059669"/><text x="831" y="176" font-size="10.5" fill="#334155">pgvector HNSW (cosine)</text>
+<circle cx="822" cy="190" r="2.3" fill="#059669"/><text x="831" y="194" font-size="10.5" fill="#334155">generated tsvector (context + text)</text>
+<circle cx="822" cy="208" r="2.3" fill="#059669"/><text x="831" y="212" font-size="10.5" fill="#334155">RLS: app key reads, never writes</text>
+
+<path d="M265,163 L285,163" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M523,163 L543,163" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M781,163 L801,163" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+<text x="30" y="258" font-size="11.5" font-weight="700" fill="#334155" letter-spacing="0.6">② ANSWER A QUESTION</text>
+<rect x="30" y="270" width="235" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="30" y="270" width="235" height="5" rx="2.5" fill="#0891b2"/>
+<circle cx="56" cy="304" r="15" fill="#ecfeff" stroke="#0891b2"/><text x="56" y="309" font-size="14" font-weight="700" fill="#0891b2" text-anchor="middle">5</text>
+<text x="80" y="300" font-size="13.5" font-weight="700" fill="#0f172a">Hybrid search</text>
+<text x="80" y="317" font-size="10.5" font-weight="600" fill="#0891b2">one SQL function, in-database</text>
+<circle cx="48" cy="338" r="2.3" fill="#0891b2"/><text x="57" y="342" font-size="10.5" fill="#334155">dense (cosine) + full-text rankings</text>
+<circle cx="48" cy="356" r="2.3" fill="#0891b2"/><text x="57" y="360" font-size="10.5" fill="#334155">reciprocal-rank fusion, pool of 40</text>
+<circle cx="48" cy="374" r="2.3" fill="#0891b2"/><text x="57" y="378" font-size="10.5" fill="#334155">collection filter (statutes / policy)</text>
+
+<rect x="288" y="270" width="235" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="288" y="270" width="235" height="5" rx="2.5" fill="#db2777"/>
+<circle cx="314" cy="304" r="15" fill="#fdf2f8" stroke="#db2777"/><text x="314" y="309" font-size="14" font-weight="700" fill="#db2777" text-anchor="middle">6</text>
+<text x="338" y="300" font-size="13.5" font-weight="700" fill="#0f172a">Rerank</text>
+<text x="338" y="317" font-size="10.5" font-weight="600" fill="#db2777">Jina cross-encoder, full pool</text>
+<rect x="448" y="282" width="60" height="18" rx="9" fill="#db2777"/><text x="478" y="294.5" font-size="9" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.3">MEASURED</text>
+<circle cx="306" cy="338" r="2.3" fill="#db2777"/><text x="315" y="342" font-size="10.5" fill="#334155">pure rerank beat blending the RRF prior</text>
+<circle cx="306" cy="356" r="2.3" fill="#db2777"/><text x="315" y="360" font-size="10.5" fill="#334155">statutes R@3 80% → 90%</text>
+<circle cx="306" cy="374" r="2.3" fill="#db2777"/><text x="315" y="378" font-size="10.5" fill="#334155">policy R@3 92% → 96%</text>
+
+<rect x="546" y="270" width="235" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="546" y="270" width="235" height="5" rx="2.5" fill="#d97706"/>
+<circle cx="572" cy="304" r="15" fill="#fffbeb" stroke="#d97706"/><text x="572" y="309" font-size="14" font-weight="700" fill="#d97706" text-anchor="middle">7</text>
+<text x="596" y="300" font-size="13.5" font-weight="700" fill="#0f172a">Grounded answer</text>
+<text x="596" y="317" font-size="10.5" font-weight="600" fill="#d97706">deepseek-v4-flash · temp 0</text>
+<circle cx="564" cy="338" r="2.3" fill="#d97706"/><text x="573" y="342" font-size="10.5" fill="#334155">drawn only from retrieved passages</text>
+<circle cx="564" cy="356" r="2.3" fill="#d97706"/><text x="573" y="360" font-size="10.5" fill="#334155">inline citations to source + section</text>
+<circle cx="564" cy="374" r="2.3" fill="#d97706"/><text x="573" y="378" font-size="10.5" fill="#334155">declines rather than guesses</text>
+
+<rect x="804" y="270" width="226" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="804" y="270" width="226" height="5" rx="2.5" fill="#059669"/>
+<circle cx="830" cy="304" r="15" fill="#ecfdf5" stroke="#059669"/><text x="830" y="309" font-size="14" font-weight="700" fill="#059669" text-anchor="middle">✓</text>
+<text x="854" y="300" font-size="13.5" font-weight="700" fill="#0f172a">Traceable result</text>
+<text x="854" y="317" font-size="10.5" font-weight="600" fill="#059669">every passage carries its lineage</text>
+<circle cx="822" cy="338" r="2.3" fill="#059669"/><text x="831" y="342" font-size="10.5" fill="#334155">source document + section + pages</text>
+<circle cx="822" cy="356" r="2.3" fill="#059669"/><text x="831" y="360" font-size="10.5" fill="#334155">SHA-256 content hash</text>
+<circle cx="822" cy="374" r="2.3" fill="#059669"/><text x="831" y="378" font-size="10.5" fill="#334155">context blurb shown with the hit</text>
+
+<path d="M265,329 L285,329" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M523,329 L543,329" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M781,329 L801,329" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+<rect x="30" y="408" width="1000" height="34" rx="10" fill="#ecfdf5" stroke="#059669"/>
+<circle cx="52" cy="425" r="9" fill="#059669"/>
+<path d="M48,425 l3,3 l6,-7" stroke="#fff" stroke-width="2" fill="none"/>
+<text x="70" y="430" font-size="13" font-weight="700" fill="#065f46">MEASURED QUALITY<tspan font-weight="500" fill="#047857">   —   statutes R@1 66% / R@3 90% / MRR 0.79   ·   policy R@1 89% / R@3 96% / R@5 100% / MRR 0.94   (reproducible benchmark in evals/)</tspan></text>
+
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 560" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+<rect x="1" y="1" width="1058" height="558" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="30" y="40" font-size="21" font-weight="700" fill="#0f172a">Production-RAG — two state systems, one discipline</text>
+<text x="30" y="62" font-size="12.5" fill="#64748b">Each system is self-contained — corpus, pipeline, eval set, web app — and every retrieval mechanism was <tspan font-weight="600" fill="#0f172a">kept or killed by measurement</tspan>, never by intuition.</text>
+
+<!-- NC card -->
+<rect x="30" y="84" width="490" height="240" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="30" y="84" width="490" height="5" rx="2.5" fill="#0e7490"/>
+<circle cx="58" cy="122" r="16" fill="#ecfeff" stroke="#0e7490"/>
+<text x="58" y="127" font-size="13" font-weight="700" fill="#0e7490" text-anchor="middle">NC</text>
+<text x="84" y="118" font-size="14.5" font-weight="700" fill="#0f172a">North Carolina — child welfare</text>
+<text x="84" y="136" font-size="10.5" font-weight="600" fill="#0e7490">NC-ChildWelfare/ · nc-policy.parallel42.ai</text>
+<circle cx="52" cy="160" r="2.3" fill="#0e7490"/><text x="61" y="164" font-size="11" fill="#334155">NC Juvenile Code (GS 7B) + Admin Code · NCDHHS policy manuals (~4,150 pp)</text>
+<circle cx="52" cy="180" r="2.3" fill="#0e7490"/><text x="61" y="184" font-size="11" fill="#334155">530 documents · 18,300 passages, each with a contextual blurb</text>
+<circle cx="52" cy="200" r="2.3" fill="#0e7490"/><text x="61" y="204" font-size="11" fill="#334155">Jina v3 vectors + Postgres full-text, RRF-fused, then fully reranked</text>
+<circle cx="52" cy="220" r="2.3" fill="#0e7490"/><text x="61" y="224" font-size="11" fill="#334155">grounded answers (deepseek-v4-flash) — declines rather than guesses</text>
+<rect x="46" y="242" width="458" height="60" rx="9" fill="#f0fdfa" stroke="#99f6e4"/>
+<text x="64" y="264" font-size="11" font-weight="700" fill="#0f766e">MEASURED</text>
+<text x="64" y="284" font-size="11.5" fill="#134e4a">statutes R@3 <tspan font-weight="700">90%</tspan> · policy R@3 <tspan font-weight="700">96%</tspan> · rerank lift over hybrid measured, not assumed</text>
+
+<!-- MI card -->
+<rect x="540" y="84" width="490" height="240" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="540" y="84" width="490" height="5" rx="2.5" fill="#1e3a8a"/>
+<circle cx="568" cy="122" r="16" fill="#eff6ff" stroke="#1e3a8a"/>
+<text x="568" y="127" font-size="13" font-weight="700" fill="#1e3a8a" text-anchor="middle">MI</text>
+<text x="594" y="118" font-size="14.5" font-weight="700" fill="#0f172a">Michigan — court rules</text>
+<text x="594" y="136" font-size="10.5" font-weight="600" fill="#1e3a8a">MI-CourtRules/ · mi-court-rules.parallel42.ai</text>
+<circle cx="562" cy="160" r="2.3" fill="#1e3a8a"/><text x="571" y="164" font-size="11" fill="#334155">Michigan Court Rules — 874 pp · 625 rules · 11,860 citable provisions</text>
+<circle cx="562" cy="180" r="2.3" fill="#1e3a8a"/><text x="571" y="184" font-size="11" fill="#334155">geometric parse, three independent correctness proofs, all green</text>
+<circle cx="562" cy="200" r="2.3" fill="#1e3a8a"/><text x="571" y="204" font-size="11" fill="#334155">dense-only Qwen3-4B + exact-citation router + cross-reference graph</text>
+<circle cx="562" cy="220" r="2.3" fill="#1e3a8a"/><text x="571" y="224" font-size="11" fill="#334155">every emitted citation audited against the corpus before display</text>
+<rect x="556" y="242" width="458" height="60" rx="9" fill="#eff6ff" stroke="#bfdbfe"/>
+<text x="574" y="264" font-size="11" font-weight="700" fill="#1e40af">MEASURED</text>
+<text x="574" y="284" font-size="11.5" fill="#1e3a8a">cites-gold <tspan font-weight="700">0.907</tspan> · citation validity <tspan font-weight="700">1.000</tspan> · fabrications <tspan font-weight="700">0</tspan> · correct refusal 32/32</text>
+
+<!-- arrows to shared infra -->
+<path d="M275,324 L275,352" stroke="#0e7490" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M785,324 L785,352" stroke="#1e3a8a" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+<!-- shared infrastructure band -->
+<text x="30" y="348" font-size="11.5" font-weight="700" fill="#334155" letter-spacing="0.6">SHARED INFRASTRUCTURE — DELIBERATELY SEPARATED DATA</text>
+<rect x="30" y="358" width="325" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="30" y="358" width="325" height="5" rx="2.5" fill="#7c3aed"/>
+<circle cx="56" cy="392" r="15" fill="#f5f3ff" stroke="#7c3aed"/><text x="56" y="397" font-size="13" font-weight="700" fill="#7c3aed" text-anchor="middle">DB</text>
+<text x="80" y="388" font-size="13" font-weight="700" fill="#0f172a">One Supabase project</text>
+<text x="80" y="404" font-size="10.5" font-weight="600" fill="#7c3aed">two schemas, zero shared objects</text>
+<circle cx="48" cy="426" r="2.3" fill="#0e7490"/><text x="57" y="430" font-size="10.5" fill="#334155">NC → schema <tspan font-family="monospace">public</tspan> · vector(1024) + tsvector</text>
+<circle cx="48" cy="444" r="2.3" fill="#1e3a8a"/><text x="57" y="448" font-size="10.5" fill="#334155">MI → schema <tspan font-family="monospace">mcr</tspan> · vector(2000) + provenance</text>
+<circle cx="48" cy="462" r="2.3" fill="#7c3aed"/><text x="57" y="466" font-size="10.5" fill="#334155">read-only row-level security for app keys</text>
+
+<rect x="370" y="358" width="325" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="370" y="358" width="325" height="5" rx="2.5" fill="#059669"/>
+<circle cx="396" cy="392" r="15" fill="#ecfdf5" stroke="#059669"/><text x="396" y="397" font-size="13" font-weight="700" fill="#059669" text-anchor="middle">▲</text>
+<text x="420" y="388" font-size="13" font-weight="700" fill="#0f172a">Vercel, per system</text>
+<text x="420" y="404" font-size="10.5" font-weight="600" fill="#059669">independent deploys, no coupling</text>
+<circle cx="388" cy="426" r="2.3" fill="#0e7490"/><text x="397" y="430" font-size="10.5" fill="#334155">NC: auto-deploy on push (root <tspan font-family="monospace">NC-ChildWelfare/web</tspan>)</text>
+<circle cx="388" cy="444" r="2.3" fill="#1e3a8a"/><text x="397" y="448" font-size="10.5" fill="#334155">MI: CLI deploy from <tspan font-family="monospace">MI-CourtRules/web</tspan></text>
+<circle cx="388" cy="462" r="2.3" fill="#059669"/><text x="397" y="466" font-size="10.5" fill="#334155">SSE streaming · query + feedback telemetry</text>
+
+<rect x="710" y="358" width="320" height="118" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+<rect x="710" y="358" width="320" height="5" rx="2.5" fill="#d97706"/>
+<circle cx="736" cy="392" r="15" fill="#fffbeb" stroke="#d97706"/><text x="736" y="397" font-size="13" font-weight="700" fill="#d97706" text-anchor="middle">🔑</text>
+<text x="760" y="388" font-size="13" font-weight="700" fill="#0f172a">Secrets discipline</text>
+<text x="760" y="404" font-size="10.5" font-weight="600" fill="#d97706">nothing in the repo, ever</text>
+<circle cx="728" cy="426" r="2.3" fill="#d97706"/><text x="737" y="430" font-size="10.5" fill="#334155">keys in a chmod-600 env file outside the repo</text>
+<circle cx="728" cy="444" r="2.3" fill="#d97706"/><text x="737" y="448" font-size="10.5" fill="#334155">apps get platform env vars; anon keys are read-only</text>
+<circle cx="728" cy="462" r="2.3" fill="#d97706"/><text x="737" y="466" font-size="10.5" fill="#334155">full-history scans before every visibility change</text>
+
+<rect x="30" y="496" width="1000" height="34" rx="10" fill="#ecfdf5" stroke="#059669"/>
+<circle cx="52" cy="513" r="9" fill="#059669"/>
+<path d="M48,513 l3,3 l6,-7" stroke="#fff" stroke-width="2" fill="none"/>
+<text x="70" y="518" font-size="13" font-weight="700" fill="#065f46">PUBLIC DATA ONLY<tspan font-weight="500" fill="#047857">   —   statutes, court rules, and published policy manuals · no case records · engines refuse private workspaces in code</tspan></text>
+
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+</svg>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 512" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
+<rect x="1" y="1" width="1058" height="510" rx="16" fill="#f8fafc" stroke="#e2e8f0"/>
+<text x="30" y="40" font-size="21" font-weight="700" fill="#0f172a">MI-CourtRules — how the data are processed</text>
+<text x="30" y="62" font-size="12.5" fill="#64748b">A geometrically verified parse feeds retrieval whose every mechanism survived a paired test — and every citation in an answer is <tspan font-weight="600" fill="#0f172a">audited before it is shown</tspan>.</text>
+
+<text x="30" y="92" font-size="11.5" font-weight="700" fill="#334155" letter-spacing="0.6">① PARSE &amp; PROVE</text>
+<rect x="30" y="104" width="235" height="122" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="30" y="104" width="235" height="5" rx="2.5" fill="#1e3a8a"/>
+<circle cx="56" cy="138" r="15" fill="#eff6ff" stroke="#1e3a8a"/><text x="56" y="143" font-size="14" font-weight="700" fill="#1e3a8a" text-anchor="middle">1</text>
+<text x="80" y="134" font-size="13.5" font-weight="700" fill="#0f172a">Geometric parse</text>
+<text x="80" y="151" font-size="10.5" font-weight="600" fill="#1e3a8a">874 pp, born-digital, 0 images</text>
+<circle cx="48" cy="172" r="2.3" fill="#1e3a8a"/><text x="57" y="176" font-size="10.5" fill="#334155">indent ladder +21.6 pt per level</text>
+<circle cx="48" cy="190" r="2.3" fill="#1e3a8a"/><text x="57" y="194" font-size="10.5" fill="#334155">bimodal line spacing → block bounds</text>
+<circle cx="48" cy="208" r="2.3" fill="#1e3a8a"/><text x="57" y="212" font-size="10.5" fill="#334155">12,298 blocks · full citation paths</text>
+
+<rect x="288" y="104" width="235" height="122" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="288" y="104" width="235" height="5" rx="2.5" fill="#059669"/>
+<circle cx="314" cy="138" r="15" fill="#ecfdf5" stroke="#059669"/><text x="314" y="143" font-size="14" font-weight="700" fill="#059669" text-anchor="middle">2</text>
+<text x="338" y="134" font-size="13.5" font-weight="700" fill="#0f172a">Three proofs</text>
+<text x="338" y="151" font-size="10.5" font-weight="600" fill="#059669">independent code, all green</text>
+<rect x="462" y="116" width="43" height="18" rx="9" fill="#059669"/><text x="483.5" y="128.5" font-size="9" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="0.3">GATE</text>
+<circle cx="306" cy="172" r="2.3" fill="#059669"/><text x="315" y="176" font-size="10.5" fill="#334155">structure: printed TOC 625/625 rules</text>
+<circle cx="306" cy="190" r="2.3" fill="#059669"/><text x="315" y="194" font-size="10.5" fill="#334155">words: 384,507 = 384,507</text>
+<circle cx="306" cy="208" r="2.3" fill="#059669"/><text x="315" y="212" font-size="10.5" fill="#334155">characters: 1,886,132 = 1,886,132</text>
+
+<rect x="546" y="104" width="235" height="122" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="546" y="104" width="235" height="5" rx="2.5" fill="#7c3aed"/>
+<circle cx="572" cy="138" r="15" fill="#f5f3ff" stroke="#7c3aed"/><text x="572" y="143" font-size="14" font-weight="700" fill="#7c3aed" text-anchor="middle">3</text>
+<text x="596" y="134" font-size="13.5" font-weight="700" fill="#0f172a">Chunk + graph</text>
+<text x="596" y="151" font-size="10.5" font-weight="600" fill="#7c3aed">rule-scoped · 256 tokens</text>
+<circle cx="564" cy="172" r="2.3" fill="#7c3aed"/><text x="573" y="176" font-size="10.5" fill="#334155">3,580 passages, no rule crossings</text>
+<circle cx="564" cy="190" r="2.3" fill="#7c3aed"/><text x="573" y="194" font-size="10.5" fill="#334155">943 cross-reference edges, classified</text>
+<circle cx="564" cy="208" r="2.3" fill="#7c3aed"/><text x="573" y="212" font-size="10.5" fill="#334155">overrides &gt; excepts &gt; conditions …</text>
+
+<rect x="804" y="104" width="226" height="122" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="804" y="104" width="226" height="5" rx="2.5" fill="#6366f1"/>
+<circle cx="830" cy="138" r="15" fill="#eef2ff" stroke="#6366f1"/><text x="830" y="143" font-size="14" font-weight="700" fill="#6366f1" text-anchor="middle">4</text>
+<text x="854" y="134" font-size="13.5" font-weight="700" fill="#0f172a">Embed + load</text>
+<text x="854" y="151" font-size="10.5" font-weight="600" fill="#6366f1">Qwen3-Embedding-4B</text>
+<circle cx="822" cy="172" r="2.3" fill="#6366f1"/><text x="831" y="176" font-size="10.5" fill="#334155">2560 → 2000 dim (lossless, p=0.80)</text>
+<circle cx="822" cy="190" r="2.3" fill="#6366f1"/><text x="831" y="194" font-size="10.5" fill="#334155">pgvector HNSW · schema mcr</text>
+<circle cx="822" cy="208" r="2.3" fill="#6366f1"/><text x="831" y="212" font-size="10.5" fill="#334155">queries use the instruct template</text>
+
+<path d="M265,165 L285,165" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M523,165 L543,165" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M781,165 L801,165" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+<text x="30" y="262" font-size="11.5" font-weight="700" fill="#334155" letter-spacing="0.6">② ANSWER A QUESTION</text>
+<rect x="30" y="274" width="235" height="122" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="30" y="274" width="235" height="5" rx="2.5" fill="#0891b2"/>
+<circle cx="56" cy="308" r="15" fill="#ecfeff" stroke="#0891b2"/><text x="56" y="313" font-size="14" font-weight="700" fill="#0891b2" text-anchor="middle">5</text>
+<text x="80" y="304" font-size="13.5" font-weight="700" fill="#0f172a">Route, then retrieve</text>
+<text x="80" y="321" font-size="10.5" font-weight="600" fill="#0891b2">two kinds of evidence, labelled</text>
+<circle cx="48" cy="342" r="2.3" fill="#0891b2"/><text x="57" y="346" font-size="10.5" fill="#334155">exact "MCR 2.116(C)(10)" → router,</text>
+<circle cx="48" cy="360" r="2.3" fill="#0891b2"/><text x="57" y="364" font-size="10.5" fill="#334155">never touches the vector index (125/125)</text>
+<circle cx="48" cy="378" r="2.3" fill="#0891b2"/><text x="57" y="382" font-size="10.5" fill="#334155">otherwise dense-only · R@2048tok 0.944</text>
+
+<rect x="288" y="274" width="235" height="122" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="288" y="274" width="235" height="5" rx="2.5" fill="#7c3aed"/>
+<circle cx="314" cy="308" r="15" fill="#f5f3ff" stroke="#7c3aed"/><text x="314" y="313" font-size="14" font-weight="700" fill="#7c3aed" text-anchor="middle">6</text>
+<text x="338" y="304" font-size="13.5" font-weight="700" fill="#0f172a">Expand the graph</text>
+<text x="338" y="321" font-size="10.5" font-weight="600" fill="#7c3aed">what modifies what you found</text>
+<circle cx="306" cy="342" r="2.3" fill="#7c3aed"/><text x="315" y="346" font-size="10.5" fill="#334155">provisions a passage depends on</text>
+<circle cx="306" cy="360" r="2.3" fill="#7c3aed"/><text x="315" y="364" font-size="10.5" fill="#334155">rules that override / except it from outside</text>
+<circle cx="306" cy="378" r="2.3" fill="#7c3aed"/><text x="315" y="382" font-size="10.5" fill="#334155">labelled so the model reports the exception</text>
+
+<rect x="546" y="274" width="235" height="122" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="546" y="274" width="235" height="5" rx="2.5" fill="#d97706"/>
+<circle cx="572" cy="308" r="15" fill="#fffbeb" stroke="#d97706"/><text x="572" y="313" font-size="14" font-weight="700" fill="#d97706" text-anchor="middle">7</text>
+<text x="596" y="304" font-size="13.5" font-weight="700" fill="#0f172a">Compose</text>
+<text x="596" y="321" font-size="10.5" font-weight="600" fill="#d97706">glm-5.2 · 4,096-token window</text>
+<circle cx="564" cy="342" r="2.3" fill="#d97706"/><text x="573" y="346" font-size="10.5" fill="#334155">answers only from the passages</text>
+<circle cx="564" cy="360" r="2.3" fill="#d97706"/><text x="573" y="364" font-size="10.5" fill="#334155">streams to the reader (SSE)</text>
+<circle cx="564" cy="378" r="2.3" fill="#d97706"/><text x="573" y="382" font-size="10.5" fill="#334155">refuses when passages don't answer</text>
+
+<rect x="804" y="274" width="226" height="122" rx="12" fill="#ffffff" stroke="#e2e8f0"/><rect x="804" y="274" width="226" height="5" rx="2.5" fill="#b91c1c"/>
+<circle cx="830" cy="308" r="15" fill="#fef2f2" stroke="#b91c1c"/><text x="830" y="313" font-size="14" font-weight="700" fill="#b91c1c" text-anchor="middle">✓</text>
+<text x="854" y="304" font-size="13.5" font-weight="700" fill="#0f172a">Audit, then render</text>
+<text x="854" y="321" font-size="10.5" font-weight="600" fill="#b91c1c">trust surfaces come last</text>
+<circle cx="822" cy="342" r="2.3" fill="#b91c1c"/><text x="831" y="346" font-size="10.5" fill="#334155">every citation checked vs 11,860 parsed</text>
+<circle cx="822" cy="360" r="2.3" fill="#b91c1c"/><text x="831" y="364" font-size="10.5" fill="#334155">and vs what was actually retrieved</text>
+<circle cx="822" cy="378" r="2.3" fill="#b91c1c"/><text x="831" y="382" font-size="10.5" fill="#334155">links go live only after the audit</text>
+
+<path d="M265,335 L285,335" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M523,335 L543,335" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+<path d="M781,335 L801,335" stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#ar)"/>
+
+<rect x="30" y="416" width="1000" height="34" rx="10" fill="#eff6ff" stroke="#1e3a8a"/>
+<circle cx="52" cy="433" r="9" fill="#1e3a8a"/>
+<path d="M48,433 l3,3 l6,-7" stroke="#fff" stroke-width="2" fill="none"/>
+<text x="70" y="438" font-size="13" font-weight="700" fill="#1e3a8a">PROVENANCE CHAIN<tspan font-weight="500" fill="#3730a3">   —   answer sentence → citation → chunk → block → printed page → source sha256 · retrieval route labelled (dense | citation-router | cross-reference)</tspan></text>
+
+<rect x="30" y="458" width="1000" height="34" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+<text x="52" y="480" font-size="12.5" font-weight="700" fill="#991b1b">KILLED BY MEASUREMENT<tspan font-weight="500" fill="#b91c1c">   —   BM25 hybrid (−15.6) · rerankers (bge −8.9, jina-v2 draw) · HyDE (−6.7) · by-rule assembly (only fabricated citation) · 512/1024 chunks · …</tspan></text>
+
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker></defs>
+</svg>
