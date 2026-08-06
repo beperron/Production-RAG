@@ -194,6 +194,7 @@ class Engine:
                                   normalize_embeddings=True,
                                   prompt_name="query")
             s = self.vecs @ q[0]
+            cos = s
             ranks.append(list(np.argsort(-s)[:60]))
 
         fused = {}
@@ -203,7 +204,9 @@ class Engine:
         for i, sc in sorted(fused.items(), key=lambda kv: -kv[1]):
             if i in seen:
                 continue
-            hits.append(self._hit(i, sc, mode, None))
+            hits.append(self._hit(i,
+                                  float(cos[i]) if cos is not None else sc,
+                                  mode, None))
             seen.add(i)
             if len(hits) >= k:
                 break

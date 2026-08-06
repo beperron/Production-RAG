@@ -65,7 +65,7 @@ class Ledger:
             "sha256": (hashlib.sha256(pdf.read_bytes()).hexdigest()
                        if pdf.exists() else None),
             "pages": 874,
-            "edition": "Michigan Court Rules, updated July 31 2026",
+            "edition": "Michigan Court Rules, as amended through July 31, 2026",
         }
         self.valid_citations = set(self.by_citation)
 

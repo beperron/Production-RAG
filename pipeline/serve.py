@@ -48,8 +48,9 @@ EXAMPLES = [
 ROUTE = {
     "citation-router": ("Exact citation match",
                         "This is the provision whose citation you entered."),
-    "dense": ("Found by meaning",
-              "Retrieved because its text answers the question."),
+    "dense": ("Found by the search",
+              "Located by searching the rules for language related to your "
+              "question. Finding it does not mean it answers the question."),
     "cross-reference": ("Included as a related condition",
                         "A provision above is expressly subject to this one."),
 }
@@ -188,6 +189,7 @@ text-align:center}
 .card .pg{margin-left:auto;font:12px var(--mono);color:var(--muted);
 white-space:nowrap}
 .card .title{color:var(--muted);font-size:12.5px;margin:3px 0 2px 32px}
+.usedmark{color:var(--ok);font-style:normal}
 .card .how{font:italic 12.5px/1.45 var(--sans);color:var(--muted);
 margin:6px 0 2px 32px;padding-left:9px;border-left:2px solid var(--line2)}
 .card .snip{font-size:14px;line-height:1.62;color:var(--ink2);
@@ -232,14 +234,14 @@ def page(q, body, announce=""):
         for e in EXAMPLES)
     hero = "" if q else f"""
 <header class="hero">
-  <p class="eyebrow">State of Michigan &middot; One Court of Justice</p>
+  <p class="eyebrow">Michigan Court Rules &middot; Research edition</p>
   <h1>Search the Michigan Court Rules</h1>
   <p class="lede">Ask a question in plain language or enter a citation.
   Every answer shows the provisions it rests on and the printed page to
   verify against.</p>
   <p class="facts"><span><b>{st['rules']}</b> rules</span>
   <span><b>{st['citable_provisions']:,}</b> citable provisions</span>
-  <span>updated <b>July 31, 2026</b></span></p>
+  <span>as amended through <b>July 31, 2026</b></span></p>
 </header>"""
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
@@ -251,7 +253,7 @@ answer cites the provisions behind it and the printed page to verify against.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>{CSS}</style></head>
 <body>
-<a class="skip" href="#results">Skip to results</a>
+{'<a class="skip" href="#results">Skip to results</a>' if q else '<a class="skip" href="#q">Skip to search</a>'}
 
 <div class="topbar">
   <div class="brand">
@@ -266,7 +268,9 @@ answer cites the provisions behind it and the printed page to verify against.">
   <b>Not legal advice.</b> Answers are generated and may be wrong &mdash;
   verify against the official rules before relying on them.
   <details><summary>Full notice</summary>
-    <p class="more">This is a research prototype. It does not create an
+    <p class="more">This is an independent research prototype from the
+    University of Michigan; it is <b>not</b> a product of, affiliated with, or
+    endorsed by the Michigan courts. It does not create an
     attorney&ndash;client relationship and must not be relied on in any filing
     or decision. Answers are produced automatically from the text of the
     Michigan Court Rules and may be incomplete, out of date, or wrong. Always
@@ -305,13 +309,21 @@ answer cites the provisions behind it and the printed page to verify against.">
   it is not a substitute for the official Michigan Court Rules or for advice
   from a licensed attorney. Verify every citation against the official text
   before relying on it.</p>
+  <p>An independent research prototype, University of Michigan. Not
+  affiliated with or endorsed by the Michigan courts. Report errors:
+  <a href="mailto:beperron@umich.edu">beperron@umich.edu</a>.</p>
   <p>{html.escape(st['source']['edition'])} &middot;
-  <a href="/source.pdf" target="_blank" rel="noopener">open the full PDF used
-  by this tool</a> &middot;
+  <a href="/source.pdf" target="_blank" rel="noopener">open this tool's copy
+  of the rules PDF</a> (printed page numbers and PDF sheet numbers differ; both
+  are shown on every link) &middot;
   <a href="https://www.courts.michigan.gov/rules-administrative-orders-and-jury-instructions/court-rules/"
   target="_blank" rel="noopener">official rules at courts.michigan.gov</a></p>
   <details>
     <summary>Technical details</summary>
+    <p style="margin:10px 0 0;color:var(--muted)">In plain terms: this tool's
+    copy of the rules was checked against the source document itself — all 625
+    rules and every word are accounted for. The data below lets a technician
+    confirm that independently.</p>
     <div class="prov">
 source        {html.escape(st['source']['file'])}<br>
 sha-256       {st['source']['sha256']}<br>
@@ -334,7 +346,21 @@ def _page_cell(r):
     return "<td>—</td>"
 
 
-def verify_block(v):
+RE_MCL = __import__("re").compile(r"\bMCL\s+(\d[\d.]*[a-z]?)")
+
+
+def verify_block(v, answer_text=""):
+    mcl = sorted({m.group(0) for m in RE_MCL.finditer(answer_text or "")})
+    mcl_note = ""
+    if mcl:
+        mcl_note = (f' · <span class="wm">also cites {len(mcl)} statute'
+                    f'{"s" if len(mcl) > 1 else ""} ({", ".join(mcl[:3])}'
+                    f'{"…" if len(mcl) > 3 else ""}) — statutes are outside '
+                    f'the court rules and are NOT verified by this tool</span>')
+    return _verify_block(v, mcl_note)
+
+
+def _verify_block(v, mcl_note=""):
     if not v["n"]:
         return '<div class="verify">This answer cites no rule.</div>'
     n_ok = sum(1 for r in v["citations"] if r["exists"])
@@ -344,9 +370,9 @@ def verify_block(v):
                 f'{v["n"]} citations verified · drawn from the passages below')
     elif v["all_exist"]:
         line = (f'<span class="okm" aria-hidden="true">✓</span> all '
-                f'{v["n"]} citations are real provisions · '
-                f'<span class="wm">{v["n"] - n_shown} cited via '
-                f'cross-reference</span>')
+                f'{v["n"]} court-rule citations are real provisions · '
+                f'<span class="wm">{v["n"] - n_shown} quoted from text inside '
+                f'another passage</span>')
     else:
         line = (f'<span class="wm" aria-hidden="true">!</span> '
                 f'{v["n"] - n_ok} citation(s) could not be verified')
@@ -356,8 +382,9 @@ def verify_block(v):
         f"<td class='{'okc' if r['exists'] else 'noc'}'>"
         f"{'Yes' if r['exists'] else 'No'}</td>"
         f"<td class='{'okc' if r['was_retrieved'] else 'midc'}'>"
-        f"{'Yes' if r['was_retrieved'] else 'Via cross-reference'}</td>"
+        f"{'Yes' if r['was_retrieved'] else 'From text within a passage'}</td>"
         + _page_cell(r) + "</tr>" for r in v["citations"])
+    line += mcl_note
     return f"""<div class="verify">{line}
   <details><summary>citation audit</summary>
   <table><caption>Audit of every citation in the answer</caption>
@@ -366,8 +393,9 @@ def verify_block(v):
   <tbody>{rows}</tbody></table></details></div>"""
 
 
-def hit_card(h, n):
-    label, why = ROUTE.get(h["how"], ("Found by meaning", ""))
+def hit_card(h, n, cited=frozenset()):
+    label, why = ROUTE.get(h["how"], ("Found by the search", ""))
+    used = bool(set(h.get("citations", [])) & cited)
     tr = LEDGER.trace(h["citation"]) if h.get("citation") else None
     pages = ", ".join(str(p) for p in (tr or {}).get("printed_pages", []))
     pdf1 = ((tr or {}).get("pdf_pages") or [None])[0]
@@ -376,23 +404,37 @@ def hit_card(h, n):
     because = (f' — required by {html.escape(h["because_of"])}'
                if h.get("because_of") else "")
     score = ("" if h["how"] == "citation-router"
-             else f"similarity {h['score']:.4f} · ")
+             else f"match strength {h['score']:.2f} (cosine) · ")
     return f"""<article class="card" aria-labelledby="h{n}">
   <div class="cardhead">
     <span class="num" aria-hidden="true">{n}</span>
     <h3 class="sec" id="h{n}">{html.escape(h['citation'] or h['rule'])}</h3>
-    {f'<a class="pg" href="{pdf_href}" target="_blank" rel="noopener">p.{pages} — open the official PDF<span class="vh"> for {html.escape(h["citation"] or h["rule"])} (opens in a new tab)</span></a>' if pdf_href else f'<span class="pg">p.{pages or "—"}</span>'}
+    {f'<a class="pg" href="{pdf_href}" target="_blank" rel="noopener">p.{pages} · opens the PDF at sheet {pdf1 + 1}<span class="vh"> for {html.escape(h["citation"] or h["rule"])} (opens in a new tab)</span></a>' if pdf_href else f'<span class="pg">p.{pages or "—"}</span>'}
   </div>
   <p class="title">{html.escape(h['rule_title'])}</p>
-  <p class="how">{html.escape(label)}{because}</p>
+  <p class="how">{html.escape(label)}{because}
+    &middot; {'<b class="usedmark">cited in the answer</b>' if used
+              else 'not cited in the answer'}</p>
   <div class="snip">{html.escape(h['text'][:1800])}</div>
   <details><summary>provenance</summary>
     <div class="prov">{html.escape(why)}<br>
+The identifiers below are the system's internal audit trail; a technician can
+use them to reproduce this exact passage.<br>
 result {n} · {score}chunk {html.escape(h['chunk_id'])}<br>
 blocks {html.escape(blocks)}<br>
 {h['n_tokens']} tokens · printed page {pages or '?'} of the source PDF</div>
   </details>
 </article>"""
+
+
+RE_BOLD = __import__("re").compile(r"\*\*([^*\n]+)\*\*")
+
+
+def md_min(text):
+    """The generator emits markdown bold; showing raw asterisks reads as a
+    glitch. Escape first, then allow only <strong>."""
+    out = html.escape(text)
+    return RE_BOLD.sub(r"<strong>\1</strong>", out)
 
 
 def render(q):
@@ -403,18 +445,27 @@ def render(q):
     dt = time.time() - t0
     hits, ans = r["hits"], r["answer"]
     v = LEDGER.verify_answer(ans, hits)
-    refused = any(s in ans.lower() for s in
+    cited = {r["citation"] for r in v["citations"] if r["was_retrieved"]}
+    low = ans.lower()
+    refused = any(t in low for t in
                   ("do not answer", "does not answer", "not answered",
                    "no provision", "cannot be answered", "do not state",
-                   "do not specify", "passages provided do not"))
+                   "do not specify", "passages provided do not",
+                   "do not establish", "do not set", "do not address",
+                   "do not contain", "is not addressed", "not found in the",
+                   "outside the michigan court rules", "governed by statute",
+                   "would be found in", "passages do not"))
     head = "The court rules do not answer this" if refused else "Answer"
     body = "".join([
         f'<section class="answer{" refused" if refused else ""}" '
         f'aria-labelledby="ans"><h2 id="ans">{head}</h2>'
-        f'<div class="body">{html.escape(ans)}</div></section>',
-        verify_block(v),
-        f'<p class="meta">{len(hits)} provisions · {dt:.1f}s</p>',
-        *[hit_card(h, n + 1) for n, h in enumerate(hits)]])
+        f'<div class="body">{md_min(ans)}</div></section>',
+        verify_block(v, ans),
+        (f'<p class="meta">{len(hits)} provisions reviewed — none directly '
+         f'answers the question · {dt:.1f}s</p>' if refused else
+         f'<p class="meta">{len(hits)} provisions reviewed · {dt:.1f}s · '
+         f'other provisions may also bear on this question</p>'),
+        *[hit_card(h, n + 1, cited) for n, h in enumerate(hits)]])
     return body, (f"{head}. {len(hits)} supporting provisions, "
                   f"{v['n']} citations audited.")
 
