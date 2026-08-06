@@ -134,6 +134,14 @@ padding:13px 24px;border-bottom:1px solid var(--line);background:var(--bg)}
 .betachip{font:600 10.5px var(--mono);letter-spacing:.1em;color:var(--warn);
 border:1px solid var(--warn);border-radius:999px;padding:3px 9px;
 text-transform:uppercase;white-space:nowrap}
+.topnav{display:flex;align-items:center;gap:14px}
+.topnav a{font:600 13px var(--sans);color:var(--teal-hover);
+text-decoration:none;padding:8px 4px;min-height:36px;display:inline-flex;
+align-items:center}
+.topnav a:hover{text-decoration:underline;text-underline-offset:3px}
+.topnav a.btn{background:var(--teal);color:#fff;border-radius:8px;
+padding:9px 16px;text-decoration:none}
+.topnav a.btn:hover{background:var(--teal-hover);text-decoration:none}
 
 .lawline{padding:8px 24px;background:var(--warn-bg);border-bottom:1px solid var(--line);
 font:12.5px/1.5 var(--sans);color:var(--ink2)}
@@ -300,7 +308,10 @@ answer cites the provisions behind it and the printed page to verify against.">
     <b>Michigan Court Rules</b>
     <span>Bench Book &middot; search with provenance</span>
   </div>
-  <span class="betachip">Beta</span>
+  <nav class="topnav" aria-label="Site">
+    <a href="/architecture">About this system</a>
+    <span class="betachip">Beta</span>
+  </nav>
 </div>
 
 <div class="lawline"><div class="in">
@@ -360,15 +371,37 @@ answer cites the provisions behind it and the printed page to verify against.">
   are shown on every link) &middot;
   <a href="https://www.courts.michigan.gov/rules-administrative-orders-and-jury-instructions/court-rules/"
   target="_blank" rel="noopener">official rules at courts.michigan.gov</a></p>
-  <p><a href="/architecture">How this system works</a> &mdash; the pipeline,
-  the audit, the measured performance, and what was tested and rejected.</p>
+  <p><a href="/architecture">About this system</a> &mdash; the pipeline, the
+  audit, the measured performance, and what was tested and rejected.</p>
   <details>
     <summary>Technical details</summary>
-    <p style="margin:10px 0 0;color:var(--muted)">In plain terms: this tool's
-    copy of the rules was checked against the source document itself — all 625
-    rules and every word are accounted for. The data below lets a technician
-    confirm that independently.</p>
-    <div class="prov">
+    <div style="max-width:76ch;color:var(--ink2);font-size:13px;line-height:1.65">
+    <p style="margin:10px 0 8px"><b>Where the text comes from.</b> This tool
+    works from a single source: the official Michigan Court Rules PDF
+    published by the Michigan Supreme Court, as amended through July 31,
+    2026. Our copy was checked against that document word by word — all 625
+    rules, and every word of all {st['blocks']:,} parsed passages, are accounted
+    for. Nothing has been added, summarised, or paraphrased in the stored
+    text.</p>
+    <p style="margin:0 0 8px"><b>How an answer is produced.</b> When you ask
+    a question, the system first finds the provisions most related to it —
+    it does not write from memory. A language model then composes an answer
+    using only those provisions, and before anything is shown to you, every
+    citation in the answer is checked against the rules. If you enter a
+    citation directly, it is looked up exactly, with no interpretation
+    involved.</p>
+    <p style="margin:0 0 8px"><b>What is checked, continuously.</b> Each
+    answer's citations are verified to exist and to come from the passages
+    shown beneath it. Questions the rules do not answer are declined rather
+    than guessed at. In testing across more than a thousand benchmark
+    questions, the system produced no fabricated citations and declined all
+    32 questions designed to have no answer in the rules.</p>
+    <p style="margin:0 0 10px"><b>What runs where.</b> Search runs entirely
+    on this computer. Only the final composition step is sent to an external
+    language-model service; no search logs or documents leave this machine.</p>
+    <details style="margin:4px 0 0">
+      <summary style="cursor:pointer;font:600 12px var(--mono);color:var(--muted)">Reference identifiers (for technical staff)</summary>
+      <div class="prov">
 source        {html.escape(st['source']['file'])}<br>
 sha-256       {st['source']['sha256']}<br>
 provisions    {st['citable_provisions']:,} citable, from {st['blocks']:,} parsed blocks<br>
@@ -377,6 +410,8 @@ retrieval     {html.escape(EMBEDDER)}, dense, citation router<br>
 answers       {html.escape(GEN_MODEL)}, restricted to retrieved passages<br>
 verification  parse reconciled against the document's own contents
               (625/625 rules); word-count identity 384,507 = 384,507</div>
+    </details>
+    </div>
   </details>
 </footer>
 </body></html>"""
@@ -558,6 +593,9 @@ border:1px solid var(--line);border-radius:8px;margin:10px 0}
 .dead{color:var(--muted)}
 .dead b{color:var(--warn)}
 .backlink{display:inline-block;margin:14px 0 0;color:var(--teal-hover)}
+.btn-bottom{background:var(--teal);color:#fff!important;border-radius:8px;
+padding:11px 20px;text-decoration:none;font-weight:600;margin-top:26px}
+.btn-bottom:hover{background:var(--teal-hover)}
 """
 
 
@@ -567,7 +605,7 @@ def architecture_page():
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#142D3E">
-<title>How it works — Michigan Court Rules Bench Book</title>
+<title>About this system — Michigan Court Rules Bench Book</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>{CSS}{ARCH_CSS}</style></head>
 <body>
@@ -575,13 +613,16 @@ def architecture_page():
   <div class="brand">
     <img src="/favicon.svg" alt="" width="30" height="30">
     <b>Michigan Court Rules</b>
-    <span>Bench Book &middot; how it works</span>
+    <span>Bench Book &middot; about this system</span>
   </div>
-  <span class="betachip">Beta</span>
+  <nav class="topnav" aria-label="Site">
+    <a class="btn" href="/">&larr; Back to search</a>
+    <span class="betachip">Beta</span>
+  </nav>
 </div>
 <main class="arch">
 <p class="eyebrow">Bench Book &middot; Architecture</p>
-<h1>How this system works</h1>
+<h1>About this system</h1>
 <p>The Bench Book answers questions about the Michigan Court Rules by finding
 the governing provisions first and writing from them second. It never answers
 from general knowledge: every sentence is composed from retrieved rule text,
@@ -661,7 +702,7 @@ depends on those, the system says so rather than guessing. It is an
 independent University of Michigan project, not a product of the Michigan
 courts.</p>
 
-<a class="backlink" href="/">&larr; Back to search</a>
+<a class="backlink btn-bottom" href="/">&larr; Back to search</a>
 </main>
 <footer><div class="in">
 <p>An independent research prototype, University of Michigan. Report errors:
