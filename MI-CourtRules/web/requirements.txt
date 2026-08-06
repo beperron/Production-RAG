@@ -1,0 +1,2 @@
+numpy>=1.26
+psycopg[binary]>=3.1

@@ -1,0 +1,9 @@
+0_source/*.pdf
+__pycache__/
+.DS_Store
+2_eval/*.tmp
+3_chunks/vectors*.npy
+4_eval/cache/
+archive/chunk_variants/
+archive/superseded_evals/
+5_logs/
