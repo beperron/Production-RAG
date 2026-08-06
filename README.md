@@ -1,81 +1,22 @@
-# Michigan Court Rules — parsing proof of concept
+# Michigan Court Rules — search with provenance
 
-An isolated, high-accuracy parse of the **Michigan Court Rules** (874-page
-born-digital FrameMaker PDF, updated July 31 2026) into a citable corpus.
+A retrieval-augmented search system over the **Michigan Court Rules**
+(874 pages, 625 rules, 11,860 citable provisions, as amended through
+July 31 2026), built for bench use: every answer cites provisions, every
+citation is audited against the parsed corpus before it is shown, and every
+passage traces to a printed page of the official PDF.
 
-Kept deliberately separate from the bench-book library: this is the reference
-build, and its correctness standard is higher than the pipeline it may later
-feed.
-
-## Why this document is parseable exactly
-
-It is born-digital — 873 of 874 pages carry a text layer and there are **zero
-images**, so no OCR runs and no OCR error can enter. Every word carries exact
-geometry and font, so the structure is *measured*, not guessed.
-
-## The measured model
-
-| element | style | x |
-|---|---|---|
-| Chapter | Bold 18, centred | ~190 |
-| Subchapter | Bold 14 (wraps) | 72 |
-| Rule | Bold 12 (wraps) | 72 |
-| footer | size 10, y > 730 | stripped |
-
-Indent ladder, +21.6pt per level:
-`93.6 (A)` · `115.2 (1)` · `136.8 (a)` · `158.4 (i)` · `180.0` deeper.
-`108.0` is a flush paragraph under a rule with no subrules.
-
-Line spacing is bimodal — **14.0pt within a paragraph, 20.0pt between** — so
-block boundaries are read off the document rather than inferred.
-
-A continuation line sits at its parent's indent + 21.6, which is also the next
-level's item indent. **Indent alone therefore cannot distinguish a continuation
-from a new item**; the marker text and the vertical gap settle it.
-
-## Two independent correctness proofs
-
-**1. Structure — reconciled against the document's own table of contents.**
-The 18-page printed contents names every chapter, subchapter and rule. It is
-parsed by separate code reading different pages, then compared:
+**Live:** <https://mi-court-rules.parallel42.ai> · a project of the Child &
+Adolescent Data Lab, University of Michigan School of Social Work.
 
 ```
-contents : chapters 9  subchapters 51  rules 625
-body     : chapters 9  subchapters 51  rules 625
-0 errors, 0 warnings
+question ──► Qwen3-Embedding-4B (query) ──► pgvector similarity
+         ──► citation router (exact MCR lookups never touch the index)
+         ──► cross-reference graph expansion (overrides / excepts / conditions)
+         ──► glm-5.2 composes a cited answer from ~4,096 tokens of passages
+         ──► citation audit: every emitted citation checked against the corpus
+             and against what was actually retrieved — then rendered
 ```
-
-This exists because of a prior failure: 17 of 18 bench books were built,
-evaluated and published with their section structure silently flattened. Every
-gate passed, because every gate asked *"is the corpus a faithful rendering"* —
-and it was. Nothing asked *"did we find the sections the document says it
-has"*. A defect must now survive two parsers reading different pages in
-different formats to go unnoticed.
-
-**2. Completeness — word-multiset equality against the raw PDF.**
-384,507 source words in, 384,507 out. Zero lost, zero invented.
-
-## Defects this parse found and fixed
-
-Each was invisible on inspection — the output read as plausible legal English:
-
-| defect | scale |
-|---|---|
-| Wrapped subchapter titles became phantom subchapters (`Motions`, `Actions`) | 5 |
-| Wrapped rule titles truncated, remainder leaked into body prose | 16 |
-| **Markers with no trailing space absorbed as body text, mis-citing everything beneath** | **195** |
-| TOC entries whose page number lands on its own line, or after a plain space | 5 |
-
-The marker defect is the one that mattered most: `(10)Request for Copy...` has
-no space after the label, so item `(10)` was never recognised and its children
-inherited `(9)`'s citation path. In a corpus whose purpose is to answer *"what
-does MCR 1.109(D)(10) require"*, that is a wrong answer delivered confidently.
-
-## Citation paths are the point
-
-Lawyers cite `MCR 2.116(C)(10)`, not "page 312". Every block carries the full
-path it sits under, so a chunk can be cited and a query naming a subrule can
-be matched to it.
 
 ## The system, as shipped
 
@@ -93,13 +34,18 @@ Full record: [`docs/TESTING-AND-LESSONS.md`](docs/TESTING-AND-LESSONS.md).
 | refusal | | false 0.074 · correct 32/32 |
 | integrity | | citation validity 1.000 · fabrications 0 |
 
+Evaluated on a 1,092-query set written by two generator models
+cross-validating each other (each judged only the other's items), held to
+median query↔gold word overlap ≈ 0.18 so lexical echo cannot inflate scores.
+
 ### What died on measurement (do not re-add)
 
-BM25 hybrid (−15.6), bge reranker (−8.9), HyDE (−6.7), citation-path prefix
-(0.000), parent stem (0.000), rule-dedup (−12), 512/1024 chunks, by-rule
-context assembly (overreach ×4 and the campaign's only fabricated citation),
-score-threshold re-query (trigger wrong 6/7). Numbers and mechanisms in the
-testing record.
+BM25 hybrid (−15.6), bge reranker (−8.9), jina-reranker-v2 via API (−1.3,
+p=0.50 — a strong reranker fights the 4B embedder to a draw, and a draw plus
+latency is a loss), HyDE (−6.7), citation-path prefix (0.000), parent stem
+(0.000), rule-dedup (−12), 512/1024-token chunks, by-rule context assembly
+(overreach ×4 and the campaign's only fabricated citation), score-threshold
+re-query (trigger wrong 6/7). Numbers and mechanisms in the testing record.
 
 ## Provenance
 
@@ -117,14 +63,77 @@ retrieval route  dense | citation-router | cross-reference, labelled
 ```
 
 A passage that arrived by exact citation lookup is not the same evidence as
-one that arrived by similarity, and the interface says which.
+one that arrived by similarity, and the interface says which. Sources link
+into the official PDF on courts.michigan.gov at the exact sheet.
 
-## Run
+## The parse (why the corpus is trustworthy)
+
+The source is born-digital — 873 of 874 pages carry a text layer, zero
+images — so structure is *measured* from geometry and font, never OCR'd or
+guessed. Indent ladder +21.6 pt per level; line spacing bimodal (14.0 pt
+within a paragraph, 20.0 pt between), so block boundaries are read off the
+document.
+
+**Three independent correctness proofs, all green:**
+
+1. **Structure** — reconciled against the document's own 18-page printed
+   table of contents, parsed by separate code reading different pages:
+   9/9 chapters, 51/51 subchapters, 625/625 rules, 0 errors.
+2. **Completeness** — word-multiset equality with the raw PDF:
+   384,507 words in, 384,507 out.
+3. **Character fidelity** — independent re-extraction, non-whitespace
+   multiset: 1,886,132 = 1,886,132.
+
+Adversarial audit swarms (48 + 21 agents, every finding handed to a refuter)
+surfaced 43 real defects, each invisible on inspection — the worst: 195
+markers with no trailing space silently absorbed as body text, mis-citing
+everything beneath them. In a corpus whose purpose is to answer *"what does
+MCR 1.109(D)(10) require"*, that is a wrong answer delivered confidently.
+
+## Deployment
+
+| piece | where |
+|---|---|
+| web + API | Vercel (`web/` — a serverless port of `pipeline/serve.py`; SSE streaming, feedback, query log) |
+| vectors + telemetry | Supabase Postgres, schema `mcr` (pgvector HNSW, 2000-dim Matryoshka-truncated — measured lossless, p=0.804) |
+| query embedding | OpenRouter `qwen/qwen3-embedding-4b` — **queries require the Qwen instruct template**; raw queries embed ~0.91 cosine from correct, templated 0.996+ |
+| generation | glm-5.2 via Ollama Cloud |
+
+Cloud-path acceptance gates: all 125 exact-citation lookups correct through
+the deployed stack; 18/20 rank-1 agreement with the exact local scan on
+identical vectors (`hnsw.ef_search = 400`); pgvector p50 39 ms.
+
+The same Supabase project hosts a second, fully separate system (North
+Carolina child-welfare policy search) in the `public` schema — no shared
+tables or functions.
+
+## Run locally
 
 ```bash
+# parse + verify (requires PyMuPDF; fetch the PDF from courts.michigan.gov)
 python3 pipeline/parse_mcr.py 0_source/michigan-court-rules.pdf -o 1_parsed
 python3 pipeline/verify_structure.py 0_source/michigan-court-rules.pdf 1_parsed/blocks.jsonl
+
+# web interface against the local engine
+python3 pipeline/serve.py --port 8788    # -> http://127.0.0.1:8788
+
+# deploy: assemble the serverless bundle, then ship it
+python3 pipeline/build_web.py
+cd web && vercel deploy --prod
 ```
 
-Requires PyMuPDF. The source PDF is not committed; fetch it from
-`courts.michigan.gov`.
+Secrets live in `~/.config/parsevault/lawsearch.env` (never committed);
+query logs in `5_logs/` are gitignored.
+
+## Layout
+
+```
+pipeline/     parse, verify, chunk, sweep, eval, serve, cloud adapters
+1_parsed/     blocks.jsonl (12,298 blocks), xrefs.jsonl (943 edges)
+2_eval/       frozen 1,092-query eval set + human-review page
+3_chunks/     deployed chunk variant (rule-scoped 256-token)
+4_eval/       sweep results, per-query ranks, generation A/Bs
+web/          Vercel deployment bundle (build product of build_web.py)
+supabase/     mcr schema DDL
+docs/         TESTING-AND-LESSONS.md · AGENTIC-DESIGN.md · IMPROVEMENT-ROADMAP.md
+```
