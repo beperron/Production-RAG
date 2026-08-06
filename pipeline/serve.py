@@ -3,22 +3,21 @@
 
     python3 pipeline/serve.py --port 8788   ->  http://127.0.0.1:8788
 
-Design brief: a bench tool, not a dashboard. The reader is a judge or clerk
-mid-task. What they need immediately: the answer, the rule it rests on, and
-the printed page to check it against. Everything else -- similarity scores,
-chunk ids, embedding models, source hashes -- exists for auditability and
-lives one click away behind disclosure widgets, never deleted, never in the
-first read.
+Design follows carolina-policy-search's editorial strategy -- a quiet paper
+ground, white cards, a large serif headline, monospace eyebrows for metadata,
+numbered result cards, one accent used sparingly -- carrying the Michigan
+court palette (#142D3E navy, #277C78 teal) and the court favicon. The display
+serif is Georgia so the page still makes no external request and works on an
+air-gapped courtroom machine.
 
-The visual system is the Michigan court dashboard's (palette, Montserrat, 6px
-radii), applied sparingly: one accent colour in the reading path, whitespace
-doing the separating that boxes and badges did before. A reading measure of
-~72ch, because answers are read, not scanned.
+The reading path stays what a judge needs: answer, verification line, the
+provisions with their printed pages. Scores, chunk ids, block ids, model
+names and hashes live behind native <details> disclosures -- reachable, never
+in the first read.
 
-Accessibility is WCAG 2.1 AA as before: measured contrast, route never
-conveyed by colour alone, real table semantics in the audit, skip link,
-landmarks, aria-live announcements, 44px targets, honest <details> disclosure
-widgets that keyboards and screen readers get for free.
+Accessibility: WCAG 2.1 AA as before. Measured contrast, route conveyed by
+number + words never colour alone, real table semantics in the audit, skip
+link, landmarks, aria-live announcements, 44px targets.
 """
 from __future__ import annotations
 
@@ -46,14 +45,12 @@ EXAMPLES = [
     "When must the court appoint a guardian ad litem?",
 ]
 
-# Plain-English route descriptions. A judge should understand how a passage
-# got here without knowing what an embedding is.
 ROUTE = {
-    "citation-router": ("Exact citation match", "✦",
+    "citation-router": ("Exact citation match",
                         "This is the provision whose citation you entered."),
-    "dense": ("Found by meaning", "◆",
+    "dense": ("Found by meaning",
               "Retrieved because its text answers the question."),
-    "cross-reference": ("Included as a related condition", "▲",
+    "cross-reference": ("Included as a related condition",
                         "A provision above is expressly subject to this one."),
 }
 
@@ -61,129 +58,166 @@ CSS = """
 @font-face{font-family:Montserrat;font-style:normal;font-weight:400 700;
 font-display:swap;src:url(/static/fonts/montserrat-1.woff2) format('woff2')}
 :root{
---primary:#277C78;--primary-hover:#1d605d;
---secondary:#142D3E;--secondary-2:#1f4257;
---success:#0D8252;--warning:#E5A612;--warning-bg:#FFEFCA;--warning-text:#AE5400;
---error:#B30518;
---ink:#161618;--body-copy:#353535;--caption:#707070;
---border:#E2E5E9;--rule:#D0D0D0;--alt-bg:#F7F7F7;--smoke:#EAF1F4;
---font:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
---radius:6px;--maxw:820px;
---shadow:0 1px 3px rgba(20,45,62,.10),0 1px 2px rgba(20,45,62,.06)}
+  --bg:#F6F7F7; --paper:#FFFFFF; --soft:#EAF1F4;
+  --ink:#161618; --ink2:#353535; --muted:#707070; --faint:#9AA1A7;
+  --line:#E5E8EA; --line2:#D0D5D9;
+  --accent:#142D3E; --teal:#277C78; --teal-hover:#1d605d; --teal-soft:#E4F0EF;
+  --ok:#0D8252; --warn:#AE5400; --warn-bg:#FFF6E0; --bad:#B30518;
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:ui-monospace,'SF Mono',Menlo,monospace;
+}
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#fff;color:var(--body-copy);font:16px/1.65 var(--font)}
-.skip{position:absolute;left:-9999px;top:0;background:var(--secondary);
-color:#fff;padding:12px 18px;z-index:100}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:15.5px/1.6 var(--sans);
+-webkit-font-smoothing:antialiased}
+a{color:var(--teal-hover)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;
+padding:12px 18px;z-index:100}
 .skip:focus{left:0}
-:focus-visible{outline:3px solid var(--secondary);outline-offset:2px;border-radius:3px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
 
-header.bar{background:var(--secondary);color:#fff;padding:18px 24px}
-.bar .in{max-width:var(--maxw);margin:0 auto;display:flex;gap:14px;align-items:center}
-.bar img{width:36px;height:36px;flex:none}
-.bar h1{font-size:19px;margin:0;font-weight:700;letter-spacing:.2px}
-.bar .beta{margin-left:10px;padding:2px 10px;border-radius:20px;
-background:rgba(255,255,255,.14);color:#fff;font-size:11px;font-weight:700;
-letter-spacing:.08em;text-transform:uppercase;vertical-align:2px}
-.bar p{margin:2px 0 0;font-size:13px;color:#b9c7d1}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+padding:13px 24px;border-bottom:1px solid var(--line);background:var(--bg)}
+.brand{display:flex;align-items:center;gap:11px;color:var(--ink)}
+.brand img{width:30px;height:30px;border-radius:6px}
+.brand b{font:600 15.5px var(--sans)}
+.brand span{color:var(--muted);font-size:12.5px}
+.betachip{font:600 10.5px var(--mono);letter-spacing:.1em;color:var(--warn);
+border:1px solid var(--warn);border-radius:999px;padding:3px 9px;
+text-transform:uppercase;white-space:nowrap}
 
-.notice{background:var(--warning-bg);border-bottom:1px solid var(--warning);
-padding:10px 24px;font-size:13.5px;color:var(--body-copy)}
-.notice .in{max-width:var(--maxw);margin:0 auto}
-.notice strong{color:var(--ink)}
-.notice details{display:inline}
-.notice summary{display:inline;cursor:pointer;color:var(--primary-hover);
+.lawline{padding:8px 24px;background:var(--warn-bg);border-bottom:1px solid var(--line);
+font:12.5px/1.5 var(--sans);color:var(--ink2)}
+.lawline .in{max-width:920px;margin:0 auto}
+.lawline b{color:var(--ink)}
+.lawline details{display:inline}
+.lawline summary{display:inline;cursor:pointer;color:var(--teal-hover);
 font-weight:600;text-decoration:underline;text-underline-offset:2px}
-.notice .more{margin:8px 0 2px;max-width:72ch}
+.lawline .more{margin:7px 0 2px;max-width:72ch}
 
-.search{padding:30px 24px 6px}
-.search .in{max-width:var(--maxw);margin:0 auto}
-form{display:flex;gap:10px;flex-wrap:wrap}
+header.hero{max-width:920px;margin:0 auto;padding:38px 24px 4px}
+.eyebrow{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;
+color:var(--teal);margin:0 0 10px}
+h1{font:400 38px/1.1 var(--serif);letter-spacing:-.01em;margin:0 0 12px;
+color:var(--ink)}
+.lede{font-size:16.5px;line-height:1.6;color:var(--ink2);max-width:640px;margin:0}
+.facts{display:flex;gap:22px;flex-wrap:wrap;margin:16px 0 0;color:var(--muted);
+font:12.5px var(--mono)}
+.facts b{color:var(--ink2);font-weight:600}
+
+form.search{max-width:920px;margin:0 auto;padding:18px 24px 0;display:flex;
+gap:10px;flex-wrap:wrap}
 label.vh,.vh{position:absolute;width:1px;height:1px;overflow:hidden;
 clip:rect(0 0 0 0);white-space:nowrap}
-input[type=search]{flex:1;min-width:280px;min-height:50px;padding:12px 16px;
-font:inherit;font-size:16.5px;border:1.5px solid var(--rule);
-border-radius:var(--radius);background:#fff;color:var(--ink)}
-input[type=search]:focus{border-color:var(--primary)}
-button.go{min-height:50px;padding:12px 26px;font:inherit;font-weight:600;
-border:none;border-radius:var(--radius);background:var(--primary);color:#fff;
-cursor:pointer}
-button.go:hover{background:var(--primary-hover)}
-.ex{margin:14px 0 0;font-size:13.5px;color:var(--caption)}
-.ex a{color:var(--primary-hover);text-decoration:none;border-bottom:1px solid var(--border);
-padding-bottom:1px;margin-right:16px;display:inline-block;margin-top:6px;min-height:24px}
-.ex a:hover{border-color:var(--primary-hover)}
+input[type=search]{flex:1;min-width:280px;height:54px;padding:0 18px;
+background:var(--paper);border:1px solid var(--line2);border-radius:12px;
+font-size:16px;color:var(--ink);font-family:var(--sans)}
+input[type=search]:focus{outline:none;border-color:var(--teal);
+box-shadow:0 0 0 3px var(--teal-soft)}
+button.go{font:500 14.5px var(--sans);min-height:54px;padding:0 26px;
+border:1px solid var(--teal);border-radius:12px;background:var(--teal);
+color:#fff;cursor:pointer}
+button.go:hover{background:var(--teal-hover)}
 
-main{padding:26px 24px 70px}
-main .in{max-width:var(--maxw);margin:0 auto}
+.samples{max-width:920px;margin:16px auto 0;padding:0 24px}
+.samples .lbl{font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase;
+color:var(--muted);margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:13px var(--sans);padding:8px 14px;min-height:36px;
+border:1px solid var(--line2);border-radius:999px;background:var(--paper);
+color:var(--ink2);text-decoration:none;display:inline-block}
+.chip:hover{border-color:var(--teal);color:var(--teal-hover);background:var(--teal-soft)}
 
-.answer{margin:0 0 10px;padding:22px 26px;background:var(--smoke);
-border-radius:var(--radius);border-left:4px solid var(--primary)}
-.answer.refused{background:var(--warning-bg);border-left-color:var(--warning-text)}
-.answer h2{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.09em;
-text-transform:uppercase;color:var(--secondary-2)}
-.answer .txt{font-size:17px;line-height:1.7;color:var(--ink);white-space:pre-wrap;
-max-width:72ch}
+main{max-width:920px;margin:22px auto 70px;padding:0 24px}
 
-.verify{margin:0 0 34px;font-size:13.5px;color:var(--caption);padding:10px 2px}
-.verify .okmark{color:var(--success);font-weight:700}
-.verify .warnmark{color:var(--warning-text);font-weight:700}
+.answer{background:var(--paper);border:1px solid var(--line2);
+border-left:3px solid var(--teal);border-radius:12px;padding:18px 22px;
+margin:0 0 14px}
+.answer.refused{border-left-color:var(--warn)}
+.answer h2{display:flex;align-items:center;gap:8px;margin:0 0 10px;
+font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;
+color:var(--teal-hover)}
+.answer.refused h2{color:var(--warn)}
+.answer .body{font-size:15.5px;line-height:1.68;color:var(--ink);
+white-space:pre-wrap;max-width:70ch}
+
+.verify{color:var(--muted);font:12.5px var(--mono);margin:0 0 26px;padding:2px 4px}
+.verify .okm{color:var(--ok);font-weight:700}
+.verify .wm{color:var(--warn);font-weight:700}
 .verify details{margin-top:8px}
-.verify summary{cursor:pointer;color:var(--primary-hover);font-weight:600;
-min-height:24px;display:inline-block}
+.verify summary{cursor:pointer;color:var(--teal-hover);min-height:24px;
+display:inline-block}
 .verify summary:hover{text-decoration:underline}
-table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;
-margin-top:10px;border:1px solid var(--border);border-radius:var(--radius)}
+table{width:100%;border-collapse:collapse;font:12.5px var(--sans);
+background:var(--paper);margin-top:8px;border:1px solid var(--line);
+border-radius:8px}
 caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-th,td{padding:9px 12px;border-bottom:1px solid var(--border);text-align:left}
-th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;
-color:var(--caption);font-weight:700}
+th,td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:left}
+th{font:600 10.5px var(--mono);text-transform:uppercase;letter-spacing:.06em;
+color:var(--muted)}
 tbody tr:last-child td{border-bottom:none}
-.ok{color:var(--success);font-weight:600}
-.no{color:var(--error);font-weight:600}
-.mid{color:var(--warning-text);font-weight:600}
+.okc{color:var(--ok);font-weight:600}
+.noc{color:var(--bad);font-weight:600}
+.midc{color:var(--warn);font-weight:600}
 
-.sources h2{font-size:12px;font-weight:700;letter-spacing:.09em;
-text-transform:uppercase;color:var(--caption);margin:0 0 14px}
-.hit{padding:18px 0;border-top:1px solid var(--border)}
-.hit:last-of-type{border-bottom:1px solid var(--border)}
-.hit .top{display:flex;justify-content:space-between;gap:14px;align-items:baseline;
-flex-wrap:wrap}
-.hit h3{margin:0;font-size:16.5px;color:var(--secondary);font-weight:700}
-.hit .pg{font-size:13px;color:var(--caption);white-space:nowrap}
-.hit .how{margin:3px 0 10px;font-size:13px;color:var(--caption)}
-.hit .how .sym{color:var(--primary)}
-.hit .how.xref .sym{color:var(--warning-text)}
-.hit .body{font-size:14.5px;line-height:1.65;max-width:72ch;white-space:pre-wrap;
-max-height:14.5em;overflow:auto;color:var(--body-copy)}
-.hit details.tech{margin-top:10px}
-.hit details.tech summary{font-size:12.5px;color:var(--caption);cursor:pointer;
+.meta{color:var(--muted);font:12px var(--mono);margin:22px 0 12px;
+padding-top:16px;border-top:1px solid var(--line)}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;
+padding:16px 18px;margin:0 0 12px}
+.cardhead{display:flex;align-items:baseline;gap:10px}
+.num{flex:0 0 auto;width:22px;height:22px;border-radius:50%;
+background:var(--accent);color:#fff;font:600 12px/22px var(--mono);
+text-align:center}
+.card .sec{font:500 17.5px/1.3 var(--serif);color:var(--ink)}
+.card .pg{margin-left:auto;font:12px var(--mono);color:var(--muted);
+white-space:nowrap}
+.card .title{color:var(--muted);font-size:12.5px;margin:3px 0 2px 32px}
+.card .how{font:italic 12.5px/1.45 var(--sans);color:var(--muted);
+margin:6px 0 2px 32px;padding-left:9px;border-left:2px solid var(--line2)}
+.card .snip{font-size:14px;line-height:1.62;color:var(--ink2);
+margin:10px 0 4px 32px;white-space:pre-wrap;max-height:15em;overflow:auto;
+max-width:70ch}
+.card details{margin:8px 0 0 32px}
+.card summary{font:12px var(--mono);color:var(--muted);cursor:pointer;
 min-height:24px;display:inline-block}
-.hit details.tech summary:hover{color:var(--primary-hover)}
-.hit .techbody{margin-top:6px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;
-color:var(--caption);background:var(--alt-bg);padding:10px 12px;
-border-radius:var(--radius)}
+.card summary:hover{color:var(--teal-hover)}
+.card .prov{margin-top:6px;font:12px/1.7 var(--mono);color:var(--muted);
+background:var(--bg);border:1px solid var(--line);border-radius:8px;
+padding:10px 12px;overflow-x:auto}
 
-footer{border-top:1px solid var(--border);background:var(--alt-bg);
-padding:26px 24px 60px;color:var(--caption);font-size:13px}
-footer .in{max-width:var(--maxw);margin:0 auto}
+footer{max-width:920px;margin:0 auto;padding:22px 24px 56px;color:var(--faint);
+font:12px var(--sans);border-top:1px solid var(--line)}
 footer p{margin:0 0 8px;max-width:78ch}
-footer details{margin-top:14px}
-footer summary{cursor:pointer;font-weight:600;color:var(--secondary-2);
+footer b{color:var(--muted)}
+footer details{margin-top:12px}
+footer summary{cursor:pointer;font:600 12px var(--mono);color:var(--muted);
 min-height:24px;display:inline-block}
-footer summary:hover{color:var(--primary-hover)}
-footer .techbody{margin-top:10px;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;
-background:#fff;border:1px solid var(--border);border-radius:var(--radius);
-padding:12px 14px;overflow-x:auto}
+footer summary:hover{color:var(--teal-hover)}
+footer .prov{margin-top:10px;font:12px/1.8 var(--mono);background:var(--paper);
+border:1px solid var(--line);border-radius:8px;padding:12px 14px;
+overflow-x:auto;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 """
 
 
 def page(q, body, announce=""):
     st = LEDGER.stats()
-    ex = "".join(
-        f'<a href="/?q={urllib.parse.quote(e)}">{html.escape(e)}</a>'
+    chips = "".join(
+        f'<a class="chip" href="/?q={urllib.parse.quote(e)}">{html.escape(e)}</a>'
         for e in EXAMPLES)
+    hero = "" if q else f"""
+<header class="hero">
+  <p class="eyebrow">State of Michigan &middot; One Court of Justice</p>
+  <h1>Search the Michigan Court Rules</h1>
+  <p class="lede">Ask a question in plain language or enter a citation.
+  Every answer shows the provisions it rests on and the printed page to
+  verify against.</p>
+  <p class="facts"><span><b>{st['rules']}</b> rules</span>
+  <span><b>{st['citable_provisions']:,}</b> citable provisions</span>
+  <span>updated <b>July 31, 2026</b></span></p>
+</header>"""
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -196,14 +230,17 @@ answer cites the provisions behind it and the printed page to verify against.">
 <body>
 <a class="skip" href="#results">Skip to results</a>
 
-<header class="bar"><div class="in">
-  <img src="/favicon.svg" alt="" width="36" height="36">
-  <div><h1>Michigan Court Rules<span class="beta">Beta</span></h1>
-  <p>Every answer shows the provisions it rests on</p></div>
-</div></header>
+<div class="topbar">
+  <div class="brand">
+    <img src="/favicon.svg" alt="" width="30" height="30">
+    <b>Michigan Court Rules</b>
+    <span>search with provenance</span>
+  </div>
+  <span class="betachip">Beta</span>
+</div>
 
-<div class="notice"><div class="in">
-  <strong>Not legal advice.</strong> Answers are generated and may be wrong —
+<div class="lawline"><div class="in">
+  <b>Not legal advice.</b> Answers are generated and may be wrong &mdash;
   verify against the official rules before relying on them.
   <details><summary>Full notice</summary>
     <p class="more">This is a research prototype. It does not create an
@@ -214,33 +251,36 @@ answer cites the provisions behind it and the printed page to verify against.">
     Supreme Court at courts.michigan.gov before acting.</p>
   </details>
 </div></div>
+{hero}
+<form class="search" method="get" action="/" role="search">
+  <label class="vh" for="q">Search the Michigan Court Rules by question or citation</label>
+  <input type="search" id="q" name="q" value="{html.escape(q)}"
+    placeholder="Ask a question, or enter a citation — MCR 2.116(C)(10)"
+    autocomplete="off" {'autofocus' if not q else ''}>
+  <button class="go" type="submit">Search</button>
+</form>
 
-<div class="search"><div class="in">
-  <form method="get" action="/" role="search">
-    <label class="vh" for="q">Search the Michigan Court Rules by question or citation</label>
-    <input type="search" id="q" name="q" value="{html.escape(q)}"
-      placeholder="Ask a question, or enter a citation — MCR 2.116(C)(10)"
-      autocomplete="off" {'autofocus' if not q else ''}>
-    <button class="go" type="submit">Search</button>
-  </form>
-  <nav class="ex" aria-label="Example searches">Try:&nbsp; {ex}</nav>
-</div></div>
+<nav class="samples" aria-label="Example searches">
+  <p class="lbl">Try</p>
+  <div class="chips">{chips}</div>
+</nav>
 
-<main id="results" tabindex="-1"><div class="in">
+<main id="results" tabindex="-1">
+  {'<h1 class="vh">Search results: ' + html.escape(q) + '</h1>' if q else ''}
   <p class="vh" role="status" aria-live="polite">{html.escape(announce)}</p>
   {body}
-</div></main>
+</main>
 
-<footer><div class="in">
-  <p><strong>Not legal advice.</strong> This beta tool is for research and
-  evaluation; it is not a substitute for the official Michigan Court Rules or
-  for advice from a licensed attorney. Verify every citation against the
-  official text before relying on it.</p>
-  <p>{html.escape(st['source']['edition'])} &middot; {st['rules']} rules
-  &middot; {st['citable_provisions']:,} provisions.</p>
+<footer>
+  <p><b>Not legal advice.</b> This beta tool is for research and evaluation;
+  it is not a substitute for the official Michigan Court Rules or for advice
+  from a licensed attorney. Verify every citation against the official text
+  before relying on it.</p>
+  <p>{html.escape(st['source']['edition'])}. Source:
+  courts.michigan.gov.</p>
   <details>
     <summary>Technical details</summary>
-    <div class="techbody">
+    <div class="prov">
 source        {html.escape(st['source']['file'])}<br>
 sha-256       {st['source']['sha256']}<br>
 provisions    {st['citable_provisions']:,} citable, from {st['blocks']:,} parsed blocks<br>
@@ -248,43 +288,39 @@ passages      {st['chunks']:,} (rule-scoped, 256-token budget)<br>
 retrieval     {html.escape(EMBEDDER)}, dense, citation router<br>
 answers       {html.escape(GEN_MODEL)}, restricted to retrieved passages<br>
 verification  parse reconciled against the document's own contents
-              (625/625 rules); word-count identity 384,507 = 384,507
-    </div>
+              (625/625 rules); word-count identity 384,507 = 384,507</div>
   </details>
-</div></footer>
+</footer>
 </body></html>"""
 
 
 def verify_block(v):
-    """One quiet line a judge can trust, expandable to the full audit."""
     if not v["n"]:
-        return ('<div class="verify">This answer cites no rule.</div>')
+        return '<div class="verify">This answer cites no rule.</div>'
     n_ok = sum(1 for r in v["citations"] if r["exists"])
     n_shown = sum(1 for r in v["citations"] if r["was_retrieved"])
     if v["all_exist"] and n_shown == v["n"]:
-        line = (f'<span class="okmark" aria-hidden="true">✓</span> '
-                f'All {v["n"]} citations verified against the rules and drawn '
-                f'from the passages below.')
+        line = (f'<span class="okm" aria-hidden="true">✓</span> all '
+                f'{v["n"]} citations verified · drawn from the passages below')
     elif v["all_exist"]:
-        line = (f'<span class="okmark" aria-hidden="true">✓</span> '
-                f'All {v["n"]} citations are real provisions; '
-                f'<span class="mid">{v["n"] - n_shown} cited from a '
-                f'cross-reference</span> rather than a retrieved passage.')
+        line = (f'<span class="okm" aria-hidden="true">✓</span> all '
+                f'{v["n"]} citations are real provisions · '
+                f'<span class="wm">{v["n"] - n_shown} cited via '
+                f'cross-reference</span>')
     else:
-        line = (f'<span class="warnmark" aria-hidden="true">!</span> '
-                f'{v["n"] - n_ok} citation(s) could not be verified against '
-                f'the rules.')
+        line = (f'<span class="wm" aria-hidden="true">!</span> '
+                f'{v["n"] - n_ok} citation(s) could not be verified')
     rows = "".join(
         "<tr>"
         f"<th scope='row'>{html.escape(r['citation'])}</th>"
-        f"<td class='{'ok' if r['exists'] else 'no'}'>"
+        f"<td class='{'okc' if r['exists'] else 'noc'}'>"
         f"{'Yes' if r['exists'] else 'No'}</td>"
-        f"<td class='{'ok' if r['was_retrieved'] else 'mid'}'>"
+        f"<td class='{'okc' if r['was_retrieved'] else 'midc'}'>"
         f"{'Yes' if r['was_retrieved'] else 'Via cross-reference'}</td>"
         f"<td>{('p.' + str(r['printed_page'][0])) if r.get('printed_page') else '—'}</td>"
         "</tr>" for r in v["citations"])
     return f"""<div class="verify">{line}
-  <details><summary>Citation audit</summary>
+  <details><summary>citation audit</summary>
   <table><caption>Audit of every citation in the answer</caption>
   <thead><tr><th scope="col">Citation</th><th scope="col">Real provision</th>
   <th scope="col">Retrieved</th><th scope="col">Page</th></tr></thead>
@@ -292,8 +328,7 @@ def verify_block(v):
 
 
 def hit_card(h, n):
-    label, sym, why = ROUTE.get(h["how"], ("Found by meaning", "◆", ""))
-    kind = "xref" if h["how"] == "cross-reference" else ""
+    label, why = ROUTE.get(h["how"], ("Found by meaning", ""))
     tr = LEDGER.trace(h["citation"]) if h.get("citation") else None
     pages = ", ".join(str(p) for p in (tr or {}).get("printed_pages", []))
     blocks = " ".join((tr or {}).get("block_ids", [])[:6])
@@ -301,17 +336,18 @@ def hit_card(h, n):
                if h.get("because_of") else "")
     score = ("" if h["how"] == "citation-router"
              else f"similarity {h['score']:.4f} · ")
-    return f"""<article class="hit" aria-labelledby="h{n}">
-  <div class="top">
-    <h3 id="h{n}">{html.escape(h['citation'] or h['rule'])}</h3>
-    <span class="pg">page {pages or '—'}</span>
+    return f"""<article class="card" aria-labelledby="h{n}">
+  <div class="cardhead">
+    <span class="num" aria-hidden="true">{n}</span>
+    <h3 class="sec" id="h{n}">{html.escape(h['citation'] or h['rule'])}</h3>
+    <span class="pg">p.{pages or '—'}</span>
   </div>
-  <p class="how {kind}"><span class="sym" aria-hidden="true">{sym}</span>
-    {html.escape(label)}{because} · {html.escape(h['rule_title'])}</p>
-  <div class="body">{html.escape(h['text'][:1800])}</div>
-  <details class="tech"><summary>Provenance</summary>
-    <div class="techbody">{html.escape(why)}<br>
-rank {n} · {score}chunk {html.escape(h['chunk_id'])}<br>
+  <p class="title">{html.escape(h['rule_title'])}</p>
+  <p class="how">{html.escape(label)}{because}</p>
+  <div class="snip">{html.escape(h['text'][:1800])}</div>
+  <details><summary>provenance</summary>
+    <div class="prov">{html.escape(why)}<br>
+result {n} · {score}chunk {html.escape(h['chunk_id'])}<br>
 blocks {html.escape(blocks)}<br>
 {h['n_tokens']} tokens · printed page {pages or '?'} of the source PDF</div>
   </details>
@@ -320,10 +356,7 @@ blocks {html.escape(blocks)}<br>
 
 def render(q):
     if not q.strip():
-        return ("<p style='max-width:64ch'>Ask a question in plain language, "
-                "or enter a citation. Answers come only from the text of the "
-                "Michigan Court Rules, and every answer lists the provisions "
-                "it rests on.</p>"), ""
+        return "", ""
     t0 = time.time()
     r = ENGINE.answer(q, k=6)
     dt = time.time() - t0
@@ -337,12 +370,10 @@ def render(q):
     body = "".join([
         f'<section class="answer{" refused" if refused else ""}" '
         f'aria-labelledby="ans"><h2 id="ans">{head}</h2>'
-        f'<div class="txt">{html.escape(ans)}</div></section>',
+        f'<div class="body">{html.escape(ans)}</div></section>',
         verify_block(v),
-        '<section class="sources" aria-labelledby="src">'
-        f'<h2 id="src">Provisions behind this answer</h2>',
-        *[hit_card(h, n + 1) for n, h in enumerate(hits)],
-        '</section>'])
+        f'<p class="meta">{len(hits)} provisions · {dt:.1f}s</p>',
+        *[hit_card(h, n + 1) for n, h in enumerate(hits)]])
     return body, (f"{head}. {len(hits)} supporting provisions, "
                   f"{v['n']} citations audited.")
 
