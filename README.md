@@ -77,48 +77,29 @@ Lawyers cite `MCR 2.116(C)(10)`, not "page 312". Every block carries the full
 path it sits under, so a chunk can be cited and a query naming a subrule can
 be matched to it.
 
-## The retrieval system
+## The system, as shipped
 
-Settled by a systematic sweep over 1,060 paired evaluation queries, every
-comparison tested with McNemar on discordant pairs.
+Settled by paired tests end to end — every comparison McNemar on identical
+queries, every intervention gated on correct-refusal and citation validity.
+Full record: [`docs/TESTING-AND-LESSONS.md`](docs/TESTING-AND-LESSONS.md).
 
-| | |
-|---|---|
-| chunks | rule-scoped, 256 tokens, plain text — 3,580 passages |
-| embedder | Qwen3-Embedding-4B (2000d indexes losslessly, p = 0.80) |
-| retrieval | **dense only**, citation router in front |
-| answering | deepseek-v4-flash, cross-reference expansion |
+| layer | configuration | measured |
+|---|---|---|
+| corpus | 625 rules · 11,860 citable provisions | 3 independent proofs green |
+| chunks | rule-scoped, 256 tokens, plain text | 3,580 passages |
+| retrieval | Qwen3-Embedding-4B · dense only · citation router | R@1 0.660 · R@10 0.947 · R@2048tok 0.944 |
+| graph | 943 classified cross-reference edges, bidirectional | overrides/excepts surfaced in answers |
+| generation | glm-5.2 · 4096-token window · cross-ref expansion | cites-gold 0.907 · supported 0.970 |
+| refusal | | false 0.074 · correct 32/32 |
+| integrity | | citation validity 1.000 · fabrications 0 |
 
-**R@1 0.660 · R@10 0.947 · R@2048tok 0.944 · citation lookups 1.000**
-**citation validity 1.000 · cites gold when gold retrieved 0.957**
+### What died on measurement (do not re-add)
 
-### Eight priors carried from the CPS bake-off, eight corrected
-
-| carried over | measured here |
-|---|---|
-| 512-token chunks, size a tie | 256 wins, p = 2e-05 |
-| citation-path prefix, worth ~32 pts | **0.000**, p = 0.78 |
-| parent stem | 0.000 |
-| rule-level dedup | **−12 to −14 pts** |
-| structure-aware chunking dominates | +0.022 overall, n.s. |
-| hybrid retrieval | dense-only, **+15.6 pts** |
-| reranking is the top lever | **−8.9 pts**, p = 1e-16 |
-| HyDE closes the register gap | **−6.7 pts**, p = 1e-11 |
-
-Every surviving optimisation was a **deletion**. The only two additions that
-earned their place are the citation router (+11.5 pts) and cross-reference
-expansion (answer quality only, directional).
-
-The failures split on one line. Findings tied to **where the gold sits** did
-not transfer — CPS scored at section level, this at provision level, and the
-prefix, the stem and boundary-respect all discriminate at the rung that no
-longer matters (342 rules split across chunks; not one pair shares a heading
-path). Findings orthogonal to granularity transferred **exactly** — dense-only
-over hybrid, and rerankers hurting strong retrieval. Both of those I overrode,
-and both overrides cost points.
-
-*The rule for the next manual: ask whether a finding depends on where your
-gold sits. If it does, re-measure. If it does not, trust it.*
+BM25 hybrid (−15.6), bge reranker (−8.9), HyDE (−6.7), citation-path prefix
+(0.000), parent stem (0.000), rule-dedup (−12), 512/1024 chunks, by-rule
+context assembly (overreach ×4 and the campaign's only fabricated citation),
+score-threshold re-query (trigger wrong 6/7). Numbers and mechanisms in the
+testing record.
 
 ## Provenance
 
