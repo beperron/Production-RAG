@@ -298,7 +298,7 @@ def page(q, body, announce=""):
         for e in EXAMPLES)
     hero = "" if q else f"""
 <header class="hero">
-  <p class="eyebrow">Bench Book &middot; Research edition</p>
+  <p class="eyebrow">Bench Book</p>
   <h1>Michigan Court Rules</h1>
   <p class="lede">A searchable bench book for the rules governing practice in
   Michigan courts. Ask a question in plain language or enter a citation;
@@ -336,8 +336,9 @@ answer cites the provisions behind it and the printed page to verify against.">
   <b>Not legal advice.</b> Answers are generated and may be wrong &mdash;
   verify against the official rules before relying on them.
   <details><summary>Full notice</summary>
-    <p class="more">This is an independent research prototype from the
-    University of Michigan; it is <b>not</b> a product of, affiliated with, or
+    <p class="more">This is an administrative support tool developed by the
+    Child &amp; Adolescent Data Lab at the University of Michigan School of
+    Social Work; it is <b>not</b> a product of, affiliated with, or
     endorsed by the Michigan courts. It does not create an
     attorney&ndash;client relationship and must not be relied on in any filing
     or decision. Answers are produced automatically from the text of the
@@ -377,8 +378,11 @@ answer cites the provisions behind it and the printed page to verify against.">
   it is not a substitute for the official Michigan Court Rules or for advice
   from a licensed attorney. Verify every citation against the official text
   before relying on it.</p>
-  <p>An independent research prototype, University of Michigan. Not
-  affiliated with or endorsed by the Michigan courts. Report errors:
+  <p>An administrative support tool developed by the
+  <a href="https://ssw-datalab.org/" target="_blank" rel="noopener">Child
+  &amp; Adolescent Data Lab</a> at the University of Michigan School of
+  Social Work. Not affiliated with or endorsed by the Michigan courts.
+  Report errors:
   <a href="mailto:beperron@umich.edu">beperron@umich.edu</a>.</p>
   <p>Searches are recorded on this machine (question, answer, retrieved
   provisions) to improve the tool; nothing is sent elsewhere except the
@@ -764,13 +768,17 @@ is in the project repository (<code>docs/TESTING-AND-LESSONS.md</code>).</p>
 Court Rules as amended through July 31, 2026 &mdash; not statutes (MCL), case
 law, the Rules of Evidence, or local administrative orders; when an answer
 depends on those, the system says so rather than guessing. It is an
-independent University of Michigan project, not a product of the Michigan
-courts.</p>
+administrative support tool developed by the Child &amp; Adolescent Data Lab
+at the University of Michigan School of Social Work, not a product of the
+Michigan courts.</p>
 
 <a class="backlink btn-bottom" href="/">&larr; Back to search</a>
 </main>
 <footer><div class="in">
-<p>An independent research prototype, University of Michigan. Report errors:
+<p>An administrative support tool developed by the
+<a href="https://ssw-datalab.org/" target="_blank" rel="noopener">Child
+&amp; Adolescent Data Lab</a>, University of Michigan School of Social Work.
+Report errors:
 <a href="mailto:beperron@umich.edu">beperron@umich.edu</a>.</p>
 </div></footer>
 </body></html>"""
