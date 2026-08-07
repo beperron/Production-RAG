@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cloud adapters for the deployed (Vercel + Supabase) bench book.
+"""Cloud adapters for the deployed (Vercel + Supabase) Court Rule Searcher.
 
 CloudEngine keeps every measured behaviour of mcr_search.Engine -- the
 citation router, graph expansion, token-budget context assembly, prompts --

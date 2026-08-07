@@ -1,19 +1,24 @@
 #!/usr/bin/env python3
-"""Michigan Court Rules — search with provenance.
+"""Court Rule Searcher — the Michigan Court Rules, searched with provenance.
 
     python3 pipeline/serve.py --port 8788   ->  http://127.0.0.1:8788
 
-Design follows carolina-policy-search's editorial strategy -- a quiet paper
-ground, white cards, a large serif headline, monospace eyebrows for metadata,
-numbered result cards, one accent used sparingly -- carrying the Michigan
-court palette (#142D3E navy, #277C78 teal) and the court favicon. The display
-serif is Georgia so the page still makes no external request and works on an
-air-gapped courtroom machine.
+The landing page is deliberately a search landing page and nothing else: the
+mark, the wordmark, one line saying what is being searched, the field, four
+examples. Everything a first-time reader might want but a returning one never
+does -- what the system is, how to check it, what it covers, the legal notice,
+the identifiers -- sits below in collapsed disclosure boxes, reachable in one
+click and invisible until then. Branding is carried by the mark, the Michigan
+court palette (#142D3E navy, #277C78 teal) and the Georgia wordmark rather
+than by a block of hero copy. The display serif is Georgia so the page still
+makes no external request and works on an air-gapped courtroom machine.
 
-The reading path stays what a judge needs: answer, verification line, the
-provisions with their printed pages. Scores, chunk ids, block ids, model
-names and hashes live behind native <details> disclosures -- reachable, never
-in the first read.
+Submitting a search swaps the page into results chrome: a compact top bar
+carrying the brand and the field, the amber "not legal advice" bar (it earns
+its colour only where generated text appears), then answer, verification
+line, provisions with their printed pages. Scores, chunk ids, block ids,
+model names and hashes live behind native <details> disclosures -- reachable,
+never in the first read.
 
 Accessibility: WCAG 2.1 AA as before. Measured contrast, route conveyed by
 number + words never colour alone, real table semantics in the audit, skip
@@ -54,11 +59,16 @@ def stash(prep, q, t0):
         PENDING[qid] = (q, prep, t0)
     return qid
 
+# (chip label, the query it actually runs). The queries are the ones the
+# retrieval eval was written against; the labels only have to fit one row.
 EXAMPLES = [
-    "How long does a defendant served in Michigan have to answer a complaint?",
-    "MCR 2.116(C)(10)",
-    "Serving process on someone in a psychiatric facility",
-    "When must the court appoint a guardian ad litem?",
+    ("Answering a complaint",
+     "How long does a defendant served in Michigan have to answer a complaint?"),
+    ("MCR 2.116(C)(10)", "MCR 2.116(C)(10)"),
+    ("Service in a psychiatric facility",
+     "Serving process on someone in a psychiatric facility"),
+    ("Guardian ad litem",
+     "When must the court appoint a guardian ad litem?"),
 ]
 
 ROUTE = {
@@ -138,16 +148,23 @@ padding:12px 18px;z-index:100}
 .skip:focus{left:0}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:3px}
 
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
-padding:13px 24px;border-bottom:1px solid var(--line);background:var(--bg)}
-.brand{display:flex;align-items:center;gap:11px;color:var(--ink)}
-.brand img{width:30px;height:30px;border-radius:6px}
-.brand b{font:600 15.5px var(--sans)}
+label.vh,.vh{position:absolute;width:1px;height:1px;overflow:hidden;
+clip:rect(0 0 0 0);white-space:nowrap}
+
+/* --- chrome: a bare corner nav on the landing page, a full bar on results */
+.minitop{display:flex;justify-content:flex-end;align-items:center;gap:14px;
+padding:14px 22px}
+.topbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+padding:11px 22px;border-bottom:1px solid var(--line);background:var(--paper)}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);flex:none;
+text-decoration:none}
+.brand img{width:28px;height:28px;border-radius:6px}
+.brand b{font:600 15.5px var(--sans);white-space:nowrap}
 .brand span{color:var(--muted);font-size:12.5px}
 .betachip{font:600 10.5px var(--mono);letter-spacing:.1em;color:var(--warn);
 border:1px solid var(--warn);border-radius:999px;padding:3px 9px;
 text-transform:uppercase;white-space:nowrap}
-.topnav{display:flex;align-items:center;gap:14px}
+.topnav{display:flex;align-items:center;gap:14px;margin-left:auto;flex:none}
 .topnav a{font:600 13px var(--sans);color:var(--teal-hover);
 text-decoration:none;padding:8px 4px;min-height:36px;display:inline-flex;
 align-items:center}
@@ -156,47 +173,82 @@ align-items:center}
 padding:9px 16px;text-decoration:none}
 .topnav a.btn:hover{background:var(--teal-hover);text-decoration:none}
 
-.lawline{padding:8px 24px;background:var(--warn-bg);border-bottom:1px solid var(--line);
-font:12.5px/1.5 var(--sans);color:var(--ink2)}
-.lawline .in{max-width:920px;margin:0 auto}
-.lawline b{color:var(--ink)}
-.lawline details{display:inline}
-.lawline summary{display:inline;cursor:pointer;color:var(--teal-hover);
+/* --- the amber bar earns its colour only where generated text appears */
+.noticebar{padding:8px 22px;background:var(--warn-bg);
+border-bottom:1px solid var(--line);font:12.5px/1.5 var(--sans);color:var(--ink2)}
+.noticebar .in{max-width:920px;margin:0 auto}
+.noticebar b{color:var(--ink)}
+.noticebar details{display:inline}
+.noticebar summary{display:inline;cursor:pointer;color:var(--teal-hover);
 font-weight:600;text-decoration:underline;text-underline-offset:2px}
-.lawline .more{margin:7px 0 2px;max-width:72ch}
+.noticebar .more{margin:7px 0 2px;max-width:72ch}
 
-header.hero{max-width:920px;margin:0 auto;padding:38px 24px 4px}
-.eyebrow{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;
-color:var(--teal);margin:0 0 10px}
+/* --- the search field: one pill, large on the landing page, compact in the
+   results bar. Same markup either way. */
+form.search{flex:1 1 300px;min-width:0;margin:0}
+.pill{display:flex;align-items:center;gap:10px;background:var(--paper);
+border:1px solid var(--line2);border-radius:28px;padding:4px 5px 4px 16px;
+box-shadow:0 1px 2px rgba(20,45,62,.04)}
+.pill:hover{box-shadow:0 1px 7px rgba(20,45,62,.09)}
+.pill:focus-within{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.mag{flex:none;width:17px;height:17px;color:var(--faint)}
+.pill input[type=search]{flex:1;min-width:0;height:42px;padding:0;border:0;
+background:none;font:15.5px var(--sans);color:var(--ink);-webkit-appearance:none}
+.pill input[type=search]:focus{outline:none}
+.pill button.go{flex:none;height:42px;padding:0 22px;border:0;border-radius:24px;
+background:var(--teal);color:#fff;font:600 14px var(--sans);cursor:pointer}
+.pill button.go:hover{background:var(--teal-hover)}
+.pill button.go:disabled{background:var(--muted);cursor:default}
+form.search.big{flex:none;width:100%;max-width:600px;margin:30px auto 0}
+form.search.big .pill{padding:5px 6px 5px 20px;border-radius:32px}
+form.search.big input[type=search]{height:52px;font-size:16.5px}
+form.search.big button.go{height:50px;padding:0 27px;border-radius:28px;
+font-size:15px}
+
+/* --- the landing page proper */
+main.home{max-width:660px;margin:0 auto;padding:clamp(20px,7vh,74px) 24px 0;
+text-align:center}
+.home .mark{width:60px;height:60px;border-radius:14px}
 h1{font:400 38px/1.1 var(--serif);letter-spacing:-.01em;margin:0 0 12px;
 color:var(--ink)}
-.lede{font-size:16.5px;line-height:1.6;color:var(--ink2);max-width:640px;margin:0}
-.facts{display:flex;gap:22px;flex-wrap:wrap;margin:16px 0 0;color:var(--muted);
-font:12.5px var(--mono)}
-.facts b{color:var(--ink2);font-weight:600}
-
-form.search{max-width:920px;margin:0 auto;padding:18px 24px 0;display:flex;
-gap:10px;flex-wrap:wrap}
-label.vh,.vh{position:absolute;width:1px;height:1px;overflow:hidden;
-clip:rect(0 0 0 0);white-space:nowrap}
-input[type=search]{flex:1;min-width:280px;height:54px;padding:0 18px;
-background:var(--paper);border:1px solid var(--line2);border-radius:12px;
-font-size:16px;color:var(--ink);font-family:var(--sans)}
-input[type=search]:focus{outline:none;border-color:var(--teal);
-box-shadow:0 0 0 3px var(--teal-soft)}
-button.go{font:500 14.5px var(--sans);min-height:54px;padding:0 26px;
-border:1px solid var(--teal);border-radius:12px;background:var(--teal);
-color:#fff;cursor:pointer}
-button.go:hover{background:var(--teal-hover)}
-
-.samples{max-width:920px;margin:16px auto 0;padding:0 24px}
-.samples .lbl{font:12px var(--mono);letter-spacing:.08em;text-transform:uppercase;
-color:var(--muted);margin-bottom:8px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font:13px var(--sans);padding:8px 14px;min-height:36px;
-border:1px solid var(--line2);border-radius:999px;background:var(--paper);
-color:var(--ink2);text-decoration:none;display:inline-block}
+h1.wordmark{font-size:40px;letter-spacing:-.015em;margin:16px 0 0}
+.tagline{margin:10px 0 0;color:var(--muted);font:12.5px var(--mono);
+letter-spacing:.05em}
+.eyebrow{font:12px var(--mono);letter-spacing:.14em;text-transform:uppercase;
+color:var(--teal);margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0 0}
+.chip{font:13px var(--sans);padding:7px 14px;min-height:36px;
+display:inline-flex;align-items:center;border:1px solid var(--line);
+border-radius:999px;background:var(--paper);color:var(--ink2);
+text-decoration:none}
 .chip:hover{border-color:var(--teal);color:var(--teal-hover);background:var(--teal-soft)}
+.facts{margin:22px 0 0;color:var(--faint);font:12px var(--mono)}
+.notice{margin:14px auto 0;max-width:58ch;color:var(--ink2);
+font-size:12.5px;line-height:1.6}
+.notice b{color:var(--warn)}
+
+/* --- everything a returning reader never needs, one click away */
+.boxes{margin:38px 0 0;text-align:left;background:var(--paper);
+border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.box{border-bottom:1px solid var(--line)}
+.box:last-child{border-bottom:0}
+.box>summary{display:flex;align-items:center;gap:12px;min-height:48px;
+padding:13px 18px;cursor:pointer;list-style:none;
+font:600 14px var(--sans);color:var(--ink)}
+.box>summary::-webkit-details-marker{display:none}
+.box>summary:hover{background:var(--soft);color:var(--teal-hover)}
+.box[open]>summary{color:var(--teal-hover)}
+.box>summary::after{content:"";flex:none;margin-left:auto;width:8px;height:8px;
+border-right:2px solid var(--faint);border-bottom:2px solid var(--faint);
+transform:translateY(-2px) rotate(45deg);transition:transform .2s}
+.box[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+.boxbody{padding:0 18px 18px;max-width:74ch;color:var(--ink2);
+font-size:13.8px;line-height:1.68}
+.boxbody p{margin:0 0 11px}
+.boxbody p:last-child{margin-bottom:0}
+.boxbody ul{margin:0 0 11px;padding-left:20px}
+.boxbody li{margin:0 0 7px}
+.boxbody b{color:var(--ink)}
 
 main{max-width:920px;margin:22px auto 70px;padding:0 24px}
 
@@ -276,12 +328,12 @@ min-height:24px;display:inline-block}
 background:var(--bg);border:1px solid var(--line);border-radius:8px;
 padding:10px 12px;overflow-x:auto}
 
-footer{max-width:920px;margin:0 auto;padding:22px 24px 56px;color:var(--faint);
-font:12px var(--sans);border-top:1px solid var(--line)}
-footer p{margin:0 0 8px;max-width:78ch}
-footer b{color:var(--muted)}
-footer details{margin-top:12px}
-footer summary{cursor:pointer;font:600 12px var(--mono);color:var(--muted);
+footer{max-width:920px;margin:44px auto 0;padding:20px 24px 52px;
+color:var(--muted);font:12.5px/1.65 var(--sans);border-top:1px solid var(--line)}
+footer p{margin:0 0 8px;max-width:80ch}
+footer b{color:var(--ink2)}
+footer details{margin-top:10px}
+footer summary{cursor:pointer;font:600 11.5px var(--mono);color:var(--faint);
 min-height:24px;display:inline-block}
 footer summary:hover{color:var(--teal-hover)}
 footer .prov{margin-top:10px;font:12px/1.8 var(--mono);background:var(--paper);
@@ -289,180 +341,173 @@ border:1px solid var(--line);border-radius:8px;padding:12px 14px;
 overflow-x:auto;color:var(--muted)}
 .working{max-width:920px;margin:12px auto 0;padding:0 24px;display:flex;
 gap:10px;align-items:center;color:var(--muted);font:13px var(--mono)}
+.home .working{justify-content:center;padding:0;margin-top:16px}
+main.home~footer{max-width:660px}
 .spinner{width:14px;height:14px;border:2px solid var(--line2);
 border-top-color:var(--teal);border-radius:50%;display:inline-block;
 animation:spin .7s linear infinite;flex:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 .card .pg,a.pg{margin-left:auto;font:12px var(--mono);color:var(--teal-hover);
 white-space:nowrap;text-decoration:underline;text-underline-offset:2px}
+@media (max-width:640px){
+  /* brand and nav share the first row; the field takes the second */
+  .topbar{gap:10px;padding:10px 16px}
+  .topbar form.search{order:3;flex:1 0 100%}
+  .topnav{order:2}
+  .minitop{padding:12px 16px}
+  h1.wordmark{font-size:33px}
+  .home{padding-top:clamp(16px,5vh,44px)}
+  /* the printed-page link drops below the citation instead of overflowing */
+  .cardhead{flex-wrap:wrap}
+  .card .pg,a.pg{margin-left:0;white-space:normal}
+}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;
 animation:none!important}.spinner{border-top-color:var(--line2)}}
 """
 
 
-def page(q, body, announce=""):
-    st = LEDGER.stats()
-    chips = "".join(
-        f'<a class="chip" href="/?q={urllib.parse.quote(e)}">{html.escape(e)}</a>'
-        for e in EXAMPLES)
-    hero = "" if q else f"""
-<header class="hero">
-  <p class="eyebrow">Bench Book</p>
-  <h1>Michigan Court Rules</h1>
-  <p class="lede">A searchable bench book for the rules governing practice in
-  Michigan courts. Ask a question in plain language or enter a citation;
-  every answer shows the provisions it rests on and the printed page to
-  verify against.</p>
-  <p class="facts"><span><b>{st['rules']}</b> rules</span>
-  <span><b>{st['citable_provisions']:,}</b> citable provisions</span>
-  <span>as amended through <b>July 31, 2026</b></span></p>
-</header>"""
-    return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#142D3E">
-<meta name="description" content="Michigan Court Rules — Bench Book. Every
-answer cites the provisions behind it and the printed page to verify against.">
-<title>{html.escape(q) + ' — ' if q else ''}Michigan Court Rules — Bench Book (Beta)</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<style>{CSS}</style></head>
-<body>
-{'<a class="skip" href="#results">Skip to results</a>' if q else '<a class="skip" href="#q">Skip to search</a>'}
+BRAND = "Court Rule Searcher"
 
-<div class="topbar">
-  <div class="brand">
-    <img src="/favicon.svg" alt="" width="30" height="30">
-    <b>Michigan Court Rules</b>
-    <span>Bench Book &middot; search with provenance</span>
+MAG = ('<svg class="mag" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+       'stroke-width="2" stroke-linecap="round" aria-hidden="true">'
+       '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg>')
+
+FULL_NOTICE = """This is an administrative support tool developed by the
+Child &amp; Adolescent Data Lab at the University of Michigan School of Social
+Work; it is <b>not</b> a product of, affiliated with, or endorsed by the
+Michigan courts. It does not create an attorney&ndash;client relationship and
+must not be relied on in any filing or decision. Answers are produced
+automatically from the text of the Michigan Court Rules and may be incomplete,
+out of date, or wrong. Always verify against the official Michigan Court Rules
+published by the Michigan Supreme Court at courts.michigan.gov before acting."""
+
+
+def search_form(q, big=False):
+    """One pill, two sizes: the landing field and the results-bar field."""
+    return f"""<form class="search{' big' if big else ''}" method="get"
+  action="/" role="search">
+  <label class="vh" for="q">Search the Michigan Court Rules by question or
+  citation</label>
+  <div class="pill">{MAG}
+    <input type="search" id="q" name="q" value="{html.escape(q)}"
+      placeholder="Ask a question, or enter a citation"
+      autocomplete="off" {'autofocus' if not q else ''}>
+    <button class="go" type="submit">Search</button>
   </div>
-  <nav class="topnav" aria-label="Site">
-    <a href="/architecture">About this system</a>
-    <span class="betachip">Beta</span>
-  </nav>
-</div>
+</form>"""
 
-<div class="lawline"><div class="in">
-  <b>Not legal advice.</b> Answers are generated and may be wrong &mdash;
-  verify against the official rules before relying on them.
-  <details><summary>Full notice</summary>
-    <p class="more">This is an administrative support tool developed by the
-    Child &amp; Adolescent Data Lab at the University of Michigan School of
-    Social Work; it is <b>not</b> a product of, affiliated with, or
-    endorsed by the Michigan courts. It does not create an
-    attorney&ndash;client relationship and must not be relied on in any filing
-    or decision. Answers are produced automatically from the text of the
-    Michigan Court Rules and may be incomplete, out of date, or wrong. Always
-    verify against the official Michigan Court Rules published by the Michigan
-    Supreme Court at courts.michigan.gov before acting.</p>
-  </details>
-</div></div>
-{hero}
-<form class="search" method="get" action="/" role="search">
-  <label class="vh" for="q">Search the Michigan Court Rules by question or citation</label>
-  <input type="search" id="q" name="q" value="{html.escape(q)}"
-    placeholder="Ask a question, or enter a citation — MCR 2.116(C)(10)"
-    autocomplete="off" {'autofocus' if not q else ''}>
-  <button class="go" type="submit">Search</button>
-</form>
-<div class="working" id="working" hidden>
+
+WORKING = """<div class="working" id="working" hidden>
   <span class="spinner" aria-hidden="true"></span>
   <span>Searching the court rules and composing a cited answer&hellip;
   usually a few seconds.</span>
-</div>
-{WORKING_JS}
+</div>"""
 
-<nav class="samples" aria-label="Example searches">
-  <p class="lbl">Try</p>
-  <div class="chips">{chips}</div>
-</nav>
 
-<main id="results" tabindex="-1">
-  {'<h1 class="vh">Michigan Court Rules search results: ' + html.escape(q) + '</h1>' if q else ''}
-  <p class="vh" role="status" aria-live="polite" id="live">{html.escape(announce)}</p>
-  {body}
-</main>
+def info_boxes(st):
+    """Everything a first-time reader might want and a returning one never
+    does. Collapsed by default; each opens without script."""
+    return f"""<section class="boxes" aria-label="About this tool">
 
-<footer>
-  <p><b>Not legal advice.</b> This beta tool is for research and evaluation;
-  it is not a substitute for the official Michigan Court Rules or for advice
-  from a licensed attorney. Verify every citation against the official text
-  before relying on it.</p>
-  <p>An administrative support tool developed by the
-  <a href="https://ssw-datalab.org/" target="_blank" rel="noopener">Child
-  &amp; Adolescent Data Lab</a> at the University of Michigan School of
-  Social Work. Not affiliated with or endorsed by the Michigan courts.
-  Report errors:
-  <a href="mailto:beperron@umich.edu">beperron@umich.edu</a>.</p>
-  <p>Searches are retained for quality improvement.</p>
-  <p>{html.escape(st['source']['edition'])} &middot;
-  <a href="https://www.courts.michigan.gov/siteassets/rules-instructions-administrative-orders/michigan-court-rules/michigan-court-rules.pdf"
-  target="_blank" rel="noopener">the official Michigan Court Rules PDF</a>
-  (printed page numbers and PDF sheet numbers differ; both are shown on every
-  link) &middot;
-  <a href="https://www.courts.michigan.gov/rules-administrative-orders-and-jury-instructions/"
-  target="_blank" rel="noopener">rules &amp; administrative orders at
-  courts.michigan.gov</a></p>
-  <p><a href="/architecture">About this system</a> &mdash; the pipeline, the
-  audit, the measured performance, and what was tested and rejected.</p>
-  <details>
-    <summary>Technical details</summary>
-    <div style="max-width:76ch;color:var(--ink2);font-size:13.5px;line-height:1.7">
+<details class="box"><summary>What this is</summary><div class="boxbody">
+<p>{BRAND} finds the provisions of the Michigan Court Rules that govern your
+question, then composes an answer from that text alone. It is a
+retrieval-augmented generation ("RAG") system: rather than asking an
+artificial intelligence model to answer from whatever it absorbed during
+training, the system first <i>retrieves</i> the governing text and then
+instructs the model to write only from it. The model functions less like an
+expert reciting from memory and more like a clerk directed to answer only from
+the record placed in front of them.</p>
+<p><b>Why the architecture matters.</b> General-purpose AI systems generate
+language by statistical prediction, and when asked about law they can produce
+authority that does not exist — confident, well-formatted, and wrong. The
+professional consequences of relying on such fabrications are by now well
+documented. This system forecloses that failure mode structurally rather than
+by instruction: the model is never asked what it remembers about Michigan
+procedure. It is shown the pertinent rule text, retrieved verbatim from the
+official publication, and confined to it.</p>
+</div></details>
 
-    <p style="margin:12px 0 8px"><b>What kind of system this is.</b> The
-    Bench Book is a retrieval-augmented generation ("RAG") system. The term
-    describes a specific architecture: rather than asking an artificial
-    intelligence model to answer from whatever it absorbed during training,
-    the system first <i>retrieves</i> the governing text — here, the
-    provisions of the Michigan Court Rules relevant to your question — and
-    then instructs the model to compose its answer from that text alone. The
-    model functions less like an expert reciting from memory and more like a
-    clerk directed to answer only from the record placed in front of them.</p>
+<details class="box"><summary>How to check an answer</summary>
+<div class="boxbody">
+<p>Confinement is checked rather than assumed. Before any answer reaches you,
+every citation it contains is tested against the parsed rules — and the result
+is shown to you, not merely performed:</p>
+<ul>
+<li>Every citation in the answer <b>links to the passage it came from</b>, and
+every passage links to its <b>printed page in the official PDF</b> (printed
+page numbers and PDF sheet numbers differ; both are shown).</li>
+<li>The <b>citation audit</b> below each answer reports, for every citation:
+does that provision exist, and was it among the passages the model was
+actually shown? A citation the model repeated from inside a passage is
+labelled exactly that.</li>
+<li>Where the rules do not address a question, the system is designed to
+<b>say so</b> and to name where the answer likely resides — a statute, court
+precedent, or a local order — rather than to guess.</li>
+</ul>
+</div></details>
 
-    <p style="margin:0 0 8px"><b>Why the architecture matters.</b>
-    General-purpose AI systems generate language by statistical prediction,
-    and when asked about law they can produce authority that does not exist —
-    confident, well-formatted, and wrong. The professional consequences of
-    relying on such fabrications are by now well documented. This system is
-    built to foreclose that failure mode structurally rather than by
-    instruction: the model is never asked what it remembers about Michigan
-    procedure. It is shown the pertinent rule text, retrieved verbatim from
-    the official publication, and confined to it.</p>
+<details class="box"><summary>What it covers — and what it does not</summary>
+<div class="boxbody">
+<p>The complete Michigan Court Rules: <b>{st['rules']} rules</b> and
+<b>{st['citable_provisions']:,} citable provisions</b>, parsed from the
+official publication as amended through <b>July 31, 2026</b>.</p>
+<p>It does <b>not</b> cover statutes (MCL), case law, the Michigan Rules of
+Evidence, or local administrative orders. When an answer depends on those, the
+system says so rather than guessing — and statutes appearing in an answer are
+flagged as unverified, because they lie outside the corpus this tool
+checks.</p>
+<p>Sources:
+<a href="https://www.courts.michigan.gov/siteassets/rules-instructions-administrative-orders/michigan-court-rules/michigan-court-rules.pdf"
+target="_blank" rel="noopener">the official Michigan Court Rules PDF</a> ·
+<a href="https://www.courts.michigan.gov/rules-administrative-orders-and-jury-instructions/"
+target="_blank" rel="noopener">rules &amp; administrative orders at
+courts.michigan.gov</a></p>
+</div></details>
 
-    <p style="margin:0 0 8px"><b>The verification layer.</b> Confinement is
-    then checked rather than assumed. Before any answer reaches you, every
-    citation it contains is tested against the parsed rules: does the cited
-    provision exist, and was it among the passages the model was actually
-    given? The results of that audit are displayed with the answer, and each
-    cited provision links to its verbatim text and to the page of the source
-    PDF, so the answer can be verified against the rule itself rather than
-    taken on trust. Where the rules do not address a question, the system is
-    designed to say so and to indicate where the answer likely resides —
-    a statute, court precedent, or local order — rather than to guess.</p>
+<details class="box"><summary>How well it works, measured</summary>
+<div class="boxbody">
+<p>In evaluation against more than a thousand benchmark questions written from
+the rules themselves, the system produced <b>no fabricated citations</b>, and
+it declined all <b>thirty-two</b> questions deliberately designed to have no
+answer in the court rules. Its stored copy of the rules was verified word for
+word against the official PDF — all 625 rules accounted for, nothing added or
+paraphrased.</p>
+<p><b>What this does not claim.</b> The architecture minimises fabrication; it
+does not abolish error. Retrieval can miss a pertinent provision, and composed
+language can state a rule more broadly than its text supports. That is why
+every answer carries its sources, why the audit is shown rather than merely
+performed, and why you are asked to verify against the official rules before
+relying on anything here.</p>
+<p><a href="/architecture">About this system</a> — the pipeline, the audit,
+the full measured record, and what was tested and rejected.</p>
+</div></details>
 
-    <p style="margin:0 0 8px"><b>The measured record.</b> In evaluation
-    against more than a thousand benchmark questions written from the rules
-    themselves, the system produced no fabricated citations, and it declined
-    all thirty-two questions deliberately designed to have no answer in the
-    court rules. Its stored copy of the rules was verified word for word
-    against the official PDF — all 625 rules accounted for, nothing added or
-    paraphrased.</p>
+<details class="box"><summary>Legal notice</summary><div class="boxbody">
+<p><b>Not legal advice.</b> {FULL_NOTICE}</p>
+<p>This beta tool is for research and evaluation; it is not a substitute for
+the official Michigan Court Rules or for advice from a licensed attorney.</p>
+</div></details>
 
-    <p style="margin:0 0 8px"><b>What this does not claim.</b> The
-    architecture minimises fabrication; it does not abolish error. Retrieval
-    can miss a pertinent provision, and composed language can state a rule
-    more broadly than its text supports. That is why every answer carries its
-    sources, why the audit is shown rather than merely performed, and why the
-    banner above asks you to verify against the official rules before
-    relying on anything here.</p>
+<details class="box"><summary>Who built this, and what is recorded</summary>
+<div class="boxbody">
+<p>An administrative support tool developed by the
+<a href="https://ssw-datalab.org/" target="_blank" rel="noopener">Child
+&amp; Adolescent Data Lab</a> at the University of Michigan School of Social
+Work. Not affiliated with or endorsed by the Michigan courts. Report errors:
+<a href="mailto:beperron@umich.edu">beperron@umich.edu</a>.</p>
+<p>Searches are retained for quality improvement. Retrieval and the citation
+audit run against this system's own index; only the final composition step is
+sent to an external language-model service.</p>
+</div></details>
 
-    <p style="margin:0 0 10px"><b>Where the work happens.</b> Search and
-    verification run entirely on this computer. Only the final composition
-    step is sent to an external language-model service; your searches and the
-    documents never leave this machine.</p>
+</section>"""
 
-    <details style="margin:4px 0 0">
-      <summary style="cursor:pointer;font:600 12px var(--mono);color:var(--muted)">Reference identifiers (for technical staff)</summary>
-      <div class="prov">
+
+def reference_block(st):
+    return f"""<details>
+  <summary>Reference identifiers (for technical staff)</summary>
+  <div class="prov">
 source        {html.escape(st['source']['file'])}
               (<a href="/source.pdf">this tool's verified local copy</a>)<br>
 sha-256       {st['source']['sha256']}<br>
@@ -472,11 +517,126 @@ retrieval     {html.escape(EMBEDDER)}, dense, citation router<br>
 answers       {html.escape(GEN_MODEL)}, restricted to retrieved passages<br>
 verification  parse reconciled against the document's own contents
               (625/625 rules); word-count identity 384,507 = 384,507</div>
-    </details>
-    </div>
-  </details>
-</footer>
+</details>"""
+
+
+def footer_html(st):
+    return f"""<footer>
+  <p><b>Not legal advice.</b> A research beta from the
+  <a href="https://ssw-datalab.org/" target="_blank" rel="noopener">Child
+  &amp; Adolescent Data Lab</a>, University of Michigan School of Social Work
+  — not affiliated with or endorsed by the Michigan courts. Verify every
+  citation against the official text before relying on it. Report errors:
+  <a href="mailto:beperron@umich.edu">beperron@umich.edu</a>. Searches are
+  retained for quality improvement.</p>
+  <p>{html.escape(st['source']['edition'])} &middot;
+  <a href="https://www.courts.michigan.gov/siteassets/rules-instructions-administrative-orders/michigan-court-rules/michigan-court-rules.pdf"
+  target="_blank" rel="noopener">official Michigan Court Rules PDF</a>
+  &middot;
+  <a href="https://www.courts.michigan.gov/rules-administrative-orders-and-jury-instructions/"
+  target="_blank" rel="noopener">rules &amp; administrative orders</a>
+  &middot; <a href="/architecture">About this system</a></p>
+  {reference_block(st)}
+</footer>"""
+
+
+def head_html(title, desc, extra_css=""):
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#142D3E">
+<meta name="description" content="{desc}">
+<title>{title}</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>{CSS}{extra_css}</style></head>"""
+
+
+DESC = ("Court Rule Searcher — search the Michigan Court Rules. Every answer "
+        "cites the provisions behind it and the printed page to verify against.")
+
+
+def landing_page(st):
+    chips = "".join(
+        f'<a class="chip" href="/?q={urllib.parse.quote(query)}" '
+        f'title="{html.escape(query)}">{html.escape(label)}</a>'
+        for label, query in EXAMPLES)
+    return f"""{head_html(f'{BRAND} — Michigan Court Rules (Beta)', DESC)}
+<body>
+<a class="skip" href="#q">Skip to search</a>
+
+<div class="minitop">
+  <nav class="topnav" aria-label="Site">
+    <a href="/architecture">About this system</a>
+    <span class="betachip">Beta</span>
+  </nav>
+</div>
+
+<main class="home">
+  <img class="mark" src="/favicon.svg" alt="" width="60" height="60">
+  <h1 class="wordmark">{BRAND}</h1>
+  <p class="tagline">Michigan Court Rules &middot; search with provenance</p>
+
+  {search_form("", big=True)}
+  {WORKING}
+  <p class="vh" role="status" aria-live="polite" id="live"></p>
+
+  <nav class="chips" aria-label="Example searches">{chips}</nav>
+
+  <p class="facts">{st['rules']} rules &middot;
+  {st['citable_provisions']:,} citable provisions &middot;
+  as amended through July 31, 2026</p>
+
+  <p class="notice"><b>Not legal advice.</b> Answers are generated and may be
+  wrong — verify against the official Michigan Court Rules before relying on
+  them.</p>
+
+  {info_boxes(st)}
+</main>
+{WORKING_JS}
+{footer_html(st)}
 </body></html>"""
+
+
+def results_page(q, body, announce, st):
+    return f"""{head_html(html.escape(q) + f' — {BRAND}', DESC)}
+<body>
+<a class="skip" href="#results">Skip to results</a>
+
+<div class="topbar">
+  <a class="brand" href="/">
+    <img src="/favicon.svg" alt="" width="28" height="28">
+    <b>{BRAND}</b>
+  </a>
+  {search_form(q)}
+  <nav class="topnav" aria-label="Site">
+    <a href="/architecture">About</a>
+    <span class="betachip">Beta</span>
+  </nav>
+</div>
+
+<div class="noticebar"><div class="in">
+  <b>Not legal advice.</b> Answers are generated and may be wrong &mdash;
+  verify against the official rules before relying on them.
+  <details><summary>Full notice</summary>
+    <p class="more">{FULL_NOTICE}</p>
+  </details>
+</div></div>
+{WORKING}
+
+<main id="results" tabindex="-1">
+  <h1 class="vh">Michigan Court Rules search results: {html.escape(q)}</h1>
+  <p class="vh" role="status" aria-live="polite" id="live">{html.escape(announce)}</p>
+  {body}
+</main>
+{WORKING_JS}
+{footer_html(st)}
+</body></html>"""
+
+
+def page(q, body, announce=""):
+    st = LEDGER.stats()
+    return (results_page(q, body, announce, st) if q.strip()
+            else landing_page(st))
 
 
 def _page_cell(r):
@@ -716,7 +876,7 @@ color:var(--teal-hover);margin:34px 0 10px}
 .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:14px 0}
 .stage{flex:1 1 150px;background:var(--paper);border:1px solid var(--line2);
 border-radius:10px;padding:10px 12px}
-.stage b{display:block;font-size:13.5px;color:var(--secondary)}
+.stage b{display:block;font-size:13.5px;color:var(--accent)}
 .stage span{font:11.5px var(--mono);color:var(--muted)}
 .arrow{align-self:center;color:var(--muted);font-size:18px}
 .arch table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--paper);
@@ -735,29 +895,23 @@ padding:11px 20px;text-decoration:none;font-weight:600;margin-top:26px}
 
 def architecture_page():
     st = LEDGER.stats()
-    return f"""<!doctype html>
-<html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#142D3E">
-<title>About this system — Michigan Court Rules Bench Book</title>
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<style>{CSS}{ARCH_CSS}</style></head>
+    return f"""{head_html(f'About this system — {BRAND}', DESC, ARCH_CSS)}
 <body>
 <div class="topbar">
-  <div class="brand">
-    <img src="/favicon.svg" alt="" width="30" height="30">
-    <b>Michigan Court Rules</b>
-    <span>Bench Book &middot; about this system</span>
-  </div>
+  <a class="brand" href="/">
+    <img src="/favicon.svg" alt="" width="28" height="28">
+    <b>{BRAND}</b>
+    <span>Michigan Court Rules</span>
+  </a>
   <nav class="topnav" aria-label="Site">
     <a class="btn" href="/">&larr; Back to search</a>
     <span class="betachip">Beta</span>
   </nav>
 </div>
 <main class="arch">
-<p class="eyebrow">Bench Book &middot; Architecture</p>
+<p class="eyebrow">Architecture</p>
 <h1>About this system</h1>
-<p>The Bench Book answers questions about the Michigan Court Rules by finding
+<p>{BRAND} answers questions about the Michigan Court Rules by finding
 the governing provisions first and writing from them second. It never answers
 from general knowledge: every sentence is composed from retrieved rule text,
 every citation is checked against the parsed rules before the page renders,
@@ -797,8 +951,10 @@ passage &mdash; rather than one it was shown &mdash; is labelled exactly that.</
 <li><b>Refusal is a feature.</b> When the rules do not answer a question, the
 system says so in amber and names where the answer lives instead. On a
 32-question test of genuinely unanswerable questions it refused all 32.</li>
-<li><b>Every search is recorded on this machine</b> (question, answer,
-retrieved provisions) and nothing leaves it except the generation request.</li>
+<li><b>Every search is recorded</b> — question, answer, retrieved provisions —
+and retained for quality improvement. Retrieval and the citation audit run
+against this system's own index; only the composition step is sent to an
+external language-model service.</li>
 </ul>
 
 <h2>Measured performance</h2>
@@ -839,13 +995,7 @@ Michigan courts.</p>
 
 <a class="backlink btn-bottom" href="/">&larr; Back to search</a>
 </main>
-<footer><div class="in">
-<p>An administrative support tool developed by the
-<a href="https://ssw-datalab.org/" target="_blank" rel="noopener">Child
-&amp; Adolescent Data Lab</a>, University of Michigan School of Social Work.
-Report errors:
-<a href="mailto:beperron@umich.edu">beperron@umich.edu</a>.</p>
-</div></footer>
+{footer_html(st)}
 </body></html>"""
 
 

@@ -1,4 +1,4 @@
-# Michigan Court Rules — search with provenance
+# Court Rule Searcher — the Michigan Court Rules, with provenance
 
 A retrieval-augmented search system over the **Michigan Court Rules**
 (874 pages, 625 rules, 11,860 citable provisions, as amended through

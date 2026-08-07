@@ -23,7 +23,7 @@ is a new top-level folder with the same internal shape, not new shared code.
 | Path | System | Live |
 |---|---|---|
 | [`NC-ChildWelfare/`](NC-ChildWelfare/) | North Carolina — Juvenile Code (GS 7B), Administrative Code, NCDHHS policy manuals | [nc-policy.parallel42.ai](https://nc-policy.parallel42.ai) |
-| [`MI-CourtRules/`](MI-CourtRules/) | Michigan — the Michigan Court Rules, complete | [mi-court-rules.parallel42.ai](https://mi-court-rules.parallel42.ai) |
+| [`MI-CourtRules/`](MI-CourtRules/) | Michigan — **Court Rule Searcher**, over the Michigan Court Rules, complete | [mi-court-rules.parallel42.ai](https://mi-court-rules.parallel42.ai) |
 | [`docs/assets/`](docs/assets/) | The diagrams on this page | — |
 
 ---
@@ -50,9 +50,9 @@ verdicts, both obeyed.
 
 ---
 
-## ⚖️ MI-CourtRules — Michigan court rules
+## ⚖️ MI-CourtRules — Court Rule Searcher
 
-A provenance-first bench tool over the complete Michigan Court Rules
+A provenance-first search tool over the complete Michigan Court Rules
 (874 pages → 12,298 blocks → **11,860 citable provisions** across 625
 rules). The parse is proven three independent ways before anything is built
 on it; retrieval is dense-only with an **exact-citation router** and a

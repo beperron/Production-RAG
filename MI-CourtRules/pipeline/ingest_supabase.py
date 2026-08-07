@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ingest the Bench Book corpus into the mcr schema on Supabase.
+"""Ingest the Court Rule Searcher corpus into the mcr schema on Supabase.
 
     ingest_supabase.py [--wipe]
 

@@ -1,4 +1,4 @@
-"""Vercel entrypoint for the Michigan Court Rules bench book.
+"""Vercel entrypoint for Court Rule Searcher (the Michigan Court Rules).
 
 A single raw-ASGI app wrapping pipeline/serve.py's rendering unchanged.
 Retrieval, prompts, the citation audit and the page HTML are the exact
